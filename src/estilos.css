@@ -1,7 +1,7 @@
 .body{
     width: 100vw;  
     height: 100vh;
-    background: url(./assets/Imagenes/libreria.jpg) no-repeat center center fixed;
+    background: url(./assets/Imagenes/libreria1.jpg) no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
 }

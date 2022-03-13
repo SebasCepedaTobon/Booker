@@ -6,155 +6,67 @@
   padding: 0;
 }
 
+/*NAV*/
 
-/*BANNER*/
-
-#container-banner{
-  width: 100%;
+#logo{
+  width: 100px;
+  object-fit: contain;
 }
 
-#banner{
-  width: 100%;
-  height: 500px;
-  z-index: 1; 
+#avatar{
+  width: 50px;
+  border-radius: 100%;
+  object-fit: contain;
+  
 }
 
-/**/
+.nav{
+  position: fixed;
+  top: 0;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 1;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
 
 /*HEADER*/
 
-#black-bar{
-  width: 100%;
-  background-color: rgb(19, 18, 18);
-  height: 20px;
-}
 
-.header{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  z-index: 3;
-  margin-bottom: 25%;
-
-}
-
-
-#container-img{
-  width: 56%;
-  margin-top: 10px;
-
-}
-
-#container-img img{
-  width: 150px;
-  height: 150px;
-}
-
-#poema{
-  font-size: 50px;
-  font-weight: 900;
-  margin-bottom: 30px;
-}
-
-#busqueda{
-  width: 40%;
-  margin-left: 28%;
-  margin-top: -20%;
-  margin-bottom: 12%;
-  
-}
-
-#barra-busqueda{
-  height: 35px;
-  width: 80%;
-  border-radius: 7px;
-  
-}
-
-
-#rutas{
-  display: flex;
-  width: 30%;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin-left: 30px;
-
-}
-
-#rutas a{
-  margin-right: 80px;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 900;
-  
-}
-
-
-#perfil img{
-  border-radius: 100%;
-  width: 70px;
-  height: 70px;
-}
 
 /*FOOTER*/
 .footer{
-  background-image: url(../src/assets/Imagenes/wave.svg);
-  background-size: cover;
-  width: 100%;
-  height: 420px;
-  color: white;
-}
-
-
-
-.contenedor-elementos{
-  position: relative;
-  top: 300px;
+  background-image: url(../src/assets/Imagenes/Captura.JPG);
+  background-size: 100% 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
-  justify-content: center;
-  height: 77px;
+  width: 100%;
+  height: 45vh;
+  color: rgb(255, 0, 0);
 }
-
 .contenedor-redes img{
   width: 64px;
 }
 
-.contenedor-redes{
-  position: relative;
-  bottom: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 25%;
-}
-
 .contenedor-info{
-  position: relative;
-  bottom: 80px;
   width: 95%;
   display: flex;
-  align-self: center;
+  align-items: center;
   justify-content: space-between;
 }
 
 .contenedor-info1{
-  width: 20%;
-  text-align: center;
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
-  height: 160px;
+  justify-content: space-between;
+  text-align: center;
 }
 
-
 .contenedor-pie{
-  position: relative;
-  bottom: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,11 +74,12 @@
 }
 
 .contenedor-logo-footer{
-  width: 20%;
+  height: 150px;
+}
+.contenedor-logo-footer img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
-.logo-footer{
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
+

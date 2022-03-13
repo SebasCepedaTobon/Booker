@@ -8,8 +8,7 @@ import logo from '../../../assets/Imagenes/Booker1.png'
 
 export const Footer = () => {
   return (
-    <div className='footer'>      
-      <div className="contenedor-elementos">
+    <div className='footer'>
         <div className='contenedor-redes' >
           <Imagenes url={facebook} clase='facebook' />
           <Imagenes url={email} clase='email' />
@@ -32,11 +31,10 @@ export const Footer = () => {
         </div>
         <div className="contenedor-pie">
           <div className='contenedor-logo-footer'>
-          <Imagenes url={logo} clase='logo-footer' />
+            <Imagenes url={logo} clase='logo-footer' />
           </div>
           <p>&copy;2022 Booker Todos los derechos reservados</p>
         </div>
-      </div>
     </div>
   )
 }
