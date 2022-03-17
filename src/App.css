@@ -32,22 +32,75 @@
   transition: all 0.5s;
 }
 
+
+
+
+
 /*HEADER*/
+.header{
+  width: 100%;
+  background-color: aqua;
+  height: 20vh;
+}
+
+.main{
+  width: 100%;
+  height: 35vh;
+}
 
 
 
 /*FOOTER*/
 .footer{
-  background-image: url(../src/assets/Imagenes/Captura.JPG);
-  background-size: 100% 100%;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 45vh;
+  justify-content: space-between;
+}
+
+.footer-lados{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 25%;
+  height: 100%;
+  color: white;
+  background-color: rgb(0, 0, 0);
+}
+
+.footer-info{
+  position: relative;
+  bottom: 15px;
+  width: 100%;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  width: 100%;
-  height: 45vh;
-  color: rgb(255, 0, 0);
 }
+
+.footer2{
+  width: 60%;
+  height: 60%;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contenedor-redes{
+  position: relative;
+  bottom: 88px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .contenedor-redes img{
   width: 64px;
 }
@@ -59,27 +112,68 @@
   justify-content: space-between;
 }
 
-.contenedor-info1{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-}
-
-.contenedor-pie{
+.contenedor-logo{
+  position: relative;
+  bottom: 26px;
+  height: 60%;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+}
+
+.footer-reservados{
+  position: relative;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .contenedor-logo-footer{
-  height: 150px;
+  height: 100%;
 }
 .contenedor-logo-footer img{
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+@media(max-width:1000px){
+  .footer{
+    height: 35vh;
+  }
+
+  .footer-lados{
+    width: 40%;
+  }
+
+  .footer-lados h1{
+    font-size: 18px;
+  }
+
+  .footer-lados p{
+    font-size: 12px;
+  }
+
+  .footer-lados .contenedor-info{
+    display: flex;
+  }
+
+  .contenedor-redes{
+    bottom: 75px;
+    width: 70%;
+  }
+  .contenedor-redes img{
+    width: 50px;
+  }
+
+  .contenedor-logo{
+    bottom: 20px;
+  }
+
+  .footer-reservados p{
+    font-size: 15px;
+  }
 }
 
 

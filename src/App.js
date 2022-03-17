@@ -9,6 +9,7 @@ import{
 
 import { Home } from './Components/Pages/Home/Home';
 import { Login } from './Components/Pages/Login/Login';
+import {sitioAdmin} from './Components/Pages/admin/sitioAdmin'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/Home' element={<Home/>}/>
+        <Route path='/admin' element={<sitioAdmin/>} />
       </Routes>
     </BrowserRouter>
   );

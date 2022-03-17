@@ -6,7 +6,7 @@ import { Footer } from '../../Layouts/Footer/Footer'
 
 export const Home = () => {
   return (
-    <div>
+    <div className='home' >
       <Header/>
       <MainHome/>
       <Footer/>

@@ -6,10 +6,8 @@ import { Navegacion } from '../../UI/Navegacion/Navegacion'
 
 export const Header = () => {
   return (
-  <div>
+  <div className='header'>
     <Navegacion/>
-
-
   </div>
   )
 }
