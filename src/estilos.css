@@ -1,17 +1,69 @@
-.body{
+.bodyLogin{
     width: 100vw;  
     height: 100vh;
-    background: url(./assets/Imagenes/libreria1.jpg) no-repeat center center fixed;
-    background-size: cover;
     overflow: hidden;
 }
 
+.MainLogin{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedorImgLogin{
+    background-image: url(./assets/Imagenes/logoLogin.svg);
+    background-size: cover;
+    width: 35%;
+    height: 100%;
+}
+
+.contenedorLoginInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.342);
+}
+.logoImg{
+    width: 250px;
+    height: 150px;
+}
+
+.logoImg img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+.info{
+    color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info h1{   
+    font-size: 20px;
+}
+
+
+
+.contenedorLogin{
+    width: 65%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .center{
-    position: absolute;
-    top: 50%;
-    left: 26%;
-    transform: translate(-50%, -50%);
-    width: 30%;
+    width: 40%;
     background: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
@@ -118,4 +170,26 @@ text-decoration: underline;
         border-radius: 10px;
     }
 
+}
+
+
+/* admin */
+
+
+
+.mainAdmin{
+    width: 100vw;
+    height: 100vh;
+}
+
+.barra-arriba{
+    width: 100%;
+    height: 10%;
+    background-color: #666666;
+}
+
+.contenedor-contenedores{
+    background-color: #2691d9;
+    width: 100%;
+    height: 90%;
 }

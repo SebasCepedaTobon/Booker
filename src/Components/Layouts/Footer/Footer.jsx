@@ -22,7 +22,7 @@ export const Footer = () => {
         <div className='contenedor-redes' >
           <a href="#"><Imagenes url={facebook} clase='facebook'/></a>
           <a href="#"><Imagenes url={email} clase='email' /></a>
-          <a target={'_parent'} href="https://wa.me/+573002536217"><Imagenes url={whatsapp} clase='intagram' /></a>
+          <a href="https://wa.me/+573002536217" target={'_blank'} ><Imagenes url={whatsapp} clase='whatsapp'/></a>
         </div>
         <div className="contenedor-logo">
           <div className='contenedor-logo-footer'>

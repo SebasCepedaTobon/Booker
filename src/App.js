@@ -9,7 +9,8 @@ import{
 
 import { Home } from './Components/Pages/Home/Home';
 import { Login } from './Components/Pages/Login/Login';
-import {sitioAdmin} from './Components/Pages/admin/sitioAdmin'
+import { Admin } from './Components/Pages/Admin/Admin';
+
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/Home' element={<Home/>}/>
-        <Route path='/admin' element={<sitioAdmin/>} />
+        <Route path='/Admin' element={<Admin/>} />
       </Routes>
     </BrowserRouter>
   );
