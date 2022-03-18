@@ -1,3 +1,5 @@
+/*-------------------LOGIN--------------------*/
+
 .bodyLogin{
     width: 100vw;  
     height: 100vh;
@@ -8,25 +10,48 @@
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .contenedorImgLogin{
-    background-image: url(./assets/Imagenes/1.jpg);
+    background-image: url(./assets/Imagenes/3.jpg);
     background-size: cover;
-    width: 35%;
+    width: 50%;
     height: 100%;
 }
 
 .contenedorLoginInfo{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     width: 100%;
     height: 100%;
     text-align: center;
+    flex-direction: column;
+    background-color: rgba(1, 0, 39, 0.335)
 }
+
+.divInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 90%;
+    height: 75%;
+}
+
+.footerLogin{
+    position: relative;
+    bottom: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footerLogin img{
+    width: 80px;
+}
+
 .logoImg{
     width: 250px;
     height: 150px;
@@ -38,34 +63,75 @@
     height: 100%;
 }
 
+.divTextos{
+    min-height: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
 
 .info{
     color: white;
     width: 100%;
+    height: 34%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.info h1{   
-    font-size: 20px;
+.info h1{
+    text-shadow: 0px 0px 15px black;
+    font-size: 23px;
 }
 
+.info p{
+    font-size: 16px;   
+}
+
+.divFormulario{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 
 .contenedorLogin{
-    width: 65%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
 }
+
+.divlogoFrom{
+    width: 100%;
+    height: 20%;
+}
+
+
+.divNegroLogin{
+    position: relative;
+    top: 10px;
+    left: 20px;
+    width: 15%;
+}
+
+.LogoNegroLogin{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/*Formulario*/
 
 .center{
     width: 40%;
     background: rgb(255, 255, 255);
     border-radius: 10px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
 }
 .center h1{
     text-align: center;
@@ -168,13 +234,10 @@ text-decoration: underline;
         background: rgb(255, 255, 255);
         border-radius: 10px;
     }
-
 }
 
 
-/* admin */
-
-
+/*-------------------ADMIN--------------------*/
 
 .mainAdmin{
     width: 100vw;
