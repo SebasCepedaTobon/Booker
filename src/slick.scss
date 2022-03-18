@@ -1,0 +1,12 @@
+.slick-prev,
+.slick-next {
+    background: transparent;
+    color: transparent;
+    &:hover, &:focus {
+        background: transparent;
+        color: transparent;
+    }
+    &:before {
+        color: red;
+    }
+}

@@ -1,0 +1,22 @@
+.slick-prev,
+.slick-next {
+}
+
+.slick-prev:hover, .slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  color: #2591da;
+}
+
+.slick-next:before {
+  color: #2591da;
+  font-size:50px;
+}
+
+.slick-prev:before{
+  color: #2591da;
+  font-size:50px;
+  position: relative;
+  right: 30px;
+}
+/*# sourceMappingURL=slick.css.map */

@@ -36,7 +36,6 @@
 }
 
 .nav a{
-  margin-right: 40px;
   color: rgb(255, 255, 255);
   text-decoration: none;
   font-size:20px;
@@ -48,7 +47,7 @@
   margin-top: 10px;
   display: flex;
   flex-direction: row;
-  margin-left: 600px;
+  margin-left: 75%;
 }
 
 .nav a:hover{
@@ -68,7 +67,7 @@
   color: white;
   object-fit: contain;
   width: 100%;
-  height: 550px;
+  height: 750px;
 
   animation-name: banner;
   animation-duration: 10s;
@@ -126,11 +125,13 @@
   height: 50px;
   width: 600px;
   border:none;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 
 #search{
   width: 50px;
-  height: 50px;
+  height: 52px;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
 }
@@ -142,10 +143,16 @@
 }
 
 /*MAIN*/
+.main{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
 /*Categorias*/
 
 .contenedor-categorias{
+  margin-top: 30px;
   width: 100%;
   align-items: center;
   text-align: center;
@@ -160,131 +167,70 @@
   height: 70px;
   border-radius: 100%;
   cursor: pointer;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.main{
-  margin-top: 50px;
-  width: 100%;
-
-}
-
-.fila{
-  margin-top: 20px;
-}
-
-#destacados{
-  margin-left: 30px;
-
-}
-
-.fila-banner{
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  padding: 20px;
-  height: 350px;
-}
-
-.fila-banner::-webkit-scrollbar {
-  display: none;
-
-}
-
-/*Cards-Slider*/
-
-.contenedor{
-  width: 500px;
-  height: 250px;
-  background-color: rgb(127,203,196);
-  display: flex;
-  flex-direction: row;
+  margin-left: 40px;
   margin-right: 40px;
 }
 
-#fila-poster{
-  cursor: pointer;
-  object-fit: contain;
-  width: 250px;
-  height: 250px;
-  margin-right: 30px;
-  transition: transform 600ms;
-  margin-top: 40px;
-}
-
-.fila-poster:hover{
-  transform: scale(1.09);
-}
-
-.info{
-  margin-top: 10px;
-  width: 90%;
-}
 
 
-#autor{
-  color: white;
-  text-align: center;
-}
+/*Cards-Slider*/
 
-#descripcion{
-  margin-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-
-
-}
-
-#btn-Vermas{
-  margin-left: 35%;
-  width: 100px;
-  height: 30px;
-  color: rgb(0, 0, 0);
-  background-color: rgba(255, 255, 255, 0.876);
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-
-}
-
-/*Libros*/
-
-.container{
+.contendor-cards{
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 40px;
 }
 
-.container-libros{
-  width: 90%;
-
+.cards{
+  width: 80%;
 }
+
+.card{
+  background-color: #90caf9;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  height: 300px; 
+}
+
+
+.card img{
+  width: 300px;
+  height: 400px;
+}
+
+
+
+
+
+/*Libros*/
 
 .libros{
-  margin-top: 30px;
+  margin-top: 50px;
+  width: 80%;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
   justify-content: center;
-  align-items: center;
 }
 
 .contenedor-libro{
-  width: 280px;
-  height: 370px;
-  margin-top: 30px;
-  margin-right: 30px;
-  background-color: rgb(127,203,196);
-}
-
-#libro{
-  cursor: pointer;
-  width: 220px;
-  height: 300px;
-  margin: 30px 30px 30px 30px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 470px;
+  background-color: #90caf9;
 
 }
+
+.libro img{
+  width: 250px;
+  height: 400px;
+}
+
+
 
 
 

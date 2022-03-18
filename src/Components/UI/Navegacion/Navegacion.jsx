@@ -12,8 +12,6 @@ export const Navegacion = () => {
       <Imagenes url={logo} id="logo"/>
       <div className="nav-a">
         <a href="#" id="home">Home</a>
-        <a href="#" id="categorias">Categorias</a>
-        <a href="#" id="historial">Historial</a>
       </div>
       <Imagenes url={avatar} id="avatar"/>
     </div>
