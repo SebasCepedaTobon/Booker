@@ -56,9 +56,6 @@
 }
 
 
-
-
-
 /*HEADER*/
 
 .banner{
@@ -78,21 +75,21 @@
 
 @keyframes banner {
   0%, 30%{
-      background-image: url(assets/Imagenes/Diseño\ sin\ título\ \(1\).svg);
+      background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(1\).png);
   }
 
   35%, 65%{
-      background-image: url(assets/Imagenes/Diseño\ sin\ título\ \(3\).svg);
+      background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(3\).png);
 
   }
 
   70%, 100%{
 
-      background-image: url(assets/Imagenes/Diseño\ sin\ título\ \(7\).svg);
+      background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(7\).png);
   }
 
   105%, 135%{
-      background-image: url(assets/Imagenes/Diseño\ sin\ título\ \(9\).svg);
+      background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(9\).png);
   }
 
 

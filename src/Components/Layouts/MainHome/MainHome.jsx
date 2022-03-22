@@ -6,13 +6,13 @@ import "slick-carousel/slick/slick-theme.css";
 import '../../../slick.css'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import libro1 from '../../../assets/Imagenes/libro1.jpg'
-import comics from '../../../assets/Imagenes/commics.gif'
-import comedia from '../../../assets/Imagenes/comedia.gif'
-import terror from '../../../assets/Imagenes/terror.gif'
-import novelas from '../../../assets/Imagenes/novelas.gif'
-import infantil from '../../../assets/Imagenes/infantil.gif'
-import aventura from '../../../assets/Imagenes/aventura.gif'
-import academico from '../../../assets/Imagenes/academicos.gif'
+import comics from '../../../assets/Imagenes/GIF/commics.gif'
+import comedia from '../../../assets/Imagenes/GIF/comedia.gif'
+import terror from '../../../assets/Imagenes/GIF/terror.gif'
+import novelas from '../../../assets/Imagenes/GIF/novelas.gif'
+import infantil from '../../../assets/Imagenes/GIF/infantil.gif'
+import aventura from '../../../assets/Imagenes/GIF/aventura.gif'
+import academico from '../../../assets/Imagenes/GIF/academicos.gif'
 
 
 export const MainHome = () => {

@@ -231,11 +231,70 @@ text-decoration: underline;
     }
 
     .center{
+        width: 70%;
         background: rgb(255, 255, 255);
         border-radius: 10px;
     }
+
+    .footerLogin img{
+        width: 60px;
+    }
+
+    .logoImg{
+        width: 192px;
+    }
+
+    .info h1{
+        font-size: 20px;
+    }
+    
+    .info p{
+        font-size: 13px;   
+    }
 }
 
+
+/*-------------------GMAIL--------------------*/
+
+.bodyGmail{
+    width: 100vw;  
+    height: 100vh;
+    overflow: hidden;
+}
+
+.contenedorGmail{
+    width: 70%;
+    height: 77%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+form .txt_fieldGmail{
+    border: 2px solid #adadad;
+    border-radius: 2px;
+    min-height: 10px;
+    margin: 30px 0;
+}
+
+
+textarea{
+    background-color: transparent;
+    width: 100%;
+    height: 100px;
+    margin-top: -1px;
+    margin-bottom: -3.5px;
+    font-size: 16px;
+    border: 0px;
+    outline-color: #2691d9;
+    resize: none;
+}
+
+textarea::placeholder{
+    color: #adadad;
+    font-size: 16px;
+}
 
 /*-------------------ADMIN--------------------*/
 

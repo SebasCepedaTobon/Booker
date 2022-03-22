@@ -1,10 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
-import logo from '../../../assets/Imagenes/BookerSinNombre.png'
-import logoNegro from '../../../assets/Imagenes/BookerNegro.svg'
-import whatsapp from '../../../assets/Imagenes/phone.svg'
-import email from '../../../assets/Imagenes/mail.svg'
+import logo from '../../../assets/Imagenes/logos/BookerSinNombre.png'
+import whatsapp from '../../../assets/Imagenes/iconos/phone.svg'
+import email from '../../../assets/Imagenes/iconos/mail.svg'
 
 export const MainLogin = () => {
   return (
@@ -22,7 +21,7 @@ export const MainLogin = () => {
             </div>
           </div>
             <div className="footerLogin">
-              <a href="#"><Imagenes url={email} clase='email' /></a>
+            <NavLink to='/Email'><Imagenes url={email} clase='email' /></NavLink>
               <a href="https://wa.me/+573002536217" target={'_blank'} ><Imagenes url={whatsapp} clase='whatsapp'/></a>
             </div>
         </div>

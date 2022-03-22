@@ -1,9 +1,10 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
-import facebook from '../../../assets/Imagenes/facebook.png'
-import whatsapp from '../../../assets/Imagenes/whatsapp.png'
-import email from '../../../assets/Imagenes/gmail.png'
-import logo from '../../../assets/Imagenes/Booker1.png'
+import facebook from '../../../assets/Imagenes/footer/facebook.png'
+import whatsapp from '../../../assets/Imagenes/footer/whatsapp.png'
+import email from '../../../assets/Imagenes/footer/gmail.png'
+import logo from '../../../assets/Imagenes/logos/Booker1.png'
 
 
 export const Footer = () => {
@@ -21,13 +22,13 @@ export const Footer = () => {
       <div className="footer2">
         <div className='contenedor-redes' >
           <a href="#"><Imagenes url={facebook} clase='facebook'/></a>
-          <a href="#"><Imagenes url={email} clase='email' /></a>
+          <NavLink to='/Email' ><Imagenes url={email} clase='email' /></NavLink>
           <a href="https://wa.me/+573002536217" target={'_blank'} ><Imagenes url={whatsapp} clase='whatsapp'/></a>
         </div>
         <div className="contenedor-logo">
           <div className='contenedor-logo-footer'>
             <Imagenes url={logo} clase='logo-footer' />
-          </div>         
+          </div>
         </div>
         <div className='footer-reservados' >
           <p>&copy;2022 Booker Todos los derechos reservados</p>

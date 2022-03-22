@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navegacion } from '../../UI/Navegacion/Navegacion'
-import search from '../../../assets/Imagenes/search.png'
+import search from '../../../assets/Imagenes/iconos/search.png'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 
 
