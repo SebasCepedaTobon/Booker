@@ -314,3 +314,117 @@ textarea::placeholder{
     width: 100%;
     height: 90%;
 }
+
+/*-------------------PERFIL--------------------*/
+
+.contenedor-perfil{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40rem;
+    margin-top: 90px;
+}
+
+.botones-perfil{
+    background-color: #ececec;
+    width: 22.7%;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-nombre{
+    margin-top: 30px;
+    display: flex;
+    margin-left: -20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.usu{
+    margin-left: -20px;
+}
+
+#avatar-perfil{
+    width: 200px;
+}
+
+.btns{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: 20px;
+
+}
+
+.btns a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.btns a:hover{
+    color: #2691d9;
+}
+
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+#Bienvenido{
+    color: #a6a6a6;
+}
+
+.datos-perfil{
+    width: 70%;
+    margin-left: 50px;
+}
+
+#Tu-cuenta{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.p-hr{
+    margin-top: 30px;
+    margin-left: 40px;
+
+}
+
+.container-inputs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-info{
+    width:400px;
+    height: 60px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: solid 1px rgb(197, 197, 197);
+
+}
+
+.container-info input{
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    height: 40px;
+}
+
+.container-info input:hover{
+    border-bottom: #2691d9 1px solid;
+
+}
+
+
+

@@ -129,24 +129,48 @@ export const MainHome = () => {
         </div>
       </div>
       <div className="libros">
-        <div className="contenedor-libro">
-          <div className="libro">
-            <Imagenes url={libro1} id="libro"/>
+        <div className="contanedor-1">
+          <div className="contenedor-libro">
+            <div className="libro">
+              <Imagenes url={libro1} id="libro"/>
+            </div>
+          </div>
+          <div className="btn-card">
+            <button>Ver mas...</button>
+            <button>Reservar</button>
           </div>
         </div>
-        <div className="contenedor-libro">
-          <div className="libro">
-            <Imagenes url={libro1} id="libro"/>
+        <div className="contanedor-1">
+          <div className="contenedor-libro">
+            <div className="libro">
+              <Imagenes url={libro1} id="libro"/>
+            </div>
+          </div>
+          <div className="btn-card">
+            <button>Ver mas...</button>
+            <button>Reservar</button>
           </div>
         </div>
-        <div className="contenedor-libro">
-          <div className="libro">
-            <Imagenes url={libro1} id="libro"/>
+        <div className="contanedor-1">
+          <div className="contenedor-libro">
+            <div className="libro">
+              <Imagenes url={libro1} id="libro"/>
+            </div>
+          </div>
+          <div className="btn-card">
+            <button>Ver mas...</button>
+            <button>Reservar</button>
           </div>
         </div>
-        <div className="contenedor-libro">
-          <div className="libro">
-            <Imagenes url={libro1} id="libro"/>
+        <div className="contanedor-1">
+          <div className="contenedor-libro">
+            <div className="libro">
+              <Imagenes url={libro1} id="libro"/>
+            </div>
+          </div>
+          <div className="btn-card">
+            <button>Ver mas...</button>
+            <button>Reservar</button>
           </div>
         </div>
       </div>
