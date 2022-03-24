@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import avatar from '../../../assets/Imagenes/iconos/avata.png'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 
@@ -14,9 +15,9 @@ export const MainPerfil = () => {
                 </div>
             </div>
             <div className="btns">
-                <a href="#" id="cuenta">Cuenta</a>
+                <NavLink to='/Perfil'><a href="#" id="perfil">Cuenta</a></NavLink>
                 <hr />
-                <a href="#" id="cuenta">Historial</a>
+                <NavLink to='/Historial'><a href="#" id="cuenta">Historial</a></NavLink>
                 <hr />
                 <a href="#" id="cuenta">Infracciones</a>
                 <hr />

@@ -20,6 +20,11 @@
   margin-right: 50px;
 }
 
+#avatar:hover{
+  transform: scale(1.1);
+  transition: all 1s;
+}
+
 
 .nav{
   position: fixed;
@@ -168,6 +173,11 @@
   margin-right: 40px;
 }
 
+.contenedor-categorias img:hover{
+  transform: scale(1.1);
+  transition: all 1.5s;
+}
+
 
 
 /*Cards-Slider*/
@@ -178,17 +188,24 @@
   width: 100%;
 }
 
+
 .cards{
   width: 80%;
 }
 
-.card{
-  background-color: #90caf9;
-  color: white;
+
+.info{
   display: flex;
   flex-direction: row;
-  width: 400px;
-  height: 300px; 
+}
+.card{
+  display: flex;
+  flex-direction: row;
+  background-color: #90caf9;
+  color: white;
+  width: 700px;
+  height: 300px;
+  cursor: pointer;
 }
 
 
@@ -204,62 +221,111 @@
 /*Libros*/
 
 .libros{
-  margin-top: 50px;
-  margin-bottom: 100px;
+  margin-top: 100px;
   width: 80%;
   display: flex;
   flex-wrap:wrap;
   justify-content: center;
 }
 
-.contanedor-1{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 .contenedor-libro{
-  margin: 30px;
+  width: 320px;
+  height: 450px;
+  background-color: #90caf9;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 320px;
-  height: 470px;
-  background-color: #90caf9;
   cursor: pointer;
+  position: relative;
 
 }
+
+.cardss{
+  margin-left: 30px;
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center; 
+}
+
+.contenedor-libro:hover .libro{
+  position: absolute;
+  z-index: -1;
+}
+
+.contenedor-libro:hover{
+  background-color: rgba(0, 0, 0, 0.521);
+}
+
+.contenedor-libro:hover .btn-card{
+  height: 100%;
+}
+
+.contenedor-libro:hover .container_botones{
+  bottom: 15px;
+}
+
+
 
 .btn-card{
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 50%;
-  display: none;
-
+  position: absolute;
+  bottom: 0;
+  transition: all 400ms;
 }
 
-
-.contanedor-1:hover .btn-card{
-  display: block;
-  margin-top: -170px;
-  background-color: rgba(0, 0, 0, 0.465);
+.btn-card .container_vacio{
+  height: 80%;
 }
 
-.btn-card button{
-  width: 250px;
-  margin-bottom: 20px;
-  height: 40px;
+.btn-card .container_botones{
+  height: 20%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  bottom: -100px;
+  transition: all 600ms;
+  z-index: 1;
+}
+
+.blanco{
+  height: 100px;
+  width: 85%;
   background-color: white;
-  color: black;
+  z-index: 2;
+}
+
+
+/* .btn-card .container_botones{
+  height: 0%;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.container_botones button{
+  width: 100%;
+  height: 40%;
+  background-color: #90caf9;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
   border: none;
   cursor: pointer;
 }
 
 .btn-card button:hover{
-  background-color: rgb(194, 194, 194);
+  background-color: rgb(175, 175, 175);
 
 }
 

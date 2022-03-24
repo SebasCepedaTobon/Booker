@@ -20,7 +20,7 @@ export const MainHome = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow:3,
+    slidesToShow:2,
     slidesToScroll: 1,
     autoplay: true,
     speed: 5000,
@@ -92,85 +92,105 @@ export const MainHome = () => {
           <Slider {...settings}>
             <div className='carta'>
               <div className="card">
-                <div className="info">
-                  <div id="titulo">Luis Miguel</div>
-                </div>
+                <h2 id='titulo'>LUIS MIGUEL</h2>
+                <Imagenes url={libro1} id="libro"/>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
               </div>
-              
             </div>
-
             <div className='carta'>
               <div className="card">
-                <div className="info">
-                  <div id="titulo">Luis Miguel</div>
-                </div>
+                <h2 id='titulo'>LUIS MIGUEL</h2>
+                <Imagenes url={libro1} id="libro"/>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
               </div>
-              
             </div>
-
             <div className='carta'>
               <div className="card">
-                <div className="info">
-                  <div id="titulo">Luis Miguel</div>
-                </div>
+                <h2 id='titulo'>LUIS MIGUEL</h2>
+                <Imagenes url={libro1} id="libro"/>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
               </div>
-              
             </div>
-
             <div className='carta'>
               <div className="card">
-                <div className="info">
-                  <div id="titulo">Luis Miguel</div>
-                </div>
+                <h2 id='titulo'>LUIS MIGUEL</h2>
+                <Imagenes url={libro1} id="libro"/>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
               </div>
-              
             </div>
           </Slider>
         </div>
       </div>
       <div className="libros">
-        <div className="contanedor-1">
+        <div className="cardss">
           <div className="contenedor-libro">
-            <div className="libro">
-              <Imagenes url={libro1} id="libro"/>
-            </div>
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
+
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
           </div>
-          <div className="btn-card">
-            <button>Ver mas...</button>
-            <button>Reservar</button>
+          <div className="blanco">
           </div>
         </div>
-        <div className="contanedor-1">
+        <div className="cardss">
           <div className="contenedor-libro">
-            <div className="libro">
-              <Imagenes url={libro1} id="libro"/>
-            </div>
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
+
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
           </div>
-          <div className="btn-card">
-            <button>Ver mas...</button>
-            <button>Reservar</button>
+          <div className="blanco">
           </div>
         </div>
-        <div className="contanedor-1">
+        <div className="cardss">
           <div className="contenedor-libro">
-            <div className="libro">
-              <Imagenes url={libro1} id="libro"/>
-            </div>
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
+
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
           </div>
-          <div className="btn-card">
-            <button>Ver mas...</button>
-            <button>Reservar</button>
+          <div className="blanco">
           </div>
-        </div>
-        <div className="contanedor-1">
+        </div><div className="cardss">
           <div className="contenedor-libro">
-            <div className="libro">
-              <Imagenes url={libro1} id="libro"/>
-            </div>
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
+
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
           </div>
-          <div className="btn-card">
-            <button>Ver mas...</button>
-            <button>Reservar</button>
+          <div className="blanco">
           </div>
         </div>
       </div>

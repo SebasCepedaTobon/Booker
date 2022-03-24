@@ -12,6 +12,10 @@ import { Login } from './Components/Pages/Login/Login';
 import { Admin } from './Components/Pages/Admin/Admin';
 import { Email } from './Components/Pages/Email/Email';
 import { Perfil } from './Components/Pages/Perfil/Perfil';
+import { Historial } from './Components/Pages/Perfil/Historial';
+import { Infracciones } from './Components/Pages/Perfil/Infracciones';
+
+
 
 
 
@@ -25,6 +29,8 @@ function App() {
         <Route path='/Admin' element={<Admin/>} />
         <Route path='/Email' element={<Email/>} />
         <Route path='/Perfil' element={<Perfil/>} />
+        <Route path='/Historial' element={<Historial/>} />
+        <Route path='/Infracciones' element={<Infracciones/>} />
       </Routes>
     </BrowserRouter>
   );
