@@ -13,6 +13,7 @@ import novelas from '../../../assets/Imagenes/GIF/novelas.gif'
 import infantil from '../../../assets/Imagenes/GIF/infantil.gif'
 import aventura from '../../../assets/Imagenes/GIF/aventura.gif'
 import academico from '../../../assets/Imagenes/GIF/academicos.gif'
+import { NavLink } from 'react-router-dom'
 
 
 export const MainHome = () => {
@@ -59,7 +60,7 @@ export const MainHome = () => {
     <div className='main'>
       <div className="contenedor-categorias">
         <div className="comics">
-          <Imagenes url={comics} id="categorias"/>
+          <NavLink to='/Academicos'><Imagenes url={comics} id="Academicos"/></NavLink>
           <p>Comics</p>
         </div>
         <div className="comedia">

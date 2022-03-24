@@ -14,6 +14,8 @@ import { Email } from './Components/Pages/Email/Email';
 import { Perfil } from './Components/Pages/Perfil/Perfil';
 import { Historial } from './Components/Pages/Perfil/Historial';
 import { Infracciones } from './Components/Pages/Perfil/Infracciones';
+import { Academicos } from './Components/Pages/Categorias/Academicos';
+
 
 
 
@@ -31,6 +33,7 @@ function App() {
         <Route path='/Perfil' element={<Perfil/>} />
         <Route path='/Historial' element={<Historial/>} />
         <Route path='/Infracciones' element={<Infracciones/>} />
+        <Route path='/Academicos' element={<Academicos/>} />
       </Routes>
     </BrowserRouter>
   );
