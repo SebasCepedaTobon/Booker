@@ -17,14 +17,14 @@ export const MainHistorial = () => {
             <div className="btns">
                 <NavLink to='/Perfil'><a href="#" id="perfil">Cuenta</a></NavLink>
                 <hr />
-                <NavLink to='/Historial'><a href="#" id="cuenta">Historial</a></NavLink>
+                <NavLink to='/Historial'><a href="#" id="Historial">Historial</a></NavLink>
                 <hr />
-                <NavLink to='/Infracciones'><a href="#" id="Infracciones">Infracciones</a></NavLink>
+                <NavLink to='/Infracciones'><a href="#" id="cuenta">Infracciones</a></NavLink>
                 <hr />
-                <a href="#" id="cuenta">Cerrar sesión</a>
+                <NavLink to='/'><a href="#" id="Cerrar">Cerrar sesión</a></NavLink>
             </div>
         </div>
-        <div>HOLAA</div>
+        <h2 id='Tu-cuenta'>Tu Historial</h2>
         
     </div>
   )

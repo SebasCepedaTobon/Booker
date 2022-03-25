@@ -17,11 +17,11 @@ export const MainPerfil = () => {
             <div className="btns">
                 <NavLink to='/Perfil'><a href="#" id="perfil">Cuenta</a></NavLink>
                 <hr />
-                <NavLink to='/Historial'><a href="#" id="cuenta">Historial</a></NavLink>
+                <NavLink to='/Historial'><a href="#" id="Historial">Historial</a></NavLink>
                 <hr />
-                <a href="#" id="cuenta">Infracciones</a>
+                <NavLink to='/Infracciones'><a href="#" id="cuenta">Infracciones</a></NavLink>
                 <hr />
-                <a href="#" id="cuenta">Cerrar sesión</a>
+                <NavLink to='/'><a href="#" id="Cerrar">Cerrar sesión</a></NavLink>
             </div>
         </div>
         <div className="datos-perfil">

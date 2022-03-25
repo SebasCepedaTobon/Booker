@@ -1,7 +1,9 @@
 import React from 'react'
 import { Footer } from '../../Layouts/Footer/Footer'
 import { Header } from '../../Layouts/Header/Header'
+import { Categorias } from '../../UI/Categorias/Categorias'
 import { Libros } from '../../UI/Libros/Libros'
+
 
 
 
@@ -9,7 +11,11 @@ export const Academicos = () => {
   return (
     <div>
         <Header/>
-        <h2>Academicos</h2>
+        <Categorias/>
+        <div className="container-titulo">
+          <h2 id='titulo-catego'>Academicos</h2>
+          <hr id='hr-catego'/>
+        </div>
         <Libros/>
         <Footer/>
     </div>

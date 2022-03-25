@@ -60,7 +60,7 @@ export const MainHome = () => {
     <div className='main'>
       <div className="contenedor-categorias">
         <div className="comics">
-          <NavLink to='/Academicos'><Imagenes url={comics} id="Academicos"/></NavLink>
+         <Imagenes url={comics} id="Academicos"/>
           <p>Comics</p>
         </div>
         <div className="comedia">
@@ -84,7 +84,7 @@ export const MainHome = () => {
           <p>Aventura</p>
         </div>
         <div className="academico">
-          <Imagenes url={academico} id="categorias"/>
+          <NavLink to='/Academicos'><Imagenes url={academico} id="categorias"/></NavLink>
           <p>Academicos</p>
         </div>
       </div>

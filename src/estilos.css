@@ -427,5 +427,22 @@ hr{
 
 }
 
+/*Categorias*/
+
+.libros-categorias{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+
+.container-titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 
 

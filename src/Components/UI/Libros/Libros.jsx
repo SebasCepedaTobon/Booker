@@ -4,7 +4,7 @@ import libro1 from '../../../assets/Imagenes/libro1.jpg'
 
 export const Libros = () => {
   return (
-    <div className="libros">
+    <div className="libros-categorias">
         <div className="cardss">
             <div className="contenedor-libro">
                 <div className="libro">
