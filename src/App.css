@@ -44,6 +44,7 @@
   color: rgb(255, 255, 255);
   text-decoration: none;
   font-size:20px;
+  height: 12px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-shadow: 0px 0px 3px rgb(0, 0, 0);
 }
@@ -121,19 +122,24 @@
   flex-direction: row;
 }
 
+
 #buscar{
   background-color: rgb(255, 255, 255);
   border: none;
   height: 50px;
   width: 600px;
-  border:none;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
 }
 
+
+.barra-busqueda input::placeholder{
+  padding-left: 20px;
+}
+
 #search{
   width: 50px;
-  height: 52px;
+  height: 50px;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
 }

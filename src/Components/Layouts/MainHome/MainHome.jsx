@@ -18,6 +18,7 @@ import { NavLink } from 'react-router-dom'
 
 export const MainHome = () => {
 
+
   const settings = {
     dots: true,
     infinite: true,
@@ -176,14 +177,48 @@ export const MainHome = () => {
           </div>
           <div className="blanco">
           </div>
-        </div><div className="cardss">
+        </div>
+        <div className="cardss">
           <div className="contenedor-libro">
               <div className="libro">
                 <Imagenes url={libro1} id="libro"/>
               </div>
               <div className="btn-card">
                 <div className="container_vacio">
-
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
+          </div>
+          <div className="blanco">
+          </div>
+        </div>
+        <div className="cardss">
+          <div className="contenedor-libro">
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
+          </div>
+          <div className="blanco">
+          </div>
+        </div>
+        <div className="cardss">
+          <div className="contenedor-libro">
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
                 </div>
                 <div className="container_botones">
                   <button>Ver mas...</button>
@@ -195,7 +230,7 @@ export const MainHome = () => {
           </div>
         </div>
       </div>
-    </div>   
+    </div>  
   )
   
 }

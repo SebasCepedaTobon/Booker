@@ -414,13 +414,15 @@ textarea::placeholder{
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 40rem;
+    height: 45rem;
     margin-top: 90px;
+    margin-bottom: 50px;
 }
 
 .botones-perfil{
     background-color: #ececec;
     width: 22.7%;
+    height: 800px;
     display: flex;
     flex-direction: column;
 }
@@ -520,6 +522,28 @@ hr{
 
 }
 
+.btnGuardar{
+    margin-top: 20px;
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-guardar{
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    background-color: #2691d9;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 7px;
+}
+
+.btn-guardar:hover{
+    background-color: #025388;
+}
 /*Categorias*/
 
 .libros-categorias{
