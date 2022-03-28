@@ -34,7 +34,7 @@ export const MainHome = () => {
           breakpoint: 1024,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToScroll: 1,
             infinite: true,
             dots: true
           }
@@ -88,36 +88,52 @@ export const MainHome = () => {
           <NavLink to='/Academicos'><Imagenes url={academico} id="categorias"/></NavLink>
           <p>Academicos</p>
         </div>
-      </div>
+      </div>;
       <div className="contendor-cards">
         <div className='cards'>
           <Slider {...settings}>
             <div className='carta'>
+              <Imagenes url={libro1} id="libro"/>
               <div className="card">
-                <h2 id='titulo'>LUIS MIGUEL</h2>
-                <Imagenes url={libro1} id="libro"/>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
+                <div className='info2'>
+                  <h2 id='titulo'>LUIS MIGUEL</h2>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
+                    placeat laudantium quam quo in voluptates corporis,.</p>
+                    <button id='btnMas'>Ver mas...</button>
+                </div>
               </div>
             </div>
             <div className='carta'>
+              <Imagenes url={libro1} id="libro"/>
               <div className="card">
-                <h2 id='titulo'>LUIS MIGUEL</h2>
-                <Imagenes url={libro1} id="libro"/>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
+                <div className='info2'>
+                  <h2 id='titulo'>LUIS MIGUEL</h2>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
+                    placeat laudantium quam quo in voluptates corporis,.</p>
+                    <button id='btnMas'>Ver mas...</button>
+                </div>
               </div>
             </div>
             <div className='carta'>
+              <Imagenes url={libro1} id="libro"/>
               <div className="card">
-                <h2 id='titulo'>LUIS MIGUEL</h2>
-                <Imagenes url={libro1} id="libro"/>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
+                <div className='info2'>
+                  <h2 id='titulo'>LUIS MIGUEL</h2>
+                  <p id='des'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
+                    placeat laudantium quam quo in voluptates corporis,.</p>
+                    <button id='btnMas'>Ver mas...</button>
+                </div>
               </div>
             </div>
             <div className='carta'>
+              <Imagenes url={libro1} id="libro"/>
               <div className="card">
-                <h2 id='titulo'>LUIS MIGUEL</h2>
-                <Imagenes url={libro1} id="libro"/>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci placeat laudantium quam quo in voluptates corporis,.</p>
+                <div className='info2'>
+                  <h2 id='titulo'>LUIS MIGUEL</h2>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
+                    placeat laudantium quam quo in voluptates corporis,.</p>
+                    <button id='btnMas'>Ver mas...</button>
+                </div>
               </div>
             </div>
           </Slider>
@@ -168,6 +184,40 @@ export const MainHome = () => {
               <div className="btn-card">
                 <div className="container_vacio">
 
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
+          </div>
+          <div className="blanco">
+          </div>
+        </div>
+        <div className="cardss">
+          <div className="contenedor-libro">
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
+                </div>
+                <div className="container_botones">
+                  <button>Ver mas...</button>
+                  <button>Reservar</button>
+                </div>
+              </div>
+          </div>
+          <div className="blanco">
+          </div>
+        </div>
+        <div className="cardss">
+          <div className="contenedor-libro">
+              <div className="libro">
+                <Imagenes url={libro1} id="libro"/>
+              </div>
+              <div className="btn-card">
+                <div className="container_vacio">
                 </div>
                 <div className="container_botones">
                   <button>Ver mas...</button>

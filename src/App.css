@@ -71,7 +71,6 @@
   object-fit: contain;
   width: 100%;
   height: 750px;
-
   animation-name: banner;
   animation-duration: 10s;
   animation-iteration-count: infinite;
@@ -80,21 +79,21 @@
 }
 
 @keyframes banner {
-  0%, 30%{
+  0%, 25%{
       background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(1\).png);
   }
 
-  35%, 65%{
+  25%, 50%{
       background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(3\).png);
 
   }
 
-  70%, 100%{
+  50%, 75%{
 
       background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(7\).png);
   }
 
-  105%, 135%{
+  75%, 100%{
       background-image: url(assets/Imagenes/Banner/Diseño\ sin\ título\ \(9\).png);
   }
 
@@ -123,6 +122,8 @@
 }
 
 
+
+
 #buscar{
   background-color: rgb(255, 255, 255);
   border: none;
@@ -130,12 +131,10 @@
   width: 600px;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
-}
-
-
-.barra-busqueda input::placeholder{
+  outline: none;
   padding-left: 20px;
 }
+
 
 #search{
   width: 50px;
@@ -188,37 +187,74 @@
 
 /*Cards-Slider*/
 
+
+
 .contendor-cards{
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-
 .cards{
   width: 80%;
 }
 
-
-.info{
-  display: flex;
-  flex-direction: row;
-}
-.card{
-  display: flex;
-  flex-direction: row;
-  background-color: #90caf9;
-  color: white;
-  width: 700px;
-  height: 300px;
-  cursor: pointer;
+.carta img{
+  width: 250px;
+  height: 400px;
+  
 }
 
-
-.card img{
-  width: 300px;
+.carta{
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 700px !important;
   height: 400px;
 }
+
+
+
+
+.info2{
+  display: flex;
+  position: relative;
+  top: 20px;
+  flex-direction: column;
+  width: 80%;
+  height: 80%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.info2 h2{
+  font-size: 30px;
+}
+.info2 p{
+  width: 80%;
+  color: black;
+}
+
+.info2 button{
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+
+}
+
+.card{
+  display: flex;
+  background-color: #90caf9;
+  justify-content: center;
+  color: white;
+  width: 600px;
+  height: 300px;
+}
+
+
+
+
 
 
 

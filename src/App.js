@@ -16,6 +16,8 @@ import { Historial } from './Components/Pages/Perfil/Historial';
 import { Infracciones } from './Components/Pages/Perfil/Infracciones';
 import { Academicos } from './Components/Pages/Categorias/Academicos';
 
+<li style="display: none;"></li>
+
 
 
 
