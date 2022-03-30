@@ -16,14 +16,16 @@ import academico from '../../../assets/Imagenes/GIF/academicos.gif'
 import { NavLink } from 'react-router-dom'
 
 
+
 export const MainHome = () => {
+
 
 
   const settings = {
     dots: true,
     infinite: true,
     slidesToShow:2,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     autoplay: true,
     speed: 5000,
     autoplaySpeed: 5000,
@@ -33,7 +35,7 @@ export const MainHome = () => {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 1,
             slidesToScroll: 1,
             infinite: true,
             dots: true
@@ -42,8 +44,8 @@ export const MainHome = () => {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             initialSlide: 2
           }
         },
@@ -88,7 +90,7 @@ export const MainHome = () => {
           <NavLink to='/Academicos'><Imagenes url={academico} id="categorias"/></NavLink>
           <p>Academicos</p>
         </div>
-      </div>;
+      </div>
       <div className="contendor-cards">
         <div className='cards'>
           <Slider {...settings}>
@@ -99,7 +101,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <button id='btnMas'>Ver mas...</button>
+                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
                 </div>
               </div>
             </div>
@@ -110,7 +112,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <button id='btnMas'>Ver mas...</button>
+                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
                 </div>
               </div>
             </div>
@@ -121,7 +123,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p id='des'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <button id='btnMas'>Ver mas...</button>
+                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
                 </div>
               </div>
             </div>
@@ -132,7 +134,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <button id='btnMas'>Ver mas...</button>
+                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
                 </div>
               </div>
             </div>
@@ -150,7 +152,7 @@ export const MainHome = () => {
 
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button className='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>
@@ -168,7 +170,7 @@ export const MainHome = () => {
 
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button id='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>
@@ -186,7 +188,7 @@ export const MainHome = () => {
 
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button id='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>
@@ -203,7 +205,7 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button id='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>
@@ -220,7 +222,7 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button id='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>
@@ -237,7 +239,7 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button id='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>
@@ -254,7 +256,7 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button id='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>
@@ -271,7 +273,7 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button>Ver mas...</button>
+                  <button id='btnMas'>Ver mas...</button>
                   <button>Reservar</button>
                 </div>
               </div>

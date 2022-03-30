@@ -17,10 +17,11 @@ import { Infracciones } from './Components/Pages/Perfil/Infracciones';
 import { Academicos } from './Components/Pages/Categorias/Academicos';
 import { TLibros } from './Components/Pages/Tablas/TLibros';
 import { Estudiantes } from './Components/Pages/Tablas/Estudiantes';
+import { Libro } from './Components/Pages/Libro/Libro';
 
 
 
-<li style="display: none;"></li>
+
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/Academicos' element={<Academicos/>} />
         <Route path='/TLibros' element={<TLibros/>} />
         <Route path='/TEstudiantes' element={<Estudiantes/>} />
+        <Route path='/Libro' element={<Libro/>}/>
       </Routes>
     </BrowserRouter>
   );
