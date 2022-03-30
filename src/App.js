@@ -15,14 +15,12 @@ import { Perfil } from './Components/Pages/Perfil/Perfil';
 import { Historial } from './Components/Pages/Perfil/Historial';
 import { Infracciones } from './Components/Pages/Perfil/Infracciones';
 import { Academicos } from './Components/Pages/Categorias/Academicos';
+import { TLibros } from './Components/Pages/Tablas/TLibros';
+import { Estudiantes } from './Components/Pages/Tablas/Estudiantes';
+
+
 
 <li style="display: none;"></li>
-
-
-
-
-
-
 
 function App() {
   return (
@@ -36,6 +34,8 @@ function App() {
         <Route path='/Historial' element={<Historial/>} />
         <Route path='/Infracciones' element={<Infracciones/>} />
         <Route path='/Academicos' element={<Academicos/>} />
+        <Route path='/TLibros' element={<TLibros/>} />
+        <Route path='/TEstudiantes' element={<Estudiantes/>} />
       </Routes>
     </BrowserRouter>
   );

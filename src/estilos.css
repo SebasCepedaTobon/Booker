@@ -20,6 +20,7 @@
     height: 100%;
 }
 
+
 .contenedorLoginInfo{
     display: flex;
     align-items: center;
@@ -99,10 +100,9 @@
 
 .contenedorLogin{
     width: 70%;
-    height: 70%;
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -224,32 +224,17 @@ text-decoration: underline;
 }
 
 @media (max-width: 1000px){
-    .body{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .center{
-        width: 70%;
-        background: rgb(255, 255, 255);
-        border-radius: 10px;
+        width: 80%;
     }
 
-    .footerLogin img{
-        width: 60px;
-    }
-
-    .logoImg{
-        width: 192px;
-    }
-
-    .info h1{
-        font-size: 20px;
+    .MainLogin{
+        background-image: url(./assets/Imagenes/3.jpg);
+        background-size: 100% 100%;
     }
     
-    .info p{
-        font-size: 13px;   
+    .contenedorImgLogin{
+        display: none;
     }
 }
 
@@ -264,10 +249,10 @@ text-decoration: underline;
 
 .contenedorGmail{
     width: 70%;
-    height: 77%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -281,7 +266,7 @@ form .txt_fieldGmail{
 
 textarea{
     background-color: transparent;
-    width: 100%;
+    width: 98%;
     height: 100px;
     margin-top: -1px;
     margin-bottom: -3.5px;
@@ -289,6 +274,7 @@ textarea{
     border: 0px;
     outline-color: #2691d9;
     resize: none;
+    padding: 3px;
 }
 
 textarea::placeholder{
@@ -296,10 +282,16 @@ textarea::placeholder{
     font-size: 16px;
 }
 
+@media (max-width: 1400px){
+    .center{
+        width: 55%;
+    }
+}
+
 /*-------------------ADMIN--------------------*/
 
 .mainAdmin{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 }
 
@@ -310,15 +302,39 @@ textarea::placeholder{
 }
 
 .barra1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 13px;
     width: 20%;
     height: 100%;
-    background-color: #242b3b;
+    background-color: #181e2c;
 }
 .barra2{
+    display: flex;
+    align-items: center;
+    justify-content: end;    
+    font-weight: bold;
+    font-size: 15px;
     width: 80%;
     height: 100%;
-
 }
+
+.barra2 a{
+    position: relative;
+    right: 100px;
+    color: rgb(24,30,44);
+    text-decoration: none;
+    font-size:20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0px 0px 3px rgb(24,30,44);
+  }
+  
+.barra2 a:hover{
+    text-decoration:underline rgb(24,30,44);  
+  }
+
 
 .contenedor-contenedores{
     display: flex;
@@ -331,6 +347,112 @@ textarea::placeholder{
     height: 100%;
     background-color: #181e2c;
 }
+
+.divPerfil1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 23%;
+}
+
+.divPerfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 60%;
+    height: 100%;
+    background-color:  rgb(14, 8, 34);
+}
+
+.divPerfil img{
+    width: 100px;
+}
+
+.divDatos{
+    width: 100%;
+    height: 75.4%;
+}
+
+.divDatos1Nav{
+    display: flex;
+    align-items: center;    
+    justify-content: start;
+    text-decoration: none;
+    position: relative;
+    width: 30%;
+}
+
+.divDatos1Nav2{
+    display: flex;
+    align-items: center;    
+    justify-content: start;
+    text-decoration: none;
+    position: relative;
+    width: 65%;
+}
+
+.divDatos1Nav3{
+    display: flex;
+    align-items: center;    
+    justify-content: start;
+    text-decoration: none;
+    position: relative;
+    width: 50%;
+}
+
+.caja4{
+    background-color: #3498DB;
+    -webkit-transition: 1s linear;
+    transition: 1s linear;
+  }
+  .caja4:hover{
+    line-height: 300px;
+  }
+
+
+.divDatos{
+    display: flex;
+}
+
+.divDatos1{
+    position: relative;
+    left: 50px;
+    width: 90%;
+    display: flex;
+    justify-content: start;
+}
+
+
+.divDatos1 p{
+    position: relative;
+    top: 2px;
+    left: 10px;
+    font-size: 20px;
+    color: rgb(126, 126, 126);    
+}
+
+.divDatos img{
+    width: 27px;
+}
+
+.divDatos1 p:hover{
+    color: rgb(109, 102, 102); 
+}
+
+.divDatos1_1{
+    position: relative;
+    top: 10px;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    flex-direction: column;   
+    justify-content: space-around;
+}
+
+
+
 .barra2_3{
     display: flex;
     flex-direction: column;
@@ -341,24 +463,66 @@ textarea::placeholder{
 }
 
 .barra2_33{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
-    height: 15%;
-    background-image: url(../src/assets/Imagenes/Banner/Admin2.png);
+    height: 25%;
+    background-position: center center;
+    background-image: url(../src/assets/Imagenes/Banner/Admin2.jpg);    
     background-size: cover;
+
+    animation-name: barra2_33;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-direction:inherit;
 }
+
+.barra2_33 img{
+    width: 200px;
+}
+
+@keyframes barra2_33{
+    0%, 25%{
+        background-image: url(assets/Imagenes/Banner/Admin2.jpg);
+    }
+  
+    25%, 50%{
+        background-image: url(assets/Imagenes/Banner/12.jpg)  
+    }
+  
+    50%, 75%{
+  
+        background-image: url(assets/Imagenes/Banner/13.png);
+    }
+  
+    75%, 90%{
+        background-image: url(assets/Imagenes/Banner/14.png);
+    }
+}
+
+.barra2_33 p {
+    position: relative;
+    right: 230px;
+    color: white;
+    font-size: 25px;
+}
+
+
 
 .barra2_34{
     width: 77%;
-    height: 85%;
+    height: 77%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
+
 .CardAdmin{
     width: 400px;
-    height: 300px;
+    height: 260px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -377,13 +541,38 @@ textarea::placeholder{
     height: 60px;
 }
 
+
+.Tlibros{
+    text-decoration: none;
+    color: black;
+}
+
+
+
 @media (max-width:1400px){
+    .divPerfil{
+        height: 24.46%;
+    }
+
+    .divDatos1 p{
+        font-size: 16px;   
+    }
+    
+    .divDatos img{
+        width: auto;
+    }
+
+    .barra2_33 img{
+        width: 150px;
+    }
+
     .barra2_34{
         width: 90%;
     }
+
     .CardAdmin{
         width: 300px;
-        height: 250px;
+        height: 200px;
     }
 }
 
@@ -394,8 +583,6 @@ textarea::placeholder{
     .CardAdmin{
         width: 230px;
         height: 180px;
-        display: flex;
-        justify-content: center;
     }
     .CardAdmin img{
         width: 40px;
@@ -406,6 +593,224 @@ textarea::placeholder{
         font-size: 20px;
     }
 }
+
+/*-------------------TABLAS LIBROS--------------------*/
+.MainTablaLibros{
+    width: 100%;
+    height: 100vh;
+}
+ .bannerLibros{
+    width: 100%;
+    height: 20%;
+    color: white;
+    font-size: 30px;
+    background-size: cover;
+    background-image: url(../src/assets/Imagenes/Banner/Admin2.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    animation-name: bannerLibros;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-direction:inherit;
+}
+
+.bannerLibros img{
+    width: 130px;
+}
+
+.BTLibros{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@keyframes bannerLibros{
+    0%, 25%{
+        background-image: url(assets/Imagenes/Banner/Admin2.jpg);
+    }
+  
+    25%, 50%{
+        background-image: url(assets/Imagenes/Banner/12.jpg)  
+    }
+  
+    50%, 75%{
+  
+        background-image: url(assets/Imagenes/Banner/13.png);
+    }
+  
+    75%, 90%{
+        background-image: url(assets/Imagenes/Banner/14.png);
+    }
+}
+
+
+
+.tablasLibros{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.tablaIncio{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.L{
+    margin-top: 5px;
+    width: 100%;
+    height: 80px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.L p{
+    color: #025388;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.LL{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.L0{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.L0 img{
+    width: 40px;
+}
+
+.L1{
+    width: 40%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.L1P{
+    width: 80%;
+}
+
+.L2{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.L3{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TablaLibros{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+
+/*---------BOTON---------*/
+/* From cssbuttons.io by @westitan */
+.button {
+    position: relative;
+    padding: 14px 16px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+   }
+   
+   .button span {
+    position: relative;
+    color: #fff;
+    font-family: Arial;
+    letter-spacing: 8px;
+    z-index: 1;
+   }
+   
+   .button .liquid {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #4973ff;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+    transition: .5s;
+   }
+   
+   .button .liquid::after,
+   .button .liquid::before {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    background: #fff;
+   }
+   
+   .button .liquid::before {
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+   }
+   
+   .button .liquid::after {
+    border-radius: 40%;
+    background: rgba(20, 20, 20, .5);
+    animation: animate 10s linear infinite;
+   }
+   
+   .button:hover .liquid {
+    top: -120px;
+   }
+   
+   @keyframes animate {
+    0% {
+     transform: translate(-50%, -75%) rotate(0deg);
+    }
+   
+    100% {
+     transform: translate(-50%, -75%) rotate(360deg);
+    }
+   }
 
 
 /*-------------------PERFIL--------------------*/

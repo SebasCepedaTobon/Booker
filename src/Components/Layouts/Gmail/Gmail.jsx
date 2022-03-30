@@ -3,8 +3,19 @@ import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import logo from '../../../assets/Imagenes/logos/BookerSinNombre.png'
 import home from '../../../assets/Imagenes/iconos/home.svg'
+import emailjs from '@emailjs/browser';
 
 export const Gmail = () => {
+
+    
+  const sendEmail = (event)=>{
+    event.preventDefault()
+
+    emailjs.sendForm('service_rqhk3is', 'template_voi653l', event.target, '4mr02SX1o9lEj3s9Y')
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
+  }
+  
   return (
     <div className="MainLogin">
       <div className="contenedorImgLogin">        
@@ -26,27 +37,27 @@ export const Gmail = () => {
           </div>
       </div>      
       <div className="contenedorGmail">
-        <div className='divlogoFrom' >
-      
-        </div>
         <div className="divFormulario" >
         <div className='center' >
           <h1>¡CONTACTANOS!</h1>
-          <form method="post">
-          <div className="txt_field">
-              <input type="text" required/>
+          <form onSubmit={sendEmail} >
+            <div className="txt_field"  >
+              <input type="text" name='usuario' required/>
+              <span></span>
+              <label>Nombre de usuario</label>
+            </div>
+            <div className="txt_field">
+              <input name='email' type="text" required/>
               <span></span>
               <label>Dirección de correo</label>
-          </div>
-          <div className="txt_fieldGmail">
-              <textarea placeholder='Mensaje' name="" id=""></textarea>
-              <span></span>
-              <label htmlFor=""></label>
-          </div>
-          <div className="pass">¿Has olvidado tu contraseña?</div>
-          <NavLink to='/home' ><input type="submit" value="Ingresar"/></NavLink>
-          <div className="signup_link">
-          </div>
+            </div>
+            <div className="txt_fieldGmail">
+                <textarea placeholder='Mensaje' name="mensaje" id=""></textarea>
+                <span></span>
+                <label htmlFor=""></label>
+            </div>
+            <input type="submit" value="Enviar"/>
+            <div className="signup_link"></div>
           </form>
         </div>
         </div>        

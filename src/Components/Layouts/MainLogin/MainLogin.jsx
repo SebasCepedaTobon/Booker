@@ -28,9 +28,6 @@ export const MainLogin = () => {
           </div>
       </div>      
       <div className="contenedorLogin">
-        <div className='divlogoFrom' >
-      
-        </div>
         <div className="divFormulario" >
         <div className='center' >
           <h1>¡INICIAR SESIÓN!</h1>
