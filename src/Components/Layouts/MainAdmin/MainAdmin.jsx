@@ -60,27 +60,36 @@ export const MainAdmin = () => {
           </div>
             <div className='barra2_34' >
               <NavLink className='Tlibros' to='/TLibros' >
-              <div className='CardAdmin'>
-                <Imagenes clase='libro' url={libro} />
-                <h1>Libros</h1>
-              </div>
+              <button className='CardAdmin'>
+                <Imagenes clase='student' url={libro} />
+                <h1>Estudiantes</h1>
+                <span></span>
+              </button>
               </NavLink>
               <NavLink className='Tlibros' to='/TEstudiantes' >
-              <div className='CardAdmin'>
+              <button className='CardAdmin'>
                 <Imagenes clase='student' url={student} />
                 <h1>Estudiantes</h1>
-              </div>
+                <span></span>
+              </button>
               </NavLink>
 
+              <NavLink className='Tlibros' to='/Reservas'>
+                <button className='CardAdmin'>
+                  <Imagenes clase='student' url={multas} />
+                  <h1>Multas</h1>
+                  <span></span>
+                </button>
+              </NavLink>
 
-              <div className='CardAdmin'>
-                <Imagenes clase='multas' url={multas} />
-                <h1>Multas</h1>
-              </div>
-              <div className='CardAdmin'>
-                <Imagenes clase='reserva' url={reserva} />
-                <h1>Reservas</h1>
-              </div>
+              <NavLink className='Tlibros' to='/Reservas' >
+                <button className='CardAdmin'>
+                  <Imagenes clase='student' url={reserva} />
+                  <h1>Reservas</h1>
+                  <span></span>
+                </button>
+              </NavLink>
+
             </div>
           </div>
         </div>

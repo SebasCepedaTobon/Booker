@@ -520,6 +520,26 @@ textarea::placeholder{
 }
 
 
+.CardAdmin1{
+    width: 400px;
+    height: 260px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    box-shadow: 0px 0px 15px rgb(119, 109, 109);
+    border: none;     
+}
+
+.CardAdmin1:hover{
+    box-shadow: 0px 0px 15px black;
+    cursor: pointer;
+       
+}
+
+
+
 .CardAdmin{
     width: 400px;
     height: 260px;
@@ -529,12 +549,63 @@ textarea::placeholder{
     justify-content: center;
     margin: 15px;
     box-shadow: 0px 0px 15px rgb(119, 109, 109);
+    border: none;     
 }
 
 .CardAdmin:hover{
     box-shadow: 0px 0px 15px black;
     cursor: pointer;
+       
 }
+
+
+/*-----------------------PRUEBA CARD-------------*/
+
+.CardAdmin {
+    border: none;
+    display: flex;
+    position: relative;
+    padding: 0.7em 2.4em;
+    font-size: 18px;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    z-index: 1;
+    font-family: inherit;
+    font-weight: 500;
+   }
+   
+   .CardAdmin span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 97.4%;
+    height: 96%;
+    background: transparent;
+    z-index: -1;    
+   }
+
+   .CardAdmin span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 1s;
+   }
+   
+   .CardAdmin:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: rgba(139, 139, 139, 0.623);
+   }
+
+
 
 .CardAdmin img{
     width: 60px;
@@ -545,9 +616,13 @@ textarea::placeholder{
 .Tlibros{
     text-decoration: none;
     color: black;
+    transition: 1s;
 }
 
 
+.Tlibros:hover{
+    transform: scale(1.03);
+}
 
 @media (max-width:1400px){
     .divPerfil{
@@ -597,11 +672,10 @@ textarea::placeholder{
 /*-------------------TABLAS LIBROS--------------------*/
 .MainTablaLibros{
     width: 100%;
-    height: 100vh;
 }
  .bannerLibros{
     width: 100%;
-    height: 20%;
+    height: 150px;
     color: white;
     font-size: 30px;
     background-size: cover;
@@ -620,12 +694,42 @@ textarea::placeholder{
     width: 130px;
 }
 
+
+
+
 .BTLibros{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 30%;
 }
+
+
+.barra-busquedaa{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  } 
+  
+  #buscarr{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    outline: none;
+    padding-left: 20px;
+  }
+  
+  
+  #searchh{
+    width: 50px;
+    height: 50px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
 
 @keyframes bannerLibros{
     0%, 25%{
@@ -669,13 +773,13 @@ textarea::placeholder{
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
+    background-color: rgb(37,145,218);
 
-.L p{
-    color: #025388;
     font-weight: bold;
     font-size: 18px;
 }
+
+
 
 .LL{
     width: 100%;
@@ -689,21 +793,43 @@ textarea::placeholder{
     border-top: 1px solid black;
 }
 
+.LL:hover{
+    background-color: #7c7b7b73;
+}
+
+.LL2{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: #7c7b7b73;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.LL2:hover{
+    background-color: #7c7b7bc2;
+}
+
 .L0{
-    width: 20%;
+    width: 10%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.L0 img{
-    width: 40px;
+.L0 .img{
+    font-size: 40px;
+    color: #0d5fe4;
 }
 
 .L1{
-    width: 40%;
-    height: 80%;
+    width: 16%;
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -713,22 +839,63 @@ textarea::placeholder{
 
 .L1P{
     width: 80%;
+    
 }
 
 .L2{
-    width: 20%;
+    width: 18%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
+
 .L3{
-    width: 20%;
+    width: 7%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.L4{
+    width: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.L5{
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit{
+    margin: 10px;
+    font-size: 40px;
+    color: #025388;
+    cursor: pointer;
+    transition: 1s; 
+}
+
+.edit:hover{
+    transform: scale(1.10);
+}
+
+.delete{
+    color: rgb(202, 32, 32);
+    font-size: 40px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.delete:hover{
+    transform: scale(1.10);
+}
+
 
 .TablaLibros{
     margin-top: 10px;

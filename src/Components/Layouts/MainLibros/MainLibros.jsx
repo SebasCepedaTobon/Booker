@@ -16,7 +16,7 @@ export const MainLibros = () => {
             </div>
             <div className="detalles-libro">
                 <h3 className='detalles'>Detalles del Libro:</h3>
-                <hr />
+                <hr/>
                 <p className='año'>Año:</p>
                 <p className='Editor'>Editor:</p>
                 <p className='Paginas'>Paginas:</p>

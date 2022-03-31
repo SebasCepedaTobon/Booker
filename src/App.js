@@ -18,6 +18,8 @@ import { Academicos } from './Components/Pages/Categorias/Academicos';
 import { TLibros } from './Components/Pages/Tablas/TLibros';
 import { Estudiantes } from './Components/Pages/Tablas/Estudiantes';
 import { Libro } from './Components/Pages/Libro/Libro';
+import { Reservas } from './Components/Pages/Tablas/Reservas';
+
 
 
 
@@ -38,6 +40,7 @@ function App() {
         <Route path='/TLibros' element={<TLibros/>} />
         <Route path='/TEstudiantes' element={<Estudiantes/>} />
         <Route path='/Libro' element={<Libro/>}/>
+        <Route path='/Reservas' element={<Reservas/>}/>
       </Routes>
     </BrowserRouter>
   );
