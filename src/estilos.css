@@ -990,6 +990,7 @@ hr{
 
 .detalles-libro{
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 .detalles-libro hr{
     width: 600px;
@@ -1007,6 +1008,21 @@ hr{
 
 .mainlibros p{
     font-size: 20px;
+}
+
+.des-libro{
+    margin-bottom: 40px;
+}
+
+.libros-reservar{
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    background-color: #2691d9;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 7px;
 }
 
 

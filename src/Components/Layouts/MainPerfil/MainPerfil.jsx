@@ -2,6 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import avatar from '../../../assets/Imagenes/iconos/avata.png'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
+import { FaUserAlt, FaPowerOff } from 'react-icons/fa';
+import { ImBooks } from 'react-icons/im';
+import { RiFileDamageFill } from 'react-icons/ri';
+
 
 export const MainPerfil = () => {
   return (
@@ -15,13 +19,25 @@ export const MainPerfil = () => {
                 </div>
             </div>
             <div className="btns">
-                <NavLink to='/Perfil'><a href="#" id="perfil">Cuenta</a></NavLink>
+                <div className="icon-btn">
+                    <FaUserAlt/>
+                    <NavLink to='/Perfil'><a href="#" id="perfil">Cuenta</a></NavLink>
+                </div>
                 <hr />
-                <NavLink to='/Historial'><a href="#" id="Historial">Historial</a></NavLink>
+                <div className="icon-btn">
+                    <ImBooks/>
+                    <NavLink to='/Historial'><a href="#" id="Historial">Historial</a></NavLink>
+                </div>
                 <hr />
-                <NavLink to='/Infracciones'><a href="#" id="cuenta">Infracciones</a></NavLink>
+                <div className="icon-btn">
+                    <RiFileDamageFill/>
+                    <NavLink to='/Infracciones'><a href="#" id="cuenta">Infracciones</a></NavLink>
+                </div>
                 <hr />
-                <NavLink to='/'><a href="#" id="Cerrar">Cerrar sesión</a></NavLink>
+                <div className="icon-btn">
+                    <FaPowerOff/>
+                    <NavLink to='/'><a href="#" id="Cerrar">Cerrar sesión</a></NavLink>
+                </div>
             </div>
         </div>
         <div className="datos-perfil">

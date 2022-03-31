@@ -63,27 +63,27 @@ export const MainHome = () => {
     <div className='main'>
       <div className="contenedor-categorias">
         <div className="comics">
-         <Imagenes url={comics} id="Academicos"/>
+          <NavLink to='/Comics'><Imagenes url={comics} id="Academicos"/></NavLink>
           <p>Comics</p>
         </div>
         <div className="comedia">
-          <Imagenes url={comedia} id="categorias"/>
+          <NavLink to='/Comedia'><Imagenes url={comedia} id="categorias"/></NavLink>
           <p>Comedia</p>
         </div>
         <div className="terror">
-          <Imagenes url={terror} id="categorias"/>
+          <NavLink to='/Terror'><Imagenes url={terror} id="categorias"/></NavLink>
           <p>Terror</p>
         </div>
         <div className="novelas">
-          <Imagenes url={novelas} id="categorias"/>
+          <NavLink to='/Novelas'><Imagenes url={novelas} id="categorias"/></NavLink>
           <p>Novelas</p>
         </div>
         <div className="infantil">
-          <Imagenes url={infantil} id="categorias"/>
+          <NavLink to='/Infantil'><Imagenes url={infantil} id="categorias"/></NavLink>
           <p>Infantil</p>
         </div>
         <div className="aventura">
-          <Imagenes url={aventura} id="categorias"/>
+          <NavLink to='/Aventura'><Imagenes url={aventura} id="categorias"/></NavLink>
           <p>Aventura</p>
         </div>
         <div className="academico">

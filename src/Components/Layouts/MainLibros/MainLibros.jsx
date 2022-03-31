@@ -26,6 +26,14 @@ export const MainLibros = () => {
                 <p className='Licencia'>Licencia:</p>
                 <p className='ISBN'>ISBN::</p>
             </div>
+            <div className="des-libro">
+                <h3 className='detalles'>Descripción:</h3>
+                <hr />
+                <p className='descripcion'>Lorem ipsum dolor sit amet 
+                consectetur adipisicing elit. Ipsa nisi hic rem maxime
+                 deserunt, ratione atque obcaecati natus minus nobis molestiae 
+                quae, nostrum tenetur, et sed quia soluta tempora repellat?</p>
+            </div>
             <button className='libros-reservar'>Reservar</button>
         </div>
     </div>
