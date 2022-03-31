@@ -14,6 +14,11 @@ import infantil from '../../../assets/Imagenes/GIF/infantil.gif'
 import aventura from '../../../assets/Imagenes/GIF/aventura.gif'
 import academico from '../../../assets/Imagenes/GIF/academicos.gif'
 import { NavLink } from 'react-router-dom'
+import { BotonMas } from '../../UI/Botones/BotonMas';
+import { BotonReservar } from '../../UI/Botones/BotonReservar';
+import { Botonmas2 } from '../../UI/Botones/Botonmas2';
+
+
 
 
 
@@ -27,7 +32,7 @@ export const MainHome = () => {
     slidesToShow:2,
     slidesToScroll: 2,
     autoplay: true,
-    speed: 5000,
+    speed: 6000,
     autoplaySpeed: 5000,
     cssEase: "linear",
     initialSlide: 0,
@@ -101,7 +106,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
+                    <NavLink to='/Libro'><BotonMas/></NavLink>
                 </div>
               </div>
             </div>
@@ -112,7 +117,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
+                    <NavLink to='/Libro'><BotonMas/></NavLink>
                 </div>
               </div>
             </div>
@@ -123,7 +128,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p id='des'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
+                    <NavLink to='/Libro'><BotonMas/></NavLink>
                 </div>
               </div>
             </div>
@@ -134,7 +139,7 @@ export const MainHome = () => {
                   <h2 id='titulo'>LUIS MIGUEL</h2>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
                     placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><button className='btnMas'>Ver mas...</button></NavLink>
+                    <NavLink to='/Libro'><BotonMas/></NavLink>
                 </div>
               </div>
             </div>
@@ -149,11 +154,10 @@ export const MainHome = () => {
               </div>
               <div className="btn-card">
                 <div className="container_vacio">
-
                 </div>
                 <div className="container_botones">
-                  <button className='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>
@@ -170,8 +174,8 @@ export const MainHome = () => {
 
                 </div>
                 <div className="container_botones">
-                  <button id='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>
@@ -188,8 +192,8 @@ export const MainHome = () => {
 
                 </div>
                 <div className="container_botones">
-                  <button id='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>
@@ -205,8 +209,8 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button id='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>
@@ -222,8 +226,8 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button id='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>
@@ -239,8 +243,8 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button id='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>
@@ -256,8 +260,8 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button id='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>
@@ -273,8 +277,8 @@ export const MainHome = () => {
                 <div className="container_vacio">
                 </div>
                 <div className="container_botones">
-                  <button id='btnMas'>Ver mas...</button>
-                  <button>Reservar</button>
+                  <NavLink to='/Libro'><Botonmas2/></NavLink>
+                  <NavLink to='#'><BotonReservar/></NavLink>
                 </div>
               </div>
           </div>

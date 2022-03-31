@@ -1,5 +1,6 @@
 import './App.css';
 import './estilos.css';
+import './MediaQueries.css'
 
 import{
   BrowserRouter,

@@ -949,6 +949,16 @@ hr{
 .btn-guardar:hover{
     background-color: #025388;
 }
+
+.icon-btn{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.icon-btn a{
+    margin-left: 5px;
+}
 /*Categorias*/
 
 .libros-categorias{
@@ -984,7 +994,6 @@ hr{
 .libros2{
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
     margin-left: 10%;
 }
 
