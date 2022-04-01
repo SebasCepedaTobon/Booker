@@ -764,6 +764,21 @@ textarea::placeholder{
     flex-direction: column;
 }
 
+.add {
+    width: 0px;
+    position: relative;
+    left: 60px;
+    top: 20px;
+    height: 20%;
+    font-size: 40px;
+    color: #0d5fe4;
+}
+
+.add .addd{
+    position: fixed;
+    cursor: pointer;
+}
+
 
 .L{
     margin-top: 5px;
@@ -1116,6 +1131,16 @@ hr{
 .btn-guardar:hover{
     background-color: #025388;
 }
+
+.icon-btn{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.icon-btn a{
+    margin-left: 5px;
+}
 /*Categorias*/
 
 .libros-categorias{
@@ -1138,8 +1163,8 @@ hr{
     display: flex;
     flex-direction: row;
     width: 80%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10%;
+    margin-bottom: 5%;
     margin-left: 13%;
 }
 
@@ -1151,14 +1176,14 @@ hr{
 .libros2{
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
     margin-left: 10%;
 }
 
 .detalles-libro{
     margin-top: 40px;
+    margin-bottom: 40px;
 }
-.detalles-libro hr{
+.mainlibros hr{
     width: 600px;
 }
 
@@ -1176,8 +1201,211 @@ hr{
     font-size: 20px;
 }
 
+.des-libro{
+    margin-bottom: 40px;
+}
+
+.libros-reservar{
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    background-color: #2691d9;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 7px;
+}
 
 
+
+/*Formulario Infracciones*/
+
+/*-------------------Flotante-------------*/
+
+
+
+.overlay{
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.726);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.fromMultas{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    visibility: hidden;
+    visibility: visible;
+    flex-direction: column;
+}
+
+
+.centerMultas{
+    width: 60%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
+}
+.centerMultas h1{
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid silver;
+}
+.centerMultas form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+form .txt_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+.txt_field input{
+width: 100%;
+padding: 0 5px;
+height: 40px;
+font-size: 16px;
+border: none;
+background: none;
+outline: none;
+}
+.txt_field label{
+position: absolute;
+top: 50%;
+left: 5px;
+color: #adadad;
+transform: translateY(-50%);
+font-size: 16px;
+pointer-events: none;
+transition: .5s;
+}
+.txt_field span::before{
+content: '';
+position: absolute;
+top: 40px;
+left: 0;
+width: 0%;
+height: 2px;
+background: #2691d9;
+transition: .5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+top: -5px;
+color: #2691d9;
+}
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before{
+width: 100%;
+}
+.pass{
+margin: -5px 0 20px 5px;
+color: #a6a6a6;
+cursor: pointer;
+}
+.pass:hover{
+text-decoration: underline;
+}
+input[type="submit"]{
+width: 100%;
+height: 50px;
+border: 1px solid;
+background: #2691d9;
+border-radius: 9px;
+font-size: 18px;
+color: #e9f4fb;
+font-weight: 700;
+cursor: pointer;
+outline: none;
+}
+input[type="submit"]:hover{
+border-color: #2691d9;
+transition: .5s;
+}
+.signup_link{
+margin: 30px 0;
+text-align: center;
+font-size: 16px;
+color: #666666;
+}
+.signup_link a{
+color: #2691d9;
+text-decoration: none;
+}
+.signup_link a:hover{
+text-decoration: underline;
+}
+
+/*Selec Infracciones*/
+
+
+form .txt_fieldSelec{    
+    border-radius: 2px;
+    min-height: 10px;
+    margin: 30px 0;
+}
+
+select{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: -1px;
+    margin-bottom: -3.5px;
+    font-size: 16px;
+    border: 2px solid #adadad;
+    outline-color: #2691d9;
+    resize: none;
+    color: #adadad;
+    font-size: 16px;
+    padding: 3px;
+}
+
+.txt_fieldMultas{
+    border: 2px solid #adadad;
+    border-radius: 2px;
+    min-height: 10px;
+    margin: 30px 0;
+}
+
+.txt_fieldMultas textarea{
+    background-color: transparent;
+    width: 99%;
+    height: 100px;
+    margin-top: -1px;
+    margin-bottom: -3.5px;
+    font-size: 16px;
+    border: 0px;
+    outline-color: #2691d9;
+    resize: none;
+    padding: 3px;
+}
+
+.XX{
+    width: 100%;
+    display: flex;
+    align-items: center;    
+    justify-content: flex-end;
+}
+
+
+.X{
+    margin-right: 87px;
+    font-size: 50px;
+    color: #2691d9;
+    cursor:pointer;
+}
 
 
 

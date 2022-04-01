@@ -9,14 +9,14 @@ import { RiAdminFill } from 'react-icons/ri'
 
 
 
-export const Navegacion = () => {
+export const Navegacion2 = () => {
   return (
-    <div className="nav">
+    <div className="nav2">
       <NavLink to='/Home'><Imagenes url={logo} id="logo"/></NavLink>
       <div className="nav-a">
-      <FaHome className='icon-nav'/>
+      <FaHome className='icon-nav2'/>
       <NavLink to='/Home'><a href="#" id="home">Home</a></NavLink>
-      <RiAdminFill className='icon-nav'/>
+      <RiAdminFill className='icon-nav2'/>
       <NavLink to='/Admin'><a href="#" id="admin">Admin</a></NavLink>
       </div>
       <NavLink to='/Perfil'><Imagenes url={avatar} id="avatar"/></NavLink>

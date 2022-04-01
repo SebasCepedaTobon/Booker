@@ -13,34 +13,35 @@ import { NavLink } from 'react-router-dom'
 export const Categorias = () => {
   return (
     <div className="contenedor-categorias">
-    <div className="comics">
-      <NavLink to='/Academicos'><Imagenes url={comics} id="Academicos"/></NavLink>
-      <p>Comics</p>
+        <div className="comics">
+          <NavLink to='/Comics'><Imagenes url={comics} id="Academicos"/></NavLink>
+          <p>Comics</p>
+        </div>
+        <div className="comedia">
+          <NavLink to='/Comedia'><Imagenes url={comedia} id="categorias"/></NavLink>
+          <p>Comedia</p>
+        </div>
+        <div className="terror">
+          <NavLink to='/Terror'><Imagenes url={terror} id="categorias"/></NavLink>
+          <p>Terror</p>
+        </div>
+        <div className="novelas">
+          <NavLink to='/Novelas'><Imagenes url={novelas} id="categorias"/></NavLink>
+          <p>Novelas</p>
+        </div>
+        <div className="infantil">
+          <NavLink to='/Infantil'><Imagenes url={infantil} id="categorias"/></NavLink>
+          <p>Infantil</p>
+        </div>
+        <div className="aventura">
+          <NavLink to='/Aventura'><Imagenes url={aventura} id="categorias"/></NavLink>
+          <p>Aventura</p>
+        </div>
+        <div className="academico">
+          <NavLink to='/Academicos'><Imagenes url={academico} id="categorias"/></NavLink>
+          <p>Academicos</p>
+        </div>
     </div>
-    <div className="comedia">
-      <Imagenes url={comedia} id="categorias"/>
-      <p>Comedia</p>
-    </div>
-    <div className="terror">
-      <Imagenes url={terror} id="categorias"/>
-      <p>Terror</p>
-    </div>
-    <div className="novelas">
-      <Imagenes url={novelas} id="categorias"/>
-      <p>Novelas</p>
-    </div>
-    <div className="infantil">
-      <Imagenes url={infantil} id="categorias"/>
-      <p>Infantil</p>
-    </div>
-    <div className="aventura">
-      <Imagenes url={aventura} id="categorias"/>
-      <p>Aventura</p>
-    </div>
-    <div className="academico">
-      <Imagenes url={academico} id="categorias"/>
-      <p>Academicos</p>
-    </div>
-  </div>
+
   )
 }
