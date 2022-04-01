@@ -26,7 +26,7 @@ export const MainPerfil = () => {
                 <hr />
                 <div className="icon-btn">
                     <ImBooks/>
-                    <NavLink to='/Historial'><a href="#" id="Historial">Historial</a></NavLink>
+                    <NavLink to='/Historial'><a href="#" id="Historial">Reservas</a></NavLink>
                 </div>
                 <hr />
                 <div className="icon-btn">

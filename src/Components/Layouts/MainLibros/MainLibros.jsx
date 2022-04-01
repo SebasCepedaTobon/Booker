@@ -1,6 +1,7 @@
 import React from 'react'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import libro1 from '../../../assets/Imagenes/libro1.jpg'
+import { BotonReservar } from '../../UI/Botones/BotonReservar';
 
 export const MainLibros = () => {
   return (
@@ -34,7 +35,7 @@ export const MainLibros = () => {
                  deserunt, ratione atque obcaecati natus minus nobis molestiae 
                 quae, nostrum tenetur, et sed quia soluta tempora repellat?</p>
             </div>
-            <button className='libros-reservar'>Reservar</button>
+            <BotonReservar/>
         </div>
     </div>
   )

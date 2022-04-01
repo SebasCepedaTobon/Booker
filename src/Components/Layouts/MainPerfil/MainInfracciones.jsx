@@ -25,7 +25,7 @@ export const MainInfracciones = () => {
                 <hr />
                 <div className="icon-btn">
                     <ImBooks/>
-                    <NavLink to='/Historial'><a href="#" id="Historial">Historial</a></NavLink>
+                    <NavLink to='/Historial'><a href="#" id="Historial">Reservas</a></NavLink>
                 </div>
                 <hr />
                 <div className="icon-btn">
@@ -39,7 +39,12 @@ export const MainInfracciones = () => {
                 </div>
             </div>
         </div>
-        <h2 id='Tu-cuenta'>Tus Infracciones</h2>
+        <div className="datos-perfil">
+            <h2 id='Tu-cuenta'>Tus Reservas</h2>
+            <div className="p-hr">
+                <p>No tienes infracciones por ahora...</p>
+            </div>
+        </div>
     </div>
   )
 }

@@ -981,8 +981,8 @@ hr{
     display: flex;
     flex-direction: row;
     width: 80%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10%;
+    margin-bottom: 5%;
     margin-left: 13%;
 }
 
@@ -1001,7 +1001,7 @@ hr{
     margin-top: 40px;
     margin-bottom: 40px;
 }
-.detalles-libro hr{
+.mainlibros hr{
     width: 600px;
 }
 
