@@ -62,7 +62,7 @@ export const MainAdmin = () => {
               <NavLink className='Tlibros' to='/TLibros' >
               <button className='CardAdmin'>
                 <Imagenes clase='student' url={libro} />
-                <h1>Estudiantes</h1>
+                <h1>Libros</h1>
                 <span></span>
               </button>
               </NavLink>

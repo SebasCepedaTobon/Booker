@@ -34,7 +34,7 @@ export const TablaLibros = () => {
 
             <div className='LL'>
               <div className='L0'>
-                <Imagenes url={cienAños} />
+                <Imagenes clase='img' url={cienAños} />
               </div>
               <div className='L1'>
                 <p className='L1P'>Cien años de soledad</p>
@@ -53,7 +53,7 @@ export const TablaLibros = () => {
 
             <div className='LL2'>
               <div className='L0'>
-                <Imagenes url={cienAños} />
+                <Imagenes clase='img' url={cienAños} />
               </div>
               <div className='L1'>
                 <p className='L1P'>Cien años de soledad</p>
@@ -70,7 +70,7 @@ export const TablaLibros = () => {
             
             <div className='LL'>
               <div className='L0'>
-                <Imagenes url={cienAños} />
+                <Imagenes clase='img' url={cienAños} />
               </div>
               <div className='L1'>
                 <p className='L1P'>Cien años de soledad</p>
@@ -89,7 +89,7 @@ export const TablaLibros = () => {
 
             <div className='LL2'>
               <div className='L0'>
-                <Imagenes url={cienAños} />
+                <Imagenes clase='img' url={cienAños} />
               </div>
               <div className='L1'>
                 <p className='L1P'>Cien años de soledad</p>
@@ -106,7 +106,7 @@ export const TablaLibros = () => {
             
             <div className='LL'>
               <div className='L0'>
-                <Imagenes url={cienAños} />
+                <Imagenes clase='img' url={cienAños} />
               </div>
               <div className='L1'>
                 <p className='L1P'>Cien años de soledad</p>
@@ -125,7 +125,7 @@ export const TablaLibros = () => {
 
             <div className='LL2'>
               <div className='L0'>
-                <Imagenes url={cienAños} />
+                <Imagenes clase='img' url={cienAños} />
               </div>
               <div className='L1'>
                 <p className='L1P'>Cien años de soledad</p>
@@ -139,149 +139,7 @@ export const TablaLibros = () => {
             </div>
 
 
-            
-            <div className='LL'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>
-                {/* <button className='button'>
-                  <span>EDITAR</span>
-                  <div className='liquid'></div>
-                </button>      */}
-              </div>
-            </div>
-
-            <div className='LL2'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>  
-              </div>
-            </div>
-
-
-            
-            <div className='LL'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>
-                {/* <button className='button'>
-                  <span>EDITAR</span>
-                  <div className='liquid'></div>
-                </button>      */}
-              </div>
-            </div>
-
-            <div className='LL2'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>  
-              </div>
-            </div>
-
-
-            
-            <div className='LL'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>
-                {/* <button className='button'>
-                  <span>EDITAR</span>
-                  <div className='liquid'></div>
-                </button>      */}
-              </div>
-            </div>
-
-            <div className='LL2'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>  
-              </div>
-            </div>
-
-
-            
-            <div className='LL'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>
-                {/* <button className='button'>
-                  <span>EDITAR</span>
-                  <div className='liquid'></div>
-                </button>      */}
-              </div>
-            </div>
-
-            <div className='LL2'>
-              <div className='L0'>
-                <Imagenes url={cienAños} />
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2' >Grabriel García</div>
-              <div className='L3'>Literatura</div>
-              <div className='L5'>
-                <AiTwotoneEdit className='edit'/>
-                <AiFillDelete className='delete'/>  
-              </div>
-            </div>
-
+          
 
 
 
