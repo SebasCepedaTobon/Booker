@@ -48,6 +48,39 @@
         height: 30px;
     }
 
+    /*Perfil*/
+
+    .botones-perfil{
+        width: 30%;
+    
+    }
+    
+
+    #avatar-perfil {
+        width: 150px;
+    }
+
+    /*Descripcion Libro*/
+
+    .mainlibros{
+        margin-left: 0;
+        padding-left: 60px;
+    }
+
+    .libros2 {
+        margin-left: 0;
+        padding-left: 60px;
+        width: 30%;
+    
+    }
+
+    .libros2 hr{
+        width: 300px;
+    }
+    
+
+
+
 
 }
 
@@ -189,9 +222,48 @@
         height: 30px;
     }
 
+        /*Perfil*/
+
+        .botones-perfil{
+            width: 40%;
+        }
+
+        .img-nombre{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin-left: 20px;
+        }
+
+        #avatar-perfil {
+            width: 100px;
+            margin-right: 5px;
+        }
+
+        .usu h2{
+            font-size: 15px;
+        }
+
+        .usu p{
+            font-size: 12px;
+
+        }
+
+        .datos-perfil {
+            margin-left: 0;
+        }
+
+        .icon-btn{
+            font-size: 11px;
+        }
+
+
+
     
 
     }
+
+
 
 
 
