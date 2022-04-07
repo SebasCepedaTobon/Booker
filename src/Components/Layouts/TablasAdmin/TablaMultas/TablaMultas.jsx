@@ -1,58 +1,55 @@
 import React, {useState, useEffect} from 'react'
 
 import { Imagenes } from '../../../UI/Imagenes/Imagenes'
+import { NavLink } from 'react-router-dom'
 import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
 import { TiDelete } from 'react-icons/ti';
 import { BiBookAdd } from 'react-icons/bi';
 import { MdAttachMoney } from 'react-icons/md';
-import { Swal } from 'sweetalert2';
+import swal from 'sweetalert';
 import booker from '../../../../assets/Imagenes/logos/Booker1.png'
 import search from '../../../../assets/Imagenes/iconos/search.png'
-
-
-
 
 export const TablaMultas = () => {
 
 const [cerrar, setCounter] = useState(true)
-const abrirOverlay  = () => {setCounter(!cerrar)}
+const FormFlotante  = () => {setCounter(!cerrar)}
 
 useEffect(() => {
-  const cont = document.getElementById('overlay')
+  const overlay = document.getElementById('overlay')
+  const fromMultas = document.querySelector('.fromMultas')
 
   if(cerrar === true){
-    cont.style.display ="none"
-    cont.style.transition = "all 500ms ease"
+    overlay.style.visibility = "hidden"
+    fromMultas.style.transform="scale(0.6)"
+    fromMultas.style.opacity="0"
   }else{
-    cont.style.display = "flex"
+    overlay.style.visibility = "visible"
+    fromMultas.style.transform="scale(1)"
+    fromMultas.style.opacity="2"
   }
 
-});
+},[cerrar]);
 
-const cerrarOverlay = () => {setCounter(!cerrar)}
 
-useEffect(() => {
-  const cont = document.getElementById('overlay')
-
-  if(cerrar === true){
-    cont.style.display ="none"
-  }else{
-    cont.style.display = "flex"
-  }
-
-});
-
-const alerta = () => {
-  Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'Something went wrong!',
-    footer: '<a href="">Why do I have this issue?</a>'
-  })
+const mostrarAlerta=()=>{
+  swal({
+    title: "Agregado",
+    text: "Se agrego correctamente",
+    icon: "success",
+    button: "OK"
+  });
 }
 
-
+const alertaEliminar=()=>{
+  swal({
+    title: "Eliminado",
+    text: "Se elimino corectamente",
+    icon: "error",
+    
+  });
+}
 
   return (
    
@@ -92,39 +89,7 @@ const alerta = () => {
               <div className='L4'><p>22/10/2022</p></div>
               <div className='L5'>
                 <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
-              </div>
-            </div>
-
-            <div className='LL2'>
-                <div className='L0'>
-                <MdAttachMoney className='img'/>
-                </div>
-                <div className='L1'>
-                    <p className='L1P'>Cien años de soledad</p>
-                </div>
-                <div className='L2'><p>Santiago Rincon Cortes</p></div>
-                <div className='L3'><p>10/10/202</p></div>
-                <div className='L4'><p>22/10/2022</p></div>
-                <div className='L5'>
-                <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
-              </div>
-            </div>
-            
-            <div className='LL'>
-              <div className='L0'>
-              <MdAttachMoney className='img'/>
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Principito</p>
-              </div>
-              <div className='L2'><p>Sebastian Andres Tobon Cepeda</p></div>
-              <div className='L3'><p>10/10/2022</p></div>
-              <div className='L4'><p>22/10/2022</p></div>
-              <div className='L5'>
-                <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
+                <AiFillDelete onClick={alertaEliminar}  className='delete'/>     
               </div>
             </div>
 
@@ -140,73 +105,7 @@ const alerta = () => {
               <div className='L4'><p>22/10/2022</p></div>
               <div className='L5'>
                 <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
-              </div>
-            </div>
-
-             
-            <div className='LL'>
-              <div className='L0'>
-              <MdAttachMoney className='img'/>
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Principito</p>
-              </div>
-              <div className='L2'><p>Sebastian Andres Tobon Cepeda</p></div>
-              <div className='L3'><p>10/10/2022</p></div>
-              <div className='L4'><p>22/10/2022</p></div>
-              <div className='L5'>
-                <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
-              </div>
-            </div>
-
-            <div className='LL2'>
-              <div className='L0'>
-              <MdAttachMoney className='img'/>
-              </div>
-              <div className='L1'>
-                  <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2'><p>Santiago Rincon Cortes</p></div>
-              <div className='L3'><p>10/10/202</p></div>
-              <div className='L4'><p>22/10/2022</p></div>
-              <div className='L5'>
-                <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
-              </div>
-            </div>
-
-             
-            <div className='LL'>
-              <div className='L0'>
-              <MdAttachMoney className='img'/>
-              </div>
-              <div className='L1'>
-                <p className='L1P'>Principito</p>
-              </div>
-              <div className='L2'><p>Sebastian Andres Tobon Cepeda</p></div>
-              <div className='L3'><p>10/10/2022</p></div>
-              <div className='L4'><p>22/10/2022</p></div>
-              <div className='L5'>
-                <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
-              </div>
-            </div>
-
-            <div className='LL2'>
-              <div className='L0'>
-              <MdAttachMoney className='img'/>
-              </div>
-              <div className='L1'>
-                  <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='L2'><p>Santiago Rincon Cortes</p></div>
-              <div className='L3'><p>10/10/202</p></div>
-              <div className='L4'><p>22/10/2022</p></div>
-              <div className='L5'>
-                <FaEdit className='edit'/>
-                <AiFillDelete className='delete'/>     
+                <AiFillDelete onClick={alertaEliminar} className='delete'/>   
               </div>
             </div>
 
@@ -214,14 +113,14 @@ const alerta = () => {
          </div>
 
          <div id='add' className="add">
-            <BiBookAdd onClick={abrirOverlay} id='btnAgregarL' className='addd'/>
+            <BiBookAdd onClick={FormFlotante} id='btnAgregarL' className='addd'/>
           </div>     
         </div>
 
         <div id='overlay' className='overlay'>
           <div className="fromMultas">
             <div className="XX">
-              <TiDelete onClick={cerrarOverlay } className='X'/>
+              <TiDelete onClick={FormFlotante } className='X'/>
             </div>
             <div className='centerMultas' >
               <h1>NUEVA MULTA</h1>
@@ -257,8 +156,10 @@ const alerta = () => {
                   <span></span>
                   <label htmlFor=""></label>
                 </div>
-                <input onClick={alerta} type="submit" value="Agregar"/>
+                <NavLink to='/Multas'>
+                <input type="submit" value="Agregar"/>
                 <div className="signup_link"></div>
+                </NavLink>
             </form>
           </div>
         </div>

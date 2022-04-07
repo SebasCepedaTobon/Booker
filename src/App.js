@@ -1,6 +1,8 @@
 import './App.css';
-import './estilos.css';
-import './MediaQueries.css'
+import '../src/Static/estilos.css';
+import '../src/Static/Admin.css';
+import '../src/Static/MediaQueriesAdmin.css';
+import '../src/Static/MediaQueries.css';
 
 import{
   BrowserRouter,
@@ -41,11 +43,11 @@ function App() {
         <Route path='/Perfil' element={<Perfil/>} />
         <Route path='/Historial' element={<Historial/>} />
         <Route path='/Infracciones' element={<Infracciones/>} />
-        <Route path='/Academicos' element={<Academicos/>} />
-        <Route path='/Aventura' element={<Aventura/>} />
-        <Route path='/Comedia' element={<Comedia/>} />
-        <Route path='/Comics' element={<Comics/>} />
-        <Route path='/Infantil' element={<Infantil/>} />
+        <Route path='/Academicos' element={<Academicos/>}/>
+        <Route path='/Aventura' element={<Aventura/>}/>
+        <Route path='/Comedia' element={<Comedia/>}/>
+        <Route path='/Comics' element={<Comics/>}/>
+        <Route path='/Infantil' element={<Infantil/>}/>
         <Route path='/Novelas' element={<Novelas/>} />
         <Route path='/Terror' element={<Terror/>} />
         <Route path='/TLibros' element={<TLibros/>} />

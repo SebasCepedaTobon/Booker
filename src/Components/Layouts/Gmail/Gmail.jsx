@@ -3,18 +3,28 @@ import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import logo from '../../../assets/Imagenes/logos/BookerSinNombre.png'
 import home from '../../../assets/Imagenes/iconos/home.svg'
+import Swal from 'sweetalert2'
 import emailjs from '@emailjs/browser';
 
 export const Gmail = () => {
 
+
+  const alertaEliminar = () => {
+    Swal.fire({
+      title: 'ENVIADO',
+      text: 'Mensaje enviado correctamente',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    })
+  }
     
   const sendEmail = (event)=>{
-    event.preventDefault()
 
     emailjs.sendForm('service_rqhk3is', 'template_voi653l', event.target, '4mr02SX1o9lEj3s9Y')
     .then(response => console.log(response))
     .catch(error => console.log(error));
   }
+ 
   
   return (
     <div className="MainLogin">
@@ -56,7 +66,7 @@ export const Gmail = () => {
                 <span></span>
                 <label htmlFor=""></label>
             </div>
-            <input type="submit" value="Enviar"/>
+            <input onClick={alertaEliminar} type="submit" value="Enviar"/>
             <div className="signup_link"></div>
           </form>
         </div>
@@ -64,4 +74,6 @@ export const Gmail = () => {
       </div>
     </div>
   )
+
+  
 }

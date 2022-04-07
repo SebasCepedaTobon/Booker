@@ -14,7 +14,7 @@
 }
 
 .contenedorImgLogin{
-    background-image: url(./assets/Imagenes/3.jpg);
+    background-image: url(../assets/Imagenes/3.jpg);
     background-size: cover;
     width: 50%;
     height: 100%;
@@ -124,7 +124,6 @@
     width: 100%;
     height: 100%;
 }
-
 /*Formulario*/
 
 .center{
@@ -229,7 +228,7 @@ text-decoration: underline;
     }
 
     .MainLogin{
-        background-image: url(./assets/Imagenes/3.jpg);
+        background-image: url(../assets/Imagenes/3.jpg);
         background-size: 100% 100%;
     }
     
@@ -237,7 +236,6 @@ text-decoration: underline;
         display: none;
     }
 }
-
 
 /*-------------------GMAIL--------------------*/
 
@@ -469,7 +467,7 @@ textarea::placeholder{
     width: 100%;
     height: 25%;
     background-position: center center;
-    background-image: url(../src/assets/Imagenes/Banner/Admin2.jpg);    
+    background-image: url(../assets/Imagenes/Banner/Admin2.jpg);    
     background-size: cover;
 
     animation-name: barra2_33;
@@ -484,20 +482,20 @@ textarea::placeholder{
 
 @keyframes barra2_33{
     0%, 25%{
-        background-image: url(assets/Imagenes/Banner/Admin2.jpg);
+        background-image: url(../assets/Imagenes/Banner/Admin2.jpg);
     }
   
     25%, 50%{
-        background-image: url(assets/Imagenes/Banner/12.jpg)  
+        background-image: url(../assets/Imagenes/Banner/12.jpg)  
     }
   
     50%, 75%{
   
-        background-image: url(assets/Imagenes/Banner/13.png);
+        background-image: url(../assets/Imagenes/Banner/13.png);
     }
   
     75%, 90%{
-        background-image: url(assets/Imagenes/Banner/14.png);
+        background-image: url(../assets/Imagenes/Banner/14.png);
     }
 }
 
@@ -558,7 +556,6 @@ textarea::placeholder{
        
 }
 
-
 /*-----------------------PRUEBA CARD-------------*/
 
 .CardAdmin {
@@ -604,6 +601,8 @@ textarea::placeholder{
     width: 100%;
     background: rgba(139, 139, 139, 0.623);
    }
+
+
 
 
 
@@ -669,6 +668,7 @@ textarea::placeholder{
     }
 }
 
+
 /*-------------------TABLAS LIBROS--------------------*/
 .MainTablaLibros{
     width: 100%;
@@ -679,7 +679,7 @@ textarea::placeholder{
     color: white;
     font-size: 30px;
     background-size: cover;
-    background-image: url(../src/assets/Imagenes/Banner/Admin2.jpg);
+    background-image: url(../assets/Imagenes/Banner/Admin2.jpg);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -733,20 +733,20 @@ textarea::placeholder{
 
 @keyframes bannerLibros{
     0%, 25%{
-        background-image: url(assets/Imagenes/Banner/Admin2.jpg);
+        background-image: url(../assets/Imagenes/Banner/Admin2.jpg);
     }
   
     25%, 50%{
-        background-image: url(assets/Imagenes/Banner/12.jpg)  
+        background-image: url(../assets/Imagenes/Banner/12.jpg)
     }
   
     50%, 75%{
   
-        background-image: url(assets/Imagenes/Banner/13.png);
+        background-image: url(../assets/Imagenes/Banner/13.png);
     }
   
     75%, 90%{
-        background-image: url(assets/Imagenes/Banner/14.png);
+        background-image: url(../assets/Imagenes/Banner/14.png);
     }
 }
 
@@ -923,6 +923,8 @@ textarea::placeholder{
 
 }
 
+
+/*######################SE QUEDA############################*/
 
 /*---------BOTON---------*/
 /* From cssbuttons.io by @westitan */
@@ -1219,12 +1221,10 @@ hr{
 
 
 
+/*##########################SE VA############################*/
 /*Formulario Infracciones*/
 
 /*-------------------Flotante-------------*/
-
-
-
 .overlay{
     height: 100vh;
     width: 100vw;
@@ -1234,11 +1234,12 @@ hr{
     right: 0;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.726);
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    
+    flex-direction: column;    
+    transition: all 300ms ease;
+    visibility: hidden;
 }
 
 .fromMultas{
@@ -1247,9 +1248,12 @@ hr{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    visibility: hidden;
-    visibility: visible;
     flex-direction: column;
+
+    opacity: 0;
+
+    transition: all 300ms ease;
+    transform: scale(0.6)
 }
 
 
@@ -1358,7 +1362,7 @@ form .txt_fieldSelec{
     margin: 30px 0;
 }
 
-select{
+.txt_fieldSelec select{
     background-color: transparent;
     width: 100%;
     border-radius: 2px;
@@ -1410,4 +1414,152 @@ select{
 
 
 
+/*-------------------FromLibros-------------------*/
+.txt_fieldLibro{
+    border: 2px solid #adadad;
+    border-radius: 2px;
+    margin: 30px 0;
+}
 
+.txt_fieldLibro textarea{
+    background-color: transparent;
+    width: 98%;
+    height: 30px;
+    margin-top: -1px;
+    margin-bottom: -3.5px;
+    font-size: 16px;
+    border: 0px;
+    outline-color: #2691d9;
+    resize: none;
+    padding: 3px;
+}
+
+form .txt_fieldSelecLibro{  
+    width: 30%;  
+    border-radius: 2px;
+    min-height: 10px;
+    margin: 30px 0;
+}
+
+.txt_fieldSelecLibro select{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: -1px;
+    margin-bottom: -3.5px;
+    font-size: 16px;
+    border: 2px solid #adadad;
+    outline-color: #2691d9;
+    resize: none;
+    color: #adadad;
+    font-size: 16px;
+    padding: 3px;
+}
+
+.fromLibros{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    opacity: 0;
+
+    transition: all 300ms ease;
+    transform: scale(0.6)
+}
+
+.centerLibros{
+    width: 55%;
+    height: 85%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
+}
+.centerLibros h1{
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid silver;
+}
+.centerLibros form{
+    padding: 0 40px;
+    height: 88%;
+    box-sizing: border-box;
+}
+
+.car_123{
+    display: flex;
+    width: 100%;
+    height: 17%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*Botones reutilizables*/
+
+.box-btns{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.box-btns input[type="submit"]{
+    width: 30%;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 9px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 1s all;
+    }
+.box-btns  input[type="submit"]:hover{
+    border-color: white;
+    transform: scale(1.03);
+}
+
+.box-btns .btn-agregar{
+    background-color: rgba(40, 182, 40, 0.911);
+}
+
+.box-btns .btn-editar{
+    background-color: rgba(19, 134, 184, 0.911);
+}
+.box-btns .btn-eliminar{
+    background-color: rgba(255, 34, 34, 0.911);
+}
+
+
+/*-----------------alertas-------------*/
+
+.swal2-styled.swal2-confirm {
+    background: initial;
+    background-color: rgba(40, 182, 40, 0.911) !important;
+}
+
+.swal2-icon.swal2-warning{
+    border-color: rgb(37,145,218) !important;
+    color: rgb(37,145,218) !important;
+}
+
+.swal2-styled.swal2-cancel{
+    background-color: rgba(255, 34, 34, 0.911) !important;
+}
+
+.swal2-icon.swal2-success {
+    border-color: rgb(37,145,218) !important;
+    color: rgb(37,145,218) !important;
+}
+
+.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip {
+    -webkit-animation: swal2-animate-success-line-tip .75s;
+    animation: swal2-animate-success-line-tip .75s;
+    border-color: rgb(37,145,218) !important;
+    color: rgb(37,145,218) !important;
+}
