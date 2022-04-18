@@ -1075,7 +1075,7 @@ hr{
 
 .p-hr{
     margin-top: 30px;
-    margin-left: 40px;
+    
 
 }
 
@@ -1563,3 +1563,51 @@ form .txt_fieldSelecLibro{
     border-color: rgb(37,145,218) !important;
     color: rgb(37,145,218) !important;
 }
+
+
+/*-----------------Contador-------------*/
+
+
+.contador{
+    width: 20px;
+    height: 20px;
+    color:white;
+    background-color:rgb(37,145,218) ;
+    text-align: center;
+    border-radius: 100%;
+    position: absolute;
+    top: 2;
+    margin-left: 66%;
+    cursor: pointer;
+}
+
+/*-----------------Reservas-------------*/
+
+.container-reservas{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.container-reservas img{
+    width: 130px;
+}
+
+.icon-reserva{
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.btn-ventana{
+    width: 200px;
+    height: 40px;
+    border: none;
+    color: white;
+    background: #adadad;
+    cursor: pointer;
+}
+
+
+
+

@@ -1,11 +1,15 @@
-import React from 'react'
-
+import React, {useState} from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import '../../../slick.css'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import libro1 from '../../../assets/Imagenes/libro1.jpg'
+import libro2 from '../../../assets/Imagenes/Libros/libro2.jpg'
+import libro3 from '../../../assets/Imagenes/Libros/libro3.jpg'
+import libro4 from '../../../assets/Imagenes/Libros/libro4.jpg'
+import libro5 from '../../../assets/Imagenes/Libros/libro5.jpg'
+import libro6 from '../../../assets/Imagenes/Libros/libro6.jpg'
 import comics from '../../../assets/Imagenes/GIF/commics.gif'
 import comedia from '../../../assets/Imagenes/GIF/comedia.gif'
 import terror from '../../../assets/Imagenes/GIF/terror.gif'
@@ -15,8 +19,10 @@ import aventura from '../../../assets/Imagenes/GIF/aventura.gif'
 import academico from '../../../assets/Imagenes/GIF/academicos.gif'
 import { NavLink } from 'react-router-dom'
 import { BotonMas } from '../../UI/Botones/BotonMas';
-import { BotonReservar } from '../../UI/Botones/BotonReservar';
-import { Botonmas2 } from '../../UI/Botones/Botonmas2';
+import { Libros } from '../../UI/Libros/Libros';
+//checkoutCard
+
+
 
 
 
@@ -63,6 +69,20 @@ export const MainHome = () => {
         }
       ]
   };
+  //Estado de los libros con listado de libros
+  const [libros, setLibros] = useState([
+    { id: 1, imagen: libro1 , nombre: 'Luis Miguel', Autor: 'Kevin Usama', isbn: 123454544},
+    { id: 2, imagen: libro2 , nombre: 'Diario del fin del mundo', Autor: 'Mario Mendoza', isbn: 235454544},
+    { id: 3, imagen: libro3 , nombre: 'Memorias de altagracia', Autor: 'Sebastian Cepeda', isbn: 456454544 },
+    { id: 4, imagen: libro4 , nombre: 'Manual de auto defensa', Autor: 'Marlon Campo', isbn: 567454544},
+    { id: 5, imagen: libro5 , nombre: 'Entre lagrimas y cintas', Autor: 'Elkin Mendez', isbn: 789454544 },
+    { id: 6, imagen: libro6 , nombre: 'Satanas', Autor: 'Mario Mendoza', isbn: 435454544}
+
+  ])
+
+
+
+  
 
   return (
     <div className='main'>
@@ -147,144 +167,13 @@ export const MainHome = () => {
         </div>
       </div>
       <div className="libros">
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
-        <div className="cardss">
-          <div className="contenedor-libro">
-              <div className="libro">
-                <Imagenes url={libro1} id="libro"/>
-              </div>
-              <div className="btn-card">
-                <div className="container_vacio">
-                </div>
-                <div className="container_botones">
-                  <NavLink to='/Libro'><Botonmas2/></NavLink>
-                  <NavLink to='#'><BotonReservar/></NavLink>
-                </div>
-              </div>
-          </div>
-          <div className="blanco">
-          </div>
-        </div>
+        {libros.map((libro)=> (
+          <Libros
+          key = {libro.id}
+          libro = {libro}
+          libros = {libros}
+          />
+        ))}
       </div>
     </div>  
   )

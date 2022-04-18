@@ -1,46 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import avatar from '../../../assets/Imagenes/iconos/avata.png'
-import { Imagenes } from '../../UI/Imagenes/Imagenes'
-import { FaUserAlt, FaPowerOff } from 'react-icons/fa';
-import { ImBooks } from 'react-icons/im';
-import { RiFileDamageFill } from 'react-icons/ri';
+import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil'
 
 export const MainInfracciones = () => {
   return (
     <div className='contenedor-perfil'>
-        <div className="botones-perfil">
-            <div className="img-nombre">
-                <Imagenes url={avatar} id="avatar-perfil"/>
-                <div className="usu">
-                    <h2>@Usuario</h2>
-                    <p id='Bienvenido'>Bienvenido a tu cuenta</p>
-                </div>
-            </div>
-            <div className="btns">
-                <div className="icon-btn">
-                    <FaUserAlt/>
-                    <NavLink to='/Perfil'><a href="#" id="perfil">Cuenta</a></NavLink>
-                </div>
-                <hr />
-                <div className="icon-btn">
-                    <ImBooks/>
-                    <NavLink to='/Historial'><a href="#" id="Historial">Reservas</a></NavLink>
-                </div>
-                <hr />
-                <div className="icon-btn">
-                    <RiFileDamageFill/>
-                    <NavLink to='/Infracciones'><a href="#" id="cuenta">Infracciones</a></NavLink>
-                </div>
-                <hr />
-                <div className="icon-btn">
-                    <FaPowerOff/>
-                    <NavLink to='/'><a href="#" id="Cerrar">Cerrar sesión</a></NavLink>
-                </div>
-            </div>
-        </div>
+        <BotonesPerfil/>
         <div className="datos-perfil">
-            <h2 id='Tu-cuenta'>Tus Reservas</h2>
+            <h2 id='Tu-cuenta'>Tus Infracciones</h2>
             <div className="p-hr">
                 <p>No tienes infracciones por ahora...</p>
             </div>
