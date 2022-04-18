@@ -3,8 +3,6 @@ import { TablaEstudiantes } from '../../Layouts/TablasAdmin/TablaEstudiantes/Tab
 
 export const Estudiantes = () => {
   return (
-    <div className='MainEstudiantes'>
-        <TablaEstudiantes/>
-    </div>
+    <TablaEstudiantes/> 
   )
 }

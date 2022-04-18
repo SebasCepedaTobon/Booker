@@ -1,0 +1,691 @@
+
+
+/*Clases utilizadas en todas las URLS del sitio admin*/
+
+.MainAdministrativo{
+    display: flex;
+    width: 100%;
+}
+
+.box-AdminNavegador{
+    width: 18vw;
+    min-height: 100vh;
+}
+
+.box-Header-Admin{
+    display: flex;
+    flex-direction: column;
+    width: 82vw;
+    align-items: center;
+}
+
+.AdminHeader{
+    width: 82vw;
+}
+
+/*Clases usadas en todas las tablas del sitio Admin*/
+/*---------------------TABLAS---------------*/
+
+.box-Tabla{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.Tabla{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tr{
+    margin-top: 5px;
+    width: 100%;
+    height: 80px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(37,145,218);
+
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.Tabla-Info{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.tr-1{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.tr-1:hover{
+    background-color: #7c7b7b73;
+}
+
+.tr-2{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: #7c7b7b73;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.tr-2:hover{
+    background-color: #7c7b7bc2;
+}
+
+
+
+.td-0{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.td-0 .img{
+    font-size: 40px;
+    color: #0d5fe4;
+    width: 40px;
+}
+
+.td-1{
+    width: 16%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.tr-1 .documento{
+    width: 80%;
+    
+}
+
+.td-2{
+    width: 18%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.td-3{
+    width: 16%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.td-4{
+    width: 14%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.td-5{
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit{
+    margin: 10px;
+    font-size: 40px;
+    color: #025388;
+    cursor: pointer;
+    transition: 1s; 
+}
+
+.edit:hover{
+    transform: scale(1.10);
+}
+
+.delete{
+    color: rgb(202, 32, 32);
+    font-size: 40px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.delete:hover{
+    transform: scale(1.10);
+}
+
+/*Boton Activar ventana flotante*/
+
+.Activar-From {
+    width: 0px;
+    position: relative;
+    left: 60px;
+    top: 20px;
+    height: 20%;
+    font-size: 40px;
+    color: #0d5fe4;
+}
+
+.Activar-From .icono{
+    position: fixed;
+    cursor: pointer;
+}
+
+/*Boton Desactivar ventana flotante*/
+
+.Desactivar-From{
+    width: 100%;
+    max-height: 16px;
+    display: flex;
+    align-items: center;    
+    justify-content: flex-end;
+}
+
+
+.Desactivar-From .icono{
+    position: relative;
+    top: 10px;
+    left: 3px;
+    font-size: 40px;
+    color: rgba(255, 34, 34, 0.911);
+    cursor:pointer;
+}
+
+/*Ventana flotante de los formularios, lo que comparten todos los formularios de las tablas*/
+
+.overlay{
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.726);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    transition: all 300ms ease;
+    visibility: hidden;
+}
+
+.from-tablas{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    transition: all 300ms ease;
+}
+
+.from-Titulo{
+    width: 100%;
+    border-bottom: 1px solid silver;
+}
+
+.from-Titulo h1{
+    text-align: center;    
+    padding: 0px 0px 13px;
+}
+
+.boxs-inputs{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.boxs-inputs .box-input {
+    margin: 30px 0;
+}
+
+form{
+    box-sizing: border-box;   
+}
+
+form .box-input{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+form .box-select{  
+    width: 30%;  
+    border-radius: 2px;
+    min-height: 10px;
+    margin: 30px 0;
+}
+
+
+
+.box-select select{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: -1px;
+    margin-bottom: -3.5px;
+    font-size: 16px;
+    border: 2px solid #adadad;
+    outline-color: #2691d9;
+    resize: none;
+    color: #adadad;
+    font-size: 16px;
+    padding: 3px;
+}
+
+
+
+/*Fin de las clases compartidas en todas las tablas*/
+
+
+/*-------------------------------------ADMIN---------------------------------------*/
+
+.box-carsd-Admin{
+    width: 77%;
+    height: 77%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card-Admin{
+    text-decoration: none;
+    color: black;
+    transition: 1s;
+}
+
+
+.card-Admin:hover{
+    transform: scale(1.03);
+}
+
+.card-Admin .contenido {
+    width: 433px;
+    height: 277px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    position: relative;
+    padding: 0.7em 2.4em;
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    z-index: 1;
+    font-family: inherit;
+    font-weight: 500;
+    box-shadow: 0px 0px 15px rgb(119, 109, 109);
+}
+
+.card-Admin .contenido:hover{
+    box-shadow: 0px 0px 15px black;
+    cursor: pointer;       
+}
+   
+.card-Admin .contenido span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 97.4%;
+    height: 96%;
+    background: transparent;
+    z-index: -1;    
+}
+
+.card-Admin .contenido span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 1s;
+}
+   
+.card-Admin .contenido:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: rgba(139, 139, 139, 0.623);
+}
+
+.card-Admin .contenido img{
+    width: 60px;
+    height: 60px;    
+}
+
+.card-Admin .contenido svg{
+    font-size: 60px;
+}
+
+
+
+/*------------------------------------TABLA LIBROS---------------------------*/
+.Libros-from{
+    width: 45%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
+}
+
+.Libros-from form{
+    padding: 0 40px 22px;
+}
+
+
+
+.Libros-from textarea{
+    height: 55px;
+}
+
+
+/*------------------------------------TABLA ESTUDIANTES---------------------------*/
+
+
+.Estudiantes-from{
+    width: 32%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
+}
+
+.Estudiantes-from form{
+    padding: 0 40px 22px;
+}
+
+.Estudiantes-from .box-select{  
+    width: 39%;
+}
+
+
+/*------------------------------------TABLA MULTAS y RESERVAS---------------------------*/
+
+
+.RM-from{
+    width: 32%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
+}
+
+.RM-from .box-select{
+    width: 100%;
+}
+
+
+.RM-from form{
+    padding: 0 40px; 
+    padding-bottom: 10px;
+}
+
+.RM-from input[type="date"]{
+    color: white;
+}
+
+.box-input input[type="date"]:valid,
+.box-input input[type="date"]:focus{
+    color: #a6a6a6;
+}
+
+
+
+/*------------------------------------BOTONES DEL LOS FORMULARIOS DEL ADMIN---------------------------*/
+
+.box-btns{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.box-btns input[type="submit"]{
+    width: 30%;
+    border-radius: 9px;
+    transition: 1s all;
+    margin-bottom: 0px;
+}
+    
+.box-btns  input[type="submit"]:hover{
+    border-color: white;
+    transform: scale(1.03);
+}
+
+.box-btns .btn-agregar{
+    background-color: rgba(40, 182, 40, 0.911);
+}
+
+.box-btns .btn-editar{
+    background-color: rgba(19, 134, 184, 0.911);
+}
+.box-btns .btn-eliminar{
+    background-color: rgba(255, 34, 34, 0.911);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.box-buscadorAdmin{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.box-buscadorAdmin .buscador{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 20px;
+}
+
+.box-buscadorAdmin .buscador input{
+    outline: none;
+    box-sizing: border-box;
+    height: 30px;
+    width: 0px;
+    padding: 0 20px;
+    color: #000;
+    border-radius: 16px;
+    font-size: 16px;
+    border: 1px solid transparent;
+    transition: all .7s ease;
+}
+
+.buscador input::placeholder{
+    color: gray;
+}
+
+.btn-ico-Buscar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    min-height: 40px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn-ico-Buscar .ico-Buscar{
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    line-height: 80px;
+    transition: all .7 ease;
+}
+
+.box-buscadorAdmin .buscador:hover input{
+    width: 350px;
+    border: 1px solid black;
+}
+
+.box-buscadorAdmin .buscador:hover{
+   position: relative;
+}
+ 
+
+
+.banner-admin{
+    background-image: url(../assets/Imagenes/Banner/Admin2.jpg);    
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 22vh;
+    animation-name: banner-admin;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-direction:inherit;
+}
+
+@keyframes banner-admin{
+    0%, 25%{
+        background-image: url(../assets/Imagenes/Banner/Admin2.jpg);
+    }
+  
+    25%, 50%{
+        background-image: url(../assets/Imagenes/Banner/12.jpg)  
+    }
+  
+    50%, 75%{
+  
+        background-image: url(../assets/Imagenes/Banner/13.png);
+    }
+  
+    75%, 90%{
+        background-image: url(../assets/Imagenes/Banner/14.png);
+    }
+}
+
+.banner-admin img{
+    width: 150px;
+}
+
+.banner-admin p{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px black;
+}
+
+
+
+/*-------------navegador----------------*/
+
+.Admin-Navegador{
+    width: 18%;
+    height: 100vh;
+    background-color: #181e2c;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Admin-Navegador .box-Titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    min-height: 6%;
+}
+
+.Admin-Navegador .box-Perfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 22%;
+}
+
+.Admin-Navegador .Ico-Perfil{
+    background-color: aqua;
+    width: 60%;
+    height: 95%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.Admin-Navegador hr{
+    width: 80%;
+}
+
+.icono-perfil{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.Admin-Navegador .Menu-Padre{
+    width: 100%;
+    height: 72%;
+}
+
+.Admin-Navegador .box-menu{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Admin-Navegador .box-vinculos{
+    width: 80%;
+    padding: 25px 0px 5px 55px;
+    display: flex;    
+}
+
+.Admin-Navegador .vinculo{
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(167, 167, 167);
+}
+
+.Admin-Navegador svg{
+    font-size: 30px;
+    color: white;
+}

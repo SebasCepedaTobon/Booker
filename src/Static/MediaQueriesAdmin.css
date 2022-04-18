@@ -1,0 +1,42 @@
+@media (max-width: 1500px) {
+    .card-Admin .contenido {
+        width: 330px;
+        height: 220px;
+    }
+
+    .Admin-Navegador .box-vinculos{
+        width: 80%;
+        padding: 25px 0px 5px 30px;
+        display: flex;    
+    }
+
+    .Libros-from{
+        width: 55%;
+    }
+
+    .boxs-inputs .box-input {
+        margin: 20px 0;
+    }
+
+    .Estudiantes-from{
+        width: 45%;
+    }
+
+    .RM-from{
+        width: 45%;
+    }
+
+    .Admin-Navegador svg{
+        font-size: 24px;
+    }
+    .Admin-Navegador .vinculo{
+        font-size: auto;
+    }
+
+    /*--------------------------login y gmail-------------------------*/
+    .LG-box-From{
+        width: 100%;
+    }
+
+
+}

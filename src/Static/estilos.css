@@ -1,0 +1,599 @@
+/*REUTILIZABLE SIN FROM GMAIL Y LOGIN*/
+.Main-Login-Gmail{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.box-Informacion{
+    background-image: url(../assets/Imagenes/3.jpg);
+    background-size: cover;
+    width: 50%;
+    height: 100%;
+}
+
+
+.box-info{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+    background-color: rgba(1, 0, 39, 0.335)
+}
+
+.LG-Info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 90%;
+    height: 75%;
+}
+
+.LG-Contactos{
+    position: relative;
+    bottom: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.LG-Contactos img{
+    width: 80px;
+}
+
+.LG-logo{
+    width: 250px;
+    height: 150px;
+}
+
+.LG-logo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.LG-Textos{
+    min-height: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.LG-info{
+    color: white;
+    width: 100%;
+    height: 34%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.LG-info h1{
+    text-shadow: 0px 0px 15px black;
+    font-size: 23px;
+}
+
+.LG-boxFrom{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.LG-box-From{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.LG-contenedor-From{
+    width: 55%;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
+}
+.LG-contenedor-From h1{
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid silver;
+}
+.LG-contenedor-From form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+/*FIN REUTILIZABLE SIN FROM GMAIL Y LOGIN*/
+
+
+/*INPUTS REUTILIZABLES*/
+
+
+.box-input input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+
+
+input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 9px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 30px;
+}
+
+.box-input label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.box-input span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: .5s;
+}
+.box-input input:focus ~ label,
+.box-input input:valid ~ label{
+    top: -5px;
+    color: #2691d9;
+}
+
+
+.box-input input:focus ~ span::before,
+.box-input input:valid ~ span::before{
+width: 100%;
+}
+
+
+
+input[type="submit"]:hover{
+    border-color: #2691d9;
+    transition: .5s;
+}
+
+/*fIN REUTILIZABLE FROM*/
+
+
+
+/*LOGIN*/
+
+.pass{
+margin: -5px 0 20px 5px;
+color: #a6a6a6;
+cursor: pointer;
+}
+.pass:hover{
+    text-decoration: underline;
+}
+
+/*FIN LOGIN*/
+
+
+/*TEXTAREA REUTILIZABLE*/
+.box-textarea{
+    border: 2px solid #adadad;
+    border-radius: 2px;
+    min-height: 10px;
+    margin: 30px 0;
+}
+
+
+.box-textarea textarea{
+    background-color: transparent;
+    width: 98%;
+    height: 100px;
+    margin-top: -1px;
+    margin-bottom: -3.5px;
+    font-size: 16px;
+    border: 0px;
+    outline-color: #2691d9;
+    resize: none;
+    padding: 3px;
+}
+
+.box-textarea textarea::placeholder{
+    color: #adadad;
+    font-size: 16px;
+}
+
+
+
+/*---------BOTON---------*/
+/* From cssbuttons.io by @westitan */
+/* .button {
+    position: relative;
+    padding: 14px 16px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+   }
+   
+   .button span {
+    position: relative;
+    color: #fff;
+    font-family: Arial;
+    letter-spacing: 8px;
+    z-index: 1;
+   }
+   
+   .button .liquid {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #4973ff;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+    transition: .5s;
+   }
+   
+   .button .liquid::after,
+   .button .liquid::before {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    background: #fff;
+   }
+   
+   .button .liquid::before {
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+   }
+   
+   .button .liquid::after {
+    border-radius: 40%;
+    background: rgba(20, 20, 20, .5);
+    animation: animate 10s linear infinite;
+   }
+   
+   .button:hover .liquid {
+    top: -120px;
+   }
+   
+   @keyframes animate {
+    0% {
+     transform: translate(-50%, -75%) rotate(0deg);
+    }
+   
+    100% {
+     transform: translate(-50%, -75%) rotate(360deg);
+    }
+   } */
+
+
+/*-------------------PERFIL--------------------*/
+
+.contenedor-perfil{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 45rem;
+    margin-top: 90px;
+    margin-bottom: 50px;
+}
+
+.botones-perfil{
+    background-color: #ececec;
+    width: 22.7%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-nombre{
+    margin-top: 30px;
+    display: flex;
+    margin-left: -20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.usu{
+    margin-left: -20px;
+}
+
+#avatar-perfil{
+    width: 200px;
+}
+
+.btns{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: 20px;
+
+}
+
+.btns a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.btns a:hover{
+    color: #2691d9;
+}
+
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+#Bienvenido{
+    color: #a6a6a6;
+}
+
+.datos-perfil{
+    width: 70%;
+    margin-left: 50px;
+}
+
+#Tu-cuenta{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.p-hr{
+    margin-top: 30px;
+    margin-left: 40px;
+
+}
+
+.container-inputs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+}
+
+.container-info{
+    width:400px;
+    height: 60px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: solid 1px rgb(197, 197, 197);
+
+}
+
+.container-info input{
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    height: 40px;
+}
+
+.container-info input:hover{
+    border-bottom: #2691d9 1px solid;
+
+}
+
+.btnGuardar{
+    margin-top: 20px;
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-guardar{
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    background-color: #2691d9;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 7px;
+}
+
+.btn-guardar:hover{
+    background-color: #025388;
+}
+
+.icon-btn{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.icon-btn a{
+    margin-left: 5px;
+}
+/*Categorias*/
+
+.libros-categorias{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+
+.container-titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Main Libros*/
+
+.mainlibros{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    margin-left: 13%;
+}
+
+.mainlibros img{
+    width: 400px;
+    height: 600px;
+}
+
+.libros2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+.detalles-libro{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.mainlibros hr{
+    width: 600px;
+}
+
+.titulo{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.detalles{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.mainlibros p{
+    font-size: 20px;
+}
+
+.des-libro{
+    margin-bottom: 40px;
+}
+
+.libros-reservar{
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    background-color: #2691d9;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 7px;
+}
+
+
+/*-----------------Reservas-------------*/
+
+.container-reservas{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.container-reservas img{
+    width: 130px;
+}
+
+.icon-reserva{
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.btn-ventana{
+    width: 200px;
+    height: 40px;
+    border: none;
+    color: white;
+    background: #adadad;
+    cursor: pointer;
+}
+
+
+
+
+/*-----------------------------------ALERTAS--------------------*/
+
+.swal2-styled.swal2-confirm {
+    background: initial;
+    background-color: rgba(40, 182, 40, 0.911) !important;
+}
+
+.swal2-icon.swal2-warning{
+    border-color: rgb(37,145,218) !important;
+    color: rgb(37,145,218) !important;
+}
+
+.swal2-styled.swal2-cancel{
+    background-color: rgba(255, 34, 34, 0.911) !important;
+}
+
+.swal2-icon.swal2-success {
+    border-color: rgb(37,145,218) !important;
+    color: rgb(37,145,218) !important;
+}
+
+.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip {
+    -webkit-animation: swal2-animate-success-line-tip .75s;
+    animation: swal2-animate-success-line-tip .75s;
+    border-color: rgb(37,145,218) !important;
+    color: rgb(37,145,218) !important;
+}
+
+.swal2-icon.swal2-success [class^=swal2-success-line]{
+    background-color: rgb(37,145,218) !important;
+}
+
+
+.swal2-icon.swal2-success .swal2-success-ring{
+    border: 0.25em solid rgba(37, 146, 218, 0.557) !important;
+}
+
+.swal2-styled.swal2-confirm{
+    background-color: rgb(37,145,218) !important;
+}
+
+
+
+
+
+

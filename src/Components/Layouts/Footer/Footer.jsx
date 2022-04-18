@@ -10,7 +10,7 @@ import logo from '../../../assets/Imagenes/logos/Booker1.png'
 export const Footer = () => {
   return (
     <div className='footer'>
-      <div className="footer-lados">
+      <div className="footer-extremos">
         <div className="footer-info">
         <h1>InformaciónBooker</h1>
         <p>Lorem ipsum dolor</p>
@@ -19,22 +19,22 @@ export const Footer = () => {
         <p>Possimus beatae facilis quaerat.</p>
         </div>
       </div>
-      <div className="footer2">
-        <div className='contenedor-redes' >
+      <div className="footer-centro">
+        <div className='redes' >
           <a href="#"><Imagenes url={facebook} clase='facebook'/></a>
           <NavLink to='/Email' ><Imagenes url={email} clase='email' /></NavLink>
           <a href="https://wa.me/+573002536217" target={'_blank'} ><Imagenes url={whatsapp} clase='whatsapp'/></a>
         </div>
-        <div className="contenedor-logo">
-          <div className='contenedor-logo-footer'>
+        <div className="box-logo">
+          <div className='contenedor-logo'>
             <Imagenes url={logo} clase='logo-footer' />
           </div>
         </div>
-        <div className='footer-reservados' >
+        <div className='footer-derechos' >
           <p>&copy;2022 Booker Todos los derechos reservados</p>
         </div>
       </div>
-      <div className="footer-lados">
+      <div className="footer-extremos">
         <div className="footer-info">
           <h1>InformaciónColegio</h1>
           <p>Lorem ipsum dolor</p>
