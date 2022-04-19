@@ -2,6 +2,7 @@ import React from 'react'
 import { useStateValue } from '../../../StateProvider';
 import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil';
 import { Checkoud } from '../../UI/Checkoud/Checkoud';
+import { Libros } from '../../UI/Libros/Libros';
 
 
 //CheckoutPage

@@ -9,7 +9,7 @@ import { AiFillDelete } from 'react-icons/ai'
 
 export const Checkoud = ({libro}) => {
 
-
+    console.log(libro)
 
   //Funcion que guarda las propiedades del estado de los libros
   const {nombre , id, imagen , Autor, isbn} = libro;
