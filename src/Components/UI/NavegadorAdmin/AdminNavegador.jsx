@@ -1,78 +1,88 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Imagenes } from '../Imagenes/Imagenes'
-import { FaUserGraduate, FaHouseUser } from 'react-icons/fa';
-import { SiWebmoney } from 'react-icons/si';
-import { BsCalendarCheck, BsFillJournalBookmarkFill } from 'react-icons/bs';
-import { MdLocalPolice } from 'react-icons/md';
-import perfil from '../../../assets/Imagenes/perfil.jpg'
-import cerrarAdmin from '../../../assets/Imagenes/iconos/cerrarAdmin.svg'
-import gestionAdmin from '../../../assets/Imagenes/iconos/gestionAdmin.svg'
-
+import booker from '../../../assets/Imagenes/logos/BookerAdmin.png'
 
 export const AdminNavegador = () => {
+
+  const [menu, setCounter] = useState(true)
+
+    const boxBuscador  = () => {setCounter(!menu)}
+  
+    useEffect(() => {
+      const novedades = document.querySelector('.novedades')
+
+      if(menu === true){
+        novedades.style.display = "none";
+        novedades.style.transform="scale(0.6)"      
+
+      }else{
+        novedades.style.display = "flex";
+        novedades.style.transform="scale(1)"
+      }
+  
+    },[menu]);
+
   return (    
     <div className='Admin-Navegador'>
-      <div className="box-Titulo">
-        Sitio Administrativo
-      </div>
-      <div className='box-Perfil' >
-        <div className='Ico-Perfil' >
-          <Imagenes url={perfil} clase='icono-perfil'/>
-        </div>        
-      </div>
-
+      <div className='box-Logo' >
+        <Imagenes url={booker} clase='logo'/>
+      </div>  
       <div className='Menu-Padre'>
         <div className='box-menu' >
-          <div className='box-vinculos'>
-            <FaHouseUser/>
             <NavLink to='/Admin' className='vinculo'>              
-              <p>Admin</p>
+              <div className='box-vinculos'>
+                <i class="fa-solid fa-lock"></i>
+                <p>Admin</p>
+                <span></span>
+              </div>
             </NavLink>
-          </div>
-          <div className='box-vinculos'>
-            <BsFillJournalBookmarkFill/>
             <NavLink to='/TLibros' className='vinculo'>              
-              <p>Libros</p>
-            </NavLink>
-          </div>
-          <div className='box-vinculos'>
-            <FaUserGraduate/>
+              <div className='box-vinculos'>
+                <i class="fa-solid fa-book"></i>
+                <p>Libros</p>
+                <span></span>
+              </div>
+            </NavLink>         
             <NavLink to='/TEstudiantes' className='vinculo'>              
-              <p>Estudiantes</p>
+              <div className='box-vinculos'>
+                <i class="fa-solid fa-graduation-cap"></i>
+                <p>Estudiantes</p>
+                <span></span>
+              </div>
+            </NavLink>          
+            <NavLink to='/Reservas' className='vinculo'>
+              <div className='box-vinculos'>
+                <i class="fa-solid fa-calendar-check"></i>
+                <p>Reservas</p>                
+                <span></span>
+              </div>
             </NavLink>
-          </div>
-          <div className='box-vinculos'>
-            <SiWebmoney />
-            <NavLink to='/Multas' className='vinculo'>              
-              <p>Multas</p>
-            </NavLink>
-          </div>
-          <div className='box-vinculos'>
-            <BsCalendarCheck/>
-            <NavLink to='/Reservas' className='vinculo'>              
-              <p>Reservas</p>
-            </NavLink>
-          </div>
-          <div className='box-vinculos'>
-            <MdLocalPolice />
-            <NavLink to='/home' className='vinculo'>              
-              <p>Infracciones</p>
-            </NavLink>
-          </div>
-          <div className='box-vinculos' >
-            <Imagenes url={gestionAdmin} />
-            <NavLink to='/home' className='vinculo'>              
-              <p>Gestión De Cuenta</p>
-            </NavLink>
-          </div>                
-          <div className='box-vinculos' >
-            <Imagenes url={cerrarAdmin} />
-            <NavLink to='/' className='vinculo'>              
-              <p>Cerar Sesión</p>
-            </NavLink>
-          </div>
+              <div className='vinculo'>           
+                <div className='box-vinculos'>
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span></span>
+                  <p>Infracciones</p>                
+                </div>
+              </div>
+            <div className="novedades">
+              <NavLink to='/Multas' className='vinculo'>           
+                <div className='box-vinculos'>
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span></span>
+                  <p>Multas</p>                
+                </div>
+              </NavLink>
+            
+              <NavLink to='/home' className='vinculo'>              
+                <div className='box-vinculos'>
+                  <i class="fa-solid fa-circle-exclamation"></i>
+                  <p>Novedades</p>
+                  <span></span>
+                </div>
+              </NavLink>
+            </div>
         </div>              
       </div>
     </div>

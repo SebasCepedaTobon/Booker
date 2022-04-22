@@ -1,14 +1,78 @@
-@media (max-width: 1500px) {
-    .card-Admin .contenido {
-        width: 330px;
-        height: 220px;
+@media (max-width: 1400px) {
+
+    /*-------------NAVEGADOR ADMIN----------------*/
+
+
+    .box-Logo .logo{
+        padding-left: 20px;
+        padding-top: 20px;
+        width: 200px;
     }
 
-    .Admin-Navegador .box-vinculos{
-        width: 80%;
-        padding: 25px 0px 5px 30px;
-        display: flex;    
+    /*-----------------Card del Admin----------------*/
+
+    .boxCard01 .cardAdmin{
+        width: 325px;
+        height: 190px;
     }
+
+    .card-Admin .contenido {
+        width: 127px;
+        height: 47px;
+    }
+
+    .cardLibros{
+        width: 325px;
+        height: 300px;
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    .cardLibros .imagen .img{
+        width: 130px;
+        padding-bottom: 0px;
+        position: none;
+    }
+
+    .cardNovedades{
+        width: 681px;
+        height: 300px;
+    }
+
+    .card-IM .contenido{
+        width: 120px;
+        height: 45px;
+    }
+
+    .card-IM{
+        width: 265px;
+        height: 160px;
+    }
+
+    .box-carsd-Admin .imagen .img{
+        width: 140px;
+    }
+
+    .cardAdmin .info-btn .p{
+        font-size: 28px;
+    }
+
+    .cardLibros .info-btn .p{
+        font-size: 28px;
+    }
+    
+
+    /* .Admin-Navegador .box-vinculos{
+        width: 200px;
+        font-size: 16px;
+        padding: 9px 1px 9px 9px;
+    } 
+
+    .Admin-Navegador .vinculo{
+        width: 75%;
+    }
+    */
 
     .Libros-from{
         width: 55%;
@@ -26,17 +90,12 @@
         width: 45%;
     }
 
-    .Admin-Navegador svg{
-        font-size: 24px;
-    }
-    .Admin-Navegador .vinculo{
-        font-size: auto;
+    .box-vinculo-padre{
+        padding: 0px 0px 12px 0px;
     }
 
     /*--------------------------login y gmail-------------------------*/
     .LG-box-From{
         width: 100%;
     }
-
-
 }

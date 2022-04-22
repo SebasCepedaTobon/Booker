@@ -5,7 +5,7 @@ import { Botonmas2 } from '../Botones/Botonmas2'
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
 import { VentanaAgregado } from '../VentanaAgregado/VentanaAgregado';
-import { GiBookshelf } from 'react-icons/gi';
+
 //Product
 
 

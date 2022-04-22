@@ -1,23 +1,68 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 import { Imagenes } from '../Imagenes/Imagenes'
-import booker from '../../../assets/Imagenes/logos/Booker1.png'
-import { FaSearch } from 'react-icons/fa';
+
+// import { FaSearch } from 'react-icons/fa';
+// import { FiSettings } from 'react-icons/fi';
+// import { BsCalendarCheck } from 'react-icons/bs';
+
+import { NavLink } from 'react-router-dom';
+import perfil from '../../../assets/Imagenes/perfil.jpeg';
+import React from 'react';
+
 
 export const AdminHeader = () => {
+
+    const [buscar, setCounter] = useState(true)
+
+    const boxBuscador  = () => {setCounter(!buscar)}
+  
+    useEffect(() => {
+      const buscador = document.getElementById('buscador')
+      const HeaderAdmin = document.querySelector('.HeaderAdmin')
+      const input = document.querySelector('.elInput')
+
+      if(buscar === true){
+        buscador.style.visibility = "hidden"
+        HeaderAdmin.style.visibility = "visible"
+        
+
+      }else{
+        buscador.style.visibility = "visible"
+        HeaderAdmin.style.visibility = "hidden"
+      }
+  
+    },[buscar]);
+
+
   return (
     <div className='AdminHeader'>
-        <div className='box-buscadorAdmin'>
-            <div className="buscador">
-                <input type="text" autofocus="autofocus" placeholder='Buscar...' required/>
-                <div className="btn-ico-Buscar">
-                    <FaSearch className='ico-Buscar'/>
-                </div> 
-            </div>                       
+        <div className="HeaderAdmin">
+            <p className='sitio'>Sitio Administrativo</p>
+            <div className="HeaderIconos">
+                <i onClick={boxBuscador} class="fa-solid fa-magnifying-glass"></i>
+                <NavLink to='/home'>
+                    <i class="fa-solid fa-calendar-check"></i>
+                </NavLink>
+                <NavLink to='/home'>
+                    <i class="fa-solid fa-gear"></i>
+                </NavLink>
+                <div className="box-perfilHeader">
+                    <div className="userHeader">
+                        <p>Sebastian</p>
+                        <p>admin</p>
+                    </div>
+                    <div className='perfil' >
+                        <Imagenes url={perfil} clase='icono'/>
+                    </div>
+                </div>                
+            </div>            
         </div>
-        <div className='banner-admin' >
-            <Imagenes url={booker} />
-            <p>Sitio Administrativo Booker</p>
+        <div id='buscador' className="buscador">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input className='elInput' type="text" placeholder='Buscar...'/>
+            <i onClick={boxBuscador} class="fa-solid fa-xmark"></i>
         </div>
+    
     </div>    
   )
 }

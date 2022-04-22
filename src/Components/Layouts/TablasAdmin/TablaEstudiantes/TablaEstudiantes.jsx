@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 
-import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
-import { BsPersonSquare } from 'react-icons/bs';
-import { BiBookAdd } from 'react-icons/bi';
-import Swal from 'sweetalert2'
-import { TiDelete } from 'react-icons/ti';
+// import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
+// import { BsPersonSquare } from 'react-icons/bs';
+// import { BiBookAdd } from 'react-icons/bi';
+// import Swal from 'sweetalert2'
+//import { TiDelete } from '/ti';
+
 import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
 
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
@@ -17,22 +18,22 @@ export const TablaEstudiantes = () => {
 
 
   const eliminacion = () =>{
-    Swal.fire({
-      title: '¿Esta seguro de eliminar a el estudiante?',
-      icon: 'warning',
-      confirmButtonText: 'Si, Eliminar',
-      showCancelButton: true,
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-    }).then((resultado) => {
-      if (resultado.isConfirmed) {
-        Swal.fire(
-          'Eliminado',
-          'Estudiante eliminado correctamente',
-          'success'
-        )
-      }
-    })
+    // Swal.fire({
+    //   title: '¿Esta seguro de eliminar a el estudiante?',
+    //   icon: 'warning',
+    //   confirmButtonText: 'Si, Eliminar',
+    //   showCancelButton: true,
+    //   cancelButtonText: 'No, cancelar',
+    //   reverseButtons: true
+    // }).then((resultado) => {
+    //   if (resultado.isConfirmed) {
+    //     Swal.fire(
+    //       'Eliminado',
+    //       'Estudiante eliminado correctamente',
+    //       'success'
+    //     )
+    //   }
+    // })
   }
 
 
@@ -65,6 +66,9 @@ export const TablaEstudiantes = () => {
         <AdminHeader/>  
         <div className='box-Tabla' >
           <div className='Tabla'>
+            <div className="TituloLibro">
+              Libros
+            </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
               <div className='td-1' ><p>Documento</p></div>
@@ -76,7 +80,7 @@ export const TablaEstudiantes = () => {
 
               <div className='tr-1'>
                 <div className='td-0'>
-                  <BsPersonSquare className='img'/>
+                  {/* <BsPersonSquare className='img'/> */}
                 </div>
                 <div className='td-1'>
                   <p className='L1P'>1002633624</p>
@@ -84,30 +88,15 @@ export const TablaEstudiantes = () => {
                 <div className='td-2'>Sebastian Cepeda</div>
                 <div className='td-3'>1°</div>
                 <div className='td-5'>
-                  <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
-                  <AiFillDelete onClick={eliminacion} className='delete'/>     
-                </div>
-              </div>
-
-              <div className='tr-2'>
-                <div className='td-0'>
-                  <BsPersonSquare className='img'/>
-                </div>
-                <div className='td-1'>
-                  <p className='L1P'>1023762421</p>
-                </div>
-                <div className='td-2'>Santiago Rincon</div>
-                <div className='td-3'>2°</div>
-                <div className='td-5'>
-                  <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
-                  <AiFillDelete onClick={eliminacion} className='delete'/>      
+                  {/* <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
+                  <AiFillDelete onClick={eliminacion} className='delete'/>      */}
                 </div>
               </div>
 
             </div>            
           </div>
           <div id='ActivarFrom' className='Activar-From'>
-            <BiBookAdd onClick={ventanaFlotante} id='icono-Activar-From' className='icono'/>
+            {/* <BiBookAdd onClick={ventanaFlotante} id='icono-Activar-From' className='icono'/> */}
           </div> 
         </div>
       </div>
@@ -117,7 +106,7 @@ export const TablaEstudiantes = () => {
             <div className='Estudiantes-from' >
               <div className="from-Titulo">
                 <div className="Desactivar-From">
-                  <TiDelete onClick={ventanaFlotante } className='icono'/>
+                  {/* <TiDelete onClick={ventanaFlotante } className='icono'/> */}
                 </div>
                 <h1>NUEVO ESTUDIANTE</h1>                
               </div>              

@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react'
-import { Imagenes } from '../../../UI/Imagenes/Imagenes'
-import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
-import Swal from 'sweetalert2'
-import { TiDelete } from 'react-icons/ti';
-import { BiBookAdd } from 'react-icons/bi';
+import React, {useState, useEffect} from 'react';
+import { Imagenes } from '../../../UI/Imagenes/Imagenes';
+// import Swal from 'sweetalert2';
+// import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
+// import { TiDelete } from 'react-icons/ti';
+// import { BiBookAdd } from 'react-icons/bi';
+
 import cienAños from '../../../../assets/Imagenes/cienAños.jpg'
 import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
 
@@ -16,22 +17,22 @@ export const TablaLibros = () => {
 
 
   const eliminacion = () =>{
-    Swal.fire({
-      title: '¿Esta seguro de eliminar el libro?',
-      icon: 'warning',
-      confirmButtonText: 'Si, Eliminar',
-      showCancelButton: true,
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-    }).then((resultado) => {
-      if (resultado.isConfirmed) {
-        Swal.fire(
-          'Eliminado',
-          'Libro eliminado correctamente',
-          'success'
-        )
-      }
-    })
+    // Swal.fire({
+    //   title: '¿Esta seguro de eliminar el libro?',
+    //   icon: 'warning',
+    //   confirmButtonText: 'Si, Eliminar',
+    //   showCancelButton: true,
+    //   cancelButtonText: 'No, cancelar',
+    //   reverseButtons: true
+    // }).then((resultado) => {
+    //   if (resultado.isConfirmed) {
+    //     Swal.fire(
+    //       'Eliminado',
+    //       'Libro eliminado correctamente',
+    //       'success'
+    //     )
+    //   }
+    // })
   }
 
   const [cerrar, setCounter] = useState(true)
@@ -64,6 +65,9 @@ export const TablaLibros = () => {
         <AdminHeader/>
         <div className='box-Tabla' >
           <div className='Tabla'>
+            <div className="TituloLibro">
+              Libros
+            </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
               <div className='td-1' ><p>Nombre</p></div>
@@ -72,7 +76,6 @@ export const TablaLibros = () => {
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
-
             <div className='tr-1'>
               <div className='td-0'>
                 <Imagenes clase='img' url={cienAños} />
@@ -83,29 +86,14 @@ export const TablaLibros = () => {
               <div className='td-2' >Grabriel García</div>
               <div className='td-3'>Literatura</div>
               <div className='td-5'>
-                <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
-                <AiFillDelete onClick={eliminacion} className='delete'/>
-              </div>
-            </div>
-
-            <div className='tr-2'>
-              <div className='td-0'>
-                <Imagenes clase='img' url={cienAños} />
-              </div>
-              <div className='td-1'>
-                <p className='L1P'>Cien años de soledad</p>
-              </div>
-              <div className='td-2' >Grabriel García</div>
-              <div className='td-3'>Literatura</div>
-              <div className='td-5'>
-                <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
-                <AiFillDelete onClick={eliminacion} className='delete'/>  
+                {/* <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
+                <AiFillDelete onClick={eliminacion} className='delete'/> */}
               </div>
             </div>
           </div>            
         </div>
         <div id='Activar-From' className="Activar-From">
-          <BiBookAdd onClick={ventanaFlotante} id='icono' className='icono'/>
+          {/* <BiBookAdd onClick={ventanaFlotante} id='icono' className='icono'/> */}
         </div> 
         </div>
       </div>
@@ -114,7 +102,7 @@ export const TablaLibros = () => {
           <div className='Libros-from' >
             <div className="from-Titulo">
             <div className="Desactivar-From">
-                <TiDelete onClick={ventanaFlotante } className='icono'/>
+                {/* <TiDelete onClick={ventanaFlotante } className='icono'/> */}
               </div>
               <h1>NUEVO LIBRO</h1>                
             </div>

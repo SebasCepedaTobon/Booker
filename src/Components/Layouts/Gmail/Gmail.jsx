@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import logo from '../../../assets/Imagenes/logos/BookerSinNombre.png'
 import home from '../../../assets/Imagenes/iconos/home.svg'
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 import emailjs from '@emailjs/browser';
 
 
@@ -19,16 +19,16 @@ export const Gmail = () => {
   }
 
   const alertaConfirmar = () => {
-    Swal.fire({
-      title: 'ENVIADO',
-      text: 'Mensaje enviado correctamente',
-      icon: 'success',
-      confirmButtonText: 'OK'      
-    }).then((resultado) => {
-      if (resultado.isConfirmed) {
-        window.location.reload(true);
-      }
-    })  
+    // Swal.fire({
+    //   title: 'ENVIADO',
+    //   text: 'Mensaje enviado correctamente',
+    //   icon: 'success',
+    //   confirmButtonText: 'OK'      
+    // }).then((resultado) => {
+    //   if (resultado.isConfirmed) {
+    //     window.location.reload(true);
+    //   }
+    // })  
     
   }
     

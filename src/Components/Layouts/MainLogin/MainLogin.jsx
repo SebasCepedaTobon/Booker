@@ -16,7 +16,7 @@ export const MainLogin = () => {
                 <Imagenes url={logo} clase={'logo'} />  
               </div>
               <div className='LG-Textos'>
-                <h1>¡LA RESERVA DE TUS LIBROS A EL ALCANSE DE TUS MANOS!</h1>
+                <h1>¡LA RESERVA DE TUS LIBROS AL ALCANCE DE TUS MANOS!</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores beatae necessitatibus, repellendus odio modi iusto, repellendus odio modi iusto.</p>
               </div>
             </div>
