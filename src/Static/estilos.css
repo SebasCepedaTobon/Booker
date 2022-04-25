@@ -467,7 +467,7 @@ hr{
     display: flex;
     flex-direction: row;
     width: 80%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 5%;
     margin-left: 13%;
 }
@@ -592,6 +592,20 @@ hr{
     background-color: rgb(37,145,218) !important;
 }
 
+
+/*---------------------SPINNER--------------------*/
+
+.spinner{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.spinner .spinners{
+    color: red;
+}
 
 
 

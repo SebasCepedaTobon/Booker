@@ -13,7 +13,7 @@ export const Checkoud = ({libro}) => {
 
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {nombre , id, imagen , Autor, isbn} = libro;
+  const {name , id, image } = libro;
 
 
   const [{reservas}, dispatch] = useStateValue();
@@ -29,13 +29,11 @@ export const Checkoud = ({libro}) => {
 
   return (
       <div className='container-reservas'>
-          <Imagenes url={imagen} id="libro"/>
+          <Imagenes url={image} id="libro"/>
             <div className="container-info-reserva">
-                <p className='nombre-libro'>{nombre}</p>
-                <p>Autor: {Autor}</p>
-                <p>ISBN: {isbn}</p>
-                {/* <GiConfirmed className='icon-reserva'/>
-                <AiFillDelete className='icon-reserva' onClick={borrarLibro}>Eliminar</AiFillDelete> */}
+                <p className='nombre-libro'>{name}</p>
+                {/* <GiConfirmed className='icon-reserva'*/}
+                <button onClick={borrarLibro}>borrar</button>
             </div>
       </div>
   )

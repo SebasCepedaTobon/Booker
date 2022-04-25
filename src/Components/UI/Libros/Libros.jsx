@@ -4,15 +4,13 @@ import { NavLink } from 'react-router-dom'
 import { Botonmas2 } from '../Botones/Botonmas2'
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
-import { VentanaAgregado } from '../VentanaAgregado/VentanaAgregado';
-
 //Product
 
 
 export const Libros = ({libro}) => {
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {nombre , id, imagen, Autor, isbn} = libro;
+  const {name , id, image } = libro;
 
   const [{reservas}, dispatch] = useStateValue();
 
@@ -24,10 +22,8 @@ export const Libros = ({libro}) => {
       type: actionTypes.ADD_TO_RESERVA,
       item: {
         id,
-        nombre,
-        imagen,
-        Autor,
-        isbn,
+        name,
+        image,
       }
     })
   }
@@ -37,16 +33,21 @@ export const Libros = ({libro}) => {
       <div className="cardss">
         <div className="contenedor-libro">
           <div className="libro">
-            <Imagenes url={imagen} id="libro"/>
+            <Imagenes url={libro.image} id="libro"/>
             </div>
             <div className="btn-card">
               <div className="container_vacio">
               </div>
               <div className="container_botones">
-                <NavLink to='/Libro'><Botonmas2/></NavLink>
-              <button className='btn-vermas2' onClick={addLibros}>
-                <VentanaAgregado/>
-              </button>
+                <NavLink to={"/Libro/" + libro.id}><Botonmas2/></NavLink>
+                <button className='btn-vermas2' onClick={addLibros}>
+                  <div class="svg-wrapper-1">
+                    <div class="svg-wrapper">
+                      {/* <GiBookshelf className='icon-reservar' /> */}
+                    </div>
+                  </div>
+                  <span>Reservar</span>
+                </button>
                 </div>
               </div>
           </div>

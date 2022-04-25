@@ -1,15 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import '../../../slick.css'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
-import libro1 from '../../../assets/Imagenes/libro1.jpg'
-import libro2 from '../../../assets/Imagenes/Libros/libro2.jpg'
-import libro3 from '../../../assets/Imagenes/Libros/libro3.jpg'
-import libro4 from '../../../assets/Imagenes/Libros/libro4.jpg'
-import libro5 from '../../../assets/Imagenes/Libros/libro5.jpg'
-import libro6 from '../../../assets/Imagenes/Libros/libro6.jpg'
 import comics from '../../../assets/Imagenes/GIF/commics.gif'
 import comedia from '../../../assets/Imagenes/GIF/comedia.gif'
 import terror from '../../../assets/Imagenes/GIF/terror.gif'
@@ -18,8 +12,10 @@ import infantil from '../../../assets/Imagenes/GIF/infantil.gif'
 import aventura from '../../../assets/Imagenes/GIF/aventura.gif'
 import academico from '../../../assets/Imagenes/GIF/academicos.gif'
 import { NavLink } from 'react-router-dom'
-import { BotonMas } from '../../UI/Botones/BotonMas';
 import { Libros } from '../../UI/Libros/Libros';
+import { CardsSlider } from '../../UI/CardsSlider/CardsSlider';
+import { Spinner } from '../../UI/Spinner/Spinner';
+import { useLocation } from 'react-router';
 //checkoutCard
 
 
@@ -70,15 +66,32 @@ export const MainHome = () => {
       ]
   };
   //Estado de los libros con listado de libros
-  const [libros, setLibros] = useState([
-    { id: 1, imagen: libro1 , nombre: 'Luis Miguel', Autor: 'Kevin Usama', isbn: 123454544},
+  const [libros, setLibros] = useState([])
+  const [cargando, setCargando] = useState(true)
+    /*{ id: 1, imagen: libro1 , nombre: 'Luis Miguel', Autor: 'Kevin Usama', isbn: 123454544},
     { id: 2, imagen: libro2 , nombre: 'Diario del fin del mundo', Autor: 'Mario Mendoza', isbn: 235454544},
     { id: 3, imagen: libro3 , nombre: 'Memorias de altagracia', Autor: 'Sebastian Cepeda', isbn: 456454544 },
     { id: 4, imagen: libro4 , nombre: 'Manual de auto defensa', Autor: 'Marlon Campo', isbn: 567454544},
     { id: 5, imagen: libro5 , nombre: 'Entre lagrimas y cintas', Autor: 'Elkin Mendez', isbn: 789454544 },
-    { id: 6, imagen: libro6 , nombre: 'Satanas', Autor: 'Mario Mendoza', isbn: 435454544}
+    { id: 6, imagen: libro6 , nombre: 'Satanas', Autor: 'Mario Mendoza', isbn: 435454544}*/
 
-  ])
+
+
+  useEffect(()=> {
+    setCargando(true);
+    fetch("https://rickandmortyapi.com/api/character/")
+    .then(res => res.json())
+    .then((data) =>{
+      setLibros(data.results)
+      setCargando(false);
+    })
+  }, []);
+
+  if(cargando) {
+    return (
+      <Spinner />
+    )
+  }
 
 
 
@@ -119,50 +132,12 @@ export const MainHome = () => {
       <div className="contendor-cards">
         <div className='cards'>
           <Slider {...settings}>
-            <div className='carta'>
-              <Imagenes url={libro1} id="libro"/>
-              <div className="card">
-                <div className='info2'>
-                  <h2 id='titulo'>LUIS MIGUEL</h2>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
-                    placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><BotonMas/></NavLink>
-                </div>
-              </div>
-            </div>
-            <div className='carta'>
-              <Imagenes url={libro1} id="libro"/>
-              <div className="card">
-                <div className='info2'>
-                  <h2 id='titulo'>LUIS MIGUEL</h2>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
-                    placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><BotonMas/></NavLink>
-                </div>
-              </div>
-            </div>
-            <div className='carta'>
-              <Imagenes url={libro1} id="libro"/>
-              <div className="card">
-                <div className='info2'>
-                  <h2 id='titulo'>LUIS MIGUEL</h2>
-                  <p id='des'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
-                    placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><BotonMas/></NavLink>
-                </div>
-              </div>
-            </div>
-            <div className='carta'>
-              <Imagenes url={libro1} id="libro"/>
-              <div className="card">
-                <div className='info2'>
-                  <h2 id='titulo'>LUIS MIGUEL</h2>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero nihil harum adipisci 
-                    placeat laudantium quam quo in voluptates corporis,.</p>
-                    <NavLink to='/Libro'><BotonMas/></NavLink>
-                </div>
-              </div>
-            </div>
+            {libros.map((libro) => (
+              <CardsSlider
+                key={libro.id}
+                libro={libro}
+              />
+            ))}
           </Slider>
         </div>
       </div>
@@ -171,7 +146,6 @@ export const MainHome = () => {
           <Libros
           key = {libro.id}
           libro = {libro}
-          libros = {libros}
           />
         ))}
       </div>

@@ -17,7 +17,6 @@ export const Navegacion = () => {
   return (
     <div className="nav">
       <NavLink to='/Home'><Imagenes url={logo} id="logo"/></NavLink>
-      
       <div className="nav-a">
       <NavLink to='/Historial'>
         <div className="contador">

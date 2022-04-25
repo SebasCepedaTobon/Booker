@@ -20,12 +20,12 @@ export const Navegacion2 = () => {
   return (
     <div className="nav2">
       <NavLink to='/Home'><Imagenes url={logo} id="logo"/></NavLink>
-      <div className="contador">
-        <p>{reservas?.length}</p>
-      </div>
       <div className="nav-a">
       <NavLink to='/Historial'>
-        {/* <ImBooks className='icon-nav2'/> */}
+        <div className="contador">
+          <p>{reservas?.length}</p>
+        </div>
+        {/* <ImBooks className='icon-nav'/> */}
       </NavLink>
       {/* <FaHome className='icon-nav2'/> */}
       <NavLink to='/Home'><a href="#" id="home">Home</a></NavLink>
