@@ -282,7 +282,7 @@
   justify-content: center;
   color: white;
   width: 100%;
-  height: 250px;
+  height: 200px;
 }
 
 
@@ -403,7 +403,6 @@
 }
 
 .btn-vermas {
-  width: 135px;
   height: 40px;
   font-size: 1rem;
   background: rgb(255, 255, 255);

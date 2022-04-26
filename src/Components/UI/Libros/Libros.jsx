@@ -26,10 +26,34 @@ export const Libros = ({libro}) => {
         image,
       }
     })
+    ventanaReserva()
   }
+
+  const [cerrar, setCounter] = useState(true)
+  const ventanaReserva  = () => {setCounter(!cerrar)}
+
+
+
+  useEffect(() => {
+    //const overlay = document.getElementById('overlay2')
+    const from_tablas = document.querySelector('.from-tablas3')
+
+    if(cerrar === true){
+        from_tablas.style.visibility = "hidden"
+        from_tablas.style.opacity="0"
+    }else{  
+        from_tablas.style.visibility = "visible"
+        from_tablas.style.top="0"
+        from_tablas.style.opacity="2"
+    }
+
+
+  },[cerrar]);
 
 
   return (
+    <>
+      <div>
       <div className="cardss">
         <div className="contenedor-libro">
           <div className="libro">
@@ -54,5 +78,10 @@ export const Libros = ({libro}) => {
           <div className="blanco">
         </div>
       </div>
+    </div>
+    <div className="from-tablas3">
+        <h1>HOLLAAAAAAAAAAAAA</h1>
+    </div>
+    </>
   )
 }
