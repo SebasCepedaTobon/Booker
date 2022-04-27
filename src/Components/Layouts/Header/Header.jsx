@@ -30,7 +30,7 @@ export const Header = () => {
               value={buscarText} 
               onChange= {(e) => setBuscartext(e.target.value)}
             />
-            <button type='submit' className='btn-search'>buscar</button>
+            <button type='submit' className='btn-search'><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
       </div>

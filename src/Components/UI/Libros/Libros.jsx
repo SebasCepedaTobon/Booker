@@ -80,7 +80,16 @@ export const Libros = ({libro}) => {
       </div>
     </div>
     <div className="from-tablas3">
-        <h1>HOLLAAAAAAAAAAAAA</h1>
+      <div className="conatiner-img-reserva">
+      </div>
+      <div className="container-msj-reserva">
+        <p>!Tienes una nueva reserva¡</p>
+        <p>Ahora tienes {reservas?.length} reservas</p>
+      </div>
+      <div className="container-btn-reserva">
+        <button>Ver reservas</button>
+        <button onClick={ventanaReserva}>cerrar</button>
+      </div>
     </div>
     </>
   )

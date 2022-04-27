@@ -18,12 +18,12 @@
 
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
 
     /*CARD*/
 
     .card{
-        height: 200px;
+        height: 150px;
         
     }
 
@@ -34,7 +34,7 @@
     }
 
     #titulo{
-        font-size: 15px;
+        font-size: 20px;
         margin-bottom: 20px;
     }
 

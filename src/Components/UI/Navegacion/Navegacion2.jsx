@@ -19,20 +19,22 @@ export const Navegacion2 = () => {
 
   return (
     <div className="nav2">
-      <NavLink to='/Home'><Imagenes url={logo} id="logo"/></NavLink>
+      <NavLink to='/Home'><Imagenes url={logo} id="logo" /></NavLink>
       <div className="nav-a">
-      <NavLink to='/Historial'>
-        <div className="contador">
-          <p>{reservas?.length}</p>
-        </div>
-        {/* <ImBooks className='icon-nav'/> */}
-      </NavLink>
-      {/* <FaHome className='icon-nav2'/> */}
-      <NavLink to='/Home'><a href="#" id="home">Home</a></NavLink>
-      {/* <RiAdminFill className='icon-nav2'/> */}
-      <NavLink to='/Admin'><a href="#" id="admin">Admin</a></NavLink>
+        <NavLink to='/Historial'>
+          <div className="contador">
+            <p>{reservas?.length}</p>
+          </div>
+          <i class="fa-solid fa-bookmark" id='icon-contador'></i>
+        </NavLink>
+        <NavLink to='/Home' className='nav-icon'>
+          <i class="fa-solid fa-house"></i>Home
+        </NavLink>
+        <NavLink to='/Admin' className='nav-icon'>
+          <i class="fa-solid fa-user-pen"></i>Admin
+        </NavLink>
       </div>
-      <NavLink to='/Perfil'><Imagenes url={avatar} id="avatar"/></NavLink>
+      <NavLink to='/Perfil'><Imagenes url={avatar} id="avatar" /></NavLink>
     </div>
   )
 }

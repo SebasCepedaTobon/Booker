@@ -623,7 +623,7 @@ hr{
     text-align: center;
     position: absolute;
     top: 20px;
-    right: 22.6%;
+    margin-left: 7px;
 }
 
 .contador p{
@@ -635,19 +635,24 @@ hr{
     width: 100%;
 }
 
+
+
 /**/
 /*Ventana Reservas*/
 
 .from-tablas3{
-    background-color: white;
-    height: 100px;
+    background-color: rgba(212, 208, 208, 0.747);
+    height: 130px;
     width: 100vw;
     position: fixed;
+    border-bottom: 2px solid #2691d9;
     z-index: 10;
     top: -100px;
     opacity: 0;
     visibility: hidden;
     transition: all 300ms ease;
+    display: flex;
+    flex-direction: row;
 }
 
 

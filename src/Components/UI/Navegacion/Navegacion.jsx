@@ -21,10 +21,13 @@ export const Navegacion = () => {
           <p>{reservas?.length}</p>
         </div>
         <i class="fa-solid fa-bookmark" id='icon-contador'></i>
-        {/* <ImBooks className='icon-nav'/> */}
       </NavLink>
-      <NavLink to='/Home'><a href="#" id="home">Home</a></NavLink>
-      <NavLink to='/Admin'><a href="#" id="admin">Admin</a></NavLink>
+      <NavLink to='/Home' className='nav-icon'>
+        <i class="fa-solid fa-house"></i>Home
+      </NavLink>
+      <NavLink to='/Admin' className='nav-icon'>
+        <i class="fa-solid fa-user-pen"></i>Admin
+      </NavLink>
       </div>
       <NavLink to='/Perfil'><Imagenes url={avatar} id="avatar"/></NavLink>
     </div>
