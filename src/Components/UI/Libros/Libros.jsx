@@ -30,7 +30,11 @@ export const Libros = ({libro}) => {
   }
 
   const [cerrar, setCounter] = useState(true)
-  const ventanaReserva  = () => {setCounter(!cerrar)}
+  const ventanaReserva  = () => {setCounter(false)}
+  const ventanaReserva2 = () => {
+    setCounter(!cerrar)
+    console.log(cerrar);
+  }
 
 
 
@@ -43,7 +47,7 @@ export const Libros = ({libro}) => {
         from_tablas.style.opacity="0"
     }else{  
         from_tablas.style.visibility = "visible"
-        from_tablas.style.top="0"
+        from_tablas.style.bottom="0"
         from_tablas.style.opacity="2"
     }
 
@@ -81,14 +85,31 @@ export const Libros = ({libro}) => {
     </div>
     <div className="from-tablas3">
       <div className="conatiner-img-reserva">
+        {(reservas.map((libros => 
+          <Imagenes key={libros.id} url={libros.image} id="libro-reserva"/>
+        )))} 
       </div>
       <div className="container-msj-reserva">
-        <p>!Tienes una nueva reserva¡</p>
-        <p>Ahora tienes {reservas?.length} reservas</p>
+        <p id='p-reserva'>¡Tienes una nueva reserva!</p>
+        <p id='contador-reserva'>Ahora tienes {reservas?.length} reservas</p>
       </div>
       <div className="container-btn-reserva">
-        <button>Ver reservas</button>
-        <button onClick={ventanaReserva}>cerrar</button>
+        <NavLink to='/Historial'>
+          <button className='btn-vermas2'>
+            <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              </div>
+              </div>
+              <span>Ver reservas</span>
+          </button>
+        </NavLink>
+        <button className='btn-vermas2' onClick={ventanaReserva2}>
+          <div class="svg-wrapper-1">
+          <div class="svg-wrapper">
+            </div>
+            </div>
+            <span>Cerrar</span>
+        </button>
       </div>
     </div>
     </>
