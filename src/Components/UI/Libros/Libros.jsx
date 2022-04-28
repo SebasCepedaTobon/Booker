@@ -91,7 +91,10 @@ export const Libros = ({libro}) => {
       </div>
       <div className="container-msj-reserva">
         <p id='p-reserva'>¡Tienes una nueva reserva!</p>
-        <p id='contador-reserva'>Ahora tienes {reservas?.length} reservas</p>
+        <div id='contador-reserva'>
+          {reservas?.length > 1 ? (<p>Ahora tienes {reservas?.length} reservas</p>):
+          (<p>Ahora tienes {reservas?.length} reserva</p>)}
+        </div>
       </div>
       <div className="container-btn-reserva">
         <NavLink to='/Historial'>

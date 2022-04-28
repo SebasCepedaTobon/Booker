@@ -79,7 +79,7 @@ export const MainHome = () => {
 
   useEffect(()=> {
     setCargando(true);
-    fetch("https://rickandmortyapi.com/api/character/")
+    fetch("https://rickandmortyapi.com/api/character/1,2,3,4,5,6,7,8")
     .then(res => res.json())
     .then((data) =>{
       setLibros(data.results)
