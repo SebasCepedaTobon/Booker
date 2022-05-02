@@ -32,6 +32,7 @@ import { Libro } from './Components/Pages/Libro/Libro';
 import { Reservas } from './Components/Pages/Tablas/Reservas';
 import { Multas } from './Components/Pages/Tablas/Multas';
 import { Prestamo } from './Components/Pages/Tablas/Prestamo';
+import { InfraccionesAdmin } from './Components/Pages/Tablas/InfraccionesAdmin'
 
 
 
@@ -61,6 +62,7 @@ function App() {
         <Route path='/Reservas' element={<Reservas/>}/>
         <Route path='/Multas' element={<Multas/>}/>
         <Route path='/Prestamo' element={<Prestamo/>}/>
+        <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
       </Routes>
     </BrowserRouter>
   );

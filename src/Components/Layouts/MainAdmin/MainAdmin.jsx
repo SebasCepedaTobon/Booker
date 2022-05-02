@@ -31,7 +31,7 @@ export const MainAdmin = () => {
             <div className="cardAdmin">
               <div className="info-btn">
                 <p className='p'>Estudiantes</p>
-                <NavLink className='card-Admin' to='/TEstudiantes'>
+                <NavLink className='card-Admin' to='/Admin/TEstudiantes'>
                   <div className='contenido'>
                     <p>Ver Tabla</p>
                     <span></span>
@@ -53,7 +53,7 @@ export const MainAdmin = () => {
                 </NavLink>
               </div>
               <div className="imagen">
-                <Imagenes url={prestamo} clase='img'/>
+                <Imagenes id='imgPrestamo' url={prestamo} clase='img'/>
               </div>
             </div>
             <div className="cardAdmin">
@@ -75,7 +75,7 @@ export const MainAdmin = () => {
             <div className="cardLibros">
               <div className="info-btn">
                 <p className='p'>Lista de Libros</p>
-                <NavLink className='card-Admin' to='/Reservas'>
+                <NavLink className='card-Admin' to='/TLibros'>
                   <div className='contenido'>
                     <p>Ver Tabla</p>
                     <span></span>

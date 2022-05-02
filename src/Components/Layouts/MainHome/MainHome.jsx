@@ -19,14 +19,7 @@ import { useLocation } from 'react-router';
 //checkoutCard
 
 
-
-
-
-
-
 export const MainHome = () => {
-
-
 
   const settings = {
     dots: true,
@@ -92,10 +85,6 @@ export const MainHome = () => {
       <Spinner />
     )
   }
-
-
-
-  
 
   return (
     <div className='main'>

@@ -1,47 +1,53 @@
 import React, {useState, useEffect} from 'react'
 
-// import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
-// import { BsPersonSquare } from 'react-icons/bs';
-// import { BiBookAdd } from 'react-icons/bi';
-// import Swal from 'sweetalert2'
-//import { TiDelete } from '/ti';
+import Swal from 'sweetalert2';
+import { Imagenes } from '../../../UI/Imagenes/Imagenes';
+import perfil from '../../../../assets/Imagenes/perfil.jpeg';
 
 import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
-
-import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
-import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
-
-
+import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader';
+import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador';
 
 
 export const TablaEstudiantes = () => {
 
-
   const eliminacion = () =>{
-    // Swal.fire({
-    //   title: '¿Esta seguro de eliminar a el estudiante?',
-    //   icon: 'warning',
-    //   confirmButtonText: 'Si, Eliminar',
-    //   showCancelButton: true,
-    //   cancelButtonText: 'No, cancelar',
-    //   reverseButtons: true
-    // }).then((resultado) => {
-    //   if (resultado.isConfirmed) {
-    //     Swal.fire(
-    //       'Eliminado',
-    //       'Estudiante eliminado correctamente',
-    //       'success'
-    //     )
-    //   }
-    // })
+     Swal.fire({
+       title: '¿Esta seguro de eliminar a el estudiante?',
+       icon: 'warning',
+       confirmButtonText: 'Si, Eliminar',
+       showCancelButton: true,
+       cancelButtonText: 'No, cancelar',
+       reverseButtons: true
+     }).then((resultado) => {
+       if (resultado.isConfirmed) {
+         Swal.fire(
+           'Eliminado',
+           'Estudiante eliminado correctamente',  
+           'success'
+         )
+       }
+     })
   }
 
 
   const [cerrar, setCounter] = useState(true)
 
+  const [estudiantes, setEstudiantes] = useState([])
+
+  const cargaEstudiante = () => {
+    fetch("http://127.0.0.1:8000/api/estudiantes/")
+    .then(res => res.json())
+    .then((data) =>{
+      setEstudiantes(data)
+    
+    })
+  }
+
   const ventanaFlotante  = () => {setCounter(!cerrar)}
 
   useEffect(() => {
+    cargaEstudiante()
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
 
@@ -57,6 +63,8 @@ export const TablaEstudiantes = () => {
 
   },[cerrar]);
 
+ 
+
   return (
     <div className='MainAdministrativo'>
       <div className="box-AdminNavegador">
@@ -67,36 +75,50 @@ export const TablaEstudiantes = () => {
         <div className='box-Tabla' >
           <div className='Tabla'>
             <div className="TituloLibro">
-              Libros
+              Estudiantes
             </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
               <div className='td-1' ><p>Documento</p></div>
               <div className='td-2' ><p>Nombre Completo</p></div>
               <div className='td-3'><p>Grado</p></div>
+              <div className='td-4'><p>Grupo</p></div>
+              <div className='td-6'><p>Activo-Inactivo</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
-
-              <div className='tr-1'>
-                <div className='td-0'>
-                  {/* <BsPersonSquare className='img'/> */}
+              {
+                estudiantes.map((estudiantes, index) =>
+                <div key={index} className='tr-1'>
+                  <div className='td-0'>
+                    <div className='perfil' >
+                      <Imagenes clase='icono'/>
+                    </div>
+                  </div>
+                  <div className='td-1'>
+                    <p className='L1P'>{estudiantes.doc_estudiante.doc}</p>
+                  </div>
+                  <div className='td-2'>{estudiantes.nombres} {estudiantes.apellidos}</div>
+                  <div className='td-3'>{estudiantes.id_grado}</div>
+                  <div className='td-4'>{estudiantes.id_grupo}</div>
+                  <div className='td-switch'>
+                    <label class="switch">
+                        <input type="checkbox"/>
+                        <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div className='td-5'>
+                    <i onClick={ventanaFlotante} class="fa-solid fa-pen-to-square"></i>
+                    <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
+                  </div>
                 </div>
-                <div className='td-1'>
-                  <p className='L1P'>1002633624</p>
-                </div>
-                <div className='td-2'>Sebastian Cepeda</div>
-                <div className='td-3'>1°</div>
-                <div className='td-5'>
-                  {/* <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
-                  <AiFillDelete onClick={eliminacion} className='delete'/>      */}
-                </div>
-              </div>
+                ) 
+              }
 
             </div>            
           </div>
           <div id='ActivarFrom' className='Activar-From'>
-            {/* <BiBookAdd onClick={ventanaFlotante} id='icono-Activar-From' className='icono'/> */}
+            <i onClick={ventanaFlotante} class="fa-solid fa-folder-plus"></i>
           </div> 
         </div>
       </div>
@@ -106,7 +128,7 @@ export const TablaEstudiantes = () => {
             <div className='Estudiantes-from' >
               <div className="from-Titulo">
                 <div className="Desactivar-From">
-                  {/* <TiDelete onClick={ventanaFlotante } className='icono'/> */}
+                  <i onClick={ventanaFlotante} class="fa-solid fa-xmark"></i>
                 </div>
                 <h1>NUEVO ESTUDIANTE</h1>                
               </div>              
@@ -159,33 +181,29 @@ export const TablaEstudiantes = () => {
                 <div className="boxs-inputs">
                   <div className="box-select">
                     <select>
-                        <option value="" selected>Grupo</option>
-                        <option className='opciones' value="">Grupo 1</option>
-                        <option className='opciones' value="">Grupo 2</option>
-                        <option className='opciones' value="">Grupo 3</option>
-                        <option className='opciones' value="">Grupo 4</option>
-                        <option className='opciones' value="">Grupo 5</option>
-                        <option className='opciones' value="">Grupo 6</option>
-                        <option className='opciones' value="">Grupo 7</option>
-                        <option className='opciones' value="">Grupo 8</option>
+                      <option value="" selected>Grupo</option>
+                      {
+                        estudiantes.map((estudiantes, index)=> 
+                          <option className='opciones' value="">{estudiantes.tipodoc}</option>
+                        )
+                      }
                     </select>
                   </div>
                   <div className="box-select">
                     <select>
-                        <option value="" selected>Grado</option>
-                        <option className='opciones' value="">Grado 1°</option>
-                        <option className='opciones' value="">Grado 2°</option>
-                        <option className='opciones' value="">Grado 3°</option>
-                        <option className='opciones' value="">Grado 4°</option>
-                        <option className='opciones' value="">Grado 5°</option>
-                        <option className='opciones' value="">Grado 6°</option>
-                        <option className='opciones' value="">Grado 7°</option>
-                        <option className='opciones' value="">Grado 8°</option>
-                        <option className='opciones' value="">Grado 9°</option>
-                        <option className='opciones' value="">Grado 10°</option>
-                        <option className='opciones' value="">Grado 11°</option>
+                      <option value="" selected>Grado</option>
+                      {
+                        estudiantes.map((estudiantes, index)=> 
+                          <option className='opciones' value="">{estudiantes.doc_estudiante.name}</option>
+                        )
+                      }
                     </select>
                   </div>
+                 
+                </div>
+                <div id='box-inputCE' className="box-input">
+                  <input type="Email" required placeholder='Correo Electronico'/>
+                  <span></span>
                 </div>
                 <BotonesCrud />                
             </form>
