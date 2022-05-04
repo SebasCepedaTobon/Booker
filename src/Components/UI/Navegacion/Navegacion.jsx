@@ -1,7 +1,7 @@
 import React from 'react'
 import { Imagenes } from '../Imagenes/Imagenes'
-import logo from '../../../assets/Imagenes/logos/bookerLetrasNegras.png'
-import avatar from '../../../assets/Imagenes/iconos/avata.png'
+import logo from '../../../assets/Imagenes/logos/Booker1.png'
+
 import { NavLink } from 'react-router-dom'
 
 
@@ -28,8 +28,8 @@ export const Navegacion = () => {
       <NavLink to='/Admin' className='nav-icon'>
         <i class="fa-solid fa-user-pen"></i>Admin
       </NavLink>
+      <NavLink to='/Perfil'><div className="container-avatar"><i class="fa-solid fa-user"></i></div></NavLink>
       </div>
-      <NavLink to='/Perfil'><Imagenes url={avatar} id="avatar"/></NavLink>
     </div>
   )
 }

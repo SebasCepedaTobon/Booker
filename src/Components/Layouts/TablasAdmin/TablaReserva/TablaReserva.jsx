@@ -1,49 +1,48 @@
 import React, {useState, useEffect} from 'react'
 
-import Swal from 'sweetalert2'
+// import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
+// import { FaUserEdit } from 'react-icons/fa';
+// import { BiBookAdd } from 'react-icons/bi';
+// import { BsCalendarCheck } from 'react-icons/bs';
+// import { TiDelete } from 'react-icons/ti';
+
+
+// import Swal from 'sweetalert2'
 import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
-import { Imagenes } from '../../../UI/Imagenes/Imagenes';
-import libro from '../../../../assets/Imagenes/Libros/libro2.jpg';
+
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
+
+
+
+
 
 export const TablaReserva = () => {
 
   const eliminacion = () =>{
-    Swal.fire({
-      title: '¿Esta seguro de eliminar esta multa?',
-       icon: 'warning',
-       confirmButtonText: 'Si, Eliminar',
-       showCancelButton: true,
-       cancelButtonText: 'No, cancelar',
-       reverseButtons: true
-     }).then((resultado) => {
-       if (resultado.isConfirmed) {
-         Swal.fire(
-            'Eliminado',
-            'Multa eliminada correctamente',
-            'success'
-         )
-       }
-     })
+    // Swal.fire({
+    //   title: '¿Esta seguro de eliminar esta multa?',
+    //   icon: 'warning',
+    //   confirmButtonText: 'Si, Eliminar',
+    //   showCancelButton: true,
+    //   cancelButtonText: 'No, cancelar',
+    //   reverseButtons: true
+    // }).then((resultado) => {
+    //   if (resultado.isConfirmed) {
+    //     Swal.fire(
+    //       'Eliminado',
+    //       'Multa eliminada correctamente',
+    //       'success'
+    //     )
+    //   }
+    // })
   }
 
   const [cerrar, setCounter] = useState(true)
-  const [reservas, setReservas] = useState([])
-
-  const cargaReservas = () => {
-    fetch("https://rickandmortyapi.com/api/character/?page=20")
-    .then(res => res.json())
-    .then((data) =>{
-      setReservas(data.results)
-    
-    })
-  }
 
   const ventanaFlotante  = () => {setCounter(!cerrar)}
 
   useEffect(() => {
-    cargaReservas()
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
 
@@ -60,18 +59,6 @@ export const TablaReserva = () => {
   },[cerrar]);
 
 
-  const seleccion = () => {
-    const selectInfraccion = document.getElementById('box-dateInput')
-      selectInfraccion.style.display = "flex"
-      ventanaFlotante()
-  }
-  
-  const seleccionAdd = () => {
-    const selectInfraccion = document.getElementById('box-dateInput')
-      selectInfraccion.style.display = "none"
-      ventanaFlotante()
-  }
-
 
   return (    
     <div className='MainAdministrativo'>
@@ -84,51 +71,37 @@ export const TablaReserva = () => {
         <div className='box-Tabla' >
           <div className='Tabla'>
             <div className="TituloLibro">
-              Reservas
+              Libros
             </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
-              <div className='td-1' ><p>Nombre Libro</p></div>
               <div className='td-1' ><p>Documento</p></div>
               <div className='td-2' ><p>Nombre Estudiante</p></div>
+              <div className='td-3'><p>Grado</p></div>
               <div className='td-4'><p>Fecha Reserva</p></div>
-              <div id='td-6Reserva' className='td-6'><p>Reservado-Prestar</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
 
             <div className='Tabla-Info' >
-              {
-                reservas.map((reservas, index) =>
-
-                <div key={index} className='tr-1'>
-                  <div className='td-0'>
-                    <Imagenes clase='img' url={reservas.image} />
-                  </div>
-                  <div className='td-1'>
-                    <p className='L1P'>{reservas.name}</p>
-                  </div>
-                  <div className='td-1'>
-                    <p className='L1P'>{reservas.id}</p>
-                  </div>
-                  <div className='td-2'><p>{reservas.origin.name}</p></div>
-                  <div className='td-4'><p>{reservas.status}</p></div>
-                  <div id='td-6Reserva' className='td-switch'>
-                    <label class="switch">
-                      <input type="checkbox"/>
-                      <span class="slider"></span>
-                    </label>
-                  </div>
-                  <div className='td-5'>
-                    <i onClick={seleccion} class="fa-solid fa-pen-to-square"></i>
-                    <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
-                  </div>
+              <div className='tr-1'>
+                <div className='td-0'>
+                {/* <BsCalendarCheck className='img'/> */}
                 </div>
-              )}
-
+                <div className='td-1'>
+                  <p className='L1P'>1002633624</p>
+                </div>
+                <div className='td-2'><p>Sebastian Andres Tobon Cepeda</p></div>
+                <div className='td-3'><p>1°</p></div>
+                <div className='td-4'><p>22/10/2022</p></div>
+                <div className='td-5'>
+                  {/* <FaUserEdit onClick={ventanaFlotante} className='edit'/>
+                  <AiFillDelete onClick={eliminacion} className='delete'/>      */}
+                </div>
+              </div>
             </div>
           </div>
           <div id='Activar-From' className="Activar-From">
-            <i onClick={seleccionAdd} class="fa-solid fa-folder-plus"></i>
+            {/* <BiBookAdd onClick={ventanaFlotante} id='icono' className='icono'/> */}
           </div> 
         </div>
       </div>
@@ -138,7 +111,7 @@ export const TablaReserva = () => {
           <div className='RM-from'>
             <div className="from-Titulo">
               <div className="Desactivar-From">
-                <i onClick={ventanaFlotante} class="fa-solid fa-xmark"></i>
+                  {/* <TiDelete onClick={ventanaFlotante} className='icono'/> */}
               </div>
               <h1>NUEVA RESERVA</h1>                
             </div>
@@ -158,7 +131,7 @@ export const TablaReserva = () => {
                   <span></span>
                   <label className='labelDate'>Fecha Reserva</label>
               </div>
-              <div id='box-dateInput' className="box-input">
+              <div className="box-input">
                   <input type="date" required/>
                   <span></span>
                   <label className='labelDate'>Fecha Entrega</label>

@@ -8,15 +8,23 @@
   color: #2591da;
 }
 
+
 .slick-next:before {
-  color: #2591da;
+  color: black;
   font-size:50px;
 }
 
 .slick-prev:before{
-  color: #2591da;
+  color: black;
   font-size:50px;
   position: relative;
   right: 30px;
 }
+
+.slick-dots li button:before {
+  display: none;
+
+}
+
+
 /*# sourceMappingURL=slick.css.map */

@@ -9,23 +9,21 @@
 }
 
 .box-AdminNavegador{
-    width: 16vw;
+    width: 20vw;
     min-height: 100vh;
-    position: absolute;
-    z-index: 3000;
 }
 
 
 .Admin-Navegador .vinculo{
     text-decoration: none;
-    color: rgb(95, 95, 95);
+    color: rgb(23, 23, 23);
     margin-top: 20px;
-    transition: all 0.5s;
 }
 
+
+
 .Admin-Navegador .vinculo:hover{
-    margin-left: 10px;
-    transition: all 0.5s;
+    color: white;
 }
 
 .Admin-Navegador .box-vinculos{    
@@ -36,7 +34,7 @@
     justify-content: start;
     border: none;
     position: relative;
-    font-size: 17px;
+    font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
@@ -47,6 +45,34 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+.Admin-Navegador .box-vinculos span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 97.4%;
+    height: 96%;
+    background: transparent;
+    z-index: -1; 
+}
+
+.Admin-Navegador .box-vinculos span::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 26%;
+    height: 265px;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 1s;
+}
+
+.Admin-Navegador .box-vinculos:hover span::before{
+    transform: translate(-50%, -50%) rotate(-90deg);
+    background: rgba(14, 99, 184, 0.872); 
+     
+}
 
 .novedades{
     padding-left: 50px;
@@ -67,10 +93,8 @@
 .box-Header-Admin{
     display: flex;
     flex-direction: column;
+    width: 80vw;
     align-items: center;
-    width: 90vw;
-    min-height: 100vh;
-    margin-left: 165px;
 }
 
 /*Clases usadas en todas las tablas del sitio Admin*/
@@ -80,7 +104,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
 }
 .Tabla{
     width: 80%;
@@ -91,7 +114,6 @@
     flex-direction: column;
     border-radius: 5px;
     background-color: white;
-    margin-bottom: 30px;
     box-shadow: 0px 0px 10px rgb(160, 157, 157);
 }
 
@@ -139,26 +161,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.td-0 i{
-    font-size: 30px;
-    color: rgb(13,95,228);
-}
-
-.td-0 .perfil{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    padding-left: 10px;
-}
-
-.td-0 .perfil .icono{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
 }
 
 .td-0 .img{
@@ -213,53 +215,27 @@
     justify-content: center;
 }
 
-.td-6{
-    width: 10%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#td-6Reserva{
-    width: 144px;
-}
-
-.fa-pen-to-square{
+.edit{
     margin: 10px;
-    font-size: 30px;
-    color: rgb(13,95,228);
+    font-size: 40px;
+    color: #025388;
     cursor: pointer;
     transition: 1s; 
 }
 
-.fa-pen-to-square:hover{
+.edit:hover{
     transform: scale(1.10);
 }
 
-.fa-trash-can{
+.delete{
     color: rgb(202, 32, 32);
-    font-size: 30px;
+    font-size: 40px;
     cursor: pointer;
     transition: 1s;
 }
 
-.fa-trash-can:hover{
+.delete:hover{
     transform: scale(1.10);
-}
-
-.active{
-    background-color: rgb(13,95,228);
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgb(13,95,228);
-}
-
-.active p{
-    color: white;
-}
-
-.active i{
-    color: white;
 }
 
 /*Boton Activar ventana flotante*/
@@ -267,14 +243,14 @@
 .Activar-From {
     width: 0px;
     position: relative;
-    left: 43px;
+    left: 60px;
     top: 20px;
     height: 20%;
     font-size: 40px;
     color: #0d5fe4;
 }
 
-.Activar-From .fa-folder-plus{
+.Activar-From .icono{
     position: fixed;
     cursor: pointer;
 }
@@ -290,11 +266,11 @@
 }
 
 
-.Desactivar-From .fa-xmark{
+.Desactivar-From .icono{
     position: relative;
-    top: 7px;
-    left: -3px;
-    font-size: 35px;
+    top: 10px;
+    left: 3px;
+    font-size: 40px;
     color: rgba(255, 34, 34, 0.911);
     cursor:pointer;
 }
@@ -316,7 +292,6 @@
     flex-direction: column;    
     transition: all 300ms ease;
     visibility: hidden;
-    z-index: 4000;
 }
 
 .from-tablas{
@@ -384,18 +359,7 @@ form .box-select{
     padding: 3px;
 }
 
-#box-select{
-    display: none;
-}
 
-
-#box-inputCE{
-    margin: 10px 0;
-}
-
-#box-inputCE::placeholder{   
-    color: #adadad;
-}
 
 /*Fin de las clases compartidas en todas las tablas*/
 
@@ -410,7 +374,6 @@ form .box-select{
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    margin-top: 80px;
 }
 
 .boxCard01{
@@ -456,10 +419,6 @@ form .box-select{
     width: 175px;
     padding-bottom: 45px;
     filter: drop-shadow(-20px 0px 20px rgba(0,0,0,0.5));
-}
-
-#imgPrestamo{
-    width: 140px;
 }
 
 .boxCard02{
@@ -578,45 +537,9 @@ form .box-select{
     height: 49px;
 }
 
-
-
-/*----------------------------------btn infracciones------------------------*/
-
-.btnMulta{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: rgb(95, 95, 95);
-    height: 35px;
-    padding: 0px 20px 0px 20px;
-    border-radius: 5px;
-    margin-right: 30px;
-    transition: all 0.5s;
-    background-color: #E0E0E0;
-}
-
-.contenidoMultas{
-    display: flex;
-    font-size: 14px;
-}
-
-.contenidoMultas i{
-    padding-right: 10px;
-    color: #000000;
-}
-
-.btnMulta:hover{
-    background-color: #bababa;
-    transition: all 0.5s;
-}
-
-
-
 /*BTNS CARD ADMIN*/
 
-.card-Admin{
+.box-carsd-Admin .card-Admin{
     text-decoration: none;
     color: rgb(255, 255, 255);
     margin-left: 10px; 
@@ -750,13 +673,6 @@ form .box-select{
 }
 
 
-/*-----------------Infraciones-----------------------------------*/
-.categoriasMN{
-    margin-top: 20px;
-    width: 96%;
-    display: flex;
-    align-items: center;
-}
 
 /*------------------------------------BOTONES DEL LOS FORMULARIOS DEL ADMIN---------------------------*/
 
@@ -795,15 +711,14 @@ form .box-select{
 /*-------------navegador----------------*/
 
 .Admin-Navegador{
-    width: 15%;
+    width: 20%;
     height: 100vh;
     background-color: #ffffff;
     position: fixed;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-left: -252px;
-    transition: all 0.5s;
+    overflow-y: scroll;
 }
 
 .Admin-Navegador .box-Titulo{
@@ -823,34 +738,12 @@ form .box-select{
 .box-Logo .logo{
     padding-left: 30px;
     padding-top: 30px;
-    width: 200px;
+    width: 250px;
 }
 
 .Admin-Navegador .Menu-Padre{
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    box-sizing: border-box;
-    margin-bottom: 50px;
-}
-
-.Admin-Navegador .Menu-Padre::-webkit-scrollbar {
-    width: 7px;    
-}
-
-.Admin-Navegador .Menu-Padre::-webkit-scrollbar-thumb {
-    background: #eaeaea;
-    border-radius: 5px;
-}
-
-body::-webkit-scrollbar{
-    width: 10px;
-    background: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #c6c6c6;
-    border-radius: 5px;
+    height: 72%;
 }
 
 .Admin-Navegador .box-menu{
@@ -867,76 +760,14 @@ body::-webkit-scrollbar-thumb {
     padding-right: 10px;
 }
 
-.config{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: -50px;
-    top: 40%;
-    width: 50px;
-    height: 50px;
-    z-index: 1000;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: rgb(13,95,228);
-}
-
-.LyE{
-    padding-top: 20px;
-    color: #a6a6a6;
-}
-
-#infra{
-    margin-right: 52px;
-}
-
-.spinnerAdmin {
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    z-index: 1000;
-    display: grid;
-    color: #ffffff;
-    background: radial-gradient(farthest-side, currentColor calc(10% - 15px),rgba(121, 252, 6, 0) calc(10% - 15px) 0);
-    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 15px),rgb(251, 0, 0) calc(100% - 9px));
-    border-radius: 50%;
-    animation: spinnerAdmin-sm4bhi 2s infinite linear;
-   }
-   
-   .spinnerAdmin::before,
-   .spinnerAdmin::after {
-    content: "";
-    grid-area: 1/1;
-    background: linear-gradient(currentColor 0 0) center,
-             linear-gradient(currentColor 0 0) center;
-    background-size: 89% 9px,9px 89%;
-    background-repeat: no-repeat;
-   }
-   
-   .spinnerAdmin::after {
-    transform: rotate(45deg);
-   }
-   
-   @keyframes spinnerAdmin-sm4bhi {
-    100% {
-     transform: rotate(1turn);
-    }
-   }
-
 /*-------------------HEADER ANTIGUO----------------------*/
 
 .AdminHeader{
-    position: fixed;
-    width: 81%;
-    padding: 20px;
+    width: 95%;
+    margin-top: 20px;
     display: flex;
     align-items: center;
-    background: #EEEEEE;
     justify-content: center;
-    box-shadow: 0px 15px 34px #EEEEEE;
-    z-index: 300;
 }
 
 .HeaderAdmin{
@@ -958,6 +789,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: space-around;
     position: absolute;
+    z-index: 1000;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgb(147, 147, 147);
@@ -970,7 +802,6 @@ body::-webkit-scrollbar-thumb {
     border-radius: 5px;
     border: none;
     outline: none;
-    color: #a6a6a6;
     font-size: 16px;
     background-color: transparent;    
 }
@@ -1089,120 +920,3 @@ body::-webkit-scrollbar-thumb {
 .box-buscadorAdmin .buscador:hover{
    position: relative;
 }
-
-
-/*----------------------------chackbos-----------------------*/
-.td-switch{
-    width: 10%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-
-.switch {
-    --button-width: 3.5em;
-    --button-height: 2em;
-    --toggle-diameter: 1.5em;
-    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
-    --toggle-shadow-offset: 10px;
-    --toggle-wider: 3em;
-    --color-grey: #cccccc;
-    --color-green: #4296f4;
-   }
-   
-   .slider {
-    display: inline-block;
-    width: 55px;
-    height: 24px;
-    background-color: var(--color-grey);
-    border-radius: 5px;
-    position: relative;
-    transition: 0.3s all ease-in-out;
-   }
-   
-   .slider::after {
-    content: "";
-    display: inline-block;
-    width: 18px;
-    height: 17px;
-    background-color: #fff;
-    border-radius: calc(var(--toggle-diameter) / 2);
-    position: absolute;
-    right: 35px;
-    top: var(--button-toggle-offset);
-    transform: translateX(var(--button-toggle-offset));
-    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
-    transition: 0.3s all ease-in-out;
-   }
-   
-   .switch input[type="checkbox"]:checked + .slider {
-    background-color: var(--color-green);
-   }
-   
-   .switch input[type="checkbox"]:checked + .slider::after {
-    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
-    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
-   }
-   
-   .switch input[type="checkbox"] {
-    display: none;
-   }
-   
-   .switch input[type="checkbox"]:active + .slider::after {
-    width: var(--toggle-wider);
-   }
-   
-   .switch input[type="checkbox"]:checked:active + .slider::after {
-    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
-   }
-
-
-   /*----------------------------inputArchivo-----------------------*/
-  .file-select {
-    position: relative;
-  }
-  
-  .file-select::before {
-    background-color: #c8c8c8;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    content: 'Seleccionar'; /* testo por defecto */
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-  
-  .file-select input[type="file"] {
-    cursor: pointer;
-    opacity: 0;
-    width: 200px;
-    height: 32px;
-    display: block;
-  }
-
-  .nomImg{
-      color: black;
-      position: absolute;
-      z-index: 2000;
-  }
-  
-  #src-file1::before {
-    content: 'Seleccionar Imagen Libro';
-  }
-  
-
-
-
-
-
-   
-
-

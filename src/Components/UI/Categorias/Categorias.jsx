@@ -11,8 +11,11 @@ import { NavLink } from 'react-router-dom'
 
 
 export const Categorias = () => {
+
   return (
-    <div className="contenedor-categorias">
+    <div className='container-cate-tilulo'>
+      <h2>Filtra tu busqueda</h2>
+      <div className="contenedor-categorias">
         <div className="comics">
           <NavLink to='/Comics'><Imagenes url={comics} id="Academicos"/></NavLink>
           <p>Comics</p>
@@ -41,7 +44,10 @@ export const Categorias = () => {
           <NavLink to='/Academicos'><Imagenes url={academico} id="categorias"/></NavLink>
           <p>Academicos</p>
         </div>
+      </div>
+      
     </div>
+    
 
   )
 }

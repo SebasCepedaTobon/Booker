@@ -1,5 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
+import Typewriter from "typewriter-effect";
+import { Imagenes } from '../../UI/Imagenes/Imagenes';
 import { Navegacion } from '../../UI/Navegacion/Navegacion'
+import imgHeader from '../../../assets/Imagenes/imgheader.png'
+import imgbottom from '../../../assets/Imagenes/wave.svg'
+import imgbottom2 from '../../../assets/Imagenes/wave2.svg'
 
 
 
@@ -9,46 +14,9 @@ import { Navegacion } from '../../UI/Navegacion/Navegacion'
 
 export const Header = () => {
 
-  const [libros, setLibros] = useState([]);
-  const [Tablaslibros, setTablaLibros] = useState([]);
-  const [busqueda, setbusqueda] = useState("");
+  const [buscarText, setBuscartext] = useState("");
 
-
-  const peticionLibro = () =>{
-    
-    fetch("https://rickandmortyapi.com/api/character/")
-    .then(res => res.json())
-    .then((data) =>{
-      setLibros(data.results)
-      setTablaLibros(data.results)
-      console.log(data.results)
-    })
-
-  }
-
-  useEffect(()=>{
-    peticionLibro();
-  },[])
-
-  const filtrarBusqueda = (terminacionBusqueda) =>{
-    let resultadoBusqueda = Tablaslibros.filter((elemento)=>{
-      if(elemento.name.toString().toLowerCase().includes(terminacionBusqueda.toLowerCase())
-      || elemento.gender.toString().toLowerCase().includes(terminacionBusqueda.toLowerCase())){
-        return elemento;
-      }
-    });
-    setLibros(resultadoBusqueda)
-  }
-
-
-  const ChangeBusqueda = (e) =>{
-    setbusqueda(e.target.value)
-    filtrarBusqueda(e.target.value)
-
-  }
-
-
-
+  
 
   const buscar = (e) => {
     e.preventDefault();
@@ -58,31 +26,38 @@ export const Header = () => {
       <Navegacion/>
       <div className="banner">
         <div className="banner-contenido">
-          <h1 className="poema">¡BUSCA LOS MEJORES LIBROS!</h1>
-          <form className="barra-busqueda" onSubmit={buscar}>
-            <input 
-              type="text" 
-              placeholder='BUSCAR' 
-              id='buscar' 
-              onChange={ChangeBusqueda}
-            />
-            <button type='submit' className='btn-search'><i class="fa-solid fa-magnifying-glass"></i></button>
-          </form>
-          <div className="conatiner-table-libros">
-            <div className="tabla">
-              <div className="container-nombres">
-                <h4>Nombres</h4>
-                {libros.map((libro => <p>{libro.name}</p>))}
-              </div>
-              <div className="conatiner-estados">
-                <h4>Estados</h4>
-                {libros.map((libro => <p>{libro.gender}</p>))}
+          <div className="conatainer-texto-bsqueda">
+            <div className="container-text">
+              <p>ENCUENTRA AQUÍ</p>
+              <div className="texto-estatico">
+                <Typewriter
+                  options={{
+                    strings: ['Exposiciones digitales', 'Literatura Digital', 'Comics, Manga y libros con muchas aventuras'],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
               </div>
             </div>
+            <form className="barra-busqueda" onSubmit={buscar}>
+              <input 
+                type="text" 
+                placeholder='BUSCAR' 
+                id='buscar' 
+                value={buscarText} 
+                onChange= {(e) => setBuscartext(e.target.value)}
+              />
+              <button type='submit' className='btn-search'>BUSCAR</button>
+            </form>
+          </div>
+          <div className="img-header">
+            <Imagenes url={imgHeader}/>
           </div>
         </div>
       </div>
-      <div className="banner-degrade"></div>
+      <div className="container-img-bottom">
+          <Imagenes url={imgbottom}/> 
+      </div>
     </div>
   )
 }

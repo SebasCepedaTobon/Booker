@@ -30,11 +30,7 @@ export const Libros = ({libro}) => {
   }
 
   const [cerrar, setCounter] = useState(true)
-  const ventanaReserva  = () => {setCounter(false)}
-  const ventanaReserva2 = () => {
-    setCounter(!cerrar)
-    console.log(cerrar);
-  }
+  const ventanaReserva  = () => {setCounter(!cerrar)}
 
 
 
@@ -47,7 +43,7 @@ export const Libros = ({libro}) => {
         from_tablas.style.opacity="0"
     }else{  
         from_tablas.style.visibility = "visible"
-        from_tablas.style.bottom="0"
+        from_tablas.style.top="0"
         from_tablas.style.opacity="2"
     }
 
@@ -57,62 +53,41 @@ export const Libros = ({libro}) => {
 
   return (
     <>
-      <div>
+
       <div className="cardss">
+        
         <div className="contenedor-libro">
+      
+    
           <div className="libro">
-            <Imagenes url={libro.image} id="libro"/>
-            </div>
-            <div className="btn-card">
-              <div className="container_vacio">
-              </div>
-              <div className="container_botones">
-                <NavLink to={"/Libro/" + libro.id}><Botonmas2/></NavLink>
-                <button className='btn-vermas2' onClick={addLibros}>
-                  <div class="svg-wrapper-1">
-                    <div class="svg-wrapper">
-                      {/* <GiBookshelf className='icon-reservar' /> */}
-                    </div>
-                  </div>
-                  <span>Reservar</span>
-                </button>
-                </div>
-              </div>
+            <Imagenes url={libro.image} id="libro" />
           </div>
-          <div className="blanco">
+          <div className="btn-card">
+            <div className="container_vacio">
+            </div>
+            <div className="container_botones">
+              <button className='btn-vermas2' onClick={addLibros}>
+              <i class="fa-solid fa-heart"></i>
+              <NavLink to={"/Libro/" + libro.id}>Ver más</NavLink>
+              <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="blanco">
+          <p>{libro.name}</p>
         </div>
       </div>
-    </div>
     <div className="from-tablas3">
       <div className="conatiner-img-reserva">
-        {(reservas.map((libros => 
-          <Imagenes key={libros.id} url={libros.image} id="libro-reserva"/>
-        )))} 
       </div>
       <div className="container-msj-reserva">
-        <p id='p-reserva'>¡Tienes una nueva reserva!</p>
-        <div id='contador-reserva'>
-          {reservas?.length > 1 ? (<p>Ahora tienes {reservas?.length} reservas</p>):
-          (<p>Ahora tienes {reservas?.length} reserva</p>)}
-        </div>
+        <p>!Tienes una nueva reserva¡</p>
+        <p>Ahora tienes {reservas?.length} reservas</p>
       </div>
       <div className="container-btn-reserva">
-        <NavLink to='/Historial'>
-          <button className='btn-vermas2'>
-            <div class="svg-wrapper-1">
-            <div class="svg-wrapper">
-              </div>
-              </div>
-              <span>Ver reservas</span>
-          </button>
-        </NavLink>
-        <button className='btn-vermas2' onClick={ventanaReserva2}>
-          <div class="svg-wrapper-1">
-          <div class="svg-wrapper">
-            </div>
-            </div>
-            <span>Cerrar</span>
-        </button>
+        <button>Ver reservas</button>
+        <button onClick={ventanaReserva}>cerrar</button>
       </div>
     </div>
     </>

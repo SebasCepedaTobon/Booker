@@ -1,0 +1,108 @@
+.libros{
+  width: 100%;
+  height: 500px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  flex-direction: column;
+  background-color: #726767;
+}
+
+
+.contenedor-libro{
+  width: 300px;
+  height: 450px;
+  background-color: #2591DA;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+}
+
+.cardss{
+  margin-left: 30px;
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center; 
+}
+
+.contenedor-libro:hover .libro{
+  position: absolute;
+  z-index: -1;
+}
+
+.contenedor-libro:hover{
+  background-color: rgba(0, 0, 0, 0.521);
+}
+
+.contenedor-libro:hover .btn-card{
+  height: 100%;
+}
+
+.contenedor-libro:hover .container_botones{
+  bottom: 15px;
+}
+
+
+
+.btn-card{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  transition: all 400ms;
+}
+
+.btn-card .container_vacio{
+  height: 80%;
+}
+
+.btn-card .container_botones{
+  height: 40%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  bottom: -120px;
+  transition: all 600ms;
+  z-index: 1;
+}
+
+.blanco{
+  height: 130px;
+  width: 250px;
+
+  background-color: white;
+  z-index: 2;
+}
+
+
+/* .btn-card .container_botones{
+  height: 0%;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+
+.container_botones a{
+  text-decoration: none;
+}
+
+
+
+
+
+.libro img{
+  width: 250px;
+  height: 400px;
+}

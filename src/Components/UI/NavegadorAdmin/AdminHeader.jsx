@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Imagenes } from '../Imagenes/Imagenes'
 
-import perfil from '../../../assets/Imagenes/perfil.jpeg';
+// import { FaSearch } from 'react-icons/fa';
+// import { FiSettings } from 'react-icons/fi';
+// import { BsCalendarCheck } from 'react-icons/bs';
+
 import { NavLink } from 'react-router-dom';
+import perfil from '../../../assets/Imagenes/perfil.jpeg';
 import React from 'react';
 
 
@@ -15,6 +19,7 @@ export const AdminHeader = () => {
     useEffect(() => {
       const buscador = document.getElementById('buscador')
       const HeaderAdmin = document.querySelector('.HeaderAdmin')
+      const input = document.querySelector('.elInput')
 
       if(buscar === true){
         buscador.style.visibility = "hidden"
@@ -54,7 +59,7 @@ export const AdminHeader = () => {
         </div>
         <div id='buscador' className="buscador">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input className='elInput' type="text" autoFocus placeholder='Buscar...'/>
+            <input className='elInput' type="text" placeholder='Buscar...'/>
             <i onClick={boxBuscador} class="fa-solid fa-xmark"></i>
         </div>
     
