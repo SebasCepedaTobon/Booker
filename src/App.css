@@ -412,7 +412,6 @@
 .contenedor-libro{
   width: 250px;
   height: 300px;
-  background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -433,15 +432,15 @@
 }
 
 .contenedor-libro:hover{
-  background-color: rgba(0, 0, 0, 0.521);
+
 }
 
 .contenedor-libro:hover .btn-card{
-  height: 100%;
+  height: 50%;
 }
 
 .contenedor-libro:hover .container_botones{
-  bottom: 15px;
+  bottom: 10px;
 }
 
 
@@ -464,9 +463,9 @@
 
 .btn-card .container_botones{
   height: 40%;
-  width: 85%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
@@ -475,15 +474,46 @@
   z-index: 1;
 }
 
+
+.container_botones button{
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+
+
+}
+
+.container_botones button:hover{
+  background-color: #2591DA;
+}
+
+.container_botones button:hover i{
+  color: white;
+  
+}
+
+
+.container_botones button i{
+  color: #000000;
+}
 .blanco{
-  height: 130px;
-  width: 85%;
   background-color: white;
+  height: 130px;
+  width: 86%;
   z-index: 2;
 }
 
 .blanco p{
-  font-size: 15px;
+  font-size: 17px;
+  margin-left: 20px;
+  margin-top: 10px;
+  color: #2591DA;
+}
+
+.blanco h2{
+  font-size: 20px;
   margin-left: 20px;
   margin-top: 10px;
 }
@@ -500,8 +530,7 @@
 
 .libro img{
   width: 250px;
-  height: 300px;
-  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.325);
+  height: 350px;
 }
 
 

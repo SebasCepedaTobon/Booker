@@ -4,10 +4,52 @@ import { NavLink } from 'react-router-dom'
 import { Botonmas2 } from '../Botones/Botonmas2'
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
+import Slider2 from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import '../../../slick.css'
 //Product
 
 
 export const Libros = ({libro}) => {
+
+  const settings2 = {
+    dots: true,
+    infinite: true,
+    slidesToShow:2,
+    slidesToScroll: 2,
+    autoplay: true,
+    speed: 6000,
+    autoplaySpeed: 5000,
+    cssEase: "linear",
+    initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+  };
 
   //Funcion que guarda las propiedades del estado de los libros
   const {name , id, image } = libro;
@@ -30,7 +72,11 @@ export const Libros = ({libro}) => {
   }
 
   const [cerrar, setCounter] = useState(true)
-  const ventanaReserva  = () => {setCounter(!cerrar)}
+  const ventanaReserva  = () => {setCounter(false)}
+  const ventanaReserva2 = () => {
+    setCounter(!cerrar)
+    console.log(cerrar);
+  }
 
 
 
@@ -43,7 +89,7 @@ export const Libros = ({libro}) => {
         from_tablas.style.opacity="0"
     }else{  
         from_tablas.style.visibility = "visible"
-        from_tablas.style.top="0"
+        from_tablas.style.bottom="0"
         from_tablas.style.opacity="2"
     }
 
@@ -51,45 +97,73 @@ export const Libros = ({libro}) => {
   },[cerrar]);
 
 
+
+
+
+
+
+  
+
+
   return (
     <>
-
-      <div className="cardss">
-        
-        <div className="contenedor-libro">
-      
-    
-          <div className="libro">
-            <Imagenes url={libro.image} id="libro" />
+        <div className="cardss">
+          <div className="contenedor-libro">
+            <div className="libro">
+              <Imagenes url={libro.image} id="libro" />
+            </div>
+            <div className="btn-card">
+              <div className="container_vacio">
+              </div>
+              <div className="container_botones">
+                <button className='btn-agLibro' onClick={addLibros}>
+                  <i class="fa-solid fa-book-bookmark"></i>
+                </button>
+                <button className='icon-like'>
+                  <i class="fa-solid fa-heart"></i>
+                </button>
+                <NavLink to={"/Libro/" + libro.id}><button className='btn-verlibro'><i class="fa-solid fa-eye"></i></button></NavLink>
+              </div>
+            </div>
           </div>
-          <div className="btn-card">
-            <div className="container_vacio">
-            </div>
-            <div className="container_botones">
-              <button className='btn-vermas2' onClick={addLibros}>
-              <i class="fa-solid fa-heart"></i>
-              <NavLink to={"/Libro/" + libro.id}>Ver más</NavLink>
-              <i class="fa-solid fa-eye"></i>
-              </button>
-            </div>
+          <div className="blanco">
+            <h2>{libro.name}</h2>
+            <p>{libro.gender}</p>
           </div>
         </div>
-        <div className="blanco">
-          <p>{libro.name}</p>
-        </div>
-      </div>
-    <div className="from-tablas3">
+      <div className="from-tablas3">
       <div className="conatiner-img-reserva">
+        {(reservas.map((libros => 
+          <Imagenes key={libros.id} url={libros.image} id="libro-reserva"/>
+        )))} 
       </div>
       <div className="container-msj-reserva">
-        <p>!Tienes una nueva reserva¡</p>
-        <p>Ahora tienes {reservas?.length} reservas</p>
+        <p id='p-reserva'>¡Tienes una nueva reserva!</p>
+        <div id='contador-reserva'>
+          {reservas?.length > 1 ? (<p>Ahora tienes {reservas?.length} reservas</p>):
+          (<p>Ahora tienes {reservas?.length} reserva</p>)}
+        </div>
       </div>
       <div className="container-btn-reserva">
-        <button>Ver reservas</button>
-        <button onClick={ventanaReserva}>cerrar</button>
+        <NavLink to='/Historial'>
+          <button className='btn-vermas2'>
+            <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              </div>
+              </div>
+              <span>Ver reservas</span>
+          </button>
+        </NavLink>
+        <button className='btn-vermas2' onClick={ventanaReserva2}>
+          <div class="svg-wrapper-1">
+          <div class="svg-wrapper">
+            </div>
+            </div>
+            <span>Cerrar</span>
+        </button>
       </div>
     </div>
+    
     </>
   )
 }
