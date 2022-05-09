@@ -1,55 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import { NavLink } from 'react-router-dom'
-import { Botonmas2 } from '../Botones/Botonmas2'
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
-import Slider2 from "react-slick";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
 import '../../../slick.css'
 //Product
 
 
 export const Libros = ({libro}) => {
 
-  const settings2 = {
-    dots: true,
-    infinite: true,
-    slidesToShow:2,
-    slidesToScroll: 2,
-    autoplay: true,
-    speed: 6000,
-    autoplaySpeed: 5000,
-    cssEase: "linear",
-    initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-  };
 
   //Funcion que guarda las propiedades del estado de los libros
   const {name , id, image } = libro;

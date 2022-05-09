@@ -1,17 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import avatar from '../../../assets/Imagenes/iconos/avata.png'
-import { Imagenes } from '../../UI/Imagenes/Imagenes'
 
-// import { FaUserAlt, FaPowerOff } from 'react-icons/fa';
-// import { ImBooks } from 'react-icons/im';
-// import { RiFileDamageFill } from 'react-icons/ri';
+
+
 
 export const BotonesPerfil = () => {
   return (
       <div className="botones-perfil">
           <div className="img-nombre">
-              <Imagenes url={avatar} id="avatar-perfil" />
+            <i class="fa-solid fa-user"></i>
               <div className="usu">
                   <h2>@Usuario</h2>
                   <p id='Bienvenido'>Bienvenido a tu cuenta</p>

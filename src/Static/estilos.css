@@ -305,17 +305,18 @@ cursor: pointer;
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 45rem;
-    margin-top: 90px;
+    margin-top: 70px;
     margin-bottom: 50px;
+
+
 }
 
 .botones-perfil{
-    background-color: #ececec;
     width: 22.7%;
     height: 800px;
     display: flex;
     flex-direction: column;
+  
 }
 
 .img-nombre{
@@ -329,11 +330,12 @@ cursor: pointer;
 }
 
 .usu{
-    margin-left: -20px;
+   margin-left: 30px;
 }
 
-#avatar-perfil{
-    width: 200px;
+.img-nombre i{
+    font-size: 70px;
+    color: #000000;
 }
 
 .btns{
@@ -361,7 +363,7 @@ hr{
 }
 
 #Bienvenido{
-    color: #a6a6a6;
+    color: #2691d9;
 }
 
 .datos-perfil{
@@ -377,7 +379,10 @@ hr{
 .p-hr{
     margin-top: 30px;
     margin-left: 40px;
-
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 30px;
+    width: 100%;
 }
 
 .container-inputs{
@@ -682,8 +687,163 @@ hr{
 }
 
 
+/*cards-reservas*/
+
+.contendor-cards-libros{
+
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 500px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    flex-direction: column;
+    
+  }
+  
+  
+  .contenedor-reservas{
+    width: 250px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  
+  }
+  
+  .cards-reservas{
+   display: flex;
+   flex-direction: column;
+   align-items: center; 
+   justify-content: center;
+   box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+   width: 270px;
+   height: 360px;
+  }
+  
+  .contenedor-reservas:hover .libro{
+    position: absolute;
+    z-index: -1;
+  }
+  
+  
+  
+  .contenedor-reservas:hover .btn-reservas{
+    height: 50%;
+  }
+  
+  .contenedor-reservas:hover .container_botones2{
+    bottom: 2px;
+  }
+  
+  
+  
+  .btn-reservas{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    transition: all 400ms;
+  }
+  
+  .btn-reservas .container_vacio{
+    height: 80%;
+  }
+  
+  .btn-reservas .container_botones2{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    bottom: -120px;
+    transition: all 600ms;
+    z-index: 1;
+  }
+  
+  
+  .container_botones2 button{
+    cursor: pointer;
+    width: 99%;
+    height: 40px;
+    border: none;
+    margin-right: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background:#2691d9;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  }
+
+    .container_botones2 button .text {
+    transform: translateX(90px);
+    color: white;
+    font-size: 17px;
+    margin-right: 50px;
+   }
+
+  .container_botones2 button span {
+    transition: 200ms;
+   }
+
+   .container_botones2 button .icon {
+    position: absolute;
+    border-left: 1px solid white;
+    transform: translateX(200px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+  
+  
+
+   .container_botones2 button svg {
+    width: 15px;
+    fill: #eee;
+   }
+   
+   .container_botones2 button:hover {
+    background:#a6a6a6;
+   }
+   
+   .container_botones2 button:hover .text {
+    color: transparent;
+   }
+   
+   .container_botones2 button:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(50px);
+   }
+   
+   .container_botones2 button:focus {
+    outline: none;
+   }
+   
+   .container_botones2 button:active .icon svg {
+    transform: scale(0.8);
+   }
 
 
-
-
-
+   .blanco{
+    background-color: white;
+    width: 99%;
+    z-index: 2;
+    margin-top: -5px;
+  }
+  
+  
+  .libro-reserva img{
+    width: 99%;
+    height: 90%;
+    margin-top: 10px;
+  }

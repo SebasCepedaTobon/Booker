@@ -20,7 +20,7 @@ export const Navegacion2 = () => {
   return (
     <div className="nav2">
       <NavLink to='/Home'><Imagenes url={logo} id="logo" /></NavLink>
-      <div className="nav-a">
+      <div className="nav-a2">
         <NavLink to='/Historial'>
           <div className="contador">
             <p>{reservas?.length}</p>
