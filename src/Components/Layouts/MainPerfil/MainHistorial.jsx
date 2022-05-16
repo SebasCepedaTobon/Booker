@@ -16,8 +16,8 @@ export const MainHistorial = () => {
         <BotonesPerfil/>
         <div className="datos-perfil">
             <h2 id='Tu-cuenta'>Tus Reservas</h2>
-            <div className="p-hr">
-                {reservas.length === 0 ? (<div>
+            <div className="info-reservas">
+                {reservas.length === 0 ? (<div className='no-reserva'>
                   <h3>No tienes reservas por ahora...</h3>
                   <Imagenes url={Noreserva}/>
                 </div>) : 
