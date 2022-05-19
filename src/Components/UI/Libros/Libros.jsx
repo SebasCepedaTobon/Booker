@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom'
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
 import '../../../slick.css'
+import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
+import { AbrirModal } from '../AbrirModal/AbrilModal';
+
 //Product
 
 
@@ -14,11 +17,15 @@ export const Libros = ({libro}) => {
   const {name , id, image } = libro;
 
   const [{reservas}, dispatch] = useStateValue();
+  const {ventanaReserva} = AbrirModal()
+  
 
 
 
   //Funcion para agregar libros a las reservas
+  let idLibros
   const addLibros = () => {
+    
     dispatch({
       type: actionTypes.ADD_TO_RESERVA,
       item: {
@@ -30,39 +37,14 @@ export const Libros = ({libro}) => {
     ventanaReserva()
   }
 
-  const [cerrar, setCounter] = useState(true)
-  const ventanaReserva  = () => {setCounter(false)}
-  const ventanaReserva2 = () => {
-    setCounter(!cerrar)
-    console.log(cerrar);
+  const addLibros2 = () =>{
+    idLibros = id
+    dispatch({
+      type: actionTypes.DETALLES_LIBRO,
+      id:idLibros
+    })
+    addLibros()
   }
-
-
-
-  useEffect(() => {
-    //const overlay = document.getElementById('overlay2')
-    const from_tablas = document.querySelector('.from-tablas3')
-
-    if(cerrar === true){
-        from_tablas.style.visibility = "hidden"
-        from_tablas.style.opacity="0"
-    }else{  
-        from_tablas.style.visibility = "visible"
-        from_tablas.style.bottom="0"
-        from_tablas.style.opacity="2"
-    }
-
-
-  },[cerrar]);
-
-
-
-
-
-
-
-  
-
 
   return (
     <>
@@ -75,7 +57,7 @@ export const Libros = ({libro}) => {
               <div className="container_vacio">
               </div>
               <div className="container_botones">
-                <button className='btn-agLibro' onClick={addLibros}>
+                <button className='btn-agLibro' onClick={addLibros2}>
                   <i class="fa-solid fa-book-bookmark"></i>
                 </button>
                 <button className='icon-like'>
@@ -90,39 +72,6 @@ export const Libros = ({libro}) => {
             <p>{libro.gender}</p>
           </div>
         </div>
-      <div className="from-tablas3">
-      <div className="conatiner-img-reserva">
-        {(reservas.map((libros => 
-          <Imagenes key={libros.id} url={libros.image} id="libro-reserva"/>
-        )))} 
-      </div>
-      <div className="container-msj-reserva">
-        <p id='p-reserva'>¡Tienes una nueva reserva!</p>
-        <div id='contador-reserva'>
-          {reservas?.length > 1 ? (<p>Ahora tienes {reservas?.length} reservas</p>):
-          (<p>Ahora tienes {reservas?.length} reserva</p>)}
-        </div>
-      </div>
-      <div className="container-btn-reserva">
-        <NavLink to='/Historial'>
-          <button className='btn-vermas2'>
-            <div class="svg-wrapper-1">
-            <div class="svg-wrapper">
-              </div>
-              </div>
-              <span>Ver reservas</span>
-          </button>
-        </NavLink>
-        <button className='btn-vermas2' onClick={ventanaReserva2}>
-          <div class="svg-wrapper-1">
-          <div class="svg-wrapper">
-            </div>
-            </div>
-            <span>Cerrar</span>
-        </button>
-      </div>
-    </div>
-    
     </>
   )
 }

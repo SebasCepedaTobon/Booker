@@ -13,7 +13,7 @@ export const Checkoud = ({libro}) => {
 
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {name , id, image, gender } = libro;
+  const {name , id, image, gender, quantity } = libro;
 
 
   const [{reservas}, dispatch] = useStateValue();
@@ -21,6 +21,7 @@ export const Checkoud = ({libro}) => {
   const borrarLibro = () => dispatch({
       type: actionTypes.BORRAR_LIBRO,
       id: id,
+      
   })
 
 
@@ -44,7 +45,7 @@ export const Checkoud = ({libro}) => {
     </div>
     <div className="blanco">
       <h2>{libro.name}</h2>
-      <p>{libro.gender}</p>
+      <p>{libro.quantity}</p>
     </div>
   </div>
             

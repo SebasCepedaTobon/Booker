@@ -32,7 +32,7 @@ export const Header = () => {
               <div className="texto-estatico">
                 <Typewriter
                   options={{
-                    strings: ['Exposiciones digitales', 'Literatura Digital', 'Comics, Manga y libros con muchas aventuras'],
+                    strings: ['Exposiciones digitales', 'Literatura Digital', 'Comics, historietas y manga'],
                     autoStart: true,
                     loop: true,
                   }}

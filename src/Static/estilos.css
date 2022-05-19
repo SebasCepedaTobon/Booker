@@ -493,6 +493,10 @@ hr{
 .info-reservas{
     margin-top: 20px;
     margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 40px;
+    margin-bottom: 100px;
 }
 
 .no-reserva{
@@ -685,71 +689,21 @@ hr{
 /*Ventana Reservas*/
 /*Ventana Reservas*/
 
-.from-tablas3{
-    background-color: rgb(0, 0, 0);
-    position: fixed;
+.from-tablas2{
+    background-color: rgba(0, 0, 0, 0.747);
     height: 130px;
     width: 100vw;
+    bottom: 0;
+    position: fixed;
     border-bottom: 2px solid #2691d9;
-    border-top: 2px solid #2691d9;
     z-index: 10;
+    top: -100px;
     opacity: 0;
-    bottom: -100px;
     visibility: hidden;
     transition: all 300ms ease;
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
-
-.conatiner-img-reserva{
-    position: absolute;
-    left: 10%;
-
-
-
-}
-
-.container-msj-reserva{
-    position: absolute;
-    left: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid black;
-    width: 700px;
-}
-
-.container-btn-reserva{
-    position: absolute;
-    right: 5%;
-    display: flex;
-    flex-direction: row;
-}
-
-.container-btn-reserva button{
-    margin-right: 10px;
-}
-
-#libro-reserva{
-    width: 80px;
-    border-radius: 100%;
-    margin-left: -30px;
-    
-}
-
-#p-reserva{
-    font-size: 40px;
-    font-weight: bold;
-    color: #2691d9;
-}
-
-#contador-reserva{
-    font-size: 25px;
-    color: white;
-}
-
 
 /*cards-reservas*/
 

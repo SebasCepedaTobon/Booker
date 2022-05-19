@@ -10,6 +10,8 @@ import { Spinner } from '../../UI/Spinner/Spinner';
 import { Categorias } from '../../UI/Categorias/Categorias';
 import { Eventos } from '../../UI/Eventos/Eventos';
 import { Libromv } from '../../UI/LibroMV/Libromv';
+import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
+
 //checkoutCard
 
 
@@ -154,6 +156,7 @@ export const MainHome = () => {
         </div>
       </div>
       <Libromv/>
+      <VentanaReserva/>
     </div>  
   )
   
