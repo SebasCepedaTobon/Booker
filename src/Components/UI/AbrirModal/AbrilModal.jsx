@@ -21,17 +21,20 @@ export const AbrirModal = () => {
     
      
     const from_tablas2 = document.querySelector('.from-tablas2')
+    const overlay = document.getElementById('overlay')
 
     if(cerrar === true){
         setCerrar(!cerrar)
         console.log("cierra", cerrar);
+        overlay.style.visibility = "hidden"
         from_tablas2.style.visibility = "hidden"
         from_tablas2.style.opacity="0"
     }else if(abrir === true){  
         setCounter(!abrir)
         console.log("abre", abrir)
+        overlay.style.visibility = "visible"
         from_tablas2.style.visibility = "visible"
-        from_tablas2.style.top="0"
+        from_tablas2.style.top="-10"
         from_tablas2.style.opacity="2"
     }
 

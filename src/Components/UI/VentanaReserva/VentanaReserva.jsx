@@ -20,36 +20,36 @@ export const VentanaReserva = () => {
   }, [capLibro]);
 
   return (
-    <div className="from-tablas2">
-      <div className="conatiner-img-reserva">
-          {!libros ? "..." :
-          <Imagenes url={libros.image} id="libro-reserva"/>
-          }
-      </div>
-      <div className="container-msj-reserva">
-        <p id='p-reserva'>¡Tienes una nueva reserva!</p>
-        <div id='contador-reserva'>
-          {reservas?.length > 1 ? (<p>Ahora tienes {reservas?.length} reservas</p>):
-          (<p>Ahora tienes {reservas?.length} reserva</p>)}
+    <div id='overlay' className='overlay2'>
+      <div className="from-tablas2">
+          <div className="libros-check">
+            <i class="fa-solid fa-check"></i>
+            <p id='p-reserva'>¡Tienes una nueva reserva!</p>
+            <a className='btn-vermas2' onClick={ocultarReserva}>
+                X
+            </a>
+          </div>
+          <hr />
+        <div className="contender-info-reservados">
+          <div className="conatiner-img-reserva">
+              {!libros ? "..." :
+                <Imagenes url={libros.image} id="libro-reserva"/>
+              }
+          </div>
+          <div className="info-btns">
+            <div id='contador-reserva'>
+              {reservas?.length > 1 ? (<p>Ahora tienes {reservas?.length} reservas</p>):
+              (<p>Ahora tienes {reservas?.length} reserva</p>)}
+            </div>
+            <div className="container-btn-reserva">
+              <NavLink to='/Historial'>
+                <button >
+                Ver reserva
+                </button>
+              </NavLink>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="container-btn-reserva">
-        <NavLink to='/Historial'>
-          <button className='btn-vermas2'>
-            <div class="svg-wrapper-1">
-            <div class="svg-wrapper">
-              </div>
-              </div>
-              <span>Ver reservas</span>
-          </button>
-        </NavLink>
-        <button className='btn-vermas2' onClick={ocultarReserva}>
-          <div class="svg-wrapper-1">
-          <div class="svg-wrapper">
-            </div>
-            </div>
-            <span>Cerrar</span>
-        </button>
       </div>
     </div>
   )

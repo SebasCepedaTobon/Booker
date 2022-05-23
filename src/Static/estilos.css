@@ -687,20 +687,73 @@ hr{
 
 /**/
 /*Ventana Reservas*/
-/*Ventana Reservas*/
 
 .from-tablas2{
-    background-color: rgba(0, 0, 0, 0.747);
-    height: 130px;
-    width: 100vw;
-    bottom: 0;
-    position: fixed;
-    border-bottom: 2px solid #2691d9;
+    background-color: rgb(248, 248, 248);
+    width: 60%;
+    height: 35%;
     z-index: 10;
-    top: -100px;
-    opacity: 0;
     visibility: hidden;
+    transition: all 600ms ease;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.from-tablas2 hr{
+    width: 90%;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.libros-check{
+    display: flex;
+    flex-direction: row;
+    color: #2691d9;
+    align-items: center;
+}
+.libros-check a{
+    cursor: pointer;
+    font-size: 30px;
+    margin-left: 55%;
+}
+
+.libros-check p{
+    font-size: 25px;
+    margin-left: 40px;
+    margin-top: 20px;
+    letter-spacing: 3px;
+    
+}
+
+.libros-check i{
+    font-size: 25px;
+    margin-top: 20px;
+    margin-right: -30px;
+    margin-left: 80px;
+
+}
+
+
+.overlay2{
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: rgba(165, 165, 165, 0.563);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
     transition: all 300ms ease;
+    visibility: hidden;
+    z-index: 10;
+}
+
+.contender-info-reservados{
     display: flex;
     flex-direction: row;
 }
@@ -718,6 +771,13 @@ hr{
     flex-direction: column;
     
   }
+
+#libro-reserva{
+    width: 200px;
+    margin-top: 7px;
+    margin-left: 100px;
+    border-radius: 10px;
+}
   
   
   .contenedor-reservas{
