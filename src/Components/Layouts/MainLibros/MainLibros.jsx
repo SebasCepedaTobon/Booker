@@ -10,7 +10,7 @@ export const MainLibros = ( ) => {
 
     const [{reservas}, dispatch] = useStateValue();
 
-    const { LibroId } = useParams();
+    const { id_libro } = useParams();
     const [cargando, setCargando] = useState(true);
 
 
@@ -18,13 +18,13 @@ export const MainLibros = ( ) => {
 
     useEffect(() => {
         setCargando(true);
-        fetch("https://rickandmortyapi.com/api/character/" + LibroId)
+        fetch("http://127.0.0.1:8000/modulos/libros/" + id_libro)
             .then(res => res.json())
             .then((data) => {
                 setLibros(data)
                 setCargando(false)
             })
-    }, [LibroId]);
+    }, [id_libro]);
 
     if (cargando){
         return (
@@ -34,8 +34,8 @@ export const MainLibros = ( ) => {
 
 
     const addLibros = () => {
-        const image = libros.image
-        const name = libros.name
+        const image = libros.imagen_libro
+        const name = libros.nombre
         dispatch({
           type: actionTypes.ADD_TO_RESERVA,
           item: {
@@ -50,33 +50,37 @@ export const MainLibros = ( ) => {
     return (
         <div className='mainlibros'>
             <div className="imglibros">
-                <Imagenes url={libros.image} id="libro" />
+                <Imagenes url={libros.imagen_libro} id="libro" />
             </div>
             <div className="libros2">
                 <div className="info-libro">
-                    <h2 className='titulo'>{libros.name}</h2>
-                    <p className='autor'>Mario Mendoza</p>
-                    <p className='estado'>Estado:</p>
+                    <h2 className='titulo'>{libros.nombre}</h2>
+                    {libros.autores.map((libro)=>{
+                        return(
+                            <p>Autor: {libro.nombres} {libro.apellidos}</p>
+                        ) 
+                    
+                    })}
+                    <p className='estado'>{libros.estado === "A" ? (
+                        <p>Estado: Activo</p>
+
+                    ):(<p>Estado: Inactivo</p>)}
+                    </p>
+                    
                 </div>
                 <div className="detalles-libro">
                     <h3 className='detalles'>Detalles del Libro:</h3>
                     <hr />
-                    <p className='año'>Año:</p>
-                    <p className='Editor'>Editor:</p>
-                    <p className='Paginas'>Paginas:</p>
-                    <p className='Idioma'>Idioma:</p>
-                    <p className='Fecha'>Fecha:</p>
-                    <p className='Tamaño'>Tamaño:</p>
-                    <p className='Licencia'>Licencia:</p>
-                    <p className='ISBN'>ISBN:</p>
+                    <p className='Editorial'>Editorial: {libros.id_editorial.nombre}</p>
+                    <p className='Paginas'>Paginas: {libros.numero_paginas}</p>
+                    <p className='capitulos'>Capitulos: {libros.numero_capitulos}</p>
+                    <p className='Idioma'>Idioma: {libros.id_idioma.nombre}</p>
+                    <p className='ISBN'>ISBN: {libros.isbn}</p>
                 </div>
                 <div className="des-libro">
                     <h3 className='detalles'>Descripción:</h3>
                     <hr />
-                    <p className='descripcion'>Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Ipsa nisi hic rem maxime
-                        deserunt, ratione atque obcaecati natus minus nobis molestiae
-                        quae, nostrum tenetur, et sed quia soluta tempora repellat?</p>
+                    <p className='descripcion'>{libros.descripcion}</p>
                 </div>
                 <button className='btn-vermas2' onClick={addLibros}>
                     <div class="svg-wrapper-1">

@@ -14,7 +14,7 @@ export const Libros = ({libro}) => {
 
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {name , id, image } = libro;
+  const {nombre , id_libro, imagen_libro } = libro;
 
   const [{reservas}, dispatch] = useStateValue();
   const {ventanaReserva} = AbrirModal()
@@ -29,19 +29,19 @@ export const Libros = ({libro}) => {
     dispatch({
       type: actionTypes.ADD_TO_RESERVA,
       item: {
-        id,
-        name,
-        image,
+        id_libro,
+        nombre,
+        imagen_libro,
       }
     })
     ventanaReserva()
   }
 
   const addLibros2 = () =>{
-    idLibros = id
+    idLibros = id_libro
     dispatch({
       type: actionTypes.DETALLES_LIBRO,
-      id:idLibros
+      id_libro:id_libro
     })
     addLibros()
   }
@@ -51,7 +51,7 @@ export const Libros = ({libro}) => {
         <div className="cardss">
           <div className="contenedor-libro">
             <div className="libro">
-              <Imagenes url={libro.image} id="libro" />
+              <Imagenes url={libro.imagen_libro} id="libro" />
             </div>
             <div className="btn-card">
               <div className="container_vacio">
@@ -63,12 +63,12 @@ export const Libros = ({libro}) => {
                 <button className='icon-like'>
                   <i class="fa-solid fa-heart"></i>
                 </button>
-                <NavLink to={"/Libro/" + libro.id}><button className='btn-verlibro'><i class="fa-solid fa-eye"></i></button></NavLink>
+                <NavLink to={"/Libro/" + libro.id_libro}><button className='btn-verlibro'><i class="fa-solid fa-eye"></i></button></NavLink>
               </div>
             </div>
           </div>
           <div className="blanco">
-            <h2>{libro.name}</h2>
+            <h2>{libro.nombre}</h2>
             <p>{libro.gender}</p>
           </div>
         </div>

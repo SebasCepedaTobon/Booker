@@ -107,10 +107,10 @@ export const MainHome = () => {
 
   useEffect(()=> {
     setCargando(true);
-    fetch("https://rickandmortyapi.com/api/character/")
+    fetch("http://127.0.0.1:8000/modulos/libros/")
     .then(res => res.json())
     .then((data) =>{
-      setLibros(data.results)
+      setLibros(data)
       setCargando(false);
     })
   }, []);
@@ -133,7 +133,7 @@ export const MainHome = () => {
           <Slider2 {...settings2}>
             {libros.map((libro) => (
               <Libros
-                key={libro.id}
+                key={libro.id_libro}
                 libro={libro}
               />
             ))}
@@ -148,7 +148,7 @@ export const MainHome = () => {
           <Slider {...settings}>
             {libros.map((libro) => (
               <CardsSlider
-                key={libro.id}
+                key={libro.id_libro}
                 libro={libro}
               />
             ))}

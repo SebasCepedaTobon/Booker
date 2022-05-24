@@ -11,7 +11,7 @@ export const VentanaReserva = () => {
   const [libros, setLibros] = useState()
 
   useEffect(()=> {
-    fetch("https://rickandmortyapi.com/api/character/" + capLibro)
+    fetch("http://127.0.0.1:8000/modulos/libros/" + capLibro)
     .then(res => res.json())
     .then((data) =>{
       setLibros(data)
@@ -33,7 +33,7 @@ export const VentanaReserva = () => {
         <div className="contender-info-reservados">
           <div className="conatiner-img-reserva">
               {!libros ? "..." :
-                <Imagenes url={libros.image} id="libro-reserva"/>
+                <Imagenes url={libros.imagen_libro} id="libro-reserva"/>
               }
           </div>
           <div className="info-btns">

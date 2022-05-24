@@ -16,12 +16,12 @@ const reducer = (state, action) => {
     console.log(action)
     switch(action.type){
         case "ADD_TO_RESERVA":
-            let itemInCart = state.reservas.find(item => item.id === action.item.id)
+            let itemInCart = state.reservas.find(item => item.id_libro === action.item.id_libro)
             console.log(state.reservas)
         return itemInCart ? {
             ...state,
             reservas: state.reservas.map(item=> 
-                item.id===action.item.id 
+                item.id_libro===action.item.id_libro
                 ? {...item, quantity: item.quantity+1}
                 :item)
         } :{
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
             
         }
         case "BORRAR_LIBRO":
-        const index = state.reservas.findIndex((resrvaLibro => resrvaLibro.id === action.id))
+        const index = state.reservas.findIndex((resrvaLibro => resrvaLibro.id_libro === action.id_libro))
         let NuevaReserva = [...state.reservas];
         if ( index >= 0){
             NuevaReserva.splice(index, 1)
@@ -45,7 +45,7 @@ const reducer = (state, action) => {
             console.log(state.capLibro);
             return{
                 ...state,
-                capLibro: action.id
+                capLibro: action.id_libro
             }
         }
         default: return state;

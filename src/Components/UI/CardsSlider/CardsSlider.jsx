@@ -7,7 +7,7 @@ export const CardsSlider = ({ libro }) => {
 
   
 
-    const { name, id, image } = libro;
+    const { nombre, id_libro, imagen_libro, descripcion } = libro;
 
     return (
      
@@ -15,9 +15,11 @@ export const CardsSlider = ({ libro }) => {
           <div className='carta'>
             <div className="card">
               <div className='info2'>
-                <h2 id='titulo'>{name}</h2>
-                <p>Consectetur cum consequatur similique. Vero, sint iste ex ipsa modi hic quaerat, quibusdam autem, totam ea consequuntur dolore odit corrupti. Est, asperiores.</p>
-                <NavLink to={"/Libro/" + libro.id}>
+                <h2 id='titulo'>{nombre}</h2>
+        
+                  <p>{descripcion}</p>
+            
+                <NavLink to={"/Libro/" + libro.id_libro}>
                 <button class="learn-more">
                   <span class="circle" aria-hidden="true">
                     <span class="icon arrow"></span>
@@ -28,7 +30,7 @@ export const CardsSlider = ({ libro }) => {
               </div>
             </div>
           </div>
-          <Imagenes url={image} className="libro" />
+          <Imagenes url={imagen_libro} className="libro" />
         </div>
 
  

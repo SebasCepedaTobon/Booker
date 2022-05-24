@@ -491,7 +491,7 @@ hr{
 /*imformacion reservas*/
 
 .info-reservas{
-    margin-top: 20px;
+    margin-top: 80px;
     margin-left: 30px;
     display: flex;
     flex-wrap: wrap;
@@ -912,7 +912,7 @@ hr{
    }
 
 
-   .blanco{
+   .blanco2{
     background-color: white;
     width: 99%;
     z-index: 2;

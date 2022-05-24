@@ -57,7 +57,7 @@ function App() {
         <Route path='/Terror' element={<Terror/>} />
         <Route path='/TLibros' element={<TLibros/>} />
         <Route path='/TEstudiantes' element={<Estudiantes/>} />
-        <Route path='/Libro/:LibroId' element={<Libro/>}/>
+        <Route path='/Libro/:id_libro' element={<Libro/>}/>
         <Route path='/Reservas' element={<Reservas/>}/>
         <Route path='/Multas' element={<Multas/>}/>
         <Route path='/Prestamo' element={<Prestamo/>}/>

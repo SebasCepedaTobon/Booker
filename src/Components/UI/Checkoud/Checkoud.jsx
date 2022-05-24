@@ -13,14 +13,14 @@ export const Checkoud = ({libro}) => {
 
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {name , id, image, gender, quantity } = libro;
+  const {nombre , id_libro, imagen_libro,  quantity } = libro;
 
 
   const [{reservas}, dispatch] = useStateValue();
 
   const borrarLibro = () => dispatch({
       type: actionTypes.BORRAR_LIBRO,
-      id: id,
+      id_libro:id_libro,
       
   })
 
@@ -32,7 +32,7 @@ export const Checkoud = ({libro}) => {
     <div className="cards-reservas">
     <div className="contenedor-reservas">
       <div className="libro-reserva">
-        <Imagenes url={libro.image} id="libro" />
+        <Imagenes url={libro.imagen_libro} id="libro" />
       </div>
       <div className="btn-reservas">
         <div className="container_vacio">
@@ -43,8 +43,8 @@ export const Checkoud = ({libro}) => {
         </div>
       </div>
     </div>
-    <div className="blanco">
-      <h2>{libro.name}</h2>
+    <div className="blanco2">
+      <h2>{libro.nombre}</h2>
       <p>{libro.quantity}</p>
     </div>
   </div>
