@@ -10,6 +10,8 @@ import { useStateValue } from '../../../StateProvider';
 
 export const Checkoud = ({libro}) => {
 
+  
+
 
 
   //Funcion que guarda las propiedades del estado de los libros

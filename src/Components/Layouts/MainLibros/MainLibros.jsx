@@ -34,16 +34,20 @@ export const MainLibros = ( ) => {
 
 
     const addLibros = () => {
+        const id = libros.id_libro
         const image = libros.imagen_libro
         const name = libros.nombre
         dispatch({
           type: actionTypes.ADD_TO_RESERVA,
           item: {
-              image,
-              name,
+                id:id,
+                image:image,
+                name:name,
 
             }
+        
         })
+      
       }
 
 
@@ -82,7 +86,7 @@ export const MainLibros = ( ) => {
                     <hr />
                     <p className='descripcion'>{libros.descripcion}</p>
                 </div>
-                <button className='btn-vermas2' onClick={addLibros}>
+                <button className='' onClick={addLibros}>
                     <div class="svg-wrapper-1">
                         <div class="svg-wrapper">
                             {/* <GiBookshelf className='icon-reservar' /> */}
