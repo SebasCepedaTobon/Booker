@@ -12,45 +12,30 @@ export const MainHistorial = () => {
 
   const url = "http://127.0.0.1:8000/modulos/reservas/"
   const urlEjem = "http://127.0.0.1:8000/modulos/ejemplares/?estado=A&id_libro__id_libro="
+  let idEjemplares = []
 
     const [{reservas}, dispatch] = useStateValue();
-    const [ejemplares, setEjemplares] = useState([]);
-    console.log(reservas[0].id_libro);
     
     const peticionGet=()=>{
-      console.log("entra en la peticion GET");
       for (let index = 0; index < reservas.length; index++) {
+ 
         axios.get(urlEjem + reservas[index].id_libro).then(response=>{
-          setEjemplares(response.data)
-
-
-          /* idEjemplar.add  */
+         
+          idEjemplares.push(response.data[0].id_ejemplar)
           
         }).catch(error=>{
           console.log(error.message);
         })
       }
     }
-    console.log(ejemplares);
 
-    const idEjemplar = []
 
-    const capEjemplares=()=>{
-      console.log("hhhhhh");
-      console.log(ejemplares);
-      ejemplares.forEach(element => {
-        console.log(element.id_ejemplar)
-        idEjemplar(element.id_ejemplar)
-        console.log(idEjemplar);
-
-      });
-    }
     const peticionPost=async()=>{
-      capEjemplares()
+      
       await axios.post(url, {
         "estado": "A",
         "id_estudiante": 1,
-        "ejemplares": [1, 2, 3]
+        "ejemplares": idEjemplares
     }).then(response=>{
         console.log(response);
       }).catch(error=>{
@@ -58,7 +43,6 @@ export const MainHistorial = () => {
       })
     }
     useEffect(() => {
-      console.log("entra desde el useEffect");
       peticionGet()   
     }, [])
 
