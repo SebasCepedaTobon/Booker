@@ -1,197 +1,202 @@
-import React, {useState, useEffect} from 'react'
+import React, {Component} from 'react'
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import { Imagenes } from '../../../UI/Imagenes/Imagenes';
+import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader';
+import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador';
 
-// import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai';
-// import { BsPersonSquare } from 'react-icons/bs';
-// import { BiBookAdd } from 'react-icons/bi';
-// import Swal from 'sweetalert2'
-//import { TiDelete } from '/ti';
-
-import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
-
-import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
-import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
+import usuario from '../../../../assets/Imagenes/Admin/usuario.png'
 
 
+const url="https://bookerbackapi.herokuapp.com/modulos/estudiantes/";
+const urlUsuarios="https://bookerbackapi.herokuapp.com/modulos/usuarios/";
+export class TablaEstudiantes extends Component {
 
-
-export const TablaEstudiantes = () => {
-
-
-  const eliminacion = () =>{
-    // Swal.fire({
-    //   title: '¿Esta seguro de eliminar a el estudiante?',
-    //   icon: 'warning',
-    //   confirmButtonText: 'Si, Eliminar',
-    //   showCancelButton: true,
-    //   cancelButtonText: 'No, cancelar',
-    //   reverseButtons: true
-    // }).then((resultado) => {
-    //   if (resultado.isConfirmed) {
-    //     Swal.fire(
-    //       'Eliminado',
-    //       'Estudiante eliminado correctamente',
-    //       'success'
-    //     )
-    //   }
-    // })
+  state={
+    estudiantes:[]
+  }
+  
+  peticionGet=()=>{
+    axios.get(url).then(response=>{
+      this.setState({estudiantes: response.data});
+      console.log(this.state.estudiantes);
+    }).catch(error=>{
+      console.log(error.message);
+    }) 
   }
 
+  usuarios = []
+  
+  cargarUsuarios = () => {
+    fetch(urlUsuarios)
+    .then(res => res.json())
+    .then((usu) =>{
+      this.usuarios = usu
+    })
+  }
 
-  const [cerrar, setCounter] = useState(true)
+  componentDidMount() {
+    this.peticionGet();
+    this.cargarUsuarios();
+  }
 
-  const ventanaFlotante  = () => {setCounter(!cerrar)}
+  docEstiduante = []
 
-  useEffect(() => {
-    const overlay = document.getElementById('overlay')
-    const from_tablas = document.querySelector('.from-tablas')
 
-    if(cerrar === true){
-      overlay.style.visibility = "hidden"
-      from_tablas.style.transform="scale(0.6)"
-      from_tablas.style.opacity="0"
-    }else{
-      overlay.style.visibility = "visible"
-      from_tablas.style.transform="scale(1)"
-      from_tablas.style.opacity="2"
-    }
+  render() {
 
-  },[cerrar]);
-
-  return (
-    <div className='MainAdministrativo'>
-      <div className="box-AdminNavegador">
-        <AdminNavegador/>
-      </div>
-      <div className="box-Header-Admin">
-        <AdminHeader/>  
-        <div className='box-Tabla' >
-          <div className='Tabla'>
-            <div className="TituloLibro">
-              Libros
-            </div>
-            <div className='tr'>
-              <div className='td-0'><p>Imagen</p></div>
-              <div className='td-1' ><p>Documento</p></div>
-              <div className='td-2' ><p>Nombre Completo</p></div>
-              <div className='td-3'><p>Grado</p></div>
-              <div className='td-5'><p>Opciones</p></div>
-            </div>
-            <div className='Tabla-Info' >
-
-              <div className='tr-1'>
-                <div className='td-0'>
-                  {/* <BsPersonSquare className='img'/> */}
-                </div>
-                <div className='td-1'>
-                  <p className='L1P'>1002633624</p>
-                </div>
-                <div className='td-2'>Sebastian Cepeda</div>
-                <div className='td-3'>1°</div>
-                <div className='td-5'>
-                  {/* <AiTwotoneEdit onClick={ventanaFlotante} className='edit'/>
-                  <AiFillDelete onClick={eliminacion} className='delete'/>      */}
-                </div>
+    return (
+      <div className='MainAdministrativo'>
+        <div className="box-AdminNavegador">
+          <AdminNavegador/>
+        </div>
+        <div className="box-Header-Admin">
+          <AdminHeader/>  
+          <div className='box-Tabla' >
+            <div className='Tabla'>
+              <div className="TituloLibro">
+                Estudiantes
               </div>
+              <div className='tr'>
+                <div className='td-0'><p>Imagen</p></div>
+                <div className='td-1' ><p>Documento</p></div>
+                <div className='td-2' ><p>Nombre Completo</p></div>
+                <div className='td-3'><p>Grado</p></div>
+                <div className='td-4'><p>Grupo</p></div>
+                <div className='td-6'><p>Estado</p></div>
+                <div className='td-5'><p>Opciones</p></div>
+              </div>
+              <div className='Tabla-Info' >
+                {
+                  this.state.estudiantes.map(estudiante =>{
+                    this.d = estudiante.id_grado
+                    return(
 
-            </div>            
+                  <div className='tr-1'>
+                    <div className='td-0'>
+                      <div className='perfil' >
+                        <Imagenes clase='icono' url={usuario} />
+                      </div>
+                    </div>
+                    <div className='td-1'>
+                    <p className='L1P'>{estudiante.doc_estudiante.doc}</p>
+                    </div>
+                    <div className='td-2'>{estudiante.nombres} {estudiante.apellidos}</div>
+                    <div className='td-3'>{estudiante.id_grado.nombre}</div>
+                    <div className='td-4'>{estudiante.id_grupo.letra_grupo}</div>
+                    <div className='td-switch'>
+                      <label class="switch">
+                          <input type="checkbox"/>
+                          <span class="slider"></span>
+                      </label>
+                    </div>
+                    <div className='td-5'>
+                      <i  class="fa-solid fa-pen-to-square"></i>
+                      <i  class="fa-solid fa-trash-can" ></i>
+                    </div>
+                  </div>
+                    )
+
+                  })
+                  
+                }
+  
+              </div>            
+            </div>
+            <div id='ActivarFrom' className='Activar-From'>
+              <i class="fa-solid fa-folder-plus"></i>
+            </div> 
           </div>
-          <div id='ActivarFrom' className='Activar-From'>
-            {/* <BiBookAdd onClick={ventanaFlotante} id='icono-Activar-From' className='icono'/> */}
-          </div> 
         </div>
-      </div>
-
-        <div id='overlay' className='overlay'>          
-          <div className="from-tablas">  
-            <div className='Estudiantes-from' >
-              <div className="from-Titulo">
-                <div className="Desactivar-From">
-                  {/* <TiDelete onClick={ventanaFlotante } className='icono'/> */}
-                </div>
-                <h1>NUEVO ESTUDIANTE</h1>                
-              </div>              
-              <form method="post">
-                <div className='boxs-inputs'>          
-                  <div className="box-select">
-                    <select>
-                        <option value="" selected>Tipo Documento</option>
-                        <option className='opciones' value="">Cédula de Ciudadanía</option>
-                        <option className='opciones' value="">Tarjeta de Identidad</option>
-                        <option className='opciones' value="">Cédula de Extranjeria</option>
-                        <option className='opciones' value="">Pasaporte</option>
-                        <option className='opciones' value="">Permiso Especial</option>
-                        <option className='opciones' value="">Permiso Temporal</option>
-                        <option className='opciones' value="">Salvoconducto de Permanecia</option>
-                    </select>
-                  </div>          
-                  <div className="box-input">
-                    <input type="text" required/>
-                    <span></span>
-                    <label>N° Documento</label>
+  
+          {/* <div id='overlay' className='overlay'>          
+            <div className="from-tablas">  
+              <div className='Estudiantes-from' >
+                <div className="from-Titulo">
+                  <div className="Desactivar-From">
+                    <i onClick={ventanaFlotante} class="fa-solid fa-xmark"></i>
                   </div>
-                </div>
-                
-                <div className="boxs-inputs">
-                  <div className="box-input">
-                    <input type="text" required/>
-                    <span></span>
-                    <label>Nombres</label>
-                  </div> 
-                  <div className="box-input">
-                    <input type="text" required/>
-                    <span></span>
-                    <label>Apellidos</label>
+                  <h1>NUEVO ESTUDIANTE</h1>                
+                </div>              
+                <form method="post">
+                  <div className='boxs-inputs'>          
+                    <div className="box-select">
+                      <select>
+                          <option value="" selected>Tipo Documento</option>
+                          <option className='opciones' value="">Cédula de Ciudadanía</option>
+                          <option className='opciones' value="">Tarjeta de Identidad</option>
+                          <option className='opciones' value="">Cédula de Extranjeria</option>
+                          <option className='opciones' value="">Pasaporte</option>
+                          <option className='opciones' value="">Permiso Especial</option>
+                          <option className='opciones' value="">Permiso Temporal</option>
+                          <option className='opciones' value="">Salvoconducto de Permanecia</option>
+                      </select>
+                    </div>          
+                    <div className="box-input">
+                      <input type="text" required/>
+                      <span></span>
+                      <label>N° Documento</label>
+                    </div>
                   </div>
-                </div>
-                <div className="boxs-inputs">
-                  <div className="box-input">
-                    <input type="text" required/>
-                    <span></span>
-                    <label>N° Celular</label>
+                  
+                  <div className="boxs-inputs">
+                    <div className="box-input">
+                      <input type="text" required/>
+                      <span></span>
+                      <label>Nombres</label>
+                    </div> 
+                    <div className="box-input">
+                      <input type="text" required/>
+                      <span></span>
+                      <label>Apellidos</label>
+                    </div>
                   </div>
-                  <div className="box-input">
-                    <input type="text" required/>
-                    <span></span>
-                    <label>Dirreción</label>
+                  <div className="boxs-inputs">
+                    <div className="box-input">
+                      <input type="text" required/>
+                      <span></span>
+                      <label>N° Celular</label>
+                    </div>
+                    <div className="box-input">
+                      <input type="text" required/>
+                      <span></span>
+                      <label>Dirreción</label>
+                    </div>
                   </div>
-                </div>
-
-                <div className="boxs-inputs">
-                  <div className="box-select">
-                    <select>
+  
+                  <div className="boxs-inputs">
+                    <div className="box-select">
+                      <select>
                         <option value="" selected>Grupo</option>
-                        <option className='opciones' value="">Grupo 1</option>
-                        <option className='opciones' value="">Grupo 2</option>
-                        <option className='opciones' value="">Grupo 3</option>
-                        <option className='opciones' value="">Grupo 4</option>
-                        <option className='opciones' value="">Grupo 5</option>
-                        <option className='opciones' value="">Grupo 6</option>
-                        <option className='opciones' value="">Grupo 7</option>
-                        <option className='opciones' value="">Grupo 8</option>
-                    </select>
-                  </div>
-                  <div className="box-select">
-                    <select>
+                        {
+                          estudiantes.map((estudiantes, index)=> 
+                            <option className='opciones' value="">{estudiantes.tipodoc}</option>
+                          )
+                        }
+                      </select>
+                    </div>
+                    <div className="box-select">
+                      <select>
                         <option value="" selected>Grado</option>
-                        <option className='opciones' value="">Grado 1°</option>
-                        <option className='opciones' value="">Grado 2°</option>
-                        <option className='opciones' value="">Grado 3°</option>
-                        <option className='opciones' value="">Grado 4°</option>
-                        <option className='opciones' value="">Grado 5°</option>
-                        <option className='opciones' value="">Grado 6°</option>
-                        <option className='opciones' value="">Grado 7°</option>
-                        <option className='opciones' value="">Grado 8°</option>
-                        <option className='opciones' value="">Grado 9°</option>
-                        <option className='opciones' value="">Grado 10°</option>
-                        <option className='opciones' value="">Grado 11°</option>
-                    </select>
+                        {
+                          estudiantes.map((estudiantes, index)=> 
+                            <option className='opciones' value="">{estudiantes.doc_estudiante.name}</option>
+                          )
+                        }
+                      </select>
+                    </div>
+                   
                   </div>
-                </div>
-                <BotonesCrud />                
-            </form>
+                  <div id='box-inputCE' className="box-input">
+                    <input type="Email" required placeholder='Correo Electronico'/>
+                    <span></span>
+                  </div>       
+              </form>
+            </div>
           </div>
-        </div>
+        </div> */}
       </div>
-    </div>
-  )
+    )
+
+  }
 }

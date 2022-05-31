@@ -144,7 +144,7 @@ input[type="submit"]{
     position: absolute;
     top: 50%;
     left: 5px;
-    color: #adadad;
+    color: #000000;
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
@@ -158,13 +158,13 @@ input[type="submit"]{
     left: 0;
     width: 0%;
     height: 2px;
-    background: #2691d9;
+    background: #a6a6a6;
     transition: .5s;
 }
 .box-input input:focus ~ label,
 .box-input input:valid ~ label{
     top: -5px;
-    color: #2691d9;
+    color: #a6a6a6;
 }
 
 
@@ -188,10 +188,12 @@ input[type="submit"]:hover{
 
 .pass{
 margin: -5px 0 20px 5px;
-font-size: 20px;
-color: rgb(219, 35, 35);
+color: #a6a6a6;
+cursor: pointer;
 }
-
+.pass:hover{
+    text-decoration: underline;
+}
 
 /*FIN LOGIN*/
 
@@ -303,23 +305,17 @@ color: rgb(219, 35, 35);
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
-    margin-top: 70px;
-
-
-
-
+    height: 45rem;
+    margin-top: 90px;
+    margin-bottom: 50px;
 }
 
 .botones-perfil{
-    border-top-right-radius: 10px;
+    background-color: #ececec;
     width: 22.7%;
+    height: 800px;
     display: flex;
     flex-direction: column;
-    background-color: #f5f5f5;
-    height: 800px;
-
-  
 }
 
 .img-nombre{
@@ -333,68 +329,39 @@ color: rgb(219, 35, 35);
 }
 
 .usu{
-   margin-left: 30px;
+    margin-left: -20px;
 }
 
-.img-nombre i{
-    font-size: 70px;
-    color: #000000;
+#avatar-perfil{
+    width: 200px;
 }
 
 .btns{
     display: flex;
     flex-direction: column;
     margin-top: 50px;
-    margin-left: 40px;
+    margin-left: 20px;
 
 }
 
-
-.btns button{
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    --border-right: 6px;
-  --animation-color: #2691d9;
-  --fs-size: 24px;
-  letter-spacing: 3px;
-  text-decoration: none;
-  font-size: var(--fs-size);
-  position: relative;
-  color: black;
-
+.btns a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin-top: 20px;
 }
 
-.hover-text {
-    position: absolute;
-    box-sizing: border-box;
-    content: attr(data-text);
-    color: var(--animation-color);
-    width: 0%;
-    inset: 0;
-    border-right: var(--border-right) solid var(--animation-color);
-    overflow: hidden;
-    transition: 0.5s;
-    -webkit-text-stroke: 1px var(--animation-color);
-  }
-  /* hover */
-  .btns button:hover .hover-text {
-    width: 100%;
-    filter: drop-shadow(0 0 23px var(--animation-color))
-  }
-
-
-
+.btns a:hover{
+    color: #2691d9;
+}
 
 hr{
     margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     width: 80%;
-
 }
 
 #Bienvenido{
-    color: #2691d9;
+    color: #a6a6a6;
 }
 
 .datos-perfil{
@@ -410,23 +377,18 @@ hr{
 .p-hr{
     margin-top: 30px;
     margin-left: 40px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    
-}
-.p-hr hr{
-    background-color:#2691d9;
-    height: 1px;
-}
 
+}
 
 .container-inputs{
-    width: 100%;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    grid-gap: 20px;
-    margin-left: 70px;
+    margin-top: 50px;
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
 }
 
 .container-info{
@@ -435,7 +397,6 @@ hr{
     margin-left: 20px;
     margin-bottom: 20px;
     border: solid 1px rgb(197, 197, 197);
-
 
 }
 
@@ -484,38 +445,6 @@ hr{
 .icon-btn a{
     margin-left: 5px;
 }
-
-
-/*imformacion reservas*/
-
-.info-reservas{
-    margin-top: 80px;
-    margin-left: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 40px;
-    margin-bottom: 100px;
-}
-
-.no-reserva{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.no-reserva img{
-    width: 500px;
-}
-
-.no-reserva h3{
-    font-size: 30px;
-    margin-bottom: 10px;
-    font-weight: normal;
-}
-
-
 /*Categorias*/
 
 .libros-categorias{
@@ -679,335 +608,106 @@ hr{
 }
 
 
+/*Contador*/
 
+.nav-contador{
+    position: relative;
+    height: 15px;
+}
+
+.contador {
+    background-color: #2691d9;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    margin-left: 7px;
+}
+
+.contador p{
+    font-size: 14px;
+    color: white;
+}
+
+#icon-contador{
+    width: 100%;
+}
 
 
 
 /**/
 /*Ventana Reservas*/
 
-.from-tablas2{
-    background-color: rgb(248, 248, 248);
-    width: 35%;
-    height:80%;
+.from-tablas3{
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    height: 130px;
+    width: 100vw;
+    border-bottom: 2px solid #2691d9;
+    border-top: 2px solid #2691d9;
     z-index: 10;
+    opacity: 0;
+    bottom: -100px;
     visibility: hidden;
-    transition: all 600ms ease;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-}
-
-.from-tablas2 hr{
-    width: 90%;
-    margin-left: 30px;
-    margin-top: 10px;
-}
-
-.nueva-reserva-close{
-    width:100%;
+    transition: all 300ms ease;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
-
-.nueva-reserva-close p{
-    font-size: 30px;
-    color: #025388;
-    font-weight: bold;
-    margin-top: 40px;
-    margin-left: 30px;
-
-}
-
-.nueva-reserva-close a{
-    font-size: 30px;
-    cursor: pointer;
-    margin-left: 27%;
-    font-weight: bold;
-    color: #025388;
-}
-
-.libros-check{
-    display: flex;
-    flex-direction: column;
-}
-
-#contador-reserva p{
-    font-size: 20px;
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.contender-info-reservados{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
-}
-
 
 .conatiner-img-reserva{
-    margin-left: -50px;
-    margin-right: 30px;
+    position: absolute;
+    left: 10%;
+
+
+
 }
 
-
-.conatiner-info-reservas{
+.container-msj-reserva{
+    position: absolute;
+    left: 30%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-
-}
-
-.conatiner-info-reservas p{
-    margin-top: 10px;
-    font-size: 20px;
+    border-left: 1px solid black;
+    width: 700px;
 }
 
 .container-btn-reserva{
-    text-align: center;
-  
+    position: absolute;
+    right: 5%;
+    display: flex;
+    flex-direction: row;
 }
 
 .container-btn-reserva button{
-    margin-top: 10px;
-    width: 230px;
-    height: 50px;
-    background-color: #025388;
-    color: white;
-    font-size: 20px;
-    border: none;
-    cursor: pointer;
+    margin-right: 10px;
 }
-
-.container-btn-reserva button:hover{
-    background-color: #0a3856;
-
-}
-
-
-
-
-
-
-.overlay2{
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    background-color: rgba(165, 165, 165, 0.563);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;    
-    transition: all 300ms ease;
-    visibility: hidden;
-    z-index: 10;
-}
-
-
-
-/*cards-reservas*/
-
-.contendor-cards-libros{
-
-    display: flex;
-    align-items: center;
-    width: 90%;
-    height: 500px;
-    margin-top: 40px;
-    margin-bottom: 150px;
-    flex-direction: column;
-    
-  }
 
 #libro-reserva{
-    width: 200px;
-    margin-top: 7px;
-    margin-left: 100px;
-    border-radius: 10px;
-}
-  
-  
-  .contenedor-reservas{
-    width: 250px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  
-  }
-  
-  .cards-reservas{
-   display: flex;
-   flex-direction: column;
-   align-items: center; 
-   justify-content: center;
-   box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
-   width: 270px;
-   height: 480px;
-  }
-  
-  .contenedor-reservas:hover .libro{
-    position: absolute;
-    z-index: -1;
-  }
-  
-  
-  
-  .contenedor-reservas:hover .btn-reservas{
-    height: 20%;
-  }
-  
-  .contenedor-reservas:hover .container_botones2{
-    bottom: 2px;
-  }
-  
-  
-  
-  .btn-reservas{
-    height: 100%;
-    width: 253px;
-    margin-left: 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    transition: all 400ms;
-  }
-  
-  .btn-reservas .container_vacio{
-    height: 40%;
-  }
-  
-  .btn-reservas .container_botones2{
-    height: 40%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    position: relative;
-    bottom: -120px;
-    transition: all 600ms;
-    z-index: 1;
-  }
-  
-  
-  .container_botones2 button{
-    cursor: pointer;
-    width: 99%;
-    height: 40px;
-    border: none;
-    margin-right: 3px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    background:#2691d9;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-  }
-
-    .container_botones2 button .text {
-    transform: translateX(90px);
-    color: white;
-    font-size: 17px;
-    margin-right: 50px;
-   }
-
-  .container_botones2 button span {
-    transition: 200ms;
-   }
-
-   .container_botones2 button .icon {
-    position: absolute;
-    border-left: 1px solid white;
-    transform: translateX(200px);
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   }
-  
-  
-
-   .container_botones2 button svg {
-    width: 15px;
-    fill: #eee;
-   }
-   
-   .container_botones2 button:hover {
-    background:#a6a6a6;
-   }
-   
-   .container_botones2 button:hover .text {
-    color: transparent;
-   }
-   
-   .container_botones2 button:hover .icon {
-    width: 150px;
-    border-left: none;
-    transform: translateX(50px);
-   }
-   
-   .container_botones2 button:focus {
-    outline: none;
-   }
-   
-   .container_botones2 button:active .icon svg {
-    transform: scale(0.8);
-   }
-
-
-   .blanco2{
-    background-color: white;
-    width: 95%;
-    height: 400px;
-    z-index: 2;
-  }
-  
-  
-  .libro-reserva img{
-    width: 250px;
-    height: 90%;
-    margin-top: 10px;
-  }
-
-  .btn-confirmar-reserva{
-      width: 200px;
-      height: 50px;
-      position: absolute;
-      top: 230px;
-      right: 100px;
-      background-color: #0d5fe4;
-      color: white;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
+    width: 80px;
+    border-radius: 100%;
+    margin-left: -30px;
     
-  }
+}
 
-  .btn-confirmar-reserva:hover{
-      background-color: #1883ca;
-  }
+#p-reserva{
+    font-size: 40px;
+    font-weight: bold;
+    color: #2691d9;
+}
 
-  .btn-reservar{
-    width: 200px;
-    height: 50px;
-    background-color: #0d5fe4;
+#contador-reserva{
+    font-size: 25px;
     color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
+}
 
-  .btn-reservar:hover{
-    background-color: #1883ca;
 
-  }
+
+
+
+
+

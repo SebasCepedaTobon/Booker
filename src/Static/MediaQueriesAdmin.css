@@ -9,6 +9,14 @@
         width: 200px;
     }
 
+    .box-AdminNavegador{
+        width: 20vw;
+        position: absolute;
+    }
+
+
+    
+
     /*-----------------Card del Admin----------------*/
 
     .boxCard01 .cardAdmin{
@@ -54,6 +62,10 @@
         width: 140px;
     }
 
+    #imgPrestamo{
+        width: 110px;
+    }
+
     .cardAdmin .info-btn .p{
         font-size: 28px;
     }
@@ -61,21 +73,58 @@
     .cardLibros .info-btn .p{
         font-size: 28px;
     }
+
+    .Admin-Navegador1{
+        width: 15%;
+        height: 100vh;
+        background-color: #ffffff;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 0px;
+        transition: all 0.5s;
+    }
+
+    .Admin-Navegador{
+        width: 260px;
+    }
     
 
-    /* .Admin-Navegador .box-vinculos{
-        width: 200px;
+    .Admin-Navegador .box-vinculos{
+        width: 180px;
         font-size: 16px;
         padding: 9px 1px 9px 9px;
-    } 
+    }
+
+
+
+    #infra{
+        margin-right: 64px;
+    }
 
     .Admin-Navegador .vinculo{
         width: 75%;
     }
-    */
+
 
     .Libros-from{
-        width: 55%;
+        width: 60%;
+    }
+
+    .Libros-from form {
+        padding: 0 40px 22px;
+        overflow: auto;
+        height: 560px;
+    }
+
+    .Libros-from form::-webkit-scrollbar {
+        width: 7px;    
+    }
+    
+    .Libros-from form::-webkit-scrollbar-thumb {
+        background: #eaeaea;
+        border-radius: 5px;
     }
 
     .boxs-inputs .box-input {

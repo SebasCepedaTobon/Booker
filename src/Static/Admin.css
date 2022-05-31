@@ -1,6 +1,59 @@
+/*-------------------------------------BOTONES DE FORMULARIO----------------------------------*/
 
+.btnsFormulario{
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnFor{
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.btn-agregar{
+    background-color: rgb(40,167,69);
+}
+
+.btn-actializar{
+    background-color: rgb(13,95,228);
+}
+
+.btnFor:hover{
+    transform: scale(1.01);    
+}
+
+
+/*-------------------------------------------------Checkbox-----------------------------------*/
+
+.inputCheckbox{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+
+/*-----------------------------------------------------##################----------------------------*/
+
+/*CONTENEDOR DE CATEGORIAS*/
+
+.selectCate{
+    width: 100px;
+    max-height: 100px;
+}
 
 /*Clases utilizadas en todas las URLS del sitio admin*/
+
+
+
 
 .MainAdministrativo{
     display: flex;
@@ -9,21 +62,23 @@
 }
 
 .box-AdminNavegador{
-    width: 20vw;
+    width: 16vw;
     min-height: 100vh;
+    position: absolute;
+    z-index: 3000;
 }
 
 
 .Admin-Navegador .vinculo{
     text-decoration: none;
-    color: rgb(23, 23, 23);
+    color: rgb(95, 95, 95);
     margin-top: 20px;
+    transition: all 0.5s;
 }
 
-
-
 .Admin-Navegador .vinculo:hover{
-    color: white;
+    margin-left: 10px;
+    transition: all 0.5s;
 }
 
 .Admin-Navegador .box-vinculos{    
@@ -34,45 +89,15 @@
     justify-content: start;
     border: none;
     position: relative;
-    font-size: 18px;
+    font-size: 17px;
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
     overflow: hidden;
-    z-index: 1;
-    font-family: inherit;    
+    z-index: 1;  
     font-weight: 500;
-    font-family: 'Ubuntu', sans-serif;
 }
 
-.Admin-Navegador .box-vinculos span {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 97.4%;
-    height: 96%;
-    background: transparent;
-    z-index: -1; 
-}
-
-.Admin-Navegador .box-vinculos span::before{
-    content: "";
-    display: block;
-    position: absolute;
-    width: 26%;
-    height: 265px;
-    background: var(--lightgray);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-60deg);
-    transition: all 1s;
-}
-
-.Admin-Navegador .box-vinculos:hover span::before{
-    transform: translate(-50%, -50%) rotate(-90deg);
-    background: rgba(14, 99, 184, 0.872); 
-     
-}
 
 .novedades{
     padding-left: 50px;
@@ -93,8 +118,10 @@
 .box-Header-Admin{
     display: flex;
     flex-direction: column;
-    width: 80vw;
     align-items: center;
+    width: 90vw;
+    min-height: 100vh;
+    margin-left: 165px;
 }
 
 /*Clases usadas en todas las tablas del sitio Admin*/
@@ -104,6 +131,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 }
 .Tabla{
     width: 80%;
@@ -114,6 +142,7 @@
     flex-direction: column;
     border-radius: 5px;
     background-color: white;
+    margin-bottom: 30px;
     box-shadow: 0px 0px 10px rgb(160, 157, 157);
 }
 
@@ -161,6 +190,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.td-0 i{
+    font-size: 30px;
+    color: rgb(13,95,228);
+}
+
+.td-0 .perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    padding-left: 10px;
+}
+
+.td-0 .perfil .icono{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 .td-0 .img{
@@ -215,27 +264,49 @@
     justify-content: center;
 }
 
-.edit{
+.td-6{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-pen-to-square{
     margin: 10px;
-    font-size: 40px;
-    color: #025388;
+    font-size: 30px;
+    color: rgb(13,95,228);
     cursor: pointer;
     transition: 1s; 
 }
 
-.edit:hover{
+.fa-pen-to-square:hover{
     transform: scale(1.10);
 }
 
-.delete{
+.fa-trash-can{
     color: rgb(202, 32, 32);
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
     transition: 1s;
 }
 
-.delete:hover{
+.fa-trash-can:hover{
     transform: scale(1.10);
+}
+
+.active{
+    background-color: rgb(13,95,228);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgb(13,95,228);
+}
+
+.active p{
+    color: white;
+}
+
+.active i{
+    color: white;
 }
 
 /*Boton Activar ventana flotante*/
@@ -243,14 +314,14 @@
 .Activar-From {
     width: 0px;
     position: relative;
-    left: 60px;
+    left: 43px;
     top: 20px;
     height: 20%;
     font-size: 40px;
     color: #0d5fe4;
 }
 
-.Activar-From .icono{
+.Activar-From .fa-folder-plus{
     position: fixed;
     cursor: pointer;
 }
@@ -266,11 +337,11 @@
 }
 
 
-.Desactivar-From .icono{
+.Desactivar-From .fa-xmark{
     position: relative;
-    top: 10px;
-    left: 3px;
-    font-size: 40px;
+    top: 7px;
+    left: -3px;
+    font-size: 35px;
     color: rgba(255, 34, 34, 0.911);
     cursor:pointer;
 }
@@ -292,6 +363,7 @@
     flex-direction: column;    
     transition: all 300ms ease;
     visibility: hidden;
+    z-index: 4000;
 }
 
 .from-tablas{
@@ -301,7 +373,7 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    transition: all 300ms ease;
+    transition: all .5s ease;
 }
 
 .from-Titulo{
@@ -351,15 +423,30 @@ form .box-select{
     margin-top: -1px;
     margin-bottom: -3.5px;
     font-size: 16px;
-    border: 2px solid #adadad;
-    outline-color: #2691d9;
+    border: 2px solid #a6a6a6;
+    outline-color: #a6a6a6;
+    color: #000000;
     resize: none;
-    color: #adadad;
     font-size: 16px;
     padding: 3px;
 }
 
+.optionSelecionar{
+    color: #000000;
+}
 
+#box-select{
+    display: none;
+}
+
+
+#box-inputCE{
+    margin: 10px 0;
+}
+
+#box-inputCE::placeholder{   
+    color: #adadad;
+}
 
 /*Fin de las clases compartidas en todas las tablas*/
 
@@ -374,6 +461,7 @@ form .box-select{
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    margin-top: 80px;
 }
 
 .boxCard01{
@@ -405,7 +493,6 @@ form .box-select{
     bottom: 10px;
     right: 5px;
     font-size: 38px;
-    font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
 }
 
@@ -419,6 +506,10 @@ form .box-select{
     width: 175px;
     padding-bottom: 45px;
     filter: drop-shadow(-20px 0px 20px rgba(0,0,0,0.5));
+}
+
+#imgPrestamo{
+    width: 140px;
 }
 
 .boxCard02{
@@ -442,7 +533,6 @@ form .box-select{
     bottom: 10px;
     left: 13px;
     font-size: 38px;
-    font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
 }
 
@@ -507,7 +597,6 @@ form .box-select{
     bottom: 10px;
     right: 10px;
     font-size: 28px;
-    font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
 }
 
@@ -516,7 +605,6 @@ form .box-select{
     bottom: 10px;
     left: 15px;
     font-size: 28px;
-    font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
 }
 
@@ -537,9 +625,45 @@ form .box-select{
     height: 49px;
 }
 
+
+
+/*----------------------------------btn infracciones------------------------*/
+
+.btnMulta{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(95, 95, 95);
+    height: 35px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 5px;
+    margin-right: 30px;
+    transition: all 0.5s;
+    background-color: #E0E0E0;
+}
+
+.contenidoMultas{
+    display: flex;
+    font-size: 14px;
+}
+
+.contenidoMultas i{
+    padding-right: 10px;
+    color: #000000;
+}
+
+.btnMulta:hover{
+    background-color: #bababa;
+    transition: all 0.5s;
+}
+
+
+
 /*BTNS CARD ADMIN*/
 
-.box-carsd-Admin .card-Admin{
+.card-Admin{
     text-decoration: none;
     color: rgb(255, 255, 255);
     margin-left: 10px; 
@@ -560,7 +684,6 @@ form .box-select{
     background: rgba(14, 99, 184, 0.872);
     overflow: hidden;
     z-index: 1;
-    font-family: inherit;    
     font-weight: 500;
     box-shadow: 0px 0px 15px rgb(119, 109, 109);
 }
@@ -617,13 +740,6 @@ form .box-select{
     padding: 0 40px 22px;
 }
 
-
-
-.Libros-from textarea{
-    height: 55px;
-}
-
-
 /*------------------------------------TABLA ESTUDIANTES---------------------------*/
 
 
@@ -663,9 +779,11 @@ form .box-select{
     padding-bottom: 10px;
 }
 
-.RM-from input[type="date"]{
+.RM-from input[type="date"]::placeholder{
     color: white;
 }
+
+
 
 .box-input input[type="date"]:valid,
 .box-input input[type="date"]:focus{
@@ -673,52 +791,26 @@ form .box-select{
 }
 
 
-
-/*------------------------------------BOTONES DEL LOS FORMULARIOS DEL ADMIN---------------------------*/
-
-.box-btns{
+/*-----------------Infraciones-----------------------------------*/
+.categoriasMN{
+    margin-top: 20px;
+    width: 96%;
     display: flex;
-    width: 100%;
     align-items: center;
-    justify-content: space-between;
-}
-
-
-.box-btns input[type="submit"]{
-    width: 30%;
-    border-radius: 9px;
-    transition: 1s all;
-    margin-bottom: 0px;
-}
-    
-.box-btns  input[type="submit"]:hover{
-    border-color: white;
-    transform: scale(1.03);
-}
-
-.box-btns .btn-agregar{
-    background-color: rgba(40, 182, 40, 0.911);
-}
-
-.box-btns .btn-editar{
-    background-color: rgba(19, 134, 184, 0.911);
-}
-.box-btns .btn-eliminar{
-    background-color: rgba(255, 34, 34, 0.911);
 }
 
 
 /*-------------navegador----------------*/
 
 .Admin-Navegador{
-    width: 20%;
+    width: 15%;
     height: 100vh;
     background-color: #ffffff;
     position: fixed;
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow-y: scroll;
+    margin-left: -252px;
 }
 
 .Admin-Navegador .box-Titulo{
@@ -738,12 +830,34 @@ form .box-select{
 .box-Logo .logo{
     padding-left: 30px;
     padding-top: 30px;
-    width: 250px;
+    width: 200px;
 }
 
 .Admin-Navegador .Menu-Padre{
     width: 100%;
-    height: 72%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+.Admin-Navegador .Menu-Padre::-webkit-scrollbar {
+    width: 7px;    
+}
+
+.Admin-Navegador .Menu-Padre::-webkit-scrollbar-thumb {
+    background: #eaeaea;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar{
+    width: 10px;
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #c6c6c6;
+    border-radius: 5px;
 }
 
 .Admin-Navegador .box-menu{
@@ -760,14 +874,76 @@ form .box-select{
     padding-right: 10px;
 }
 
-/*-------------------HEADER ANTIGUO----------------------*/
-
-.AdminHeader{
-    width: 95%;
-    margin-top: 20px;
+.config{
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    right: -50px;
+    top: 40%;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(13,95,228);
+}
+
+.LyE{
+    padding-top: 20px;
+    color: #a6a6a6;
+}
+
+#infra{
+    margin-right: 52px;
+}
+
+.spinnerAdmin {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    z-index: 1000;
+    display: grid;
+    color: #ffffff;
+    background: radial-gradient(farthest-side, currentColor calc(10% - 15px),rgba(121, 252, 6, 0) calc(10% - 15px) 0);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 15px),rgb(251, 0, 0) calc(100% - 9px));
+    border-radius: 50%;
+    animation: spinnerAdmin-sm4bhi 2s infinite linear;
+   }
+   
+   .spinnerAdmin::before,
+   .spinnerAdmin::after {
+    content: "";
+    grid-area: 1/1;
+    background: linear-gradient(currentColor 0 0) center,
+             linear-gradient(currentColor 0 0) center;
+    background-size: 89% 9px,9px 89%;
+    background-repeat: no-repeat;
+   }
+   
+   .spinnerAdmin::after {
+    transform: rotate(45deg);
+   }
+   
+   @keyframes spinnerAdmin-sm4bhi {
+    100% {
+     transform: rotate(1turn);
+    }
+   }
+
+/*-------------------HEADER ANTIGUO----------------------*/
+
+.AdminHeader{
+    position: fixed;
+    width: 81%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    background: #EEEEEE;
+    justify-content: center;
+    box-shadow: 0px 15px 34px #EEEEEE;
+    z-index: 300;
 }
 
 .HeaderAdmin{
@@ -789,7 +965,6 @@ form .box-select{
     align-items: center;
     justify-content: space-around;
     position: absolute;
-    z-index: 1000;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgb(147, 147, 147);
@@ -802,6 +977,7 @@ form .box-select{
     border-radius: 5px;
     border: none;
     outline: none;
+    color: #a6a6a6;
     font-size: 16px;
     background-color: transparent;    
 }
@@ -821,8 +997,7 @@ form .box-select{
     align-items: center;
     justify-content: space-around;
     margin-right: 30px;
-    color: white;    
-    font-family: 'Ubuntu', sans-serif;
+    color: white;
 }
 
 .HeaderAdmin .sitio{
@@ -920,3 +1095,151 @@ form .box-select{
 .box-buscadorAdmin .buscador:hover{
    position: relative;
 }
+
+
+/*----------------------------chackbos-----------------------*/
+.td-switch{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.switch {
+    --button-width: 3.5em;
+    --button-height: 2em;
+    --toggle-diameter: 1.5em;
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 10px;
+    --toggle-wider: 3em;
+    --color-grey: #cccccc;
+    --color-green: #4296f4;
+   }
+   
+   .slider {
+    display: inline-block;
+    width: 55px;
+    height: 24px;
+    background-color: var(--color-grey);
+    border-radius: 5px;
+    position: relative;
+    transition: 0.3s all ease-in-out;
+   }
+   
+   .slider::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 17px;
+    background-color: #fff;
+    border-radius: calc(var(--toggle-diameter) / 2);
+    position: absolute;
+    right: 35px;
+    top: var(--button-toggle-offset);
+    transform: translateX(var(--button-toggle-offset));
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+   }
+   
+   .switch input[type="checkbox"]:checked + .slider {
+    background-color: var(--color-green);
+   }
+   
+   .switch input[type="checkbox"]:checked + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+   }
+   
+   .switch input[type="checkbox"] {
+    display: none;
+   }
+   
+   .switch input[type="checkbox"]:active + .slider::after {
+    width: var(--toggle-wider);
+   }
+   
+   .switch input[type="checkbox"]:checked:active + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+   }
+
+
+   /*----------------------------inputArchivo-----------------------*/
+  .file-select {
+    position: relative;
+  }
+  
+  .file-select::before {
+    background-color: #c8c8c8;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .file-select input[type="file"] {
+    cursor: pointer;
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: block;
+  }
+
+  .nomImg{
+      color: black;
+      position: absolute;
+      z-index: 2000;
+  }
+  
+  #src-file1::before {
+    content: 'Seleccionar Imagen Libro';
+  }
+
+  .box-textareaDescripcion textarea{
+      height: 80px;
+  }
+
+
+  .box-textareaa textarea{
+    width: 190px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;      
+    outline-color: #adadad;
+    resize: none;
+    padding: 3px;
+    color: #565656;
+    border-color: #adadad;
+  }
+
+  .box-textareaa textarea::placeholder{
+    color: #565656;
+  }
+
+  .textareaCate{
+    width: 190px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    outline-color: #adadad;
+    color: #565656;
+    resize: none;
+    padding: 3px;
+    border-color: #adadad;
+  }
+  
+
+
+
+
+
+   
+
+
