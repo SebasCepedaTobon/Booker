@@ -184,8 +184,8 @@ export class TablaLibros extends HooksTLibros  {
                 </div> 
 
                 <div className="box-select">
-                  <select id='selectEdito' onChange={this.handleChange} >
-                    <option value=''>Editorial...</option>
+                  <select id='selectEdito' onChange={this.handleChange}  >
+                    <option className='' value="">Editorial...</option>
                     {this.editorial.map((element, key)=>{
                       return(
                         <option className='optionSelecionar' key={key} value={element.id_editorial}>{element.nombre}</option>

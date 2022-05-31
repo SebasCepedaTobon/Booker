@@ -57,6 +57,10 @@ export const MainLogin = () => {
         localStorage.setItem('apellidos', res.data.user.apellidos)
        
         window.location.href = "/Home"
+      
+
+
+      
 
         console.log("logueado correctamente")
         

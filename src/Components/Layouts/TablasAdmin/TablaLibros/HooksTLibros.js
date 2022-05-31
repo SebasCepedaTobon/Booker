@@ -123,6 +123,7 @@ export class HooksTLibros extends ApiCate {
                 
 
                 console.log("Entra primero");
+
                                
                 this.setState({
                   tipoModal: 'actualizar',
