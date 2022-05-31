@@ -17,7 +17,6 @@ const reducer = (state, action) => {
     switch(action.type){
         case "ADD_TO_RESERVA":
             let itemInCart = state.reservas.find(item => item.id_libro === action.item.id_libro)
-            console.log(state.reservas)
         return itemInCart ? {
             ...state,
             reservas: state.reservas.map(item=> 
@@ -42,7 +41,6 @@ const reducer = (state, action) => {
 
         };
         case "DETALLES_LIBRO":{
-            console.log(state.capLibro);
             return{
                 ...state,
                 capLibro: action.id_libro

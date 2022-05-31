@@ -1,11 +1,93 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import logo from '../../../assets/Imagenes/logos/BookerSinNombre.png'
 import whatsapp from '../../../assets/Imagenes/iconos/phone.svg'
 import email from '../../../assets/Imagenes/iconos/mail.svg'
+import axios from 'axios';
 
 export const MainLogin = () => {
+
+
+  const [state, setState] = useState({
+    form:{
+      "doc":"",
+      "password":"",
+    },
+    error:false,
+    errorMsg:""
+  })
+
+  const recharge=(e)=>{
+    e.preventDefault()
+  }
+
+
+  const change = async (e)=>{
+
+    await setState({
+
+      form:{
+        
+        ...state.form,
+
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  const btnIngresar = () =>{
+
+    
+
+
+    let url="https://bookerbackapi.herokuapp.com"
+   
+    axios.post(url, state.form)
+
+    .then(res => {
+      console.log(res)
+    
+
+      if( res.status === 200 || res.status === 201 ){
+
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('id_estudiante', res.data.user.id_estudiante)
+        localStorage.setItem('usuario', res.data.user.nombres)
+        localStorage.setItem('apellidos', res.data.user.apellidos)
+       
+        window.location.href = "/Home"
+      
+
+
+      
+
+        console.log("logueado correctamente")
+        
+      
+      }else{
+  
+        setState({
+          error:true,
+          errorMsg:res.data.message,
+          
+
+        })
+
+      }
+      
+    }).catch(error =>{
+      console.log(error)
+      setState({
+        error:true,
+        errorMsg:"Credenciales Invalidas"
+      })
+    })
+
+  }
+
+
+  
   return (
     <div className="Main-Login-Gmail">
       <div className="box-Informacion">        
@@ -32,21 +114,25 @@ export const MainLogin = () => {
         <div className="LG-box-From" >
           <div className='LG-contenedor-From' >
             <h1>¡INICIAR SESIÓN!</h1>
-            <form method="post">
+            <form  onSubmit={recharge}>
               <div className='box-input'>
-                <input type="text" required/>
+                <input type="text" required onChange={change} name='username'/>
                 <span></span>
                 <label>N° Documento</label>
               </div>
               <div className="box-input">
-                <input type="password" required/>
+                <input type="password" required onChange={change} name='password'/>
                 <span></span>
                 <label>Contraseña</label>
               </div>
-              <div className="pass">¿Has olvidado tu contraseña?</div>
-              <NavLink to='/home' >
-                <input type="submit" value="Ingresar"/>
-              </NavLink>          
+              <div className="pass">
+              {state.error === true &&
+                <div className="alerta">
+                  <p>{state.errorMsg}</p>
+                </div>
+              }
+              </div>
+              <input type="submit" value="Ingresar" onClick={btnIngresar}/>
             </form>
           </div>
         </div>        

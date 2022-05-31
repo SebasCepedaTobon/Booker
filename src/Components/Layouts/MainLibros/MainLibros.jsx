@@ -6,7 +6,10 @@ import { useParams } from 'react-router';
 import { Spinner } from '../../UI/Spinner/Spinner';
 
 
+
 export const MainLibros = ( ) => {
+
+    
 
     const [{reservas}, dispatch] = useStateValue();
 
@@ -15,10 +18,11 @@ export const MainLibros = ( ) => {
 
 
     const [libros, setLibros] = useState(null)
+    
 
     useEffect(() => {
         setCargando(true);
-        fetch("http://127.0.0.1:8000/modulos/libros/" + id_libro)
+        fetch("https://bookerbackapi.herokuapp.com/modulos/libros/" + id_libro)
             .then(res => res.json())
             .then((data) => {
                 setLibros(data)
@@ -34,16 +38,19 @@ export const MainLibros = ( ) => {
 
 
     const addLibros = () => {
-        const image = libros.imagen_libro
-        const name = libros.nombre
+        const id_libro = libros.id_libro
+        const imagen_libro = libros.imagen_libro
+        const nombre = libros.nombre
         dispatch({
           type: actionTypes.ADD_TO_RESERVA,
           item: {
-              image,
-              name,
+            id_libro,
+            imagen_libro,
+            nombre
 
             }
         })
+       
       }
 
 
@@ -82,13 +89,8 @@ export const MainLibros = ( ) => {
                     <hr />
                     <p className='descripcion'>{libros.descripcion}</p>
                 </div>
-                <button className='btn-vermas2' onClick={addLibros}>
-                    <div class="svg-wrapper-1">
-                        <div class="svg-wrapper">
-                            {/* <GiBookshelf className='icon-reservar' /> */}
-                        </div>
-                    </div>
-                    <span>Reservar</span>
+                <button className='btn-reservar' onClick={addLibros}>
+                    reservar
                 </button>
             </div>
         </div>

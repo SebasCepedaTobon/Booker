@@ -1011,7 +1011,14 @@ hr{
 
 
 
-
+.confirmar-reserva{
+    background-color: #2691d9;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 
 
 

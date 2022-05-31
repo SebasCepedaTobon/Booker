@@ -6,6 +6,7 @@ import '../src/Static/MediaQueries.css';
 
 
 
+
 import{
   BrowserRouter,
   Routes,
@@ -37,12 +38,24 @@ import { Prestamo } from './Components/Pages/Tablas/Prestamo';
 
 
 
+
+
 function App() {
+  
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login/>}/>
-        <Route path='/Home' element={<Home/>}/>
+        <Route 
+          path='/' 
+          element={<Login/>}
+      
+
+        />
+        <Route 
+          path='/Home'
+          element={<Home/>}
+
+        />
         <Route path='/Admin' element={<Admin/>} />
         <Route path='/Email' element={<Email/>} />
         <Route path='/Perfil' element={<Perfil/>} />

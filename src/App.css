@@ -82,7 +82,7 @@
   z-index: 1;
   transition-timing-function: ease-in;
   transition: all 0.5s;
-  background-color: #0073c09f;
+  background-color: #0d5fe4;
   height: 100px;
 
 }
@@ -416,12 +416,13 @@ S
 
 .info2{
   display: flex;
-  position: relative;
   flex-direction: column;
-  width: 60%;
-  height: 80%;
   align-items: center;
-  justify-content: space-around;
+  margin-left: -200px;
+  width: 330px;
+  height: 225px;
+
+ 
 
  
 }
@@ -430,9 +431,17 @@ S
 .info2 h2{
   font-size: 30px;
 }
-.info2 p{
-  width: 80%;
+.descripcion{
+
   color: black;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+
+
+
+
 }
 
 
@@ -545,7 +554,7 @@ S
 .blanco{
   background-color: rgb(255, 255, 255);
   height: 130px;
-  width: 75%;
+  width: 90%;
   z-index: 2;
   margin-top: -6%;
 }

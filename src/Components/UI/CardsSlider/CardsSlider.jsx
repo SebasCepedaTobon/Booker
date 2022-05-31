@@ -17,7 +17,7 @@ export const CardsSlider = ({ libro }) => {
               <div className='info2'>
                 <h2 id='titulo'>{nombre}</h2>
         
-                  <p>{descripcion}</p>
+                  <div className='descripcion'>{descripcion}</div>
             
                 <NavLink to={"/Libro/" + libro.id_libro}>
                 <button class="learn-more">

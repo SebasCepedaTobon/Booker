@@ -188,12 +188,10 @@ input[type="submit"]:hover{
 
 .pass{
 margin: -5px 0 20px 5px;
-color: #a6a6a6;
-cursor: pointer;
+font-size: 20px;
+color: rgb(219, 35, 35);
 }
-.pass:hover{
-    text-decoration: underline;
-}
+
 
 /*FIN LOGIN*/
 
@@ -690,8 +688,8 @@ hr{
 
 .from-tablas2{
     background-color: rgb(248, 248, 248);
-    width: 60%;
-    height: 35%;
+    width: 35%;
+    height:80%;
     z-index: 10;
     visibility: hidden;
     transition: all 600ms ease;
@@ -702,37 +700,94 @@ hr{
 
 .from-tablas2 hr{
     width: 90%;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 10px;
+}
+
+.nueva-reserva-close{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.nueva-reserva-close p{
+    font-size: 30px;
+    color: #025388;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-left: 30px;
+
+}
+
+.nueva-reserva-close a{
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 27%;
+    font-weight: bold;
+    color: #025388;
 }
 
 .libros-check{
     display: flex;
+    flex-direction: column;
+}
+
+#contador-reserva p{
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.contender-info-reservados{
+    display: flex;
     flex-direction: row;
-    color: #2691d9;
-    align-items: center;
+    margin-bottom: 20px;
 }
-.libros-check a{
+
+
+.conatiner-img-reserva{
+    margin-left: -50px;
+    margin-right: 30px;
+}
+
+
+.conatiner-info-reservas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.conatiner-info-reservas p{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.container-btn-reserva{
+    text-align: center;
+  
+}
+
+.container-btn-reserva button{
+    margin-top: 10px;
+    width: 230px;
+    height: 50px;
+    background-color: #025388;
+    color: white;
+    font-size: 20px;
+    border: none;
     cursor: pointer;
-    font-size: 30px;
-    margin-left: 55%;
 }
 
-.libros-check p{
-    font-size: 25px;
-    margin-left: 40px;
-    margin-top: 20px;
-    letter-spacing: 3px;
-    
-}
-
-.libros-check i{
-    font-size: 25px;
-    margin-top: 20px;
-    margin-right: -30px;
-    margin-left: 80px;
+.container-btn-reserva button:hover{
+    background-color: #0a3856;
 
 }
+
+
+
+
 
 
 .overlay2{
@@ -753,10 +808,7 @@ hr{
     z-index: 10;
 }
 
-.contender-info-reservados{
-    display: flex;
-    flex-direction: row;
-}
+
 
 /*cards-reservas*/
 
@@ -767,7 +819,7 @@ hr{
     width: 90%;
     height: 500px;
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 150px;
     flex-direction: column;
     
   }
@@ -782,7 +834,7 @@ hr{
   
   .contenedor-reservas{
     width: 250px;
-    height: 320px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -797,7 +849,7 @@ hr{
    justify-content: center;
    box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
    width: 270px;
-   height: 360px;
+   height: 480px;
   }
   
   .contenedor-reservas:hover .libro{
@@ -808,7 +860,7 @@ hr{
   
   
   .contenedor-reservas:hover .btn-reservas{
-    height: 50%;
+    height: 20%;
   }
   
   .contenedor-reservas:hover .container_botones2{
@@ -819,7 +871,8 @@ hr{
   
   .btn-reservas{
     height: 100%;
-    width: 100%;
+    width: 253px;
+    margin-left: 2px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -830,7 +883,7 @@ hr{
   }
   
   .btn-reservas .container_vacio{
-    height: 80%;
+    height: 40%;
   }
   
   .btn-reservas .container_botones2{
@@ -914,14 +967,47 @@ hr{
 
    .blanco2{
     background-color: white;
-    width: 99%;
+    width: 95%;
+    height: 400px;
     z-index: 2;
-    margin-top: -5px;
   }
   
   
   .libro-reserva img{
-    width: 99%;
+    width: 250px;
     height: 90%;
     margin-top: 10px;
+  }
+
+  .btn-confirmar-reserva{
+      width: 200px;
+      height: 50px;
+      position: absolute;
+      top: 230px;
+      right: 100px;
+      background-color: #0d5fe4;
+      color: white;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    
+  }
+
+  .btn-confirmar-reserva:hover{
+      background-color: #1883ca;
+  }
+
+  .btn-reservar{
+    width: 200px;
+    height: 50px;
+    background-color: #0d5fe4;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .btn-reservar:hover{
+    background-color: #1883ca;
+
   }

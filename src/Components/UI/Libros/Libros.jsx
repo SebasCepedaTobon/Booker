@@ -14,7 +14,7 @@ export const Libros = ({libro}) => {
 
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {nombre , id_libro, imagen_libro } = libro;
+  const {nombre , id_libro, imagen_libro,  } = libro;
 
   const [{reservas}, dispatch] = useStateValue();
   const {ventanaReserva} = AbrirModal()
@@ -69,7 +69,13 @@ export const Libros = ({libro}) => {
           </div>
           <div className="blanco">
             <h2>{libro.nombre}</h2>
-            <p>{libro.gender}</p>
+            {libro.autores.map(autor =>{
+              return(
+                <p>{autor.nombres} {autor.apellidos}</p>
+
+              )
+             
+            })}
           </div>
         </div>
     </>

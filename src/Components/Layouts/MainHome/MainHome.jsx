@@ -68,8 +68,8 @@ export const MainHome = () => {
     slidesToShow:4,
     slidesToScroll: 4,
     autoplay: true,
-    speed: 6000,
-    autoplaySpeed: 5000,
+    speed: 8000,
+    autoplaySpeed: 8000,
     cssEase: "linear",
     initialSlide: 0,
       responsive: [
@@ -107,7 +107,7 @@ export const MainHome = () => {
 
   useEffect(()=> {
     setCargando(true);
-    fetch("http://127.0.0.1:8000/modulos/libros/")
+    fetch("https://bookerbackapi.herokuapp.com/modulos/libros/")
     .then(res => res.json())
     .then((data) =>{
       setLibros(data)
