@@ -2,6 +2,8 @@ import React, {useState, useEffect, Component} from 'react'
 import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../Imagenes/Imagenes'
 import booker from '../../../assets/Imagenes/logos/BookerAdmin.png'
+import '../../../Static/Admin.css'
+import '../../../Static/MediaQueriesAdmin.css'
 
 
 export const AdminNavegador = () => {

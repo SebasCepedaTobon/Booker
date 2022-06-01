@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
+import '../../../../Static/Admin.css'
+import '../../../../Static/MediaQueriesAdmin.css'
 
 
 const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/";

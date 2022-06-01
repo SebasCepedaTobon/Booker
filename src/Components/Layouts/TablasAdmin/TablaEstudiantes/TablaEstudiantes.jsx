@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import '../../../../Static/Admin.css'
+import '../../../../Static/MediaQueriesAdmin.css'
+
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';

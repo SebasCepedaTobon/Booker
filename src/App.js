@@ -1,11 +1,6 @@
 import './App.css';
 import '../src/Static/estilos.css';
-import '../src/Static/Admin.css';
-import '../src/Static/MediaQueriesAdmin.css';
 import '../src/Static/MediaQueries.css';
-
-
-
 
 import{
   BrowserRouter,
@@ -33,10 +28,7 @@ import { Libro } from './Components/Pages/Libro/Libro';
 import { Reservas } from './Components/Pages/Tablas/Reservas';
 import { Multas } from './Components/Pages/Tablas/Multas';
 import { Prestamo } from './Components/Pages/Tablas/Prestamo';
-
-
-
-
+import { AgregarLibro } from './Components/Layouts/TablasAdmin/TablaLibros/AgregarLibro';
 
 
 
@@ -74,6 +66,7 @@ function App() {
         <Route path='/Reservas' element={<Reservas/>}/>
         <Route path='/Multas' element={<Multas/>}/>
         <Route path='/Prestamo' element={<Prestamo/>}/>
+        <Route path='/AgregarLibro' element={<AgregarLibro/>}/>
       </Routes>
     </BrowserRouter>
   );

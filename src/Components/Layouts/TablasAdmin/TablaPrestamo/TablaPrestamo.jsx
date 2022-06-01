@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import '../../../../Static/Admin.css'
+import '../../../../Static/MediaQueriesAdmin.css'
 
 import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
 import Swal from 'sweetalert2'
 
-import cienAños from '../../../../assets/Imagenes/cienAños.jpg'
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';

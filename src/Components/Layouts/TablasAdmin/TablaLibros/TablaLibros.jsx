@@ -5,6 +5,8 @@ import axios from 'axios';
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
 import { HooksTLibros } from './HooksTLibros';
+import '../../../../Static/Admin.css'
+import '../../../../Static/MediaQueriesAdmin.css'
 
 
 

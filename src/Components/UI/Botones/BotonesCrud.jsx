@@ -1,4 +1,6 @@
 import React from 'react'
+import '../../../Static/Admin.css'
+import '../../../Static/MediaQueriesAdmin.css'
 
 export const BotonesCrud = () => {
   return (

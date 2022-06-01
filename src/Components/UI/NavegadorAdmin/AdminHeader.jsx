@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Imagenes } from '../Imagenes/Imagenes'
+import '../../../Static/Admin.css'
+import '../../../Static/MediaQueriesAdmin.css'
 
 import perfil from '../../../assets/Imagenes/perfil.jpeg';
 import { NavLink } from 'react-router-dom';

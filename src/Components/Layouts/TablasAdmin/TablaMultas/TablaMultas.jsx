@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import '../../../../Static/Admin.css'
+import '../../../../Static/MediaQueriesAdmin.css'
 
 /*
 import { AiFillDelete } from 'react-icons/ai';
