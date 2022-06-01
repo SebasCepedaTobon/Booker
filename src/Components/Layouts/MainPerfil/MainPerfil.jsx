@@ -1,8 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil'
+import axios from 'axios';
 
 
 export const MainPerfil = () => {
+
+    const [Datos, setDatos] = useState([])
+    const [Estudiante, setEstudiante] = useState([])
+
+    
+    const id_estudiante = localStorage.getItem('id_estudiante')
+    const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/"
+
+    const PedirDatos = () =>{
+        axios.get(url + id_estudiante).then(response=>{
+            setEstudiante(response.data);
+            
+          }).catch(error=>{
+            console.log(error.message);
+          })
+
+    }
+
+    const PedirDatosEstu = () =>{
+        axios.get(url + id_estudiante).then(response=>{
+            setDatos(response.data.doc_estudiante);
+            
+          }).catch(error=>{
+            console.log(error.message);
+          })
+
+    }
+   
+    
+    useEffect(() => {
+        PedirDatos()
+        PedirDatosEstu()
+        // let email = Estudiante.doc_estudiante
+        // email = email.email
+        
+      }, [])
+
+   
+
   return (
     <div className='contenedor-perfil'>
         <BotonesPerfil/>
@@ -14,46 +54,37 @@ export const MainPerfil = () => {
             </div>
             <div className="container-inputs">
                 <div className="container-info">
-                    <p>Correo Electronico</p>
-                    <input type="email" id='email' placeholder='santicortesrincon15@gmail.com'/>
+                    <h4>Nombres</h4>
+                    <p>{Estudiante.nombres}</p>
                 </div>
                 <div className="container-info">
-                    <p>Fecha Nacimiento</p>
-                    <input type="date" id='Fecha' />
+                    <h4>Apellidos</h4>
+                    <p>{Estudiante.apellidos}</p>
+                    
                 </div>
                 <div className="container-info">
-                    <p>Nombres</p>
-                    <input type="text" id='Nombres' placeholder='Santiago'/>
+                    <h4>Correo Electronico</h4>
+                    <p>{Datos.email}</p>
                 </div>
                 <div className="container-info">
-                    <p>Apellidos</p>
-                    <input type="text" id='Apellidos' placeholder='Rincon Cortes'/>
-                </div>
-                <div className="container-info">  
-                    <p>Documento</p>
-                    <input type="number" placeholder='1090054930'/>
+                    <h4>Documento</h4>
+                    <p>{Datos.doc}</p>
+                    
+                    
                 </div>
                 <div className="container-info">
-                    <p>Telefono - Celular</p>
-                    <input type="number" placeholder='32120942396'/>
+                    <h4>Dirección</h4>
+                    <p>{Estudiante.direccion}</p>  
+                   
                 </div>
-            </div>
-            <div className="p-hr">
-                <p>Contraseña</p>
-                <hr />
-            </div>
-            <div className="container-inputs">
-                <div className="container-info">
-                    <p>Nueva Contraseña</p>
-                    <input type="password" id='contraseña' placeholder='*************************'/>
-                </div>
-                <div className="container-info">
-                    <p>Repetir Nueva Contraseña</p>
-                    <input type="password" id='repetir.contraseña' placeholder='*************************'/>
-                </div>
+      
+                    <input type="file" />
+                    
+                    
+             
             </div>
             <div className="btnGuardar">
-                <button className='btn-guardar'>Guardar</button>
+                <button className='btn-guardar'>Editar</button>
             </div>
         </div>
     </div>

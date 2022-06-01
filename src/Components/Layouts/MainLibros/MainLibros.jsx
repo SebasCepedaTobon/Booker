@@ -15,9 +15,11 @@ export const MainLibros = ( ) => {
 
     const { id_libro } = useParams();
     const [cargando, setCargando] = useState(true);
+   
 
 
-    const [libros, setLibros] = useState(null)
+    const [libros, setLibros] = useState([])
+    console.log(libros)
     
 
     useEffect(() => {
@@ -81,7 +83,6 @@ export const MainLibros = ( ) => {
                     <p className='Editorial'>Editorial: {libros.id_editorial.nombre}</p>
                     <p className='Paginas'>Paginas: {libros.numero_paginas}</p>
                     <p className='capitulos'>Capitulos: {libros.numero_capitulos}</p>
-                    <p className='Idioma'>Idioma: {libros.id_idioma.nombre}</p>
                     <p className='ISBN'>ISBN: {libros.isbn}</p>
                 </div>
                 <div className="des-libro">

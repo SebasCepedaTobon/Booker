@@ -28,7 +28,6 @@ export const MainHistorial = () => {
            'success'
          )
          peticionPost()
-         vaciarReserva()
        }
      })
 
@@ -62,9 +61,7 @@ export const MainHistorial = () => {
       }
     }
 
-    const vaciarReserva = () =>{
-      reservas = "";
-    }
+   
 
 
     const peticionPost=async()=>{
