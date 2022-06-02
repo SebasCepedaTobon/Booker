@@ -46,7 +46,7 @@ export const MainLogin = () => {
     axios.post(url, state.form)
 
     .then(res => {
-      console.log(res)
+      console.log(res)  
     
 
       if( res.status === 200 || res.status === 201 ){

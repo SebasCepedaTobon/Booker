@@ -9,6 +9,7 @@ export const AbrirModal = () => {
   const ventanaReserva  = () => {
     setCounter(!abrir)
   }
+  
   const ocultarReserva  = () => {
     setCerrar(!cerrar);
   }
@@ -22,6 +23,7 @@ export const AbrirModal = () => {
      
     const from_tablas2 = document.querySelector('.from-tablas2')
     const overlay = document.getElementById('overlay')
+    
 
     if(cerrar === true){
         setCerrar(!cerrar)
