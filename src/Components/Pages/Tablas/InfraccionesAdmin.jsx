@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import '../../../../Static/Admin.css'
-import '../../../../Static/MediaQueriesAdmin.css'
 
 import Swal from 'sweetalert2'
 

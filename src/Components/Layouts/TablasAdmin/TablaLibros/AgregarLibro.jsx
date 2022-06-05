@@ -3,12 +3,13 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import '../../../../Static/Admin.css'
 import '../../../../Static/MediaQueriesAdmin.css'
+import { NavLink } from 'react-router-dom';
 
 
 export const initialForm = {
   isbn: "",
-  imagen_libro: null,
   nombre: "",
+  imagen_libro: "",
   edicion: "",
   descripcion: "",
   numero_paginas: null,
@@ -17,92 +18,150 @@ export const initialForm = {
   anexos: "",
   palabras_clave: "",
   estado: "A",
-  idioma: 1,
-  id_editorial: 2,
-  autores: [1],
-  categorias: [1]
+  id_idioma: null,
+  id_editorial: null,
+  autores: [],
+  categorias: []
 }
 
 
+let auto = []
+let llenoAuto = []
+let llenoInputAuto = []
+let cate = []
+let llenoCate = []
+let llenoInputCate = []
 
 export const AgregarLibro = () => {
   
+  
+  
   const url="https://bookerbackapi.herokuapp.com/modulos/libros/";
   const [formLibros, setformLibros] = useState(initialForm)
-  /* const [image, setImage] = useState(""); */
-
+  
+  
   const [categorias, setCategorias] = useState()
   const [autores, setAutores] = useState()
   const [idioma, setIdioma] = useState()
   const [editorial, setEditorial] = useState()
- /*  const [nuevoForm, setNuevoForm] = useState() */
   let imagen_libro=""
+  let setearImg
+  
 
-/*   const uploadImage = () => {
+
+  const peticionGetAutoLibro=()=>{
+    const autores = document.getElementById('selecAuto')
+    const inputAuto = document.getElementById('inputAuto')
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/autores/" + autores.value).then(response=>{
+      auto = response.data;
+      console.log(auto);
+      llenoAuto.push(auto.id_autor)
+      console.log(llenoAuto);
+      llenoInputAuto.push( " " + auto.nombres + " " + auto.apellidos)
+      console.log(llenoInputAuto);
+      inputAuto.value = llenoInputAuto
+    }).catch(error=>{
+      console.log(error.message);
+    })
+  }
+
+  const peticionGetCateLibro=()=>{
+    const categorias = document.getElementById('selecCate')
+    const inputCate = document.getElementById('inputCate')
+    console.log(categorias.value);
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/categorias/" + categorias.value).then(response=>{
+      cate = response.data;
+      console.log(cate.nombre);
+      console.log(cate.id_categoria);
+      llenoCate.push(cate.id_categoria)
+      llenoInputCate.push(" " + cate.nombre)
+      inputCate.value = llenoInputCate
+      console.log(llenoCate);
+    }).catch(error=>{
+      console.log(error.message);
+    })
+  }
+
+  const uploadImage = () => {
     const data = new FormData()
-    data.append("file", image)
-    data.append("upload_preset", "ebanisteria")
-    data.append("cloud_name","Ebanisteria")
-    fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
+    data.append("file", setearImg)
+    data.append("upload_preset", "booker")
+    data.append("cloud_name","bookerimg")
+    fetch("  https://api.cloudinary.com/v1_1/bookerimg/image/upload",{
     method:"post",
     body: data
     })
     .then(resp => resp.json())
     .then(data => {
-    let imagen_producto2=data.url
-    mandarImagen(imagen_producto2)
+      console.log(data.url);
+    setformLibros({
+      ...formLibros,
+      imagen_libro: data.url
+    })
+    console.log(formLibros);
     })
     .catch(err => console.log(err))
-  } */
+  }
 
   const fetchCate=async()=>{
         const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/categorias/")
         const responseJSON = await response.json()
         setCategorias(responseJSON)
-    }
-
-    const fetchAutores=async()=>{
-      const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/autores/")
-      const responseJSON = await response.json()
-      setAutores(responseJSON)
   }
 
-    const fetchIdioma=async()=>{
+  const fetchAutores=async()=>{
+    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/autores/")
+    const responseJSON = await response.json()
+    setAutores(responseJSON)
+  }
+
+  const fetchIdioma=async()=>{
       const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/idiomas/")
       const responseJSON = await response.json()
       setIdioma(responseJSON)
   }
 
-    const fetchEditorial=async()=>{
+  const fetchEditorial=async()=>{
       const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/editoriales/")
       const responseJSON = await response.json()
       setEditorial(responseJSON)
   }
 
-/*   const mostrarArchivo = (e) => {
+  const mostrarArchivo = (e) => {
+    console.log(e);
     const images = e.target.files
-    imagen_producto = images[0].name;
+    imagen_libro = images[0].name;
 
 
-    const inputFile = document.getElementById("imagen");
-    const tituImagen = document.querySelector(".tituImagen");
-    tituImagen.innerText = inputFile.files[0].name;
-
-  }; */
+    const tituImagen = document.querySelector(".nomImg");
+    console.log(tituImagen);
+    tituImagen.innerText = imagen_libro;
+    // setearImagen(e)
+  };
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    //uploadImage()
     peticionPost()
   }
 
   const handleChange = (e) =>{
+    const id_editorial = document.getElementById('selectEdito')
+    const id_idioma = document.getElementById('selectIdioma')
+    const cant_ejemplares = document.getElementById('NumEmplares')
+    console.log(cant_ejemplares.value);
+
+    console.log(llenoAuto);
+                
     setformLibros({
       ...formLibros,
       [e.target.name]: e.target.value,
+      id_editorial: Number(id_editorial.value),
+      id_idioma: Number(id_idioma.value),
+      autores: llenoAuto,
+      categorias: llenoCate,
+      cant_ejemplares: Number(cant_ejemplares.value)
     })
     console.log(formLibros);
-    
   }
 
 /*   const mandarImagen = (img) =>{
@@ -123,10 +182,15 @@ export const AgregarLibro = () => {
         await axios.post(url, formLibros)
         .then(res=>{
 
-          // window.location.href="/Admin/TableProducts"
+          window.location.href="/TLibros"
             console.log(res)
         })
         console.log(formLibros);
+    }
+
+    const setearImagen = (e) =>{
+      setearImg=e.target.files[0]
+      uploadImage()
     }
 
   useEffect(()=>{
@@ -141,6 +205,11 @@ export const AgregarLibro = () => {
         <div className="from-tablas"> 
           <div className='Libros-from' >
             <div className="from-Titulo">
+              <div className="Desactivar-From">
+                <NavLink to="/TLibros" >
+                  <i class="fa-solid fa-xmark"></i>
+                </NavLink>
+              </div>
               <h1 className="btn btn-success" >
                 NUEVO LIBRO
               </h1>
@@ -160,7 +229,7 @@ export const AgregarLibro = () => {
                 </div>
 
                 <div className="box-input">
-                  <input id='NumEmplares' type='number' name='cant_ejemplares' onChange={handleChange} value={formLibros.cant_ejemplares} required/>
+                  <input id='NumEmplares' type='number' name='' onChange={handleChange} required/>
                   <span></span>
                   <label>Cantidad Ejemplares</label>
                 </div> 
@@ -200,31 +269,46 @@ export const AgregarLibro = () => {
                   <label>Presentación</label>
                 </div> 
 
-                {/* <div className="box-select">
-                  <select id='selectEdito' onChange={handleChange} value={formLibros.id_editorial} >
-                    
-                    {editorial.map((element, key)=>{
+                <div className="box-select">
+                  <select id='selectEdito' name='id_editorial' onChange={handleChange} value={formLibros.id_editorial} >
+                  <option value="" selected >Editorial...</option>
+                    {!editorial? "" :
+                      editorial.map((element, key)=>{
                       return(
                         <option className='optionSelecionar' key={key} value={element.id_editorial}>{element.nombre}</option>
                       )
                       })}
                   </select>
-                </div> */}
+                </div>
               </div>
 
             
               <div className="boxs-inputs">
 
-              {/* <div className="box-select">
-                  <select id='selectIdioma' onChange={handleChange} value={formLibros.idioma}>
-                    <option value="" selected >Idioma...</option>
-                    {idioma.map((element, key)=>{
+              <div className="box-select">
+                  <select id='selectIdioma' name='id_idioma' onChange={handleChange} value={formLibros.idioma}>
+                    <option selected >Idioma...</option>
+                    {!idioma? "" :
+                    idioma.map((element, key)=>{
                       return(
                         <option key={key} value={element.id_idioma}>{element.nombre}</option>
                       )
-                      })}
+                    })}
                   </select>
-                </div> */}
+                </div>
+
+                <div className="box-select">
+                  <textarea className='textareaCate' readOnly='readOnly' id='inputCate' type="text"/>
+                  <select id='selecCate' onChange={peticionGetCateLibro}>
+                    <option value="" selected>Categorias...</option>
+                    {!categorias? "":
+                    categorias.map((element, key)=>{
+                      return(
+                          <option className='holaOption' key={key} name={element.nombre} value={element.id_categoria}  >{element.nombre}</option>
+                          )
+                        })}                  
+                  </select>
+                </div> 
 
                 <div className="box-textareaa">
                   <textarea placeholder='Palabras Clave...' name='palabras_clave' onChange={handleChange} value={formLibros.palabras_clave}  ></textarea>
@@ -234,31 +318,28 @@ export const AgregarLibro = () => {
 
 
               <div className="boxs-inputs">
-              {/* <div className="box-select">
+              <div className="box-select">
                    <textarea className='textareaCate' readOnly='readOnly' id='inputAuto' type="text" /> 
-                  <select onChange={handleChange} value={formLibros.autores}  id='selecAuto'>
+                  <select onChange={peticionGetAutoLibro}  id='selecAuto'>
                   <option value="" selected>Autores...</option>
-                    {autores.map((element, key)=>{
+                    {!autores? "" :
+                    autores.map((element, key)=>{
                       return(
                         <option key={key} value={element.id_autor}>{element.nombres} {element.apellidos}</option>
                       )
                         })}                  
                   </select>
-                </div> */}
+                </div>
 
-                {/* <div className="box-select">
-                  <textarea className='textareaCate' readOnly='readOnly' id='inputCate' type="text"/>
-                  <select id='selecCate' onChange={handleChange} value={formLibros.categorias}>
-                    <option value="" selected>Categorias...</option>
-                    {categorias.map((element, key)=>{
-                      return(
-                          <option className='holaOption' key={key} name={element.nombre} value={element.id_categoria}  >{element.nombre}</option>
-                          )
-                        })}                  
-                  </select>
-                </div> */}
+                <div class="file-select" id="src-file1" >
+                  <input 
+                  type="file" name="imagen_libro" onChange= {(e)=>{
+                    mostrarArchivo(e)
+                    setearImagen(e)
+                  }} />
+                  <h5 className='nomImg'></h5>
+                </div>                
 
-                
                 <div className="box-textareaa box-textareaDescripcion">
                   <textarea placeholder='Descripción...' name="descripcion" onChange={handleChange} value={formLibros.descripcion}  ></textarea>
                   
