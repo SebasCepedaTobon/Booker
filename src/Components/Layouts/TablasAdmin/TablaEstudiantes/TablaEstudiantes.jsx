@@ -178,6 +178,14 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
 
   },[cerrar]);
 
+
+  const [isChecked, setIsChecked] = useState(false)
+
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+
+    console.log(isChecked)
+  };
  
 
   return (
@@ -222,8 +230,10 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
                         <input  
                         type="checkbox"
                         id='check' 
-                        value='C' 
-                        name=''
+                        value={estudiantes.estado} 
+                        name='estado'
+                        checked={isChecked}
+                        onChange={handleOnChange}
                         />
                         <span class="slider"></span>
                     </label>

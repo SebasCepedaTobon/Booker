@@ -31,16 +31,13 @@ export const MainHistorial = () => {
          vaciarReserva()
        }
      })
-
-
-
   }
 
  
  
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
-  const urlEjem = "https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=A&id_libro__id_libro="
+  const urlEjem = "https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro="
   let idEjemplares = []
 
   

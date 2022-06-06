@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, version} from 'react';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 import Swal from 'sweetalert2'
 import axios from 'axios';
@@ -20,6 +20,12 @@ let auto_idM = []
 let auto_nombreM = []
 let auto = []
 
+let librosEstado = []
+
+let librosEstadoCerar = {}
+
+
+
 export const TablaLibros = () => {
 
   let url="https://bookerbackapi.herokuapp.com/modulos/libros/";
@@ -28,27 +34,61 @@ export const TablaLibros = () => {
   const [autores, setAutores] = useState()
   const [idioma, setIdioma] = useState()
   const [editorial, setEditorial] = useState()
-  const [cerrar, setCounter] = useState(true)
+  const [estado, setEstado] = useState()
+ 
 
   let imagen_libro=""
   let setearImg
 
   const [form2, setForm2] = useState({})
 
-  const peticionGet=()=>{
+  const [formEstado, setFormEstado] = useState({})
 
+  const peticionGet=()=>{
     axios.get(url).then(response=>{
       setLibros(response.data);
+
+      librosEstado = response.data
+
+      librosEstado.map((element,_) => {
+        let id = element.id_libro
+        let bootonEstado = document.getElementById(id)
+        let estado = element.estado
+        if (estado === 'A') {
+          bootonEstado.style.backgroundColor = "#2fd319"
+        }else{
+          bootonEstado.style.backgroundColor = "#193193"
+        }
+      })
       
     }).catch(error=>{
       console.log(error.message);
-    })    
+    })
+
+    
   }
 
   const peticionGetNoDisponible=()=>{
 
     axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=I").then(response=>{
       setLibros(response.data);
+
+      librosEstado = response.data
+      
+      librosEstado.map((element,_) => {
+        console.log("Hola");
+        let id = element.id_libro
+        let bootonEstado = document.getElementById(id)
+        console.log(bootonEstado.id)
+        let estado = element.estado
+        if (estado === 'A') {
+          bootonEstado.style.backgroundColor = "#2fd319"
+        }else{
+          bootonEstado.style.backgroundColor = "#193193"
+        }
+    
+        console.log(element)
+      })
       
     }).catch(error=>{
       console.log(error.message);
@@ -112,21 +152,19 @@ const fetchEditorial=async()=>{
     setTimeout(() => {
       vaciarCate(e)
       vaciarAuto(e)
-      
-    }, 2000);
+    }, 500);
   }
 
-  const handleSubmit = (e) =>{
-    handleChange(e)
-    e.preventDefault()
-    updateData2()
-}
 
 const handleChange = (e) =>{
+
+  console.log(e);
+
   const idioma = document.getElementById('selectIdioma')
-  const autores = document.getElementById('selecAuto')
   const id_editorial = document.getElementById('selectEdito')
   const estado =  document.getElementById('selectEstado')
+
+  console.log(form2);
   
   setForm2({
   ...form2,
@@ -141,7 +179,9 @@ const handleChange = (e) =>{
 }
 
 
-const updateData = (data, e) =>{
+const updateData = (data) =>{
+
+  console.log(data);
 
   categoriasSelecionadas(data)
 
@@ -150,8 +190,20 @@ const updateData = (data, e) =>{
   let estado_id=data.estado
 
   setForm2(data)
+  console.log(form2)
   modalForm(idioma_id, editorial_id,estado_id)
 }
+
+/* const updateDataEstado = (data) =>{
+  categoriasSelecionadas(data)
+
+  let idioma_id=data.id_idioma.id_idioma
+  let editorial_id=data.id_editorial.id_editorial
+  let estado_id=data.estado
+
+  setForm2(data)
+  ventanaEstado()
+} */
 
 
 
@@ -251,8 +303,39 @@ const peticionGetAutoLibro=(e)=>{
 }
 
 
+const handleSubmit = (e) =>{
+  handleChange(e)
+  e.preventDefault()
+  updateData2()
+}
+
+const handleSubmitEstado = () =>{
+  librosEstadoCerar.id_editorial = librosEstadoCerar.id_editorial.id_editorial
+  librosEstadoCerar.id_idioma = librosEstadoCerar.id_idioma.id_idioma
+
+  let id_cate = []
+  let id_auto = []
+
+  librosEstadoCerar.categorias.forEach(element => {
+    id_cate.push(element.id_categoria)
+  });
+
+  librosEstadoCerar.autores.forEach(element => {
+    id_auto.push(element.id_autor)
+  })
+
+  librosEstadoCerar.categorias = id_cate
+  librosEstadoCerar.autores = id_auto
+  librosEstadoCerar.estado = 'I'
+
+  updateData2Estado()
+}
+
+
 
 const updateData2 = () =>{
+
+  console.log(form2 + " form22222");
   let endpoint = url+form2.id_libro+'/'
   axios.put(endpoint, form2)
   .then((res) => {
@@ -261,14 +344,56 @@ const updateData2 = () =>{
   })
 }
 
+const updateData2Estado = () =>{
+  let endpoint = url+ formEstado.id_libro +'/'
+  axios.put(endpoint, formEstado)
+  .then((res) => {
+      window.location.href="/TLibros"
+      console.log(res);
+  })
+}
 
-  useEffect(()=>{
-    peticionGet()
-    fetchCate()
-    fetchAutores()
-    fetchEditorial()
-    fetchIdioma()
+
+const updateEstado = (libro) =>{
+
+  librosEstadoCerar = libro
+  setFormEstado(libro)
+  ventanaEstado()
+}
+
+const ventanaEstado  = () => {
+  const canbioEstado = document.getElementById('estadoCambio')
+  canbioEstado.style.visibility = "visible"
+  canbioEstado.style.transform="scale(1)"
+  canbioEstado.style.opacity="2"
+
+  /* actualizarEstado(libro) */
+}
+
+console.log(formEstado);
+
+useEffect(()=>{
+
+  peticionGet()
+  fetchCate()
+  fetchAutores()
+  fetchEditorial()
+  fetchIdioma()
+
+  setEstado("hola") 
+
 },[])
+
+const cerrarEstado = () => {
+  
+  console.log(librosEstadoCerar);
+  const canbioEstado = document.getElementById('estadoCambio')
+
+  canbioEstado.style.visibility = "hidden"
+  canbioEstado.style.transform="scale(0.6)"
+  canbioEstado.style.opacity="0"
+}
+
 
 const setearImagen = (e) =>{
   setearImg=e.target.files[0]
@@ -313,7 +438,6 @@ const mostrarArchivo = (e) => {
   return(
 
     <div className='MainAdministrativo'>
-      
       <div className="box-AdminNavegador">
         <AdminNavegador/>
       </div>
@@ -322,14 +446,14 @@ const mostrarArchivo = (e) => {
         <div className='box-Tabla' >
           <div className='Tabla'>
           <div className='categoriasMN'  >
-          <div className='btnMulta' >
-            <div className='contenidoMultas' onClick={peticionGet}>
+          <div className='btnMulta' onClick={peticionGet} >
+            <div className='contenidoMultas' >
               <p>Libros</p>
             </div>
           </div>
-          <div className='btnMulta' >
-            <div className='contenidoMultas' onClick={peticionGetNoDisponible}>
-              <p>Disponibles</p>
+          <div className='btnMulta' onClick={peticionGetNoDisponible} >
+            <div className='contenidoMultas' >
+              <p>Libros Inactivos</p>
             </div>
           </div>
           <div className='btnMulta' >
@@ -350,11 +474,11 @@ const mostrarArchivo = (e) => {
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >              
-                  {libros.map((libro,_)=>{
+                  {libros.map((libro, index)=>{
                     j = libro.categorias
                     
                     return(
-                      <div className='tr-1'>
+                      <div key={index} className='tr-1'>
                         
                         <div className='td-0'>
                           <Imagenes clase='img' url={libro.imagen_libro} />
@@ -373,9 +497,13 @@ const mostrarArchivo = (e) => {
                         </div>
                         
                         <div className="td-6">
-                        <input className='inputCheckbox' type="checkbox" />
+                        <input
+                        id={libro.id_libro}
+                        type='button'
+                        onClick={()=>updateEstado(libro)}
+                        className='inputCheckbox'
+                        />
                         </div>
-
                         { /*QUEDO EN LOS BOTONES*/ }
                         <div className='td-5'>
                           <i onClick={()=>updateData(libro)}  class="fa-solid fa-pen-to-square"></i>
@@ -563,6 +691,14 @@ const mostrarArchivo = (e) => {
               </div>
             </form>
           </div>
+        </div>
+      </div>
+
+      <div id='estadoCambio' className="cambioEstado">
+        <p>Confirmar Reserva</p>
+        <div className="boxBtnEstado">
+          <button onClick={cerrarEstado} >Cancelar</button>
+          <button onClick={handleSubmitEstado} >Confirmar</button>
         </div>
       </div>
     </div>

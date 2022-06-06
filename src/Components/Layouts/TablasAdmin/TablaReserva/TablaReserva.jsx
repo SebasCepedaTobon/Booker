@@ -68,8 +68,7 @@ export class TablaReserva extends Component{
         from_tablas.style.opacity="2"
         }
     }
-
-
+    
   ejemplares = []
 
   render(){
