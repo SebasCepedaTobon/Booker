@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import '../../../../Static/Admin.css'
 import '../../../../Static/MediaQueriesAdmin.css'
-
+import axios from 'axios';
 import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
 import Swal from 'sweetalert2'
 
@@ -11,6 +11,8 @@ import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 
 
 export const TablaPrestamo = () => {
+
+  const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"
 
   const eliminacion = () =>{
     Swal.fire({
@@ -54,19 +56,39 @@ export const TablaPrestamo = () => {
 const [cerrar, setCounter] = useState(true)
 const [prestamos, setPrestamos] = useState([])
 
-const cargaPrestamos = () => {
-  fetch("https://rickandmortyapi.com/api/character/?page=3")
-  .then(res => res.json())
-  .then((data) =>{
-    setPrestamos(data.results)
-    
+const peticionGet=()=>{
+  /* const cambioFiltro = document.querySelector('.cambioFiltro')
+  cambioFiltro.textContent = "Reservas" */
+
+
+  axios.get(url).then(response=>{
+    setPrestamos(response.data);
+/* 
+    librosEstado = response.data
+    librosEstado.map((element,_) => {
+      let id = element.id_reserva
+      let pEstado = document.getElementById(id)
+      let estado = element.estado
+      if (estado === 'AC') {
+        pEstado.textContent = "Reservada"
+        pEstado.style.color = "#2fd319"
+      }if(estado === 'IV'){
+        pEstado.textContent = "Inactiva"
+        pEstado.style.color = "#CA2020"
+      }if(estado === 'C'){
+        pEstado.textContent = "Completada"
+        pEstado.style.color = "#0D5FE4"
+      }
+    }) */
+  }).catch(error=>{
+    console.log(error.message);
   })
 }
 
 const FormFlotante  = () => {setCounter(!cerrar)}
 
 useEffect(() => {
-  cargaPrestamos()
+  peticionGet()
   const overlay = document.getElementById('overlay')
   const from_tablas = document.querySelector('.from-tablas')
 
@@ -95,7 +117,7 @@ const seleccionAdd = () => {
 }
 
   return (
-   
+
     <div className='MainAdministrativo'>
       <div className="box-AdminNavegador">
         <AdminNavegador/>
@@ -108,39 +130,44 @@ const seleccionAdd = () => {
               Prestamo de Libros
             </div>
             <div className='tr'>
-              <div className='td-0'><p>Imagen</p></div>
-              <div className='td-1' ><p>Nombre Libro</p></div>
-              <div className='td-2' ><p>Documento Estudiante</p></div>
-              <div className='td-3'><p>Fecha Prestamo</p></div>
-              <div className='td-4'><p>Fecha Entrega</p></div>
+              <div className='td-2' ><p>Nombre Libro</p></div>
+              <div className='td-2' ><p>Nombre Estudiante</p></div>
+              <div className='td-1'><p>Fecha Prestamo</p></div>
+              <div className='td-1'><p>Fecha Entrega</p></div>
               <div className='td-6'><p>Estado</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
 
               {
-                prestamos.map((prestamos, index) =>
-                <div key={index} className='tr-1'>
-                  <div className='td-0'>
-                    <Imagenes clase='img' url={prestamos.image} />
-                  </div>
-                  <div className='td-1'>
-                    <p className='L1P'>{prestamos.name}</p>
-                  </div>
-                  <div className='td-2'><p>{prestamos.id}</p></div>
-                  <div className='td-3'><p>{prestamos.species}</p></div>
-                  <div className='td-4'><p>{prestamos.status}</p></div>
-                  <div className='td-switch'>
-                    <label class="switch">
-                      <input type="checkbox" onClick={devuelto}/>
-                      <span class="slider"></span>
-                    </label>
-                  </div>
-                  <div className='td-5'>
-                    <i onClick={seleccion}class="fa-solid fa-pen-to-square"></i>
-                    <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
-                  </div>
-                </div>
+                prestamos.map((prestamo, index) => {
+
+                  let p = prestamo.prestamos
+                  return(
+
+                    <div key={index} className='tr-1'>
+                      <div className='td-2'>
+                        {p.map((element,_)=>(
+                            <p>{element.id_ejemplar.id_libro.nombre}</p>
+                          ))
+                          }
+                      </div>
+                      <div className='td-2'><p>{prestamo.id_estudiante.nombres}</p></div>
+                      <div className='td-1'><input className='fechaReserva' value={prestamo.fec_prestamo} disabled minlength="4" maxlength="8" size="6"/></div>
+                      <div className='td-1'><input className='fechaReserva' value={prestamo.fec_prestamo} disabled minlength="4" maxlength="8" size="6"/></div>
+                      <div className='td-switch'>
+                        <label class="switch">
+                          <input type="checkbox" onClick={devuelto}/>
+                          <span class="slider"></span>
+                        </label>
+                      </div>
+                      <div className='td-5'>
+                        <i onClick={seleccion}class="fa-solid fa-pen-to-square"></i>
+                        <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
+                      </div>
+                    </div>
+                  )
+                }
                 )
               }
             </div>            
@@ -193,7 +220,6 @@ const seleccionAdd = () => {
                     <option value="">Novedad</option>
                 </select>
               </div>
-              <BotonesCrud/>
             </form>
           </div>
         </div>

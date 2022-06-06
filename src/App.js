@@ -1,6 +1,7 @@
 import './App.css';
 import '../src/Static/estilos.css';
 import '../src/Static/MediaQueries.css';
+import '../src/Static/Admin.css'
 
 import{
   BrowserRouter,

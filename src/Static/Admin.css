@@ -28,11 +28,30 @@
 /*-------------------------------------------------Checkbox-----------------------------------*/
 
 .inputCheckbox{
+    border: none;
     height: 20px;
     width: 20px;
     cursor: pointer;
 }
 
+.estadoTablas{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fechaReserva{
+    margin: 0;
+    overflow: hidden;
+    border: none;
+    size: 6;
+    outline: none;
+    background-color: transparent;
+}
+
+.pEstadoReserva{
+    font-weight: bold;
+}
 
 /*-----------------------------------------------------##################----------------------------*/
 
@@ -244,7 +263,7 @@
 }
 
 .td-4{
-    width: 14%;
+    width: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,6 +370,24 @@
 }
 
 /*Ventana flotante de los formularios, lo que comparten todos los formularios de las tablas*/
+
+.prestamoOverlay{
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.726);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    transition: all 300ms ease;
+    visibility: hidden;
+    z-index: 4000;
+}
 
 .overlay{
     height: 100vh;
@@ -788,11 +825,13 @@ form .box-select{
     color: white;
 }
 
-
+.box-input input[type="date"]{
+    color: white;
+}
 
 .box-input input[type="date"]:valid,
 .box-input input[type="date"]:focus{
-    color: #a6a6a6;
+    color: #000000;
 }
 
 
@@ -1292,5 +1331,12 @@ body::-webkit-scrollbar-thumb {
         align-items: center;
         justify-content: space-around;
         
+    }
+
+    .fa-calendar-xmark{
+        color: rgb(202, 32, 32);
+        font-size: 30px;
+        cursor: pointer;
+        transition: 1s;
     }
 

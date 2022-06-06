@@ -41,13 +41,13 @@ export const TablaEstudiantes = () => {
   const [grado, setGrado] = useState()
   const [form2, setForm2] = useState({})
 
-  const peticionGet=()=>{
-    axios.get(url).then(response=>{
-      setEstudiantes(response.data);      
-    }).catch(error=>{
-      console.log(error.message);
-    })    
-  }
+    const peticionGet=()=>{
+      axios.get(url).then(response=>{
+        setEstudiantes(response.data);      
+      }).catch(error=>{
+        console.log(error.message);
+      })    
+    }
 
   const fetchGrupo=async()=>{
     const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/grupos/")
@@ -122,8 +122,6 @@ const updateData2 = async () =>{
     llenarSelect(numDocumento, name, gmail, password1, tipoDoc1, grupo1, grado1)
     ventanaFlotante()
 }
-
-
 
 const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, grado1) =>{
 
