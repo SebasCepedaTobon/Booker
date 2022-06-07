@@ -1,16 +1,21 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Imagenes } from '../Imagenes/Imagenes'
 
 
 
 
 export const BotonesPerfil = () => {
+
+    const imagen_estudiante = localStorage.getItem('imagen')
+    const userName_estudiante = localStorage.getItem('name')
+
   return (
       <div className="botones-perfil">
           <div className="img-nombre">
-            <i class="fa-solid fa-user"></i>
+            <div className="container-avatar"><Imagenes url={imagen_estudiante}/></div>
               <div className="usu">
-                  <h2>@Usuario</h2>
+                  <h2>{userName_estudiante}</h2>
                   <p id='Bienvenido'>Bienvenido a tu cuenta</p>
               </div>
           </div>

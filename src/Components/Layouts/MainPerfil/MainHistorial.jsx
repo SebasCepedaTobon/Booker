@@ -28,9 +28,11 @@ export const MainHistorial = () => {
            'success'
          )
          peticionPost()
-         vaciarReserva()
        }
      })
+
+
+
   }
 
  
@@ -52,6 +54,8 @@ export const MainHistorial = () => {
         axios.get(urlEjem + reservas[index].id_libro).then(response=>{
          
           idEjemplares.push(response.data[0].id_ejemplar)
+
+          console.log(idEjemplares);
           
         }).catch(error=>{
           console.log(error.message);
@@ -59,9 +63,7 @@ export const MainHistorial = () => {
       }
     }
 
-    const vaciarReserva = () =>{
-      reservas = "";
-    }
+   
 
 
     const peticionPost=async()=>{

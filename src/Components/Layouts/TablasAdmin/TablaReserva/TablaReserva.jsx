@@ -124,7 +124,7 @@ export const TablaReserva = () => {
 
   const peticionGetActuales = ()=>{
     const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas Completadas"
+    cambioFiltro.textContent = "Reservas Actuales"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=AC").then(response=>{
       setReservas(response.data);
       

@@ -1,0 +1,64 @@
+
+
+/**/
+
+
+.boxLibrosCantidad{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 120px;
+    margin-left: 200px;
+}
+
+.boxLibrosCantidad i{
+    font-size: 35px;
+    cursor: auto;
+}
+
+.boxLibrosCantidad p{
+    position: relative;
+    right: 10px;
+    bottom: 15px;
+    text-align: center;
+    width: 25px;
+    background-color: #d0d3d8;
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+}
+
+
+
+
+/*Buscardor de la tabla*/
+
+.TituloLibro .buscador{
+    width: 26%;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgb(147, 147, 147);
+    margin-bottom: 40px;
+}
+.TituloLibro .buscador input{
+    width: 60%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #a6a6a6;
+    font-size: 16px;
+    background-color: transparent;    
+}
+
+.TituloLibro .buscador input::placeholder{
+    padding-left: 3px;
+    color: #a6a6a6;
+}
+
+.TituloLibro .buscador i{
+    color: #000000;
+}

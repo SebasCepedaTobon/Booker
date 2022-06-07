@@ -163,7 +163,7 @@
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     font-size: 20px;
 }
 
@@ -1048,7 +1048,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
     color: white;
     font-weight: bold;
-    margin-left: 200px;
+    margin-left: 130px;
 }
 
 .AdminHeader i{

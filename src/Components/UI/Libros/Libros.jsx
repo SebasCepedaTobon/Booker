@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom'
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
 import '../../../slick.css'
-import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
 import { AbrirModal } from '../AbrirModal/AbrilModal';
+
 
 //Product
 

@@ -2,19 +2,51 @@ import { useState, useEffect } from 'react';
 import { Imagenes } from '../Imagenes/Imagenes'
 import '../../../Static/Admin.css'
 import '../../../Static/MediaQueriesAdmin.css'
-
+import '../../../Static/AdminHeader.css'
+import axios from 'axios';
 import perfil from '../../../assets/Imagenes/perfil.jpeg';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 
+let sizeDisponibles
+let sizeNoDisponibles
 
 export const AdminHeader = () => {
 
     const [buscar, setCounter] = useState(true)
+    const [libros, setLibros] = useState([])
+    const [librosNo, setLibrosNo] = useState([])
 
+    const librosDisponibles=()=>{
+
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=P").then(response=>{
+        setLibros(response.data);
+        
+      }).catch(error=>{
+        console.log(error.message);
+      })
+    }
+
+    const librosNoDisponibles=()=>{
+
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D").then(response=>{
+        setLibrosNo(response.data);
+        
+      }).catch(error=>{
+        console.log(error.message);
+      })
+    }
+    
+    console.log(libros);
+
+    sizeDisponibles = libros.length
+    sizeNoDisponibles = librosNo.length
     const boxBuscador  = () => {setCounter(!buscar)}
   
     useEffect(() => {
+
+      librosDisponibles()
+      librosNoDisponibles()
       const buscador = document.getElementById('buscador')
       const HeaderAdmin = document.querySelector('.HeaderAdmin')
 
@@ -35,6 +67,12 @@ export const AdminHeader = () => {
     <div className='AdminHeader'>
         <div className="HeaderAdmin">
             <p className='sitio'>Sitio Administrativo</p>
+            <div className='boxLibrosCantidad'>
+              <i class="fa-solid fa-book" title='Libros Disponibles'></i>
+              <p>{sizeNoDisponibles}</p>
+              <i class="fa-solid fa-book" title='Libros No Disponibles' ></i>
+              <p>{sizeDisponibles}</p>
+            </div>
             <div className="HeaderIconos">
                 <i onClick={boxBuscador} class="fa-solid fa-magnifying-glass"></i>
                 <NavLink to='/home'>

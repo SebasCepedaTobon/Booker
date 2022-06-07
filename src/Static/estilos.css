@@ -1011,3 +1011,28 @@ hr{
     background-color: #1883ca;
 
   }
+
+
+  /*busquedas*/
+
+  .contendor-cards-busquedas{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 100px;
+
+  }
+
+  .h2-busquedas{
+      margin-top: 30px;
+      margin-bottom: 50px;
+      font-size: 25px;
+  }
+
+  .cards-busquedas{
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 30px;
+    align-items: center;
+    justify-content: center;
+    }

@@ -9,6 +9,7 @@ export const AbrirModal = () => {
   const ventanaReserva  = () => {
     setCounter(!abrir)
   }
+  
   const ocultarReserva  = () => {
     setCerrar(!cerrar);
   }
@@ -20,8 +21,12 @@ export const AbrirModal = () => {
     //const overlay = document.getElementById('overlay2')
     
      
-    const from_tablas2 = document.querySelector('.from-tablas2')
+    const from_tablas2 = document.querySelector('.Estudiantes-from')
     const overlay = document.getElementById('overlay')
+    
+  
+
+    
 
     if(cerrar === true){
         setCerrar(!cerrar)

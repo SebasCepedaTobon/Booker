@@ -435,6 +435,34 @@ const mostrarArchivo = (e) => {
   // setearImagen(e)
 };
 
+const librosBusqueda=()=>{
+  const inputBuscar = document.getElementById('elInput')
+
+  axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?search=" + inputBuscar.value).then(response=>{
+      setLibros(response.data);
+
+      librosEstado = response.data
+      
+      librosEstado.map((element,_) => {
+        console.log("Hola");
+        let id = element.id_libro
+        let bootonEstado = document.getElementById(id)
+        console.log(bootonEstado.id)
+        let estado = element.estado
+        if (estado === 'A') {
+          bootonEstado.style.backgroundColor = "#2fd319"
+        }else{
+          bootonEstado.style.backgroundColor = "#193193"
+        }
+    
+        console.log(element)
+      })
+      
+    }).catch(error=>{
+      console.log(error.message);
+    })    
+}
+
   return(
 
     <div className='MainAdministrativo'>
@@ -463,7 +491,12 @@ const mostrarArchivo = (e) => {
           </div>
         </div>
             <div className="TituloLibro">
-              Libros
+              <p>Libros</p>
+              
+              <div id='buscador' className="buscador">
+                  <input onChange={librosBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...'/>
+                  <i onClick={librosBusqueda} class="fa-solid fa-magnifying-glass"></i>
+              </div>
             </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>

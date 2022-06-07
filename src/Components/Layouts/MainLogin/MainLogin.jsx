@@ -46,7 +46,7 @@ export const MainLogin = () => {
     axios.post(url, state.form)
 
     .then(res => {
-      console.log(res)
+      console.log(res)  
     
 
       if( res.status === 200 || res.status === 201 ){
@@ -55,6 +55,8 @@ export const MainLogin = () => {
         localStorage.setItem('id_estudiante', res.data.user.id_estudiante)
         localStorage.setItem('usuario', res.data.user.nombres)
         localStorage.setItem('apellidos', res.data.user.apellidos)
+        localStorage.setItem('imagen', res.data.user.doc_estudiante.imagen)
+        localStorage.setItem('name', res.data.user.doc_estudiante.name)
        
         window.location.href = "/Home"
       

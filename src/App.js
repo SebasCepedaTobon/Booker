@@ -1,7 +1,6 @@
 import './App.css';
 import '../src/Static/estilos.css';
 import '../src/Static/MediaQueries.css';
-import '../src/Static/Admin.css'
 
 import{
   BrowserRouter,
@@ -30,9 +29,7 @@ import { Reservas } from './Components/Pages/Tablas/Reservas';
 import { Multas } from './Components/Pages/Tablas/Multas';
 import { Prestamo } from './Components/Pages/Tablas/Prestamo';
 import { AgregarLibro } from './Components/Layouts/TablasAdmin/TablaLibros/AgregarLibro';
-import { NuevoEstudiante } from './Components/Layouts/TablasAdmin/TablaEstudiantes/NuevoEstudiante';
-import {InfraccionesAdmin} from './Components/Pages/Tablas/InfraccionesAdmin'
-
+import { Busqueda } from './Components/Pages/Busqueda/Busqueda';
 
 
 
@@ -44,6 +41,7 @@ function App() {
         <Route 
           path='/' 
           element={<Login/>}
+      
 
         />
         <Route 
@@ -70,8 +68,8 @@ function App() {
         <Route path='/Multas' element={<Multas/>}/>
         <Route path='/Prestamo' element={<Prestamo/>}/>
         <Route path='/AgregarLibro' element={<AgregarLibro/>}/>
-        <Route path='/NuevoEstudiante' element={<NuevoEstudiante/>}/>
-        <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
+        <Route path='/Busqueda/:nombre' element={<Busqueda/>}/>
+
       </Routes>
     </BrowserRouter>
   );

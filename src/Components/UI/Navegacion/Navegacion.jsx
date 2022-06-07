@@ -10,6 +10,8 @@ import { useStateValue } from '../../../StateProvider'
 
 export const Navegacion = () => {
 
+  const imagen_estudiante = localStorage.getItem('imagen')
+
   const [{reservas}, dispatch] = useStateValue();
 
   return (
@@ -28,7 +30,7 @@ export const Navegacion = () => {
       <NavLink to='/Admin' className='nav-icon'>
         <i class="fa-solid fa-user-pen"></i>Admin
       </NavLink>
-      <NavLink to='/Perfil'><div className="container-avatar"><i class="fa-solid fa-user"></i></div></NavLink>
+      <NavLink to='/Perfil'><div className="container-avatar"><Imagenes url={imagen_estudiante}/></div></NavLink>
       </div>
     </div>
   )

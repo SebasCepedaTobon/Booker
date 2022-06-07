@@ -184,6 +184,26 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
 
     console.log(isChecked)
   };
+
+
+  const peticionGetBusqueda=()=>{
+    const inputBuscar = document.getElementById('elInput')
+
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=" + inputBuscar.value).then(response=>{
+      setEstudiantes(response.data);      
+    }).catch(error=>{
+      console.log(error.message);
+    })    
+  }
+
+  const peticionGetInactivo=()=>{
+
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=I").then(response=>{
+      setEstudiantes(response.data);      
+    }).catch(error=>{
+      console.log(error.message);
+    })    
+  }
  
 
   return (
@@ -195,8 +215,24 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
         <AdminHeader/>  
         <div className='box-Tabla' >
           <div className='Tabla'>
+          <div className='categoriasMN'  >
+          <div className='btnMulta' >
+            <div className='contenidoMultas' >
+              <p>Libros</p>
+            </div>
+          </div>
+          <div className='btnMulta' >
+            <div className='contenidoMultas' >
+              <p>Estudiantes Inactivos</p>
+            </div>
+          </div>
+        </div>
             <div className="TituloLibro">
-              Estudiantes
+              <p>Estudiantes</p>
+              <div id='buscador' className="buscador">
+                  <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...'/>
+                  <i onClick={peticionGetBusqueda} class="fa-solid fa-magnifying-glass"></i>
+              </div>
             </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
