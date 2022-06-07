@@ -1,0 +1,42 @@
+
+.MainAutoresCate{
+  
+  background-color: #EEEEEE;
+  height: 100vh;
+}
+.AutoresCategorias{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AutoCateAgregar{
+  width: 300px;
+  height: 255px;
+}
+.AutoCateAgregar h1{
+  font-size: 25px;
+}
+
+.AutoCateAgregar .boxs-inputs{
+  justify-content: center;
+}
+
+.AutoCateAgregar .boxs-input{
+  margin: 0;
+}
+
+.AutoCateAgregar .btnsFormulario{
+  margin-top: 0px;
+}
+.AutoCateAgregar button{
+  font-size: 16px;
+  width: 175px;
+}
+
+.AutoCateAgregar .fa-xmark{
+  top: 5px;
+  font-size: 30px;
+}

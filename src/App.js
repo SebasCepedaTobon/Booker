@@ -30,6 +30,9 @@ import { Multas } from './Components/Pages/Tablas/Multas';
 import { Prestamo } from './Components/Pages/Tablas/Prestamo';
 import { AgregarLibro } from './Components/Layouts/TablasAdmin/TablaLibros/AgregarLibro';
 import { Busqueda } from './Components/Pages/Busqueda/Busqueda';
+import { AutoresCategorias } from './Components/Pages/DatosLibros/AutoresCategorias';
+import { NuevoEstudiante } from './Components/Layouts/TablasAdmin/TablaEstudiantes/NuevoEstudiante'
+
 
 
 
@@ -69,7 +72,8 @@ function App() {
         <Route path='/Prestamo' element={<Prestamo/>}/>
         <Route path='/AgregarLibro' element={<AgregarLibro/>}/>
         <Route path='/Busqueda/:nombre' element={<Busqueda/>}/>
-
+        <Route path='/NuevoEstudiante' element={<NuevoEstudiante/>}/>
+        <Route path='/AutoresCategorias' element={<AutoresCategorias/>}/>
       </Routes>
     </BrowserRouter>
   );

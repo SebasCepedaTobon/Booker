@@ -77,7 +77,7 @@ export const AdminNavegador = () => {
                 </div>
               </NavLink>
             <p className='LyE'>DATOS DE LOS LIBROS</p>
-              <NavLink to='/Admin/Infraciones' className='vinculo'>              
+              <NavLink to='/AutoresCategorias' className='vinculo'>              
                 <div className='box-vinculos'>
                   <i class="fa-solid fa-chalkboard-user"></i>
                   <p>Autores</p>                
