@@ -245,6 +245,16 @@ export const TablaReserva = () => {
     ejemplaresId = []
   }
 
+  const peticionGetBusqueda=()=>{
+    const inputBuscar = document.getElementById('elInput')
+
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?search=" + inputBuscar.value).then(response=>{
+      setReservas(response.data);      
+    }).catch(error=>{
+      console.log(error.message);
+    })    
+  }
+
 
 
   return (    
@@ -281,6 +291,10 @@ export const TablaReserva = () => {
         </div>
             <div className="TituloLibro">
               <p className='cambioFiltro'></p>
+              <div id='buscador' className="buscador">
+                  <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...'/>
+                  <i onClick={peticionGetBusqueda} class="fa-solid fa-magnifying-glass"></i>
+              </div>
             </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>

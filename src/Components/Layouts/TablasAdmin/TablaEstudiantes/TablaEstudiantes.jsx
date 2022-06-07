@@ -196,14 +196,7 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
     })    
   }
 
-  const peticionGetInactivo=()=>{
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=I").then(response=>{
-      setEstudiantes(response.data);      
-    }).catch(error=>{
-      console.log(error.message);
-    })    
-  }
  
 
   return (
