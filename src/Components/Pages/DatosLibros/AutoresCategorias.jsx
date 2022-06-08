@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'reactstrap'
 import '../../../Static/formAutoCate.css'
+import '../../../Static/borrador.css'
 import { AdminHeader } from '../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../UI/NavegadorAdmin/AdminNavegador'
 
@@ -156,8 +157,8 @@ export const AutoresCategorias = () => {
         </div>
       </div>
 
-      <div id='Auto' className='AutoresCategorias'>
-        <div id='Auto2' className='Estudiantes-from AutoCateAgregar AutoresForm' >
+      <div id='Auto' className='AutoresCategorias '>
+        <div id='Auto2' className='Estudiantes-from boxAuto AutoCateAgregar AutoresForm' >
           <div className="from-Titulo">
             <div className="Desactivar-From">
                 <i class="fa-solid fa-xmark" onClick={modalCerrar2} ></i>
@@ -170,6 +171,14 @@ export const AutoresCategorias = () => {
                 <input type="text" name='nombres'  required/>
                 <span></span>
                 <label>Nombre Autor</label>
+              </div>
+            </div>
+
+            <div className="boxs-inputs">
+              <div className="box-input">
+                <input type="text" name='nombres'  required/>
+                <span></span>
+                <label>Apellido Autor</label>
               </div>
             </div>
             <br />
