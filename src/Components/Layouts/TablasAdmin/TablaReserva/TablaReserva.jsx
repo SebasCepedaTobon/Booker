@@ -361,6 +361,7 @@ export const TablaReserva = () => {
               )}
             </div>
           </div>
+          
         </div>
       </div>
 

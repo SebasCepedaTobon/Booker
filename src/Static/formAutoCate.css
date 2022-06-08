@@ -1,8 +1,6 @@
 
 .MainAutoresCate{
-  
   background-color: #EEEEEE;
-  height: 100vh;
 }
 .AutoresCategorias{
   width: 100vw;
@@ -10,12 +8,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 4000;
+  background-color: rgba(0, 0, 0, 0.357);
+  visibility: hidden;
 }
 
 .AutoCateAgregar{
   width: 300px;
   height: 255px;
+  position: relative;
+  right: 130px;
+  bottom: 20px;
 }
+
+.AutoresForm{
+  left: 390px;
+}
+
+
+
 .AutoCateAgregar h1{
   font-size: 25px;
 }
@@ -39,4 +55,109 @@
 .AutoCateAgregar .fa-xmark{
   top: 5px;
   font-size: 30px;
+}
+
+.AutoCateAgregar .box-Tabla{
+  width: 54%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+
+@media (max-width: 1400px) {
+
+  .AutoresCategorias{
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .box-Cate-Autores{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 87vw;
+    min-height: 100vh;
+    margin-left: 165px;
+  }
+
+ 
+
+  .MainAutoresCate .box-Tabla{
+    width: 84%;
+    margin-top: 100px;
+    justify-content: start;    
+  }
+
+  .MainAutoresCate .Tabla{
+    width: 48%;
+    margin-left: 50px;
+  }
+
+
+  /* TEMA DE FORMULARIOS*/
+  .AutoresCategorias form {
+    height: 76%;
+  }
+
+  .MainAutoresCate .td-1{
+    width: 30%;
+  }
+
+  .MainAutoresCate .AutoresTabla{
+    width: 35%;
+    position: absolute;
+    left: 780px;
+    z-index: 3000;
+  }
+
+  .MainAutoresCate .buscador{
+    width: 50%;
+    height: 45px;
+    margin-bottom: -2px;
+  }
+
+  .MainAutoresCate .fa-folder-plus{
+    font-size: 30px;
+    color: #0d5fe4;
+  }
+
+  .MainAutoresCate .fa-folder-plus{
+    font-size: 30px;
+    color: #0d5fe4;
+    cursor: pointer;
+  }
+
+ /*  [title]:hover:after{
+    background-color: rgb(181, 181, 181);
+    width: 30px;
+    height: 30px;
+  } */
+
+  
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+[data-title]:after {
+  content: attr(data-title);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 10px black;
+  font-size: 12px;
+  position: absolute;
+  padding: 10px 10px 10px 10px;
+  bottom: -1.6em;
+  left: 100%;
+  white-space: nowrap;
+  z-index: 99999;
+  visibility: hidden;
+  border-radius: 5px;
+  border: none;
+  
+}
+[data-title] {
+  position: relative;
+}
 }

@@ -32,6 +32,8 @@ import { AgregarLibro } from './Components/Layouts/TablasAdmin/TablaLibros/Agreg
 import { Busqueda } from './Components/Pages/Busqueda/Busqueda';
 import { AutoresCategorias } from './Components/Pages/DatosLibros/AutoresCategorias';
 import { NuevoEstudiante } from './Components/Layouts/TablasAdmin/TablaEstudiantes/NuevoEstudiante'
+import { EditorialIdioma } from './Components/Pages/DatosLibros/EditorialIdioma';
+
 
 
 
@@ -74,6 +76,7 @@ function App() {
         <Route path='/Busqueda/:nombre' element={<Busqueda/>}/>
         <Route path='/NuevoEstudiante' element={<NuevoEstudiante/>}/>
         <Route path='/AutoresCategorias' element={<AutoresCategorias/>}/>
+        <Route path='/EditorialIdioma' element={<EditorialIdioma/>}/>
       </Routes>
     </BrowserRouter>
   );

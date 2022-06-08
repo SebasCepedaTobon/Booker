@@ -83,7 +83,7 @@ export const AdminNavegador = () => {
                   <p>Autores</p>                
                 </div>
               </NavLink>
-              <NavLink to='/Admin/Infraciones' className='vinculo'>              
+              <NavLink to='/EditorialIdioma' className='vinculo'>              
                 <div className='box-vinculos'>
                   <i class="fa-solid fa-warehouse"></i>
                   <p>Editorial</p>                
