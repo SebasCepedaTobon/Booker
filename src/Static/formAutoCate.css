@@ -3,20 +3,20 @@
   background-color: #EEEEEE;
 }
 
-
-
 .AutoresForm{
   left: 390px;
 }
-
-
 
 .AutoCateAgregar h1{
   font-size: 25px;
 }
 
 .AutoCateAgregar .boxs-inputs{
+  display: flex;
+  width: 100%;
+  align-items: center;
   justify-content: center;
+  margin: 18px 0px 16px 0px;
 }
 
 .AutoCateAgregar .boxs-input{
@@ -28,7 +28,14 @@
 }
 .AutoCateAgregar button{
   font-size: 16px;
-  width: 175px;
+  width: 215px;
+  border: none;
+  color: white;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 1s;
+  background-color: rgb(13,95,228);
 }
 
 .AutoCateAgregar .fa-xmark{
@@ -44,61 +51,170 @@
 }
 
 
-@media (max-width: 1400px) {
+/*Computador del sena*/
 
-  .AutoresCategorias{
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .box-Cate-Autores{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 87vw;
-    min-height: 100vh;
-    margin-left: 165px;
-  }
-
- 
-
-  .MainAutoresCate .box-Tabla{
-    width: 84%;
-    margin-top: 100px;
-    justify-content: start;    
-  }
-
-  .MainAutoresCate .Tabla{
-    width: 48%;
-    margin-left: 50px;
-  }
-
-
-  /* TEMA DE FORMULARIOS*/
-  .AutoresCategorias form {
-    height: 76%;
-  }
-
-  .MainAutoresCate .td-1{
-    width: 30%;
-  }
-
-  .MainAutoresCate .AutoresTabla{
-    width: 35%;
-    position: absolute;
-    left: 780px;
-    z-index: 3000;
-  }
-
-  .MainAutoresCate .buscador{
-    width: 50%;
-    height: 45px;
-    margin-bottom: -2px;
-  } 
-  
-  /*  [title]:hover:after{
-    background-color: rgb(181, 181, 181);
-    width: 30px;
-    height: 30px;
-  } */
+.AutoresCategorias{
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.726);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 300ms ease;
+  visibility: hidden;
+  z-index: 4000;
 }
+
+.CateAutoModal{
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  transition: all .5s ease;
+}
+
+
+
+
+.box-Cate-Autores{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 87vw;
+  min-height: 100vh;
+  margin-left: 165px;
+}
+
+.MainAutoresCate .box-Tabla{
+  width: 84%;
+  margin-top: 100px;
+  justify-content: start;    
+}
+
+.MainAutoresCate .fa-folder-plus{
+  font-size: 30px;
+  color: #0d5fe4;
+}
+
+.MainAutoresCate .fa-folder-plus{
+  font-size: 30px;
+  color: #0d5fe4;
+  cursor: pointer;
+}
+
+ /* TEMA DE FORMULARIOS*/
+ .AutoresCategorias form {
+  height: 76%;
+}
+
+.AutoCateAgregar{
+  width: 350px;
+  height: 255px;
+  position: relative;
+  right: 130px;
+  bottom: 20px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0px 0px 35px rgb(0 0 0 / 30%);
+}
+
+.boxAuto{
+  width: 340px;
+  height: 295px;
+}
+
+.MainAutoresCate .td-1{
+  width: 30%;
+}
+
+.MainAutoresCate .box-input{
+  margin: 16px 0px;
+}
+
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+[data-title]:after {
+  content: attr(data-title);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 10px black;
+  font-size: 12px;
+  position: absolute;
+  padding: 10px 10px 10px 10px;
+  bottom: -1.6em;
+  left: 100%;
+  white-space: nowrap;
+  z-index: 99999;
+  visibility: hidden;
+  border-radius: 5px;
+  border: none;
+  
+}
+[data-title] {
+  position: relative;
+}
+/*Aca termina*/
+
+
+/*-------------------------------------MEDIA----------------------------------*/
+
+@media (max-width: 1400px){
+
+.box-TablaCateAuto{
+  width: 84%;
+  margin-top: 100px;
+}
+
+.TablaCateAuto{
+  width: 48%;
+  margin-left: 54px;
+  margin-top: 50px;
+}
+
+
+/*Tabla dos*/
+
+.AutoresTabla{
+  width: 35%;
+  top: 118px;
+  left: 834px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+
+/*FIN*/
+
+
+/*Lo que se una en las dos tablas*/
+.tituloCateAuto{
+  width: 95%;
+  height: 50px;
+}
+
+.tituloCateAuto .buscador{
+  width: 50%;
+  height: 45px;
+  margin-bottom: -2px;
+}
+
+.tituloCateAuto .buscador input{
+  width: 60%;
+  height: 30px;
+}
+/*FIN*/
+
+}
+

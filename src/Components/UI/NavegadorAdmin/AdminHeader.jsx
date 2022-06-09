@@ -36,8 +36,6 @@ export const AdminHeader = () => {
         console.log(error.message);
       })
     }
-    
-    console.log(libros);
 
     sizeDisponibles = libros.length
     sizeNoDisponibles = librosNo.length
