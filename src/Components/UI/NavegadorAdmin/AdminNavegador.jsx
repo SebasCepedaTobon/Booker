@@ -80,19 +80,13 @@ export const AdminNavegador = () => {
               <NavLink to='/AutoresCategorias' className='vinculo'>              
                 <div className='box-vinculos'>
                   <i class="fa-solid fa-chalkboard-user"></i>
-                  <p>Autores</p>                
+                  <p>Categorias y Autores</p>                
                 </div>
               </NavLink>
               <NavLink to='/EditorialIdioma' className='vinculo'>              
                 <div className='box-vinculos'>
                   <i class="fa-solid fa-warehouse"></i>
-                  <p>Editorial</p>                
-                </div>
-              </NavLink>
-              <NavLink to='/Admin/Infraciones' className='vinculo'>              
-                <div className='box-vinculos'>
-                  <i class="fa-solid fa-language"></i>
-                  <p>Idioma</p>                
+                  <p>Editorial e Idioma</p>                
                 </div>
               </NavLink>
 

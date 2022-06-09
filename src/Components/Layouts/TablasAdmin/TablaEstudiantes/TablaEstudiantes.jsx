@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 import perfil from '../../../../assets/Imagenes/perfil.jpeg';
-
+import usuario from '../../../../assets/Imagenes/Admin/usuario.png'
 import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader';
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador';
@@ -14,7 +14,7 @@ export const TablaEstudiantes = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/"
 
- /*  const eliminacion = () =>{
+ const eliminacion = () =>{
      Swal.fire({
        title: '¿Esta seguro de eliminar a el estudiante?',
        icon: 'warning',
@@ -31,7 +31,7 @@ export const TablaEstudiantes = () => {
          )
        }
      })
-  } */
+  }
 
 
   const [cerrar, setCounter] = useState(true)
@@ -243,7 +243,10 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
                     <div className='tr-1'>
                   <div className='td-0'>
                     <div className='perfil' >
-                      <Imagenes clase='icono' url={estudiantes.doc_estudiante.imagen}/>                       
+                     {estudiantes.doc_estudiante.imagen === null
+                      ?<Imagenes url={usuario} />
+                      :<Imagenes clase='icono' url={estudiantes.doc_estudiante.imagen}/>
+                      }                    
                     </div>
                   </div>
                   <div className='td-4'>{estudiantes.tipodoc}</div>
