@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../Imagenes/Imagenes'
 import booker from '../../../assets/Imagenes/logos/BookerAdmin.png'
 import '../../../Static/Admin.css'
+import flecha from '../../../assets/Imagenes/Admin/flecha.png'
 import '../../../Static/MediaQueriesAdmin.css'
 
 
@@ -15,13 +16,17 @@ export const AdminNavegador = () => {
     useEffect(() => {
 
       const config = document.getElementById('Admin-Navegador2')
+      const img =  document.getElementById('imgFlecha')
 
       if(navegador === true){
         config.style.marginLeft = "0"
+        img.style.transform = "rotate(180deg)"
 
       }else{
         config.style.marginLeft = "-260px"
         config.style.transition = "all 0.5s"
+        img.style.transition = "all 0.5s"
+        img.style.transform = "rotate(0deg)"
       }
   
     },[navegador]);
@@ -30,7 +35,12 @@ export const AdminNavegador = () => {
     <div id='Admin-Navegador2' className='Admin-Navegador'>
       <div className='box-Logo' >
         <Imagenes url={booker} clase='logo'/>
-      </div>  
+      </div>
+      <div onClick={mostrarNavegador} className='config'>
+        <div className="flechaBox">
+          <Imagenes id='imgFlecha' url={flecha} />
+        </div>
+      </div>
       <div className='Menu-Padre'>
         <div className='box-menu' >
             <NavLink to='/Admin' className='vinculo' activeclassname="active">              
@@ -92,9 +102,7 @@ export const AdminNavegador = () => {
 
         </div>              
       </div>
-      <div onClick={mostrarNavegador} className='config'>
-        <div id='config' className='spinnerAdmin'></div>
-      </div>
+      
     </div>
   )
 }

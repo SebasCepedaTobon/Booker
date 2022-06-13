@@ -497,7 +497,7 @@ form .box-select{
 
 
  .box-carsd-Admin{
-    width: 95%;
+    width: 85%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -572,7 +572,7 @@ form .box-select{
 .cardLibros .info-btn .p{
     position: relative;
     bottom: 10px;
-    left: 13px;
+    left: -20px;
     font-size: 38px;
     font-weight: bold;
 }
@@ -884,6 +884,8 @@ form .box-select{
     overflow: auto;
     box-sizing: border-box;
     margin-bottom: 50px;
+    background-color: white;
+    z-index: 2;
 }
 
 .Admin-Navegador .Menu-Padre::-webkit-scrollbar {
@@ -925,14 +927,26 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: -50px;
-    top: 40%;
-    width: 50px;
-    height: 50px;
-    z-index: 1000;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    right: -24px;
+    top: 267px;
+    width: 52px;
+    height: 62px;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
     background-color: rgb(13,95,228);
+}
+
+.boxFlecha{
+    background-color: white;
+    width: 30px;
+    height: 90px;
+}
+
+.config img{
+    width: 14px;
+    margin-top: 5px;
+    margin-left: 26px;
+    transform: rotate(0deg);
 }
 
 .LyE{
@@ -943,39 +957,6 @@ body::-webkit-scrollbar-thumb {
 #infra{
     margin-right: 52px;
 }
-
-.spinnerAdmin {
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    z-index: 1000;
-    display: grid;
-    color: #ffffff;
-    background: radial-gradient(farthest-side, currentColor calc(10% - 15px),rgba(121, 252, 6, 0) calc(10% - 15px) 0);
-    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 15px),rgb(251, 0, 0) calc(100% - 9px));
-    border-radius: 50%;
-    animation: spinnerAdmin-sm4bhi 2s infinite linear;
-   }
-   
-   .spinnerAdmin::before,
-   .spinnerAdmin::after {
-    content: "";
-    grid-area: 1/1;
-    background: linear-gradient(currentColor 0 0) center,
-             linear-gradient(currentColor 0 0) center;
-    background-size: 89% 9px,9px 89%;
-    background-repeat: no-repeat;
-   }
-   
-   .spinnerAdmin::after {
-    transform: rotate(45deg);
-   }
-   
-   @keyframes spinnerAdmin-sm4bhi {
-    100% {
-     transform: rotate(1turn);
-    }
-   }
 
 /*-------------------HEADER ANTIGUO----------------------*/
 

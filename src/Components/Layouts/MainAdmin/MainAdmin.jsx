@@ -17,11 +17,8 @@ import { Imagenes } from '../../UI/Imagenes/Imagenes';
 
 export const MainAdmin = () => {
 
-
-
   return (
     <div className='MainAdministrativo'>
-      <audio src={audio} autoPlay controls ></audio>
       <div className="box-AdminNavegador">
         <AdminNavegador/>
       </div>
@@ -75,7 +72,7 @@ export const MainAdmin = () => {
           <div className="boxCard02">
             <div className="cardLibros">
               <div className="info-btn">
-                <p className='p'>Lista de Libros</p>
+                <p className='p'>Libros</p>
                 <NavLink className='card-Admin' to='/Reservas'>
                   <div className='contenido'>
                     <p>Ver Tabla</p>
