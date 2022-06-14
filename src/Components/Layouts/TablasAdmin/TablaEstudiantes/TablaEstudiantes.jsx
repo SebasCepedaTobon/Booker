@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
-import perfil from '../../../../assets/Imagenes/perfil.jpeg';
+import usuarioInactivo from '../../../../assets/Imagenes/Admin/UsuarioInactivo.png';
+import usuarioActivo from '../../../../assets/Imagenes/Admin/+.png';
 import usuario from '../../../../assets/Imagenes/Admin/usuario.png'
-import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader';
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador';
 import { NavLink } from 'react-router-dom';
@@ -110,6 +110,9 @@ const updateData2 = async () =>{
 }
 
   const updateData = (data) =>{
+
+    console.log(data.doc_estudiante.usuario_activo);
+
     let numDocumento = data.doc_estudiante.doc
     let name = data.doc_estudiante.name
     let gmail = data.doc_estudiante.email
@@ -124,10 +127,6 @@ const updateData2 = async () =>{
 }
 
 const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, grado1) =>{
-
-  const check = document.getElementById('check')
-
-  console.log(check.value);
 
   const doc = document.getElementById('doc')
   doc.value = numDocumento
@@ -229,10 +228,10 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
             </div>
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
-              <div className='td-4'><p>TipoDoc</p></div>
               <div className='td-1' ><p>Documento</p></div>
               <div className='td-2' ><p>Nombre Completo</p></div>
-              <div className='td-3'><p>Grado</p></div>              
+              <div className='td-6'><p>Grado</p></div>
+              <div className='td-6'><p>Grupo</p></div>         
               <div className='td-6'><p>Estado</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
@@ -246,31 +245,31 @@ const llenarSelect = (numDocumento, name, gmail, password1, tipoDoc1, grupo1, gr
                      {estudiantes.doc_estudiante.imagen === null
                       ?<Imagenes url={usuario} />
                       :<Imagenes clase='icono' url={estudiantes.doc_estudiante.imagen}/>
-                      }                    
+                      }
+                      {estudiantes.doc_estudiante.usuario_activo === true
+                      ?<Imagenes clase='UsuarioActivo' url={usuarioActivo} />
+                      :<Imagenes clase='UsuarioActivo' url={usuarioInactivo} />
+                      }   
                     </div>
                   </div>
-                  <div className='td-4'>{estudiantes.tipodoc}</div>
                   <div className='td-1'>
                     <p className='L1P'>{estudiantes.doc_estudiante.doc}</p>
                   </div>
                   <div className='td-2'>{estudiantes.nombres} {estudiantes.apellidos}</div>
-                  <div className='td-3'>{estudiantes.id_grado.id_grado}</div>
-                  <div className='td-switch'>
-                    <label class="switch">
-                        <input  
-                        type="checkbox"
-                        id='check' 
-                        value={estudiantes.estado} 
-                        name='estado'
-                        checked={isChecked}
-                        onChange={handleOnChange}
-                        />
-                        <span class="slider"></span>
-                    </label>
-                  </div>
+                  <div className='td-6'>{estudiantes.id_grado.nombre}</div>
+                  <div className='td-6'>{estudiantes.id_grupo.letra_grupo}</div>
+                  <div className='td-6'>
+                  {estudiantes.doc_estudiante.usuario_activo===true
+                  ?<p className='activoEstudiantes' >Activo</p>
+                  :<p className='inactivoEstudiantes' >Inactivo</p>                  
+                  }</div>
                   <div className='td-5'>
                     <i onClick={()=>updateData(estudiantes)} class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can" ></i>
+                    {estudiantes.doc_estudiante.usuario_activo === true
+                    ?<div className='activoStuden' ></div>
+                    :<i class="fa-solid fa-user-graduate"></i>
+                    }
+                    
                   </div>
                 </div>
                   )

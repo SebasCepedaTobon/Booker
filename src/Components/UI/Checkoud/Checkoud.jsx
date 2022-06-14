@@ -46,7 +46,9 @@ export const Checkoud = ({libro}) => {
         </div>
         <div className="blanco2">
           <h2>{libro.nombre}</h2>
-          <p>{libro.quantity}</p>
+          <div className="cantidad-libros">
+            <p>{libro.quantity}</p>
+          </div>
         </div>
       </div>
       

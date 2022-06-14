@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useStateValue } from '../../../StateProvider';
-import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil';
 import { Checkoud } from '../../UI/Checkoud/Checkoud';
 import { Imagenes } from '../../UI/Imagenes/Imagenes';
 import Noreserva from '../../../assets/Imagenes/NoLibros.png'
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
+import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil';
 
 
 
@@ -28,12 +29,15 @@ export const MainHistorial = () => {
            'success'
          )
          peticionPost()
+        
        }
      })
 
 
 
   }
+
+
 
  
  
@@ -55,7 +59,7 @@ export const MainHistorial = () => {
          
           idEjemplares.push(response.data[0].id_ejemplar)
 
-          console.log(idEjemplares);
+        
           
         }).catch(error=>{
           console.log(error.message);
@@ -77,7 +81,13 @@ export const MainHistorial = () => {
       }).catch(error=>{
         console.log(error.message);
       })
+
+   
+
+     
     }
+
+    
 
 
 
@@ -90,6 +100,7 @@ export const MainHistorial = () => {
 
   return (
     <div className='contenedor-perfil'>
+        <Navegacion3/>
         <BotonesPerfil/>
         <div className="datos-perfil">
             <h2 id='Tu-cuenta'>Tus Reservas</h2>

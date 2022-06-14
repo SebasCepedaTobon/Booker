@@ -317,10 +317,10 @@ export const TablaReserva = () => {
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
               <div className='td-1' ><p>Nombre Libro</p></div>
-              <div className='td-1' ><p>Documento</p></div>
-              <div className='td-4'><p>Nombre Estudiante</p></div>
-              <div className='td-2'><p>Fecha Reserva</p></div>
-              <div id='td-6Reserva' className='td-6'><p>Actual</p></div>
+              <div className='td-0'><p>Documento</p></div>
+              <div className='td-2'><p>Nombre Estudiante</p></div>
+              <div className='td-1'><p>Fecha Reserva</p></div>
+              <div className='td-0'><p>Estado</p></div>
               <div className='td-6'><p>Opciones</p></div>
             </div>
 
@@ -342,12 +342,12 @@ export const TablaReserva = () => {
                     ))
                     }
                   </div>
-                  <div className='td-1'>
+                  <div className='td-0'>
                     <p className='L1P'>{reservas.id_estudiante.doc_estudiante}</p>
                   </div>
-                  <div className='td-4'><p>{reservas.id_estudiante.nombres}</p></div>
-                  <div className='td-2'><input className='fechaReserva' value={reservas.fecha_reserva} disabled minlength="4" maxlength="8" size="6"/></div>
-                  <div className='td-6'>
+                  <div className='td-2'><p>{reservas.id_estudiante.nombres}</p></div>
+                  <div className='td-1'><input className='fechaReserva' value={reservas.fecha_reserva} disabled minlength="4" maxlength="8" size="6"/></div>
+                  <div className='td-0'>
                     <div className="estadoTablas">
                       <p className='pEstadoReserva' id={reservas.id_reserva}>Completada</p>
                     </div>

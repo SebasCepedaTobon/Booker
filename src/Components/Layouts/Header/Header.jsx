@@ -6,9 +6,18 @@ import imgHeader from '../../../assets/Imagenes/imgheader.png'
 import imgbottom from '../../../assets/Imagenes/wave.svg'
 import { Mainbusqueda } from '../Mainbusqueda/Mainbusqueda';
 import { NavLink } from 'react-router-dom';
+import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
+
+
+
+
+
+
 
 export const Header = () => {
-  
+   
+
+
   const [libros, setLibros] = useState([])
   console.log(libros)
 
@@ -35,6 +44,7 @@ export const Header = () => {
   return (
     <div>
       <Navegacion/>
+      <Navegacion3/>
       <div className="banner">
         <div className="banner-contenido">
           <div className="conatainer-texto-bsqueda">

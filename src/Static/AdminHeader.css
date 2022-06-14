@@ -28,12 +28,12 @@
     background-color: #E0E0E0;
 }
 
-.noDisponible2{
+.noDisponible{
     top: 23px;
-    right: 406px;    
+    right: 413px;    
 }
 
-.noDisponible{
+.Disponible{
     top: 23px;
     left: 650px;
 }

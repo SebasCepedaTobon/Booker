@@ -34,7 +34,9 @@ export const AdminNavegador = () => {
   return (    
     <div id='Admin-Navegador2' className='Admin-Navegador'>
       <div className='box-Logo' >
-        <Imagenes url={booker} clase='logo'/>
+        <NavLink to='/home' >
+          <Imagenes url={booker} clase='logo'/>
+        </NavLink>
       </div>
       <div onClick={mostrarNavegador} className='config'>
         <div className="flechaBox">

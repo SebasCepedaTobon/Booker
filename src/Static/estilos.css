@@ -299,12 +299,18 @@ color: rgb(219, 35, 35);
 
 /*-------------------PERFIL--------------------*/
 
+.flecha-desplegar{
+   visibility: hidden;
+    
+}
+
 .contenedor-perfil{
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
-    margin-top: 70px;
+    background-color: #ffffff;
+   
 
 
 
@@ -312,78 +318,84 @@ color: rgb(219, 35, 35);
 }
 
 .botones-perfil{
-    border-top-right-radius: 10px;
-    width: 22.7%;
+    width: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #f5f5f5;
-    height: 800px;
+    background-color: #eeeeee80;
+    
+    align-items: center;
+    height: 700px;
 
   
 }
 
+.conatiner-btn-perfil a{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: rgb(95, 95, 95);
+    margin-top: 20px;
+    transition: all 0.5s;
+
+   
+}
+
+.conatiner-btn-perfil .p-perfil{
+    padding-top: 20px;
+    color: #a6a6a6;
+}
+
+.btn-perfil{
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-perfil i{
+    padding-right: 7px;
+}
+
+
+
 .img-nombre{
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     margin-left: -20px;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 
 }
 
+.img-nombre input{
+   display: none;
+}
+
+.img-nombre button{
+    display: none;
+}
+
+
+
+.container-avatar1 img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
 .usu{
-   margin-left: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
 }
 
 .img-nombre i{
     font-size: 70px;
     color: #000000;
 }
-
-.btns{
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    margin-left: 40px;
-
-}
-
-
-.btns button{
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    --border-right: 6px;
-  --animation-color: #2691d9;
-  --fs-size: 24px;
-  letter-spacing: 3px;
-  text-decoration: none;
-  font-size: var(--fs-size);
-  position: relative;
-  color: black;
-
-}
-
-.hover-text {
-    position: absolute;
-    box-sizing: border-box;
-    content: attr(data-text);
-    color: var(--animation-color);
-    width: 0%;
-    inset: 0;
-    border-right: var(--border-right) solid var(--animation-color);
-    overflow: hidden;
-    transition: 0.5s;
-    -webkit-text-stroke: 1px var(--animation-color);
-  }
-  /* hover */
-  .btns button:hover .hover-text {
-    width: 100%;
-    filter: drop-shadow(0 0 23px var(--animation-color))
-  }
-
-
 
 
 hr{
@@ -400,6 +412,16 @@ hr{
 .datos-perfil{
     width: 70%;
     margin-left: 50px;
+}
+
+.p-hr img{
+    width: 400px;
+}
+
+.p-hr h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: normal;
 }
 
 #Tu-cuenta{
@@ -430,11 +452,11 @@ hr{
 }
 
 .container-info{
-    width:400px;
+    width:300px;
     height: 60px;
     margin-left: 20px;
     margin-bottom: 20px;
-    border: solid 1px rgb(197, 197, 197);
+    border-bottom: solid 1px rgb(197, 197, 197);
 
 
 }
@@ -464,7 +486,7 @@ hr{
     cursor: pointer;
     width: 100px;
     height: 40px;
-    background-color: #2691d9;
+    background-color:#0d5fe4;
     color: white;
     font-size: 18px;
     border: none;
@@ -485,6 +507,22 @@ hr{
     margin-left: 5px;
 }
 
+.flecha-desplegar{
+    width: 40px;
+    height: 40px;
+    background-color:#0d5fe4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
 
 /*imformacion reservas*/
 
@@ -502,11 +540,11 @@ hr{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+
 }
 
 .no-reserva img{
-    width: 500px;
+    width: 400px;
 }
 
 .no-reserva h3{
@@ -698,9 +736,10 @@ hr{
     border-radius: 10px;
 }
 
-.from-tablas2 hr{
+.hr-reserva{
     width: 90%;
     margin-left: 30px;
+    margin-right: 30px;
     margin-top: 10px;
 }
 
@@ -734,7 +773,7 @@ hr{
 
 #contador-reserva p{
     font-size: 20px;
-    margin-left: 30px;
+    margin-left: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -770,14 +809,16 @@ hr{
 }
 
 .container-btn-reserva button{
-    margin-top: 10px;
-    width: 230px;
-    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 40px;
     background-color: #025388;
     color: white;
     font-size: 20px;
     border: none;
     cursor: pointer;
+    border-radius: 7px;
 }
 
 .container-btn-reserva button:hover{
@@ -909,7 +950,7 @@ hr{
     cursor: pointer;
     display: flex;
     align-items: center;
-    background:#2691d9;
+    background:#0d5fe4;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
   }
 
@@ -943,7 +984,7 @@ hr{
    }
    
    .container_botones2 button:hover {
-    background:#a6a6a6;
+    background:#ed1818;
    }
    
    .container_botones2 button:hover .text {
@@ -970,17 +1011,32 @@ hr{
     width: 95%;
     height: 400px;
     z-index: 2;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .cantidad-libros{
+    width: 40px;
+    height: 35px;
+    background-color: #0d5fe4;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-right: 10px;
   }
   
   
   .libro-reserva img{
     width: 250px;
-    height: 90%;
     margin-top: 10px;
   }
 
   .btn-confirmar-reserva{
-      width: 200px;
+      width: 150px;
       height: 50px;
       position: absolute;
       top: 230px;
@@ -990,6 +1046,7 @@ hr{
       border: none;
       font-size: 20px;
       cursor: pointer;
+      border-radius: 10px;
     
   }
 

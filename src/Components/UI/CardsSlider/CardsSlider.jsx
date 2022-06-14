@@ -20,11 +20,11 @@ export const CardsSlider = ({ libro }) => {
                   <div className='descripcion'>{descripcion}</div>
             
                 <NavLink to={"/Libro/" + libro.id_libro}>
-                <button class="learn-more">
-                  <span class="circle" aria-hidden="true">
-                    <span class="icon arrow"></span>
+                <button className="learn-more">
+                  <span className="circle" aria-hidden="true">
+                    <span className="icon arrow"></span>
                   </span>
-                  <span class="button-text">Ver mas...</span>
+                  <span className="button-text">Ver mas...</span>
                 </button>
                 </NavLink>
               </div>

@@ -25,13 +25,13 @@ export const MainHome = () => {
 
 
   const settings = {
-    dots: true,
-    infinite: true,
+    //dots: true,
+    //infinite: true,
     slidesToShow:2,
     slidesToScroll: 2,
-    autoplay: true,
-    speed: 6000,
-    autoplaySpeed: 5000,
+    //autoplay: true,
+    speed: 2000,
+    //autoplaySpeed: 8000,
     cssEase: "linear",
     initialSlide: 0,
       responsive: [
@@ -64,12 +64,12 @@ export const MainHome = () => {
 
   const settings2 = {
     dots: true,
-    infinite: true,
-    slidesToShow:4,
-    slidesToScroll: 4,
-    autoplay: true,
-    speed: 8000,
-    autoplaySpeed: 8000,
+    //infinite: true,
+    slidesToShow:3,
+    slidesToScroll: 3,
+    //autoplay: true,
+    speed: 2000,
+    //autoplaySpeed: 8000,
     cssEase: "linear",
     initialSlide: 0,
       responsive: [
@@ -78,16 +78,13 @@ export const MainHome = () => {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
-            infinite: true,
-            dots: true
           }
         },
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2
+            slidesToShow: 1,
+            slidesToScroll: 1,
           }
         },
         {

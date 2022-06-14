@@ -72,18 +72,15 @@ export const VentanaReserva2 = () => {
 
     axios.put(url, Estudiante)
 
+    reload()
+
   }
 
-  const llenarInputs = () =>{
-    const email = document.getElementById('email')
-    const name = document.getElementById('name')
-  
-    email.value = Documento.email
-  
-    name.value = Documento.name
-    
-  
-  }
+  const reload = () => {
+    window.location.reload(true);
+}
+
+
 
 
 const {ocultarReserva} = AbrirModal()

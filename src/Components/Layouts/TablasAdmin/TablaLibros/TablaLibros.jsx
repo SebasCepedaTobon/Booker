@@ -23,8 +23,6 @@ let auto_idM = []
 let auto_nombreM = []
 let auto = []
 
-let librosEstado = []
-
 let librosEstadoCerar = {}
 
 
@@ -50,19 +48,6 @@ export const TablaLibros = () => {
   const peticionGet=()=>{
     axios.get(url).then(response=>{
       setLibros(response.data);
-
-      librosEstado = response.data
-
-      librosEstado.map((element,_) => {
-        let id = element.id_libro
-        let bootonEstado = document.getElementById(id)
-        let estado = element.estado
-        if (estado === 'A') {
-          bootonEstado.style.backgroundColor = "#2fd319"
-        }else{
-          bootonEstado.style.backgroundColor = "#193193"
-        }
-      })
       
     }).catch(error=>{
       console.log(error.message);
@@ -75,23 +60,16 @@ export const TablaLibros = () => {
 
     axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=I").then(response=>{
       setLibros(response.data);
-
-      librosEstado = response.data
       
-      librosEstado.map((element,_) => {
-        console.log("Hola");
-        let id = element.id_libro
-        let bootonEstado = document.getElementById(id)
-        console.log(bootonEstado.id)
-        let estado = element.estado
-        if (estado === 'A') {
-          bootonEstado.style.backgroundColor = "#2fd319"
-        }else{
-          bootonEstado.style.backgroundColor = "#193193"
-        }
-    
-        console.log(element)
-      })
+    }).catch(error=>{
+      console.log(error.message);
+    })    
+  }
+
+  const peticionGetDisponible=()=>{
+
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=A").then(response=>{
+      setLibros(response.data);
       
     }).catch(error=>{
       console.log(error.message);
@@ -296,26 +274,43 @@ const handleSubmit = (e) =>{
   updateData2()
 }
 
-const handleSubmitEstado = () =>{
-  librosEstadoCerar.id_editorial = librosEstadoCerar.id_editorial.id_editorial
-  librosEstadoCerar.id_idioma = librosEstadoCerar.id_idioma.id_idioma
+const handleSubmitEstado = (libro) =>{
+
+  libro.id_editorial = libro.id_editorial.id_editorial
+  libro.id_idioma = libro.id_idioma.id_idioma
 
   let id_cate = []
   let id_auto = []
 
-  librosEstadoCerar.categorias.forEach(element => {
+  libro.categorias.forEach(element => {
     id_cate.push(element.id_categoria)
   });
 
-  librosEstadoCerar.autores.forEach(element => {
+  libro.autores.forEach(element => {
     id_auto.push(element.id_autor)
   })
 
-  librosEstadoCerar.categorias = id_cate
-  librosEstadoCerar.autores = id_auto
-  librosEstadoCerar.estado = 'I'
-
-  updateData2Estado()
+  libro.categorias = id_cate
+  libro.autores = id_auto
+  if (libro.estado === 'A') {    
+    libro.estado = 'I'
+  }else{
+    libro.estado = 'A'
+  }
+  
+  Swal.fire({
+    title: '¿Esta seguro de guardar los cambios?',
+    icon: 'warning',
+    confirmButtonText: 'Si, Guardar',
+    showCancelButton: true,
+    cancelButtonText: 'No, cancelar',
+    reverseButtons: true
+  }).then((resultado) => {
+    if (resultado.isConfirmed) {
+      updateData2Estado(libro)
+    }
+  })
+  
 }
 
 
@@ -331,9 +326,10 @@ const updateData2 = () =>{
   })
 }
 
-const updateData2Estado = () =>{
-  let endpoint = url+ formEstado.id_libro +'/'
-  axios.put(endpoint, formEstado)
+const updateData2Estado = (libro) =>{
+
+  let endpoint = url+ libro.id_libro +'/'
+  axios.put(endpoint, libro)
   .then((res) => {
       window.location.href="/TLibros"
       console.log(res);
@@ -342,10 +338,7 @@ const updateData2Estado = () =>{
 
 
 const updateEstado = (libro) =>{
-
-  librosEstadoCerar = libro
-  setFormEstado(libro)
-  ventanaEstado()
+  handleSubmitEstado(libro)
 }
 
 const ventanaEstado  = () => {
@@ -356,8 +349,6 @@ const ventanaEstado  = () => {
 
   /* actualizarEstado(libro) */
 }
-
-console.log(formEstado);
 
 useEffect(()=>{
 
@@ -427,23 +418,6 @@ const librosBusqueda=()=>{
 
   axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?search=" + inputBuscar.value).then(response=>{
       setLibros(response.data);
-
-      librosEstado = response.data
-      
-      librosEstado.map((element,_) => {
-        console.log("Hola");
-        let id = element.id_libro
-        let bootonEstado = document.getElementById(id)
-        console.log(bootonEstado.id)
-        let estado = element.estado
-        if (estado === 'A') {
-          bootonEstado.style.backgroundColor = "#2fd319"
-        }else{
-          bootonEstado.style.backgroundColor = "#193193"
-        }
-    
-        console.log(element)
-      })
       
     }).catch(error=>{
       console.log(error.message);
@@ -466,11 +440,17 @@ const librosBusqueda=()=>{
               <p>Libros</p>
             </div>
           </div>
+          <div className='btnMulta' onClick={peticionGetDisponible} >
+            <div className='contenidoMultas' >
+              <p>Libros Activos</p>
+            </div>
+          </div>
           <div className='btnMulta' onClick={peticionGetNoDisponible} >
             <div className='contenidoMultas' >
               <p>Libros Inactivos</p>
             </div>
           </div>
+          
         </div>
             <div className="TituloLibro">
               <p>Libros</p>
@@ -527,11 +507,11 @@ const librosBusqueda=()=>{
                         </div>
                         { /*QUEDO EN LOS BOTONES*/ }
                         <div className='td-5'>
-                          <i onClick={()=>updateData(libro)} data-title='Actualizar Libro'  class="fa-solid fa-pen-to-square"></i>
                           {libro.estado === 'A'
-                          ?<i class="fa-regular fa-book"></i>
-                          :<i class="fa-solid fa-book-atlas"></i>
+                          ?<div className='prueba' onClick={()=>updateEstado(libro)} ></div>
+                          :<div className='prueba prueba2' onClick={()=>updateEstado(libro)} ></div>
                           }
+                          <i onClick={()=>updateData(libro)} data-title='Actualizar Libro'  class="fa-solid fa-pen-to-square"></i>
                         </div>
                       </div>
                     )
@@ -719,7 +699,7 @@ const librosBusqueda=()=>{
       </div>
 
       <div id='estadoCambio' className="cambioEstado">
-        <p>Confirmar Reserva</p>
+        <p>Seguro de guardar cambios</p>
         <div className="boxBtnEstado">
           <button onClick={cerrarEstado} >Cancelar</button>
           <button onClick={handleSubmitEstado} >Confirmar</button>

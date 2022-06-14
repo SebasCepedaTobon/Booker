@@ -4,6 +4,7 @@ import evento1 from '../../../assets/Imagenes/Eventos/evento1.jpg'
 import evento2 from '../../../assets/Imagenes/Eventos/evento2.jpg'
 import evento3 from '../../../assets/Imagenes/Eventos/evento3.png'
 import evento4 from '../../../assets/Imagenes/Eventos/evento4.jpeg'
+import { NavLink } from 'react-router-dom'
 
 
 export const Eventos = () => {
@@ -11,9 +12,13 @@ export const Eventos = () => {
     <>
     <div id='titlulo-eventos'>Eventos</div>
       <div className='container-eventos'>
-        <div className="evento1">
-        <Imagenes url={evento1}/>
-        </div>
+        
+          <div className="evento1">
+          <NavLink to={"/Eventos"}>
+            <Imagenes url={evento1}/>
+          </NavLink>
+          </div>
+        
         <div className="evento2">
           <Imagenes url={evento2}/>
         </div>

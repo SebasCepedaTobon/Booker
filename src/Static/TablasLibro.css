@@ -1,9 +1,85 @@
 .pActivo{
     color: #0D5FE4;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .pInactivo{
     color: #ff0000;
     font-weight: bold;
+    font-size: 18px;
+}
+
+.ActivarLibro{
+    font-weight: 600 !important;
+    color: #0D5FE4;
+    font-size: 90px;
+}
+
+.imagenEstado{
+    width: 30px;
+    cursor: pointer;
+    transition: all ease 1s;
+}
+
+.imagenEstado:hover{
+    transform: scale(1.10);
+}
+
+.prueba{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-image: url('../assets/Imagenes/Admin/ActivarLibro1.png');
+    background-size: cover;
+}
+
+.prueba2{
+    background-image: url('../assets/Imagenes/Admin/DesactivarLibro.png');
+}
+
+
+
+/*----------------------------Tabla Estudiantes----------------------------*/
+
+.inactivoEstudiantes{
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.activoEstudiantes{
+    color: #0D5FE4;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.fa-user-graduate{
+    color: #0D5FE4;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all ease 1s;
+}
+
+.fa-user-graduate:hover{
+    transform: scale(1.10);
+}
+
+.activoStuden{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-image: url('../assets/Imagenes/Admin/estudianteInactivo.png');
+    background-size: cover;
+    transition: all ease 1s;
+}
+
+.activoStuden:hover{
+    transform: scale(1.10);
+}
+
+.UsuarioActivo{
+    position: relative;
+    width: 20px;
+    height: 20px;
 }

@@ -10,15 +10,15 @@
 
 
 .slick-next:before {
-  color: black;
-  font-size:50px;
+  color:#2591da !important;
+  font-size:50px !important;
 }
 
 .slick-prev:before{
-  color: black;
-  font-size:50px;
-  position: relative;
-  right: 30px;
+  color:#2591da !important;
+  font-size:50px !important;
+  position: relative !important;
+  right: 30px !important;
 }
 
 .slick-dots li button:before {

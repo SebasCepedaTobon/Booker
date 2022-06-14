@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState, useEffect, Component} from 'react'
 import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../Imagenes/Imagenes'
+import '../../../Static/Admin.css'
+import '../../../Static/MediaQueriesAdmin.css'
 import axios from 'axios'
 
 
+export const Botones = () => {
 
-
-export const BotonesPerfil = () => {
-
-    
     const userName_estudiante = localStorage.getItem('name')
     const id_estudiante = localStorage.getItem('id_estudiante')
     const [form2, setForm2] = useState({})
@@ -107,72 +106,72 @@ export const BotonesPerfil = () => {
         window.location.reload(true);
     }
 
-    const abrir = () =>{
-        document.querySelector('.botones-perfil').classList.toggle('show')
-        document.querySelector('.flecha-desplegar').classList.toggle('show')
-    }
     
 
-  return (
-      <div className="botones-perfil">
-          <div className="img-nombre">
-            <div className="container-avatar1">
-                <Imagenes url={imagen.imagen}/></div>
-            <input type="file" onChange={(e)=>{
-                setImage(e)
-            }}/>
-            <button onClick={PeticionPut}>confirmar</button>
+  const [navegador, setCounter] = useState(true)
 
-              <div className="usu">
-                  <h2>{userName_estudiante}</h2>
-                  <p id='Bienvenido'>Bienvenido a tu cuenta</p>
-              </div>
-          </div>
-          <div className='conatiner-btn-perfil' >
-            <p className='p-perfil'>PERFIL</p>
-            <NavLink to='/Perfil' >              
-              <div className='btn-perfil'>
+    const mostrarNavegador  = () => {setCounter(!navegador)}
+  
+    useEffect(() => {
+
+      const config = document.getElementById('Admin-Navegador2')
+
+      if(navegador === true){
+        config.style.marginLeft = "0"
+
+      }else{
+        config.style.marginLeft = "-260px"
+        config.style.transition = "all 0.5s"
+      }
+  
+    },[navegador]);
+
+  return (    
+    <div id='Admin-Navegador2' className='Admin-Navegador'>
+      <div className='Menu-Padre'>
+        <div className='box-menu' >
+            <p className='LyE'>PERFIL</p>
+            <NavLink to='/Perfil' className='vinculo'>              
+              <div className='box-vinculos'>
                 <i class="fa-solid fa-book"></i>
                 <p>Mis Datos</p>
                 <span></span>
               </div>
             </NavLink>         
-            <p className='p-perfil'>RESERVAS Y RESERVADOS</p>
-            <NavLink to='/Historial'>
-              <div className='btn-perfil'>
+            <p className='LyE'>RESERVAS Y RESERVADOS</p>
+            <NavLink to='/Historial' className='vinculo'>
+              <div className='box-vinculos'>
                 <i class="fa-solid fa-calendar-check"></i>
                 <p>Reservas</p>
                 <span></span>
               </div>
             </NavLink>
-            <NavLink to='/Historial'>
-              <div className='btn-perfil'>
+            <NavLink to='/Historial' className='vinculo'>
+              <div className='box-vinculos'>
               <i class="fa-solid fa-file-circle-plus"></i>
                 <p>Reservados</p>                
                 <span></span>
               </div>
             </NavLink>
-            <p className='p-perfil'>INFRACCIONES</p>
-              <NavLink to='/Infracciones'>              
-                <div className='btn-perfil'>
+            <p className='LyE' id='infra'>INFRACCIONES</p>
+              <NavLink to='/Infracciones' className='vinculo'>              
+                <div className='box-vinculos'>
                   <i class="fa-solid fa-bullhorn"></i>
                   <p>Infracciones</p>                
                 </div>
               </NavLink>
-            <p className='p-perfil'>CERRAR SESION</p>
-              <NavLink to='/'>              
-                <div className='btn-perfil'>
+            <p className='LyE'>CERRAR SESION</p>
+              <NavLink to='/' className='vinculo'>              
+                <div className='box-vinculos'>
                   <i class="fa-solid fa-chalkboard-user"></i>
                   <p>Salir</p>                
                 </div>
               </NavLink>
-              
-        </div>
-        <div className="flecha-desplegar" onClick={abrir}>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>   
-         
+        </div>              
       </div>
-    
+      <div onClick={mostrarNavegador} className='config'>
+        <div id='config' className='spinnerAdmin'></div>
+      </div>
+    </div>
   )
 }

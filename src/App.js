@@ -33,8 +33,7 @@ import { Busqueda } from './Components/Pages/Busqueda/Busqueda';
 import { AutoresCategorias } from './Components/Pages/DatosLibros/AutoresCategorias';
 import { NuevoEstudiante } from './Components/Layouts/TablasAdmin/TablaEstudiantes/NuevoEstudiante'
 import { EditorialIdioma } from './Components/Pages/DatosLibros/EditorialIdioma';
-
-
+import { Eventos } from './Components/Pages/Eventos/Eventos';
 
 
 
@@ -43,17 +42,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route 
-          path='/' 
-          element={<Login/>}
-      
-
-        />
-        <Route 
-          path='/Home'
-          element={<Home/>}
-
-        />
+        <Route path='/' element={<Login/>}/>
+        <Route path='/Home' element={<Home/>}/>
         <Route path='/Admin' element={<Admin/>} />
         <Route path='/Email' element={<Email/>} />
         <Route path='/Perfil' element={<Perfil/>} />
@@ -77,6 +67,8 @@ function App() {
         <Route path='/NuevoEstudiante' element={<NuevoEstudiante/>}/>
         <Route path='/AutoresCategorias' element={<AutoresCategorias/>}/>
         <Route path='/EditorialIdioma' element={<EditorialIdioma/>}/>
+        <Route path='/Eventos' element={<Eventos/>}/>
+
       </Routes>
     </BrowserRouter>
   );

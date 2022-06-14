@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Imagenes } from '../Imagenes/Imagenes'
 import logo from '../../../assets/Imagenes/logos/Booker1.png'
-import ImgHeader from '../../../assets/Imagenes/waveHeader.svg'
-import imgbottom from '../../../assets/Imagenes/wave.svg'
+import axios from 'axios'
+
 
 import { NavLink } from 'react-router-dom'
 
@@ -17,7 +17,43 @@ import { useStateValue } from '../../../StateProvider'
 
 export const Navegacion2 = () => {
 
+  const id_estudiante = localStorage.getItem('id_estudiante')
+
+  const [Documento, setDocumento] = useState({})
+
+
+  const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/" + id_estudiante+ '/'
+
+  const PedirDatos = () =>{
+    axios.get(url).then(response=>{
+      setDocumento(response.data.doc_estudiante)
+    }).catch(error=>{
+      console.log(error.message);
+    })
+       
+
+  }
+
+  
+
+ 
+
+
+  
+  useEffect(() => {
+      PedirDatos() 
+      //llenarInputs()
+      
+ 
+     
+
+    }, [])
+
   const [{reservas}, dispatch] = useStateValue();
+
+  const abrir = () =>{
+    document.querySelector('.conatiner-nav-tres').classList.toggle('show')
+  }
 
   return (
     <>
@@ -38,8 +74,11 @@ export const Navegacion2 = () => {
           <NavLink to='/Admin' className='nav-icon'>
             <i class="fa-solid fa-user-pen"></i>Admin
           </NavLink>
+            <div className='menu-btn' onClick={abrir}>
+              <i class="fas fa-bars" ></i>
+            </div>
         </div>
-        <NavLink to='/Perfil'></NavLink>
+
       </div>
     </>
     

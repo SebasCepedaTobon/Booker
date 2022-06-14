@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
 import { Libros } from '../../UI/Libros/Libros';
+import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
 import { Spinner } from '../../UI/Spinner/Spinner';
 
 
@@ -38,7 +39,9 @@ export const Mainbusqueda = () => {
     
 
   return (
-    <div className="contendor-cards-busquedas">
+    <>
+        <Navegacion3/>
+        <div className="contendor-cards-busquedas">
         <div className="h2-busquedas">
             <h2>Resultados para "{nombre}"</h2>
         </div>
@@ -59,6 +62,8 @@ export const Mainbusqueda = () => {
           
         </div>
     </div>
+    </>
+    
       
     
   )

@@ -4,6 +4,7 @@ import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
 import { useParams } from 'react-router';
 import { Spinner } from '../../UI/Spinner/Spinner';
+import { Navegacion3 } from '../../UI/Navegacion/Navegacion3'
 
 
 
@@ -57,11 +58,16 @@ export const MainLibros = ( ) => {
 
 
     return (
+        <>
+         <Navegacion3/>
         <div className='mainlibros'>
+            
+            
             <div className="imglibros">
                 <Imagenes url={libros.imagen_libro} id="libro" />
             </div>
             <div className="libros2">
+            
                 <div className="info-libro">
                     <h2 className='titulo'>{libros.nombre}</h2>
                     {libros.autores.map((libro)=>{
@@ -93,7 +99,11 @@ export const MainLibros = ( ) => {
                 <button className='btn-reservar' onClick={addLibros}>
                     reservar
                 </button>
+
             </div>
+           
         </div>
+        </>
+        
     )
 }

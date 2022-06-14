@@ -3,6 +3,8 @@ import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil'
 import axios from 'axios';
 import { AbrirModal } from '../../UI/AbrirModal/AbrilModal';
 import { VentanaReserva2 } from '../../UI/VentanaReserva/VantanaReserva2';
+import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
+
 
 
 
@@ -42,6 +44,7 @@ export const MainPerfil = () => {
   return (
       <>
         <div className='contenedor-perfil'>
+            <Navegacion3/>
             <BotonesPerfil/>
             <div className="datos-perfil">
                 <h2 id='Tu-cuenta'>Tu cuenta</h2>

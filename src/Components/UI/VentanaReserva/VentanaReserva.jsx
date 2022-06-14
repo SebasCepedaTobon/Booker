@@ -38,7 +38,7 @@ export const VentanaReserva = () => {
               (<p>Ahora tienes {reservas?.length} reserva</p>)}
             </div>
           </div>
-          <hr />
+          <hr className='hr-reserva'/>
           {!libros ? "..." :
           <div className="contender-info-reservados">
           <div className="conatiner-img-reserva">
@@ -58,7 +58,7 @@ export const VentanaReserva = () => {
         </div>
           }
         
-        <hr />
+        <hr className='hr-reserva'/>
         <div className="container-btn-reserva">
           <NavLink to='/Historial'>
              <button >

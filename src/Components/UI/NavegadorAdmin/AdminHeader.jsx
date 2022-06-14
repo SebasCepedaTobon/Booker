@@ -38,8 +38,8 @@ export const AdminHeader = () => {
       })
     }
 
-    sizeDisponibles = libros.length
-    sizeNoDisponibles = librosNo.length
+    sizeDisponibles = librosNo.length
+    sizeNoDisponibles = libros.length
     const boxBuscador  = () => {setCounter(!buscar)}
   
     useEffect(() => {
@@ -67,12 +67,12 @@ export const AdminHeader = () => {
             <p className='sitio'>Sitio Administrativo</p>
             <div className='boxLibrosCantidad'>
               <i class="fa-solid fa-book" data-title='Libros Disponibles'></i>
-              <div className="noDisponible notificacionCantidad">
-                <p>{sizeNoDisponibles}</p>
+              <div className="Disponible notificacionCantidad">
+                <p>{sizeDisponibles}</p>
               </div>
               <Imagenes url={NoDisponibles}  />
-              <div className="noDisponible2 notificacionCantidad">
-                <p>{sizeDisponibles}</p>
+              <div className="noDisponible notificacionCantidad">
+                <p>{sizeNoDisponibles}</p>
               </div>
             </div>
             <div className="HeaderIconos">

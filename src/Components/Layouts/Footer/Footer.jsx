@@ -12,7 +12,7 @@ export const Footer = () => {
     <div className='footer'>
       <div className="footer-extremos">
         <div className="footer-info">
-        <h1>InformaciónBooker</h1>
+        
         <p>Lorem ipsum dolor</p>
         <p>Lorem ipsum dolor sit amet</p>
         <p>Lorem ipsum dolor</p>
@@ -36,7 +36,7 @@ export const Footer = () => {
       </div>
       <div className="footer-extremos">
         <div className="footer-info">
-          <h1>InformaciónColegio</h1>
+          
           <p>Lorem ipsum dolor</p>
           <p>Lorem ipsum dolor sit amet</p>
           <p>Lorem ipsum dolor</p>

@@ -290,7 +290,7 @@
     font-size: 30px;
     color: rgb(13,95,228);
     cursor: pointer;
-    transition: 1s; 
+    transition: all ease 1s; 
 }
 
 .fa-pen-to-square:hover{
@@ -933,7 +933,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     position: absolute;
     right: -23px;
-    top: 267px;
+    top: 286px;
     width: 56px;
     height: 41px;
     border-bottom-right-radius: 10px;
