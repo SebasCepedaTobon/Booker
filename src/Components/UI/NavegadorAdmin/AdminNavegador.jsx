@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../Imagenes/Imagenes'
 import booker from '../../../assets/Imagenes/logos/BookerAdmin.png'
 import '../../../Static/Admin.css'
-import flecha from '../../../assets/Imagenes/Admin/flecha.png'
+import flecha from '../../../assets/Imagenes/Admin/flecha2.png'
 import '../../../Static/MediaQueriesAdmin.css'
 
 

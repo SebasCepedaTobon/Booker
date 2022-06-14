@@ -1,0 +1,9 @@
+.pActivo{
+    color: #0D5FE4;
+    font-weight: bold;
+}
+
+.pInactivo{
+    color: #ff0000;
+    font-weight: bold;
+}

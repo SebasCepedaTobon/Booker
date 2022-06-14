@@ -10,13 +10,13 @@ import multas from '../../../assets/Imagenes/Admin/multas.png';
 import reserva from '../../../assets/Imagenes/Admin/reserva.png';
 import estudiantes from '../../../assets/Imagenes/Admin/estudiantes.png';
 import novedades from '../../../assets/Imagenes/Admin/novedades.png';
-import audio  from '../../../assets/Imagenes/admin.ogg'
 import { Imagenes } from '../../UI/Imagenes/Imagenes';
 
 
 
 export const MainAdmin = () => {
 
+  
   return (
     <div className='MainAdministrativo'>
       <div className="box-AdminNavegador">

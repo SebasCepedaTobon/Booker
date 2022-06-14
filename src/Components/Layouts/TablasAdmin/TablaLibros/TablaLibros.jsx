@@ -6,11 +6,14 @@ import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
 import '../../../../Static/Admin.css'
 import '../../../../Static/MediaQueriesAdmin.css'
+import '../../../../Static/TablasLibro.css'
 import { NavLink } from 'react-router-dom';
 
 
 
-let j = []
+let c = []
+
+let a = []
 
 let cate_idM = []
 let cate_nombreM = []
@@ -207,22 +210,6 @@ const updateData = (data) =>{
 
 
 
-const deleteData = async (data) =>{
-  console.log(data.id_libro);
-  let isDelete = window.confirm(
-      `Estas seguro de eliminar el registro con el id ` + data.id_libro
-  )
-  if(isDelete){
-      let endpoint = url+data.id_libro+'/'
-      await axios.delete(endpoint)
-      .then((res) =>{
-          window.location.href="/TLibros"
-          console.log(res);
-      })
-      
-  }
-  
-}
 
 const vaciarCate = (e) => {
   
@@ -484,11 +471,6 @@ const librosBusqueda=()=>{
               <p>Libros Inactivos</p>
             </div>
           </div>
-          <div className='btnMulta' >
-            <div className='contenidoMultas'>
-              <p>Prestados</p>
-            </div>
-          </div>
         </div>
             <div className="TituloLibro">
               <p>Libros</p>
@@ -501,15 +483,16 @@ const librosBusqueda=()=>{
             <div className='tr'>
               <div className='td-0'><p>Imagen</p></div>
               <div className='td-1'><p>Nombre</p></div>
-              <div className='td-2'><p>Ejemplares</p></div>
-              <div className='td-3'><p>Categorias</p></div>
+              <div className='td-2'><p>Categorias</p></div>
+              <div className='td-3'><p>Autores</p></div>
               <div className='td-6'><p>Estado</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
-            <div className='Tabla-Info' >              
+            <div className='Tabla-Info' >
                   {libros.map((libro, index)=>{
-                    j = libro.categorias
-                    
+                    c = libro.categorias
+                    a = libro.autores
+                                        
                     return(
                       <div key={index} className='tr-1'>
                         
@@ -519,28 +502,36 @@ const librosBusqueda=()=>{
                         <div className='td-1'>
                           <p className='L1P'>{libro.nombre}</p>
                         </div>                        
-                        <div className='td-2'>{libro.numero_paginas}</div>
+                        <div className='td-2'>
+                          <p>
+                          {
+                            c.map(element => element.nombre).join(', ')
+                          }                         
+                          </p>
+                        </div>
                         
                         <div className='td-3'>
-                          <p>                          
+                          <p>
                           {
-                            j.map(element => element.nombre).join(', ')
-                          }
+                            a.map(element => element.nombres).join(', ')
+                          }                      
+                          
                           </p>
                         </div>
                         
                         <div className="td-6">
-                        <input
-                        id={libro.id_libro}
-                        type='button'
-                        onClick={()=>updateEstado(libro)}
-                        className='inputCheckbox'
-                        />
+                        {libro.estado === 'A'
+                          ?<p className='pActivo'>Activo</p>                          
+                          :<p className='pInactivo'>Inactivo</p>
+                        }
                         </div>
                         { /*QUEDO EN LOS BOTONES*/ }
                         <div className='td-5'>
-                          <i onClick={()=>updateData(libro)}  class="fa-solid fa-pen-to-square"></i>
-                          <i  onClick={()=>deleteData(libro)} class="fa-solid fa-trash-can" ></i>
+                          <i onClick={()=>updateData(libro)} data-title='Actualizar Libro'  class="fa-solid fa-pen-to-square"></i>
+                          {libro.estado === 'A'
+                          ?<i class="fa-regular fa-book"></i>
+                          :<i class="fa-solid fa-book-atlas"></i>
+                          }
                         </div>
                       </div>
                     )

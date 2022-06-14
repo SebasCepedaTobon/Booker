@@ -387,9 +387,7 @@ const modificarAuto = () =>{
 
           </div>
         </div>
-      
-
-      
+        
       </div>
       <div id='Cate' className='AutoresCategorias'>
         <div id="Cate2" className='Cate2 CateAutoModal'>

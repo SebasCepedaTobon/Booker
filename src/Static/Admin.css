@@ -151,6 +151,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     flex-direction: column;
     border-radius: 5px;
     background-color: white;
@@ -781,6 +782,12 @@ form .box-select{
     padding: 0 40px 22px;
 }
 
+.Libros-from .btnsFormulario{
+    margin-top: 0px;
+}
+
+
+
 /*------------------------------------TABLA ESTUDIANTES---------------------------*/
 
 
@@ -914,25 +921,23 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
 }
 
-
-
 .Admin-Navegador i{
     font-size: 20px;
     padding-right: 10px;
 }
 
-.config{
+.config {
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: -24px;
+    right: -23px;
     top: 267px;
-    width: 52px;
-    height: 62px;
-    border-bottom-right-radius: 50%;
-    border-top-right-radius: 50%;
+    width: 56px;
+    height: 41px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
     background-color: rgb(13,95,228);
 }
 
@@ -943,9 +948,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .config img{
-    width: 14px;
+    width: 8px;
     margin-top: 5px;
-    margin-left: 26px;
+    margin-left: 30px;
     transform: rotate(0deg);
 }
 
@@ -1236,7 +1241,7 @@ body::-webkit-scrollbar-thumb {
 
   .box-textareaa textarea{
     width: 190px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 15px;      
     outline-color: #adadad;
     resize: none;
@@ -1251,7 +1256,7 @@ body::-webkit-scrollbar-thumb {
 
   .textareaCate{
     width: 190px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 14px;
     outline-color: #adadad;
     color: #565656;
@@ -1322,3 +1327,29 @@ body::-webkit-scrollbar-thumb {
         transition: 1s;
     }
 
+/*-------------------SE USA EN MUCHAS PARTES EL MISMO ESTILO-----------------*/
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+[data-title]:after {
+    content: attr(data-title);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 10px black;
+    font-size: 12px;
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    bottom: -1.6em;
+    left: 100%;
+    white-space: nowrap;
+    z-index: 99999;
+    visibility: hidden;
+    border-radius: 5px;
+    border: none;
+
+}
+[data-title] {
+    position: relative;
+}

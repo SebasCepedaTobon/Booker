@@ -144,31 +144,6 @@
   margin: 16px 0px;
 }
 
-[data-title]:hover:after {
-  opacity: 1;
-  transition: all 0.1s ease 0.5s;
-  visibility: visible;
-}
-[data-title]:after {
-  content: attr(data-title);
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  box-shadow: 0px 0px 10px black;
-  font-size: 12px;
-  position: absolute;
-  padding: 10px 10px 10px 10px;
-  bottom: -1.6em;
-  left: 100%;
-  white-space: nowrap;
-  z-index: 99999;
-  visibility: hidden;
-  border-radius: 5px;
-  border: none;
-  
-}
-[data-title] {
-  position: relative;
-}
 /*Aca termina*/
 
 

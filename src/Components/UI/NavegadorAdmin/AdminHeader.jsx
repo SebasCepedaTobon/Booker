@@ -5,6 +5,7 @@ import '../../../Static/MediaQueriesAdmin.css'
 import '../../../Static/AdminHeader.css'
 import axios from 'axios';
 import perfil from '../../../assets/Imagenes/perfil.jpeg';
+import NoDisponibles from '../../../assets/Imagenes/Admin/NoDisponibles1.png';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 
@@ -59,17 +60,20 @@ export const AdminHeader = () => {
       }
   
     },[buscar]);
-
-
+    
   return (
     <div className='AdminHeader'>
         <div className="HeaderAdmin">
             <p className='sitio'>Sitio Administrativo</p>
             <div className='boxLibrosCantidad'>
-              <i class="fa-solid fa-book" title='Libros Disponibles'></i>
-              <p>{sizeNoDisponibles}</p>
-              <i class="fa-solid fa-book" title='Libros No Disponibles' ></i>
-              <p>{sizeDisponibles}</p>
+              <i class="fa-solid fa-book" data-title='Libros Disponibles'></i>
+              <div className="noDisponible notificacionCantidad">
+                <p>{sizeNoDisponibles}</p>
+              </div>
+              <Imagenes url={NoDisponibles}  />
+              <div className="noDisponible2 notificacionCantidad">
+                <p>{sizeDisponibles}</p>
+              </div>
             </div>
             <div className="HeaderIconos">
                 <i onClick={boxBuscador} class="fa-solid fa-magnifying-glass"></i>
