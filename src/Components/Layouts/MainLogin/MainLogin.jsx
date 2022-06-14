@@ -51,12 +51,27 @@ export const MainLogin = () => {
 
       if( res.status === 200 || res.status === 201 ){
 
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('id_estudiante', res.data.user.id_estudiante)
-        localStorage.setItem('usuario', res.data.user.nombres)
-        localStorage.setItem('apellidos', res.data.user.apellidos)
-        localStorage.setItem('imagen', res.data.user.doc_estudiante.imagen)
-        localStorage.setItem('name', res.data.user.doc_estudiante.name)
+        let tipoU = res.data.user.doc_bibliotecario
+        console.log(tipoU)
+
+        if( tipoU === res.data.user.doc_estudiante){
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('id_estudiante', res.data.user.id_estudiante)
+          localStorage.setItem('tipo_usuario', res.data.user.doc_estudiante.tipo_usuario)
+        }else if(tipoU === res.data.user.doc_bibliotecario){
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('id_estudiante', res.data.user.id_bibliotecario)
+          localStorage.setItem('tipo_usuario', res.data.user.doc_bibliotecario.tipo_usuario)
+        }
+          
+       
+          
+
+        
+        
+
+        
+
        
         window.location.href = "/Home"
       
