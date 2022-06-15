@@ -21,7 +21,7 @@ export const AbrirModal = () => {
     //const overlay = document.getElementById('overlay2')
     
      
-    const from_tablas2 = document.querySelector('.Estudiantes-from')
+    const from_tablas2 = document.querySelector('.Estudiantes-from2')
     const overlay = document.getElementById('overlay')
     
   

@@ -46,6 +46,10 @@ export const Libros = ({libro}) => {
     addLibros()
   }
 
+
+  const counterLike = () =>{
+  }
+
   return (
     <>
         <div className="cardss">
@@ -60,7 +64,7 @@ export const Libros = ({libro}) => {
                 <button className='btn-agLibro' onClick={addLibros2}>
                   <i class="fa-solid fa-book-bookmark"></i>
                 </button>
-                <button className='icon-like'>
+                <button className='icon-like' onClick={counterLike}>
                   <i class="fa-solid fa-heart"></i>
                 </button>
                 <NavLink to={"/Libro/" + libro.id_libro}><button className='btn-verlibro'><i class="fa-solid fa-eye"></i></button></NavLink>

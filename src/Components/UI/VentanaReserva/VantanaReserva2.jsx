@@ -88,7 +88,7 @@ const {ocultarReserva} = AbrirModal()
 
   return (
     <div id='overlay' className='overlay2'>
-      <div className='Estudiantes-from' >
+      <div className='Estudiantes-from3' >
         <div className="from-Titulo">
           <div className="Desactivar-From">
             <i class="fa-solid fa-xmark" onClick={ocultarReserva}></i>
@@ -124,29 +124,9 @@ const {ocultarReserva} = AbrirModal()
               <label>Dirección</label>
             </div>
           </div>
-          {/**/ }
-          {/* <div className="boxs-inputs">
-            <div className="box-input">
-              <input type="text" id='name'  onChange={change} required/>
-              <span></span>
-              <label>Nombre de Usuario</label>
-            </div>
-            <div className="box-input">
-              <input type="text" id='email' onChange={change} required  />
-              <span></span>
-              <label>Gmail</label>
-            </div>
-          </div> */}
+
 
           <div className="boxs-inputs">
-            <div class="file-select" id="src-file1" >
-              {/* <input 
-        type="file" name="imagen_libro" onChange= {(e)=>{
-        mostrarArchivo(e)
-        setearImagen(e)
-        }} /> */}
-              <h5 className='nomImg'></h5>
-            </div>
           </div>
           <br />
           <div className="btnsFormulario">

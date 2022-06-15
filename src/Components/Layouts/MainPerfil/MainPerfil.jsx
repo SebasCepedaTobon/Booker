@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil'
 import axios from 'axios';
-import { AbrirModal } from '../../UI/AbrirModal/AbrilModal';
 import { VentanaReserva2 } from '../../UI/VentanaReserva/VantanaReserva2';
 import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
 
@@ -10,34 +9,83 @@ import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
 
 export const MainPerfil = () => {
 
-    const [Datos, setDatos] = useState([])
-    const [Estudiante, setEstudiante] = useState([])
-    const {ventanaReserva} = AbrirModal()
-
     
- 
+  const id_estudiante = localStorage.getItem('id_estudiante')
+  //const name_estudiante = localStorage.getItem('name')
+  
+
+  const [Estudiante, setEstudiante] = useState({}) 
+  const [grupo, setGrupo] = useState([])
+  const [Documento, setDocumento] = useState({})
+  
+
+  
+
+  const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/" + id_estudiante+ '/'
+
+  const PedirDatos = () =>{
+    axios.get(url).then(response=>{
+      setEstudiante(response.data);
+      setGrupo(response.data.id_grupo)
+      setDocumento(response.data.doc_estudiante)
+    }).catch(error=>{
+      console.log(error.message);
+    })
+       
+
+  }
 
 
-    
-    const id_estudiante = localStorage.getItem('id_estudiante')
-    const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/"
+  
+  useEffect(() => {
+      PedirDatos() 
+      //llenarInputs()
 
-    const PedirDatos = () =>{
-        axios.get(url + id_estudiante).then(response=>{
-            setEstudiante(response.data);
-            setDatos(response.data.doc_estudiante);
-          }).catch(error=>{
-            console.log(error.message);
-          })
-         
-
-    }
+    }, [])
 
 
-    
-    useEffect(() => {
-        PedirDatos() 
-      }, [])
+  
+
+  const change = (e)=>{
+    console.log(Documento.email);
+
+    //const email = document.getElementById('email')
+    //const name = document.getElementById('name')
+   
+    setEstudiante({
+        ...Estudiante,
+        [e.target.name]: e.target.value,
+        id_grupo: grupo.id_grupo,
+        id_grado: 2,
+        
+    })
+
+    console.log(Estudiante);
+  }
+
+  const recharge = (e) =>{
+    e.preventDefault()
+  }
+
+
+
+
+  const btnEditar = () =>{
+
+    console.log(Estudiante)
+
+    axios.put(url, Estudiante)
+
+    reload()
+
+  }
+
+  const reload = () => {
+    window.location.reload(true);
+}
+
+
+
 
    
 
@@ -53,39 +101,43 @@ export const MainPerfil = () => {
                     <hr />
                 </div>
                 <div className="container-inputs">
-                    <div className="container-info">
-                        <h4>Nombres</h4>
-                        <p>{Estudiante.nombres}</p>
-                    </div>
-                    <div className="container-info">
-                        <h4>Apellidos</h4>
-                        <p>{Estudiante.apellidos}</p>
+                      <form onSubmit={recharge}>
+                        <div className="container-inputs-input">
+                        <div className="box-input">
+                                  <input type="text" name="nombres" required onChange={change} value={Estudiante.nombres} />
+                                  <span></span>
+                                  <label>Nombres</label>
+                              </div>
+
+                              <div className="box-input">
+                                  <input type="text" name="apellidos" required onChange={change} value={Estudiante.apellidos} />
+                                  <span></span>
+                                  <label>Apellidos</label>
+                              </div>
+
                         
-                    </div>
-                    <div className="container-info">
-                        <h4>Correo Electronico</h4>
-                        <p>{Datos.email}</p>
-                    </div>
-                    <div className="container-info">
-                        <h4>Documento</h4>
-                        <p>{Datos.doc}</p>
+
                         
-                        
-                    </div>
-                    <div className="container-info">
-                        <h4>Dirección</h4>
-                        <p>{Estudiante.direccion}</p>  
+                              <div className="box-input">
+                                  <input type="text" name='telefono' onChange={change} value={Estudiante.telefono} required />
+                                  <span></span>
+                                  <label>Celular</label>
+                              </div>
+
+                              <div className="box-input">
+                                  <input type="text" name='direccion' onChange={change} required value={Estudiante.direccion} />
+                                  <span></span>
+                                  <label>Dirección</label>
+                              </div>
+                              <div className="btnsFormulario">
+                              <button className="btnFor2 btn-agregar" onClick={btnEditar}>Confirmar</button>
+                          </div>
+
+                        </div>
+                         
+                      </form>
+                </div>
                     
-                    </div>
-        
-                        <input type="file" />
-                        
-                        
-                
-                </div>
-                <div className="btnGuardar">
-                    <button className='btn-guardar' onClick={ventanaReserva}>Editar</button>
-                </div>
             </div>
         </div>
         <VentanaReserva2/>

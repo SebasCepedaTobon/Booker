@@ -61,7 +61,7 @@ export const NuevoBibliotecario = () => {
     console.log(formEstudiantes);
     await axios.post(url, formEstudiantes)
     .then(res=>{
-      window.location.href="/TEstudiantes"
+      window.location.href="/TBibliotecarios"
         console.log(res)
     })
     console.log(formEstudiantes);

@@ -8,7 +8,6 @@ import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
 
 
-let librosEstado = []
 
 let id_estudianteId
 let ejemplaresId = []
@@ -17,24 +16,6 @@ export const TablaReserva = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
 
-  const eliminacion = () =>{
-    Swal.fire({
-      title: '¿Esta seguro de eliminar esta multa?',
-       icon: 'warning',
-       confirmButtonText: 'Si, Eliminar',
-       showCancelButton: true,
-       cancelButtonText: 'No, cancelar',
-       reverseButtons: true
-     }).then((resultado) => {
-       if (resultado.isConfirmed) {
-         Swal.fire(
-            'Eliminado',
-            'Multa eliminada correctamente',
-            'success'
-         )
-       }
-     })
-  }
 
   const [reservas, setReservas] = useState([])
   const [form2, setForm2] = useState({})
@@ -46,22 +27,6 @@ export const TablaReserva = () => {
     axios.get(url).then(response=>{
       setReservas(response.data);
 
-      librosEstado = response.data
-      librosEstado.map((element,_) => {
-        let id = element.id_reserva
-        let pEstado = document.getElementById(id)
-        let estado = element.estado
-        if (estado === 'AC') {
-          pEstado.textContent = "Reservada"
-          pEstado.style.color = "#2fd319"
-        }if(estado === 'IV'){
-          pEstado.textContent = "Inactiva"
-          pEstado.style.color = "#CA2020"
-        }if(estado === 'C'){
-          pEstado.textContent = "Completada"
-          pEstado.style.color = "#0D5FE4"
-        }
-      })
     }).catch(error=>{
       console.log(error.message);
     })
@@ -73,22 +38,6 @@ export const TablaReserva = () => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=IV").then(response=>{
       setReservas(response.data);
 
-      librosEstado = response.data
-      librosEstado.map((element,_) => {
-        let id = element.id_reserva
-        let pEstado = document.getElementById(id)
-        let estado = element.estado
-        if (estado === 'AC') {
-          pEstado.textContent = "Reservada"
-          pEstado.style.color = "#2fd319"
-        }if(estado === 'IV'){
-          pEstado.textContent = "Inactiva"
-          pEstado.style.color = "#CA2020"
-        }if(estado === 'C'){
-          pEstado.textContent = "Completada"
-          pEstado.style.color = "#0D5FE4"
-        }
-      })  
       
     }).catch(error=>{
       console.log(error.message);
@@ -101,22 +50,7 @@ export const TablaReserva = () => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C").then(response=>{
       setReservas(response.data);
       
-      librosEstado = response.data
-      librosEstado.map((element,_) => {
-        let id = element.id_reserva
-        let pEstado = document.getElementById(id)
-        let estado = element.estado
-        if (estado === 'AC') {
-          pEstado.textContent = "Reservada"
-          pEstado.style.color = "#2fd319"
-        }if(estado === 'IV'){
-          pEstado.textContent = "Inactiva"
-          pEstado.style.color = "#CA2020"
-        }if(estado === 'C'){
-          pEstado.textContent = "Completada"
-          pEstado.style.color = "#0D5FE4"
-        }
-      })
+    
     }).catch(error=>{
       console.log(error.message);
     })
@@ -127,23 +61,6 @@ export const TablaReserva = () => {
     cambioFiltro.textContent = "Reservas Actuales"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=AC").then(response=>{
       setReservas(response.data);
-      
-      librosEstado = response.data
-      librosEstado.map((element,_) => {
-        let id = element.id_reserva
-        let pEstado = document.getElementById(id)
-        let estado = element.estado
-        if (estado === 'AC') {
-          pEstado.textContent = "Reservada"
-          pEstado.style.color = "#2fd319"
-        }if(estado === 'IV'){
-          pEstado.textContent = "Inactiva"
-          pEstado.style.color = "#CA2020"
-        }if(estado === 'C'){
-          pEstado.textContent = "Completada"
-          pEstado.style.color = "#0D5FE4"
-        }
-      })
     }).catch(error=>{
       console.log(error.message);
     })
@@ -191,10 +108,11 @@ export const TablaReserva = () => {
     await axios.put(endpoint, form2)
     .then((res) => {
       if (form2.estado === "C") {
-        //ventanaAbrirFecha()
-        window.location.href="/Prestamo"    
+        peticionGet()
+        ventanaCerrar()
       }else{
-        window.location.href="/Prestamo"        
+        peticionGet()
+        ventanaCerrar()      
       }
         console.log(res);
     })
@@ -250,23 +168,6 @@ export const TablaReserva = () => {
 
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?search=" + inputBuscar.value).then(response=>{
       setReservas(response.data);
-
-      librosEstado = response.data
-      librosEstado.map((element,_) => {
-        let id = element.id_reserva
-        let pEstado = document.getElementById(id)
-        let estado = element.estado
-        if (estado === 'AC') {
-          pEstado.textContent = "Reservada"
-          pEstado.style.color = "#2fd319"
-        }if(estado === 'IV'){
-          pEstado.textContent = "Inactiva"
-          pEstado.style.color = "#CA2020"
-        }if(estado === 'C'){
-          pEstado.textContent = "Completada"
-          pEstado.style.color = "#0D5FE4"
-        }
-      })
 
     }).catch(error=>{
       console.log(error.message);
@@ -349,7 +250,15 @@ export const TablaReserva = () => {
                   <div className='td-1'><input className='fechaReserva' value={reservas.fecha_reserva} disabled minlength="4" maxlength="8" size="6"/></div>
                   <div className='td-0'>
                     <div className="estadoTablas">
-                      <p className='pEstadoReserva' id={reservas.id_reserva}>Completada</p>
+                      {reservas.estado === "AC" &&
+                        <p className='pEstadoReservaAC'>Reservada</p>
+                      }
+                      {reservas.estado === "C" &&
+                        <p className='pEstadoReservaC'>Completada</p>
+                      }
+                      {reservas.estado === "IV" &&
+                        <p className='pEstadoReservaIV'>Inactiva</p>
+                      }
                     </div>
                   </div>
                   <div className='td-6'>

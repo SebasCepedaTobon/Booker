@@ -12,12 +12,31 @@ import React from 'react';
 let sizeDisponibles
 let sizeNoDisponibles
 
+let id_bibliotecario
+
+let imagenPerfil
+
 export const AdminHeader = () => {
 
     const [buscar, setCounter] = useState(true)
     const [libros, setLibros] = useState([])
     const [librosNo, setLibrosNo] = useState([])
+    const [bibliotecario, setBibliotecario] = useState()
+    const [doc_bibliotecarios , setDoc_bibliotecarios] = useState()
 
+    
+
+    const peticionGetBibliotecario=()=>{
+
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/" + id_bibliotecario + "/").then(response=>{
+        setBibliotecario(response.data);
+        setDoc_bibliotecarios(response.data.doc_bibliotecario)
+        
+      }).catch(error=>{
+        console.log(error.message);
+      })
+    }
+    
     const librosDisponibles=()=>{
 
       axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=P").then(response=>{
@@ -44,6 +63,11 @@ export const AdminHeader = () => {
   
     useEffect(() => {
 
+      id_bibliotecario = localStorage.getItem('id_bibliotecario')
+
+      console.log(id_bibliotecario);
+
+      peticionGetBibliotecario()
       librosDisponibles()
       librosNoDisponibles()
       const buscador = document.getElementById('buscador')
@@ -88,8 +112,7 @@ export const AdminHeader = () => {
                         <p>Sebastian</p>
                         <p>admin</p>
                     </div>
-                    <div className='perfil' >
-                        <Imagenes url={perfil} clase='icono'/>
+                    <div className='perfil'>
                     </div>
                 </div>                
             </div>            

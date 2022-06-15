@@ -9,7 +9,9 @@ export const initialState = {
 export const actionTypes = {
     ADD_TO_RESERVA: "ADD_TO_RESERVA",
     BORRAR_LIBRO: "BORRAR_LIBRO",
-    DETALLES_LIBRO: "DETALLES_LIBRO"
+    DETALLES_LIBRO: "DETALLES_LIBRO",
+    LIMPIAR_RESERVA:"LIMPIAR_RESERVA"
+   
 }
 
 const reducer = (state, action) => {
@@ -45,6 +47,11 @@ const reducer = (state, action) => {
                 ...state,
                 capLibro: action.id_libro
             }
+        }
+        case "LIMPIAR_RESERVA":{
+            return initialState
+        
+            
         }
         default: return state;
 

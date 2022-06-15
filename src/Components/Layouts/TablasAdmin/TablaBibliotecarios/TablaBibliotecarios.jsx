@@ -21,7 +21,7 @@ export const TablaBibliotecarios = () => {
 
   const peticionGet=()=>{
     axios.get(url).then(response=>{
-        setBibliotecario(response.data);      
+        setBibliotecario(response.data);   
     }).catch(error=>{
       console.log(error.message);
     })    
@@ -282,6 +282,7 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1) =>{
 
             </div>            
           </div>
+          
           <NavLink to='/NBibliotecarios'  >
           <div id='Activar-From' className='Activar-From'>
               <i class="fa-solid fa-folder-plus"></i>

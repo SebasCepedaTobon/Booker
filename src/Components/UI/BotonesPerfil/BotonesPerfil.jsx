@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../Imagenes/Imagenes'
 import axios from 'axios'
+import { Logout } from '../../../Logout'
 
 
 
@@ -159,9 +160,16 @@ export const BotonesPerfil = () => {
                   <p>Infracciones</p>                
                 </div>
               </NavLink>
-            <p className='p-perfil'>CERRAR SESION</p>
-              <NavLink to='/'>              
+            <p className='p-perfil'>FAVORITOS</p>
+              <NavLink to='/Favoritos'>              
                 <div className='btn-perfil'>
+                  <i class="fa-solid fa-heart"></i>
+                  <p>Favoritos</p>                
+                </div>
+              </NavLink>
+            <p className='p-perfil'>CERRAR SESION</p>
+              <NavLink to='/' onClick={Logout}>              
+                <div className='btn-perfil' >
                   <i class="fa-solid fa-chalkboard-user"></i>
                   <p>Salir</p>                
                 </div>

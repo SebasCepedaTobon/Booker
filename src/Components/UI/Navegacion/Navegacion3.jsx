@@ -8,6 +8,7 @@ import { useStateValue } from '../../../StateProvider'
 export const Navegacion3 = () => {
 
     const id_estudiante = localStorage.getItem('id_estudiante')
+    const tipo_usuario = localStorage.getItem('tipo_usuario')
 
   const [Documento, setDocumento] = useState({})
 
@@ -28,9 +29,17 @@ export const Navegacion3 = () => {
   
   useEffect(() => {
       PedirDatos() 
+      QuitarAdmin()
     }, [])
 
     const [{reservas}, dispatch] = useStateValue();
+
+
+    const QuitarAdmin = () =>{
+      if(tipo_usuario === "E"){
+        document.querySelector('.admin-icon3').classList.toggle('show')
+      }
+    }
 
 
   return (
@@ -48,10 +57,11 @@ export const Navegacion3 = () => {
                 <i class="fa-solid fa-house"></i>
                 Home
                 </NavLink>
-                <NavLink to='/Admin' className='nav-icon'>
-                <i class="fa-solid fa-user-pen"></i>
-                Admin
-                </NavLink>
+                <div className="admin-icon3">
+                  <NavLink to='/Admin' className='nav-icon'>
+                    <i class="fa-solid fa-user-pen"></i>Admin
+                  </NavLink>
+                </div>
             </div>
         </div>
     </div>

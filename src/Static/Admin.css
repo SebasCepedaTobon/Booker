@@ -25,14 +25,7 @@
 }
 
 
-/*-------------------------------------------------Checkbox-----------------------------------*/
-
-.inputCheckbox{
-    border: none;
-    height: 20px;
-    width: 20px;
-    cursor: pointer;
-}
+/*-------------------------------------------------Checkbox-----------------------------------*/ 
 
 .estadoTablas{
     display: flex;
@@ -49,8 +42,19 @@
     background-color: transparent;
 }
 
-.pEstadoReserva{
+.pEstadoReservaAC{
     font-weight: bold;
+    color: #2fd319;
+}
+
+.pEstadoReservaC{
+    font-weight: bold;
+    color: #0D5FE4;
+}
+
+.pEstadoReservaIV{
+    font-weight: bold;
+    color: #CA2020;
 }
 
 /*-----------------------------------------------------##################----------------------------*/

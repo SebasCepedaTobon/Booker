@@ -7,6 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
 import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil';
+import { actionTypes } from '../../../reducer';
 
 
 
@@ -67,17 +68,23 @@ export const MainHistorial = () => {
       }
     }
 
+
+
+
    
 
 
     const peticionPost=async()=>{
       
       await axios.post(url, {
-        "estado": "D",
+        "estado": "AC",
         "id_estudiante": id_estudiante,
         "ejemplares": idEjemplares
     }).then(response=>{
         console.log(response);
+        dispatch({
+          type: actionTypes.LIMPIAR_RESERVA,
+      })
       }).catch(error=>{
         console.log(error.message);
       })

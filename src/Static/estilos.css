@@ -751,7 +751,7 @@ hr{
 
 .nueva-reserva-close p{
     font-size: 30px;
-    color: #025388;
+    color:#0d5fe4;
     font-weight: bold;
     margin-top: 40px;
     margin-left: 30px;
@@ -763,7 +763,7 @@ hr{
     cursor: pointer;
     margin-left: 27%;
     font-weight: bold;
-    color: #025388;
+    color:#0d5fe4;
 }
 
 .libros-check{
@@ -813,7 +813,7 @@ hr{
     margin-bottom: 10px;
     width: 200px;
     height: 40px;
-    background-color: #025388;
+    background-color: #0d5fe4;
     color: white;
     font-size: 20px;
     border: none;
@@ -822,7 +822,7 @@ hr{
 }
 
 .container-btn-reserva button:hover{
-    background-color: #0a3856;
+    background-color: #1b6ae9;
 
 }
 

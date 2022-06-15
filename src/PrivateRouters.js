@@ -1,22 +1,31 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-import { AuthUser } from '../login/AuthUser'
+import { AuthUser } from './AuthUser'
 
 const currentUser = AuthUser()
-const rolUser = localStorage.getItem('rolUser')
+const rolUser = localStorage.getItem('tipo_usuario')
 
 export function PrivateRoute() {
-  return currentUser && rolUser === 'Cliente' ? <Outlet /> : <Navigate to='/' />
+  return currentUser ? <Outlet /> : <Navigate to='/' />
 }
 
-export function PrivateLogin() {
-  return rolUser === 'Cliente' || rolUser === 'Admin' ? <Navigate to='/' /> : <Outlet />
+export function PrivateHome() {
+  return  rolUser === 'E' ? <Navigate to='/Home' /> : <Outlet />
 }
+
+export function PrivateAdmin() {
+  return  rolUser === 'B' ? <Navigate to='/Admin' /> : <Outlet />
+}
+
 
 export function PrivateAdminRoute() {
-  return rolUser === 'Admin' ? <Outlet /> : <Navigate to='/' />
+  return rolUser === 'B' ? <Outlet /> : <Navigate to='/Home' />
+}
+
+export function PrivateProfileAdmin() {
+  return rolUser === 'B' ? <Outlet /> : <Navigate to='/Home' />
 }
 
 export function PrivateProfileRoute() {
-  return rolUser === 'Cliente' || rolUser === 'Admin' ? <Outlet /> : <Navigate to='/' /> 
+  return rolUser === 'E' ? <Outlet /> : <Navigate to='/' />
 }

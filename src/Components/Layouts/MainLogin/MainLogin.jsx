@@ -51,17 +51,20 @@ export const MainLogin = () => {
 
       if( res.status === 200 || res.status === 201 ){
 
-        let tipoU = res.data.user.doc_bibliotecario
-        console.log(tipoU)
-
-        if( tipoU === res.data.user.doc_estudiante){
+        if(res.data.user.doc_estudiante){
           localStorage.setItem('token', res.data.token)
           localStorage.setItem('id_estudiante', res.data.user.id_estudiante)
           localStorage.setItem('tipo_usuario', res.data.user.doc_estudiante.tipo_usuario)
-        }else if(tipoU === res.data.user.doc_bibliotecario){
+          window.location.href = "/Home"
+        }else if(res.data.user.doc_bibliotecario){
           localStorage.setItem('token', res.data.token)
-          localStorage.setItem('id_estudiante', res.data.user.id_bibliotecario)
+          localStorage.setItem('id_bibliotecario', res.data.user.id_bibliotecario)
           localStorage.setItem('tipo_usuario', res.data.user.doc_bibliotecario.tipo_usuario)
+          window.location.href = "/Admin"
+        }else if(res.data.user.tipo_usuario === "A"){
+          localStorage.setItem('token', res.data.token)
+          localStorage.setItem('doc_admin', res.data.user.doc)
+          localStorage.setItem('tipo_usuario', res.data.user.tipo_usuario)
         }
           
        
@@ -73,7 +76,7 @@ export const MainLogin = () => {
         
 
        
-        window.location.href = "/Home"
+        
       
 
 

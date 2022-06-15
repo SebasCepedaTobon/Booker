@@ -18,6 +18,7 @@ import { useStateValue } from '../../../StateProvider'
 export const Navegacion2 = () => {
 
   const id_estudiante = localStorage.getItem('id_estudiante')
+  const tipo_usuario = localStorage.getItem('tipo_usuario')
 
   const [Documento, setDocumento] = useState({})
 
@@ -42,7 +43,7 @@ export const Navegacion2 = () => {
   
   useEffect(() => {
       PedirDatos() 
-      //llenarInputs()
+      QuitarAdmin()
       
  
      
@@ -53,6 +54,12 @@ export const Navegacion2 = () => {
 
   const abrir = () =>{
     document.querySelector('.conatiner-nav-tres').classList.toggle('show')
+  }
+
+  const QuitarAdmin = () =>{
+    if(tipo_usuario === "E"){
+      document.querySelector('.admin-icon').classList.toggle('show')
+    }
   }
 
   return (
@@ -71,9 +78,11 @@ export const Navegacion2 = () => {
           <NavLink to='/Home' className='nav-icon'>
             <i class="fa-solid fa-house"></i>Home
           </NavLink>
-          <NavLink to='/Admin' className='nav-icon'>
-            <i class="fa-solid fa-user-pen"></i>Admin
-          </NavLink>
+          <div className="admin-icon">
+            <NavLink to='/Admin' className='nav-icon'>
+              <i class="fa-solid fa-user-pen"></i>Admin
+            </NavLink>
+          </div>
             <div className='menu-btn' onClick={abrir}>
               <i class="fas fa-bars" ></i>
             </div>
