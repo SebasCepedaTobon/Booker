@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import '../../../../Static/Admin.css'
 import '../../../../Static/MediaQueriesAdmin.css'
+import '../../../../Static/TablasLibro.css'
 import { NavLink } from 'react-router-dom';
 
 
@@ -49,7 +50,8 @@ export const AgregarLibro = () => {
   
 
 
-  const peticionGetAutoLibro=()=>{
+  const peticionGetAutoLibro=(e)=>{
+
     const autores = document.getElementById('selecAuto')
     const inputAuto = document.getElementById('inputAuto')
     axios.get("https://bookerbackapi.herokuapp.com/modulos/autores/" + autores.value).then(response=>{
@@ -60,12 +62,15 @@ export const AgregarLibro = () => {
       llenoInputAuto.push( " " + auto.nombres + " " + auto.apellidos)
       console.log(llenoInputAuto);
       inputAuto.value = llenoInputAuto
+      handleChange(e)
     }).catch(error=>{
       console.log(error.message);
     })
+
+    
   }
 
-  const peticionGetCateLibro=()=>{
+  const peticionGetCateLibro=(e)=>{
     const categorias = document.getElementById('selecCate')
     const inputCate = document.getElementById('inputCate')
     console.log(categorias.value);
@@ -77,6 +82,7 @@ export const AgregarLibro = () => {
       llenoInputCate.push(" " + cate.nombre)
       inputCate.value = llenoInputCate
       console.log(llenoCate);
+      handleChange(e)
     }).catch(error=>{
       console.log(error.message);
     })
@@ -148,9 +154,43 @@ export const AgregarLibro = () => {
     const id_editorial = document.getElementById('selectEdito')
     const id_idioma = document.getElementById('selectIdioma')
     const cant_ejemplares = document.getElementById('NumEmplares')
-    console.log(cant_ejemplares.value);
 
-    console.log(llenoAuto);
+    if(id_idioma.value !==""){
+      id_idioma.style.border = '2px solid #2691D9'
+    }else{
+      id_idioma.style.border = '2px solid #adadad'
+    }
+
+    if(id_editorial.value !==""){
+      id_editorial.style.border = '2px solid #2691D9'
+    }else{
+      id_editorial.style.border = '2px solid #adadad'
+    }
+
+    const inputAuto = document.getElementById('inputAuto')
+    const labelAuto = document.getElementById('labelAuto')
+    if(inputAuto.value!==""){
+      inputAuto.style.border = "2px solid #2691D9"
+      labelAuto.style.marginBottom = "80px"
+      labelAuto.style.color = "#2691D9"
+    }else{
+      inputAuto.style.border = "2px solid #adadad"
+      labelAuto.style.marginBottom = "25px"
+      labelAuto.style.color = "#adadad"
+    }
+
+
+    const inputCate = document.getElementById('inputCate')
+    const labelCate = document.getElementById('labelCate')
+    if(inputCate.value!==""){
+      inputCate.style.border = "2px solid #2691D9"
+      labelCate.style.marginBottom = "80px"
+      labelCate.style.color = "#2691D9"
+    }else{
+      inputCate.style.border = "2px solid #adadad"
+      labelCate.style.marginBottom = "25px"
+      labelCate.style.color = "#adadad"
+    }
                 
     setformLibros({
       ...formLibros,
@@ -199,6 +239,23 @@ export const AgregarLibro = () => {
     fetchEditorial()
     fetchIdioma()
 },[])
+
+const vaciarCate = (e) => {
+
+  llenoCate = []
+  llenoInputCate = []
+  const texCate = document.getElementById('inputCate')
+  texCate.value = ""
+  handleChange(e)
+}
+
+const vaciarAuto = (e) => {
+  llenoAuto = []
+  llenoInputAuto = []
+  const texAuto = document.getElementById('inputAuto')
+  texAuto.value = ""
+  handleChange(e)
+}
 
   return (
     <div className='AgregarLibros'>
@@ -297,10 +354,11 @@ export const AgregarLibro = () => {
                   </select>
                 </div>
 
-                <div className="box-select">
-                  <textarea className='textareaCate' readOnly='readOnly' id='inputCate' type="text"/>
-                  <select id='selecCate' onChange={peticionGetCateLibro}>
-                    <option value="" selected>Categorias...</option>
+                  <i class="fa-solid fa-xmark" onClick={vaciarCate} ></i>
+                  <textarea className='texLibro texLibroCateAuto' readOnly='readOnly' id='inputCate' type="text"/>
+                  <label id='labelCate' className='labelLibro labelLibroCate'>Categorias</label>
+                  <select className='selectCategorias' id='selecCate' onChange={(e)=>{peticionGetCateLibro(e)}}>
+                    <option value="" selected></option>
                     {!categorias? "":
                     categorias.map((element, key)=>{
                       return(
@@ -308,29 +366,28 @@ export const AgregarLibro = () => {
                           )
                         })}                  
                   </select>
-                </div> 
-
-                <div className="box-textareaa">
-                  <textarea placeholder='Palabras Clave...' name='palabras_clave' onChange={handleChange} value={formLibros.palabras_clave}  ></textarea>
-                  
-                </div>                
+                    <i class="fa-solid fa-xmark fa-xmarkAuto " onClick={vaciarAuto} ></i>
+                    <textarea className='texLibro texLibroCateAuto'  readOnly='readOnly' id='inputAuto' type="text"/>
+                    <label id='labelAuto' className='labelLibro labelLibroAuto'>Autores</label>
+                      <select className='selectAutores' onChange={(e)=>{peticionGetAutoLibro(e)}}  id='selecAuto'>
+                      <option value="" selected></option>
+                        {!autores? "" :
+                        autores.map((element, key)=>{
+                          return(
+                            <option key={key} value={element.id_autor}>{element.nombres} {element.apellidos}</option>
+                          )
+                            })}                  
+                      </select>
+                    {/* <label className="labelLibro">Autores</label> */}
+                    
               </div>
 
 
               <div className="boxs-inputs">
-              <div className="box-select">
-                   <textarea className='textareaCate' readOnly='readOnly' id='inputAuto' type="text" /> 
-                  <select onChange={peticionGetAutoLibro}  id='selecAuto'>
-                  <option value="" selected>Autores...</option>
-                    {!autores? "" :
-                    autores.map((element, key)=>{
-                      return(
-                        <option key={key} value={element.id_autor}>{element.nombres} {element.apellidos}</option>
-                      )
-                        })}                  
-                  </select>
-                </div>
-
+                <textarea className='texLibro texLibro1' required name='palabras_clave' onChange={handleChange} value={formLibros.palabras_clave}  ></textarea>
+                <label className="labelLibro labelLibro1">Palabras Clave</label>
+                <textarea required className='texLibro texLibro2' name="descripcion" onChange={handleChange} value={formLibros.descripcion}  ></textarea>
+                <label className="labelLibro labelLibro2">Descripción</label>
                 <div class="file-select" id="src-file1" >
                   <input 
                   type="file" name="imagen_libro" onChange= {(e)=>{
@@ -338,13 +395,10 @@ export const AgregarLibro = () => {
                     setearImagen(e)
                   }} />
                   <h5 className='nomImg'></h5>
-                </div>                
+                </div>
+              </div>
+              <br />
 
-                <div className="box-textareaa box-textareaDescripcion">
-                  <textarea placeholder='Descripción...' name="descripcion" onChange={handleChange} value={formLibros.descripcion}  ></textarea>
-                  
-                </div>               
-              </div> 
 
               <div className="btnsFormulario">
                 <button className="btnFor btn-agregar">ANEXAR LIBRO</button>

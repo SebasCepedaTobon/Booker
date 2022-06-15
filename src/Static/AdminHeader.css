@@ -29,13 +29,13 @@
 }
 
 .noDisponible{
-    top: 23px;
-    right: 413px;    
+    top: 24px;
+    right: 689px;    
 }
 
 .Disponible{
     top: 23px;
-    left: 650px;
+    left: 816px;
 }
 
 .noDisponible p{
@@ -81,3 +81,17 @@
 .boxLibrosCantidad img{
     width: 38px;
 }
+
+@media (max-width: 1400px){
+
+    .noDisponible{
+        top: 23px;
+        right: 413px;    
+    }
+    
+    .Disponible{
+        top: 23px;
+        left: 650px;
+    }
+}
+

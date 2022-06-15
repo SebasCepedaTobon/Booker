@@ -66,7 +66,7 @@ export const AdminHeader = () => {
         <div className="HeaderAdmin">
             <p className='sitio'>Sitio Administrativo</p>
             <div className='boxLibrosCantidad'>
-              <i class="fa-solid fa-book" data-title='Libros Disponibles'></i>
+              <i className="fa-solid fa-book" data-title='Libros Disponibles'></i>
               <div className="Disponible notificacionCantidad">
                 <p>{sizeDisponibles}</p>
               </div>
@@ -76,12 +76,12 @@ export const AdminHeader = () => {
               </div>
             </div>
             <div className="HeaderIconos">
-                <i onClick={boxBuscador} class="fa-solid fa-magnifying-glass"></i>
+                <i onClick={boxBuscador} className="fa-solid fa-magnifying-glass"></i>
                 <NavLink to='/home'>
-                    <i class="fa-solid fa-calendar-check"></i>
+                    <i className="fa-solid fa-calendar-check"></i>
                 </NavLink>
                 <NavLink to='/home'>
-                    <i class="fa-solid fa-gear"></i>
+                    <i className="fa-solid fa-gear"></i>
                 </NavLink>
                 <div className="box-perfilHeader">
                     <div className="userHeader">
@@ -95,9 +95,9 @@ export const AdminHeader = () => {
             </div>            
         </div>
         <div id='buscador' className="buscador">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
             <input className='elInput' type="text" autoFocus placeholder='Buscar...'/>
-            <i onClick={boxBuscador} class="fa-solid fa-xmark"></i>
+            <i onClick={boxBuscador} className="fa-solid fa-xmark"></i>
         </div>
     
     </div>    

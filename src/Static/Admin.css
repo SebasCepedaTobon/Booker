@@ -73,43 +73,6 @@
     background-color: #eeeeee;
 }
 
-.box-AdminNavegador{
-    width: 16vw;
-    min-height: 100vh;
-    position: absolute;
-    z-index: 3000;
-}
-
-
-.Admin-Navegador .vinculo{
-    text-decoration: none;
-    color: rgb(95, 95, 95);
-    margin-top: 20px;
-    transition: all 0.5s;
-}
-
-.Admin-Navegador .vinculo:hover{
-    margin-left: 10px;
-    transition: all 0.5s;
-}
-
-.Admin-Navegador .box-vinculos{    
-    padding: 12px 6px 12px 20px ;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    border: none;
-    position: relative;
-    font-size: 17px;
-    border-radius: 5px;
-    cursor: pointer;
-    user-select: none;
-    overflow: hidden;
-    z-index: 1;  
-    font-weight: 500;
-}
-
 
 .novedades{
     padding-left: 50px;
@@ -307,27 +270,6 @@
 .fa-trash-can:hover{
     transform: scale(1.10);
 }
-
-.active{
-    background-color: rgb(13,95,228);
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgb(13,95,228);
-}
-
-.activee{
-    background-color: rgb(13,95,228);
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgb(13,95,228);
-}
-
-.active p{
-    color: white;
-}
-
-.active i{
-    color: white;
-}
-
 /*Boton Activar ventana flotante*/
 
 .Activar-From {
@@ -466,7 +408,7 @@ form .box-select{
     margin-bottom: -3.5px;
     font-size: 16px;
     border: 2px solid #a6a6a6;
-    outline-color: #a6a6a6;
+    outline-color: #2691D9;
     color: #000000;
     resize: none;
     font-size: 16px;
@@ -783,17 +725,14 @@ form .box-select{
 }
 
 .Libros-from .btnsFormulario{
-    margin-top: 0px;
+    margin-top: 20px;
 }
-
-
 
 /*------------------------------------TABLA ESTUDIANTES---------------------------*/
 
 
 .Estudiantes-from{
     width: 45%;
-    height: 58%;
     background: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
@@ -801,7 +740,6 @@ form .box-select{
 
 .Estudiantes-from form{
     padding: 0 40px 22px;
-    height: 450px;
 }
 
 .Estudiantes-from .box-select{  
@@ -851,117 +789,6 @@ form .box-select{
     align-items: center;
 }
 
-
-/*-------------navegador----------------*/
-
-.Admin-Navegador{
-    width: 15%;
-    height: 100vh;
-    background-color: #ffffff;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-left: -252px;
-}
-
-.Admin-Navegador .box-Titulo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    min-height: 6%;
-}
-
-.Admin-Navegador .box-Logo{
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.box-Logo .logo{
-    padding-left: 30px;
-    padding-top: 30px;
-    width: 200px;
-}
-
-.Admin-Navegador .Menu-Padre{
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    box-sizing: border-box;
-    margin-bottom: 50px;
-    background-color: white;
-    z-index: 2;
-}
-
-.Admin-Navegador .Menu-Padre::-webkit-scrollbar {
-    width: 7px;    
-}
-
-.Admin-Navegador .Menu-Padre::-webkit-scrollbar-thumb {
-    background: #eaeaea;
-    border-radius: 5px;
-}
-
-body::-webkit-scrollbar{
-    width: 10px;
-    background: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #c6c6c6;
-    border-radius: 5px;
-}
-
-.Admin-Navegador .box-menu{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.Admin-Navegador i{
-    font-size: 20px;
-    padding-right: 10px;
-}
-
-.config {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: -23px;
-    top: 286px;
-    width: 56px;
-    height: 41px;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: rgb(13,95,228);
-}
-
-.boxFlecha{
-    background-color: white;
-    width: 30px;
-    height: 90px;
-}
-
-.config img{
-    width: 8px;
-    margin-top: 5px;
-    margin-left: 30px;
-    transform: rotate(0deg);
-}
-
-.LyE{
-    padding-top: 20px;
-    color: #a6a6a6;
-}
-
-#infra{
-    margin-right: 52px;
-}
 
 /*-------------------HEADER ANTIGUO----------------------*/
 
@@ -1200,9 +1027,11 @@ body::-webkit-scrollbar-thumb {
    /*----------------------------inputArchivo-----------------------*/
   .file-select {
     position: relative;
+    cursor: pointer;
   }
   
   .file-select::before {
+    cursor: pointer;
     background-color: #c8c8c8;
     color: black;
     display: flex;
@@ -1226,7 +1055,7 @@ body::-webkit-scrollbar-thumb {
   }
 
   .nomImg{
-      color: black;
+      color: #2691D9;
       position: absolute;
       z-index: 2000;
   }
@@ -1339,9 +1168,11 @@ body::-webkit-scrollbar-thumb {
     color: rgb(0, 0, 0);
     box-shadow: 0px 0px 10px black;
     font-size: 12px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     position: absolute;
     padding: 10px 10px 10px 10px;
     bottom: -1.6em;
+    font-weight: 500;
     left: 100%;
     white-space: nowrap;
     z-index: 99999;

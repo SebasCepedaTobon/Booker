@@ -1,0 +1,194 @@
+.box-AdminNavegador{
+  width: 16vw;
+  min-height: 100vh;
+  position: absolute;
+  z-index: 3000;
+}
+
+
+.Admin-Navegador .vinculo{
+  text-decoration: none;
+  color: rgb(121, 121, 121);
+  margin-top: 9px;
+  transition: all 0.5s;
+}
+
+
+
+.Admin-Navegador .vinculo:hover{
+  margin-left: 7px;
+  transition: all 0.5s;
+}
+
+.Admin-Navegador .box-vinculos{    
+  padding: 12px 6px 12px 20px ;
+  width: 188px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border: none;
+  position: relative;
+  font-size: 17px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.vinculoCateAuto{
+  text-decoration: none;
+  color: rgb(121, 121, 121);
+  margin-top: 9px;
+  transition: all 0.5s;
+}
+
+.box-vinculoCateAuto{
+  padding: 12px 6px 12px 20px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border: none;
+    position: relative;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.5s;
+}
+
+.box-vinculoCateAuto:hover{
+  margin-left: 3px;
+  transition: all 0.5s;
+}
+
+.Admin-Navegador{
+  width: 15%;
+  height: 100vh;
+  background-color: #ffffff;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: -252px;
+}
+
+.Admin-Navegador .box-Titulo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  min-height: 6%;
+}
+
+.Admin-Navegador .box-Logo{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.box-Logo .logo{
+  padding-left: 30px;
+  padding-top: 30px;
+  width: 200px;
+}
+
+.Admin-Navegador .Menu-Padre{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 2;
+}
+
+.Admin-Navegador .Menu-Padre::-webkit-scrollbar {
+  width: 7px;    
+}
+
+.Admin-Navegador .Menu-Padre::-webkit-scrollbar-thumb {
+  background: #eaeaea;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar{
+  width: 10px;
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #c6c6c6;
+  border-radius: 5px;
+}
+
+.Admin-Navegador .box-menu{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.Admin-Navegador i{
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.config {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -23px;
+  top: 40%;
+  width: 56px;
+  height: 41px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgb(13,95,228);
+}
+
+.boxFlecha{
+  background-color: white;
+  width: 30px;
+  height: 90px;
+}
+
+.config img{
+  width: 8px;
+  margin-top: 5px;
+  margin-left: 30px;
+  transform: rotate(0deg);
+}
+
+.LyE{
+  padding-top: 20px;
+  color: #a6a6a6;
+  margin-left: 20px;
+}
+
+.active{
+  background-color: rgb(13,95,228);
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgb(13,95,228);
+}
+
+.active p{
+  color: white;
+}
+
+.active i{
+  color: white;
+}
+
+@media (max-width: 1400px){
+  .Admin-Navegador {
+      width: 260px;
+  }
+}

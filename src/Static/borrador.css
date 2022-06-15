@@ -69,3 +69,18 @@
   border-radius: 5px;
 }
 
+
+/*Eventos*/
+
+.td-0 {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.td-0 img{
+  width: 100px;
+}
+

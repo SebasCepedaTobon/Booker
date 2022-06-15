@@ -23,8 +23,6 @@ let auto_idM = []
 let auto_nombreM = []
 let auto = []
 
-let librosEstadoCerar = {}
-
 
 
 export const TablaLibros = () => {
@@ -35,15 +33,12 @@ export const TablaLibros = () => {
   const [autores, setAutores] = useState()
   const [idioma, setIdioma] = useState()
   const [editorial, setEditorial] = useState()
-  const [estado, setEstado] = useState()
  
 
   let imagen_libro=""
   let setearImg
 
   const [form2, setForm2] = useState({})
-
-  const [formEstado, setFormEstado] = useState({})
 
   const peticionGet=()=>{
     axios.get(url).then(response=>{
@@ -138,15 +133,54 @@ const fetchEditorial=async()=>{
 
 
 const handleChange = (e) =>{
-
-  console.log(e);
-
   const idioma = document.getElementById('selectIdioma')
   const id_editorial = document.getElementById('selectEdito')
   const estado =  document.getElementById('selectEstado')
 
-  console.log(form2);
-  
+  if(estado.value !==""){
+    estado.style.border = '2px solid #2691D9'
+  }else{
+    estado.style.border = '2px solid #adadad'
+  }
+
+  if(idioma.value !==""){
+    idioma.style.border = '2px solid #2691D9'
+  }else{
+    idioma.style.border = '2px solid #adadad'
+  }
+
+  if(id_editorial.value !==""){
+    id_editorial.style.border = '2px solid #2691D9'
+  }else{
+    id_editorial.style.border = '2px solid #adadad'
+  }
+
+
+
+  const inputAuto = document.getElementById('inputAuto')
+    const labelAuto = document.getElementById('labelAuto')
+    if(inputAuto.value!==""){
+      inputAuto.style.border = "2px solid #2691D9"
+      labelAuto.style.marginBottom = "80px"
+      labelAuto.style.color = "#2691D9"
+    }else{
+      inputAuto.style.border = "2px solid #adadad"
+      labelAuto.style.marginBottom = "25px"
+      labelAuto.style.color = "#adadad"
+    }
+
+    const inputCate = document.getElementById('inputCate')
+    const labelCate = document.getElementById('labelCate')
+    if(inputCate.value!==""){
+      inputCate.style.border = "2px solid #2691D9"
+      labelCate.style.marginBottom = "80px"
+      labelCate.style.color = "#2691D9"
+    }else{
+      inputCate.style.border = "2px solid #adadad"
+      labelCate.style.marginBottom = "25px"
+      labelCate.style.color = "#adadad"
+    }
+
   setForm2({
   ...form2,
   [e.target.name]: e.target.value,
@@ -198,7 +232,6 @@ const vaciarCate = (e) => {
   handleChange(e)
 }
 const vaciarAuto = (e) => {
-  
   auto_idM = []
   auto_nombreM = []
   const texAuto = document.getElementById('inputAuto')
@@ -226,6 +259,52 @@ const categoriasSelecionadas = (data) =>{
   const texAuto = document.getElementById('inputAuto')
   texAuto.value = auto_nombreM
 
+  const idioma = document.getElementById('selectIdioma')
+  const id_editorial = document.getElementById('selectEdito')
+  const estado =  document.getElementById('selectEstado')
+
+  if(estado.value !==""){
+    estado.style.border = '2px solid #2691D9'
+  }else{
+    estado.style.border = '2px solid #adadad'
+  }
+
+  if(idioma.value !==""){
+    idioma.style.border = '2px solid #2691D9'
+  }else{
+    idioma.style.border = '2px solid #adadad'
+  }
+
+  if(id_editorial.value !==""){
+    id_editorial.style.border = '2px solid #2691D9'
+  }else{
+    id_editorial.style.border = '2px solid #adadad'
+  }
+
+  const inputAuto = document.getElementById('inputAuto')
+    const labelAuto = document.getElementById('labelAuto')
+    if(inputAuto.value!==""){
+      inputAuto.style.border = "2px solid #2691D9"
+      labelAuto.style.marginBottom = "80px"
+      labelAuto.style.color = "#2691D9"
+    }else{
+      inputAuto.style.border = "2px solid #adadad"
+      labelAuto.style.marginBottom = "25px"
+      labelAuto.style.color = "#adadad"
+    }
+
+    const inputCate = document.getElementById('inputCate')
+    const labelCate = document.getElementById('labelCate')
+    if(inputCate.value!==""){
+      inputCate.style.border = "2px solid #2691D9"
+      labelCate.style.marginBottom = "80px"
+      labelCate.style.color = "#2691D9"
+    }else{
+      inputCate.style.border = "2px solid #adadad"
+      labelCate.style.marginBottom = "25px"
+      labelCate.style.color = "#adadad"
+    }
+
 }
 
 const peticionGetCateLibro=(e)=>{
@@ -235,18 +314,15 @@ const peticionGetCateLibro=(e)=>{
   console.log(categorias.value);
   axios.get("https://bookerbackapi.herokuapp.com/modulos/categorias/" + categorias.value).then(response=>{
     cate = response.data;
-
     cate_idM.push(cate.id_categoria)
-
     cate_nombreM.push(" " + cate.nombre)
-
     inputCate.value = cate_nombreM
     console.log(cate_idM);
+    handleChange(e)
   }).catch(error=>{
     console.log(error.message);
   })
 
-  handleChange(e)
 }
 
 const peticionGetAutoLibro=(e)=>{
@@ -258,20 +334,32 @@ const peticionGetAutoLibro=(e)=>{
     auto_idM.push(auto.id_autor)
 
     auto_nombreM.push( " " + auto.nombres + " " + auto.apellidos)
-
     inputAuto.value = auto_nombreM
+    handleChange(e)
   }).catch(error=>{
     console.log(error.message);
   })
 
-  handleChange(e)
+  
 }
 
 
 const handleSubmit = (e) =>{
   handleChange(e)
   e.preventDefault()
-  updateData2()
+  Swal.fire({
+    title: '¿Esta seguro de guardar los cambios?',
+    icon: 'warning',
+    confirmButtonText: 'Si, Guardar',
+    showCancelButton: true,
+    cancelButtonText: 'No, cancelar',
+    reverseButtons: true
+  }).then((resultado) => {
+    if (resultado.isConfirmed) {
+      updateData2()
+    }
+  })
+  
 }
 
 const handleSubmitEstado = (libro) =>{
@@ -321,8 +409,9 @@ const updateData2 = () =>{
   let endpoint = url+form2.id_libro+'/'
   axios.put(endpoint, form2)
   .then((res) => {
-      window.location.href="/TLibros"
-      console.log(res);
+    peticionGet()
+    modalCerrar()
+    console.log(res);
   })
 }
 
@@ -331,23 +420,14 @@ const updateData2Estado = (libro) =>{
   let endpoint = url+ libro.id_libro +'/'
   axios.put(endpoint, libro)
   .then((res) => {
-      window.location.href="/TLibros"
-      console.log(res);
+    peticionGet()
+    console.log(res);
   })
 }
 
 
 const updateEstado = (libro) =>{
   handleSubmitEstado(libro)
-}
-
-const ventanaEstado  = () => {
-  const canbioEstado = document.getElementById('estadoCambio')
-  canbioEstado.style.visibility = "visible"
-  canbioEstado.style.transform="scale(1)"
-  canbioEstado.style.opacity="2"
-
-  /* actualizarEstado(libro) */
 }
 
 useEffect(()=>{
@@ -358,20 +438,9 @@ useEffect(()=>{
   fetchEditorial()
   fetchIdioma()
 
-  setEstado("hola") 
+  
 
 },[])
-
-const cerrarEstado = () => {
-  
-  console.log(librosEstadoCerar);
-  const canbioEstado = document.getElementById('estadoCambio')
-
-  canbioEstado.style.visibility = "hidden"
-  canbioEstado.style.transform="scale(0.6)"
-  canbioEstado.style.opacity="0"
-}
-
 
 const setearImagen = (e) =>{
   setearImg=e.target.files[0]
@@ -546,40 +615,20 @@ const librosBusqueda=()=>{
                   <label>ISBN</label>
                 </div>
 
-                <img src={form2.imagen_libro} className="imgEditar" alt="" />
-                <div class="file-select" id="src-file1" >
-                  <input 
-                  type="file" name="imagen_libro" onChange= {(e)=>{
-                    mostrarArchivo(e)
-                    setearImagen(e)
-                  }} />
-                  <h5 className='nomImg'></h5>
-                </div>
-                  
-                
-           
                 <div className="box-input">
                   <input name='nombre' onChange={handleChange} value={form2.nombre} id='nombreLibro' type="text" required/>
                   <span></span>
                   <label>Nombre</label>
                 </div>
-
-               {/*  <div className="box-input">
-                  <input id='NumEmplares' type='number' name='cant_ejemplares' onChange={handleChange} value={form2.cant_ejemplares} required/>
-                  <span></span>
-                  <label>Cantidad Ejemplares</label>
-                </div>  */}
-
-
-              </div>
-
-              <div className="boxs-inputs">
                 <div className="box-input">
                   <input type="number" name='numero_paginas' onChange={handleChange} value={form2.numero_paginas}  required/>
                   <span></span>
                   <label>N° Paginas</label>
                 </div>
 
+              </div>
+
+              <div className="boxs-inputs">
                 <div className="box-input">
                   <input type="number" name='numero_capitulos' onChange={handleChange} value={form2.numero_capitulos} required/>
                   <span></span>
@@ -591,15 +640,15 @@ const librosBusqueda=()=>{
                   <span></span>
                   <label>Edicion</label>
                 </div>
-                
-              </div>
-
-              <div className="boxs-inputs">
                 <div className="box-input">
                     <input type="text" name='anexos' onChange={handleChange} value={form2.anexos} required/>
                     <span></span>
                     <label>Anexos</label>
                 </div>
+                
+              </div>
+
+              <div className="boxs-inputs">
 
                 <div className="box-input">
                   <input name='presentacion' onChange={handleChange} value={form2.presentacion} type="text" required/>
@@ -618,11 +667,6 @@ const librosBusqueda=()=>{
                       })}
                   </select>
                 </div>
-              </div>
-
-            
-              <div className="boxs-inputs">
-
                 <div className="box-select">
                   <select id='selectIdioma' onChange={handleChange} >
                     <option value="">Idioma...</option>
@@ -634,7 +678,11 @@ const librosBusqueda=()=>{
                       })}
                   </select>
                 </div>
- 
+              </div>
+
+            
+              <div className="boxs-inputs">
+              
                 <div className="box-select">                  
                   <select id='selectEstado' onChange={handleChange}>
                       <option value="">Estado...</option>
@@ -642,21 +690,23 @@ const librosBusqueda=()=>{
                       <option value="I">Inactivo</option>
                   </select>
                 </div>
-
-
-                <div className="box-textareaa">
-                  <textarea placeholder='Palabras Clave...' name='palabras_clave' onChange={handleChange} value={form2.palabras_clave}  ></textarea>
-                  
-                </div>                
-              </div>
-
-
-              <div className="boxs-inputs">
-              <div className="box-select">
-                  <p onClick={vaciarAuto} >X</p>
-                  <textarea className='textareaCate' readOnly='readOnly' id='inputAuto' type="text" />
-                  <select  id='selecAuto' onChange={peticionGetAutoLibro}>
-                  <option value="" selected>Autores...</option>
+                  <i class="fa-solid fa-xmark faEdit" onClick={vaciarCate} ></i>
+                  <textarea className='texLibro texLibroCateAuto' readOnly='readOnly' id='inputCate' type="text"/>
+                  <label id='labelCate' className='labelLibro labelLibroCate'>Categorias</label>
+                  <select  id='selecCate' className='selectCategorias' onChange={(e)=>{peticionGetCateLibro(e)}}>
+                    <option value="" selected></option>
+                    {!categorias ?"":
+                    categorias.map(element=>{
+                      return(
+                          <option className='holaOption' name={element.nombre} value={element.id_categoria}  >{element.nombre}</option>
+                          )
+                        })}            
+                  </select>
+                <i class="fa-solid fa-xmark fa-xmarkAuto faEdit " onClick={vaciarAuto} ></i>
+                  <textarea className='texLibro texLibroCateAuto' readOnly='readOnly' id='inputAuto' type="text" />
+                  <label id='labelAuto' className='labelLibro labelLibroAuto'>Autores</label>
+                  <select  id='selecAuto' className='selectAutores' onChange={(e)=>{peticionGetAutoLibro(e)}}>
+                  <option value="" selected></option>
                     {!autores ? "" :
                     autores.map((element, key)=>{
                       return(
@@ -664,27 +714,22 @@ const librosBusqueda=()=>{
                       )
                         })}                  
                   </select>
-                </div>
+              </div>
 
-                <div className="box-select">
-                  <p onClick={vaciarCate}>X</p>
-                  <textarea className='textareaCate' readOnly='readOnly' id='inputCate' type="text"/>
-                  <select  id='selecCate' onChange={peticionGetCateLibro}>
-                    <option value="" selected>Categorias...</option>
-                    {!categorias ?"":
-                    categorias.map(element=>{
-                      return(
-                          <option className='holaOption' name={element.nombre} value={element.id_categoria}  >{element.nombre}</option>
-                          )
-                        })}                  
-                  </select>
-                </div>
+              <div className="boxs-inputs">
+              <textarea className='texLibro texLibro1' required name='palabras_clave' onChange={handleChange} value={form2.palabras_clave}  ></textarea>
+                <label className="labelLibro labelLibro1">Palabras Clave</label>
+                <textarea required className='texLibro texLibro2' name="descripcion" onChange={handleChange} value={form2.descripcion}  ></textarea>
+                <label className="labelLibro labelLibro2">Descripción</label>
 
-                
-                <div className="box-textareaa box-textareaDescripcion">
-                  <textarea placeholder='Descripción...' name="descripcion" onChange={handleChange} value={form2.descripcion}  ></textarea>
-                  
-                </div>               
+                <div class="file-select" id="src-file1" >
+                  <input 
+                  type="file" name="imagen_libro" onChange= {(e)=>{
+                    mostrarArchivo(e)
+                    setearImagen(e)
+                  }} />
+                  <h5 className='nomImg'></h5>
+                </div>             
               </div> 
 
               <div className="btnsFormulario">
@@ -695,14 +740,6 @@ const librosBusqueda=()=>{
               </div>
             </form>
           </div>
-        </div>
-      </div>
-
-      <div id='estadoCambio' className="cambioEstado">
-        <p>Seguro de guardar cambios</p>
-        <div className="boxBtnEstado">
-          <button onClick={cerrarEstado} >Cancelar</button>
-          <button onClick={handleSubmitEstado} >Confirmar</button>
         </div>
       </div>
     </div>

@@ -8,76 +8,66 @@ import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador';
 import { NavLink } from 'react-router-dom';
 
 
-export const TablaEstudiantes = () => {
+export const TablaBibliotecarios = () => {
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/"
+  const url = "https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/"
 
- const eliminacion = () =>{
-     Swal.fire({
-       title: '¿Esta seguro de eliminar a el estudiante?',
-       icon: 'warning',
-       confirmButtonText: 'Si, Eliminar',
-       showCancelButton: true,
-       cancelButtonText: 'No, cancelar',
-       reverseButtons: true
-     }).then((resultado) => {
-       if (resultado.isConfirmed) {
-         Swal.fire(
-           'Eliminado',
-           'Estudiante eliminado correctamente',  
-           'success'
-         )
-       }
-     })
-  }
 
 
   const [cerrar, setCounter] = useState(true)
-  const [estudiantes, setEstudiantes] = useState([])
+  const [bibliotecarios, setBibliotecario] = useState([])
 
-  const [grupo, setGrupo] = useState()
-  const [grado, setGrado] = useState()
   const [form2, setForm2] = useState({})
 
   const peticionGet=()=>{
     axios.get(url).then(response=>{
-      setEstudiantes(response.data);      
+        setBibliotecario(response.data);      
     }).catch(error=>{
       console.log(error.message);
     })    
   }
   const peticionGetInactivo=()=>{
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?doc_estudiante__usuario_activo=false").then(response=>{
-      setEstudiantes(response.data);      
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?doc_bibliotecario__usuario_activo=false").then(response=>{
+        setBibliotecario(response.data);      
+    }).catch(error=>{
+      console.log(error.message);
+    })    
+  }
+  const peticionGetActivos=()=>{
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?doc_bibliotecario__usuario_activo=true").then(response=>{
+        setBibliotecario(response.data);      
     }).catch(error=>{
       console.log(error.message);
     })    
   }
 
-  const fetchGrupo=async()=>{
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/grupos/")
-    const responseJSON = await response.json()
-    setGrupo(responseJSON)
-}
 
-  const fetchGrado=async()=>{
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/grados/")
-    const responseJSON = await response.json()
-    setGrado(responseJSON)
-}
 
 const updateData2 = async () =>{
-  let endpoint = url+form2.id_estudiante+'/'
+
+  let endpoint = url+form2.id_bibliotecario+'/'
   await axios.put(endpoint, form2)
   .then((res) => {
-      window.location.href="/TEstudiantes"
+      peticionGet()
+      ventanaFlotante()
       console.log(res);
   })
 }
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    updateData2()
+    Swal.fire({
+        title: '¿Esta seguro de guardar los cambios?',
+        icon: 'warning',
+        confirmButtonText: 'Si, Guardar',
+        showCancelButton: true,
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true
+      }).then((resultado) => {
+        if (resultado.isConfirmed) {
+            updateData2()
+        }
+      })
   }
 
   const handleChange = (e) =>{
@@ -85,23 +75,12 @@ const updateData2 = async () =>{
     const name = document.getElementById('name')
     const email = document.getElementById('email')
     const tipoDoc = document.getElementById('tipoDoc')
-    const grupo = document.getElementById('grupo')
-    const grado = document.getElementById('grado')
-
-    /* console.log(grupo.value);
-    let grupoFin        
-    if(grupo.value === null){
-      grupoFin = "null"
-    }else{
-      grupoFin = Number(grupo.value)
-    } */
         
     setForm2({
     ...form2,
     [e.target.name]: e.target.value,
     tipodoc: tipoDoc.value,
-    id_grupo: Number(grupo.value),
-    id_grado: Number(grado.value),
+
     doc_estudiante:{
       doc : doc.value,
       name: name.value,
@@ -114,23 +93,21 @@ const updateData2 = async () =>{
 
   const updateData = (data) =>{
 
-    console.log(data.doc_estudiante.usuario_activo);
+    console.log(data.doc_bibliotecario.usuario_activo);
 
-    console.log(data.doc_estudiante.password);
+    console.log(data.doc_bibliotecario.password);
 
-    let numDocumento = data.doc_estudiante.doc
-    let name = data.doc_estudiante.name
-    let gmail = data.doc_estudiante.email
+    let numDocumento = data.doc_bibliotecario.doc
+    let name = data.doc_bibliotecario.name
+    let gmail = data.doc_bibliotecario.email
     let tipoDoc1 = data.tipodoc
-    let grupo1 = data.id_grupo.id_grupo
-    let grado1 = data.id_grado.id_grado
     console.log(tipoDoc1);
     setForm2(data)
-    llenarSelect(numDocumento, name, gmail,  tipoDoc1, grupo1, grado1)
+    llenarSelect(numDocumento, name, gmail,  tipoDoc1)
     ventanaFlotante()
 }
 
-const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
+const llenarSelect = (numDocumento, name, gmail,  tipoDoc1) =>{
 
   const doc = document.getElementById('doc')
   doc.value = numDocumento
@@ -144,11 +121,6 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
   const tipoDoc = document.getElementById('tipoDoc')
   tipoDoc.value = tipoDoc1
 
-  const grupo = document.getElementById('grupo')
-  grupo.value = grupo1
-
-  const grado = document.getElementById('grado')
-  grado.value = grado1
 }
 
   const ventanaFlotante  = () => {
@@ -157,10 +129,6 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
 
   useEffect(() => {
     peticionGet()
-    fetchGrupo()
-    fetchGrado()
-
-
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
 
@@ -180,21 +148,19 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
   const peticionGetBusqueda=()=>{
     const inputBuscar = document.getElementById('elInput')
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=" + inputBuscar.value).then(response=>{
-      setEstudiantes(response.data);      
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?search=" + inputBuscar.value).then(response=>{
+        setBibliotecario(response.data);      
     }).catch(error=>{
       console.log(error.message);
     })    
   }
 
-  const handleSubmitEstado = (estudiantes)=>{
-    estudiantes.id_grupo = estudiantes.id_grupo.id_grupo    
-    estudiantes.id_grado = estudiantes.id_grado.id_grado 
+  const handleSubmitEstado = (bibliotecarios)=>{
     
-    if(estudiantes.doc_estudiante.usuario_activo === true){
-      estudiantes.doc_estudiante.usuario_activo = false
+    if(bibliotecarios.doc_bibliotecario.usuario_activo === true){
+        bibliotecarios.doc_bibliotecario.usuario_activo = false
     }else{
-      estudiantes.doc_estudiante.usuario_activo = true
+        bibliotecarios.doc_bibliotecario.usuario_activo = true
     }
 
     Swal.fire({
@@ -206,24 +172,23 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
       reverseButtons: true
     }).then((resultado) => {
       if (resultado.isConfirmed) {
-        updateEstadoData(estudiantes)
+        updateEstadoData(bibliotecarios)
       }
     })
     
   }
-  const updateEstadoData = (estudiantes) =>{
-    console.log(estudiantes);
-    let endpoint = url+estudiantes.id_estudiante+'/'
-    axios.put(endpoint, estudiantes)
+  const updateEstadoData = (bibliotecarios) =>{
+    console.log(bibliotecarios);
+    let endpoint = url+bibliotecarios.id_bibliotecario+'/'
+    axios.put(endpoint, bibliotecarios)
     .then((res) => {
-      //window.location.href="/TEstudiantes"
       console.log(res);
+      peticionGet()    
   })
-  peticionGet()    
   }
 
-  const updateEstado = (estudiantes)=>{
-    handleSubmitEstado(estudiantes)
+  const updateEstado = (bibliotecarios)=>{
+    handleSubmitEstado(bibliotecarios)
   }
 
 
@@ -242,17 +207,22 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
           <div className='categoriasMN'  >
           <div className='btnMulta' onClick={peticionGet}  >
             <div className='contenidoMultas'  >
-              <p>Estudiantes</p>
+              <p>Bibliotecarios</p>
+            </div>
+          </div>
+          <div className='btnMulta' onClick={peticionGetActivos}  >
+            <div className='contenidoMultas'  >
+              <p>Bibliotecarios Activos</p>
             </div>
           </div>
           <div className='btnMulta' onClick={peticionGetInactivo} >
             <div className='contenidoMultas' >
-              <p>Estudiantes Inactivos</p>
+              <p>Bibliotecarios Inactivos</p>
             </div>
           </div>
         </div>
             <div className="TituloLibro">
-              <p>Estudiantes</p>
+              <p>Bibliotecarios</p>
               <div id='buscador' className="buscador">
                   <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...'/>
                   <i onClick={peticionGetBusqueda} class="fa-solid fa-magnifying-glass"></i>
@@ -262,47 +232,45 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
               <div className='td-0'><p>Imagen</p></div>
               <div className='td-1' ><p>Documento</p></div>
               <div className='td-2' ><p>Nombre Completo</p></div>
-              <div className='td-6'><p>Grado</p></div>
-              <div className='td-6'><p>Grupo</p></div>         
+              <div className='td-6'><p>Celular</p></div>        
               <div className='td-6'><p>Estado</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
               {
-                estudiantes.map((estudiantes,_) => {
+                bibliotecarios.map((bibliotecario,_) => {
                   return(
                     <div className='tr-1'>
                   <div className='td-0'>
                     <div className='perfil' >
-                     {estudiantes.doc_estudiante.imagen === null
+                     {bibliotecario.doc_bibliotecario.imagen === null
                       ?<Imagenes url={usuario} />
-                      :<Imagenes clase='icono' url={estudiantes.doc_estudiante.imagen}/>
+                      :<Imagenes clase='icono' url={bibliotecario.doc_bibliotecario.imagen}/>
                       }
                          
                     </div>
-                    {estudiantes.doc_estudiante.usuario_activo === true
+                    {bibliotecario.doc_bibliotecario.usuario_activo === true
                       ?<div className='UsuarioActivo'></div>
                       :<div className='UsuarioInactivo'></div>
                       }
                   </div>
                   <div className='td-1'>
-                    <p className='L1P'>{estudiantes.doc_estudiante.doc}</p>
+                    <p className='L1P'>{bibliotecario.doc_bibliotecario.doc}</p>
                   </div>
-                  <div className='td-2'>{estudiantes.nombres} {estudiantes.apellidos}</div>
-                  <div className='td-6'>{estudiantes.id_grado.nombre}</div>
-                  <div className='td-6'>{estudiantes.id_grupo.letra_grupo}</div>
+                  <div className='td-2'>{bibliotecario.nombres} {bibliotecario.apellidos}</div>
+                  <div className='td-6'>{bibliotecario.telefono}</div>
                   <div className='td-6'>
-                  {estudiantes.doc_estudiante.usuario_activo===true
+                  {bibliotecario.doc_bibliotecario.usuario_activo===true
                   ?<p className='activoEstudiantes' >Activo</p>
                   :<p className='inactivoEstudiantes'>Inactivo</p>                  
                   }
                   </div>
                   <div className='td-5'>
-                    {estudiantes.doc_estudiante.usuario_activo === true
-                    ?<i data-title='Inactivar Estudiante' class="fa-solid fa-user-graduate" onClick={()=>updateEstado(estudiantes)} ></i>
-                    :<div className='activoStuden' onClick={()=>updateEstado(estudiantes)} ></div>
+                    {bibliotecario.doc_bibliotecario.usuario_activo === true
+                    ?<i data-title='Inactivar Bibliotecario' class="fa-solid fa-user-graduate" onClick={()=>updateEstado(bibliotecario)} ></i>
+                    :<div className='activoStuden' onClick={()=>updateEstado(bibliotecario)} ></div>
                     }
-                    <i onClick={()=>updateData(estudiantes)} class="fa-solid fa-pen-to-square"></i>
+                    <i onClick={()=>updateData(bibliotecario)} class="fa-solid fa-pen-to-square"></i>
                     
                   </div>
                 </div>
@@ -314,7 +282,7 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
 
             </div>            
           </div>
-          <NavLink to='/NuevoEstudiante'  >
+          <NavLink to='/NBibliotecarios'  >
           <div id='Activar-From' className='Activar-From'>
               <i class="fa-solid fa-folder-plus"></i>
           </div> 
@@ -324,12 +292,12 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
 
         <div id='overlay' className='overlay'>          
           <div className="from-tablas">  
-            <div className='Estudiantes-from' >
+            <div className='Estudiantes-from NBibliotecario'  >
               <div className="from-Titulo">
                 <div className="Desactivar-From">
                   <i onClick={ventanaFlotante} class="fa-solid fa-xmark"></i>
                 </div>
-                <h1>ACTUALIZAR ESTUDIANTE</h1>                
+                <h1>ACTUALIZAR BIBLIOTECARIO</h1>                
               </div>              
               <form onSubmit={handleSubmit}>
                 <div className='boxs-inputs'>          
@@ -345,13 +313,6 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
                     <span></span>
                     <label>N° Documento</label>
                   </div>
-
-                  <div className="box-input">
-                    <input type="text" name='telefono' onChange={handleChange} value={form2.telefono} required/>
-                    <span></span>
-                    <label>N° Celular</label>
-                  </div>
-
                 </div>
                 
                 <div className="boxs-inputs">
@@ -365,11 +326,18 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
                     <span></span>
                     <label>Apellidos</label>
                   </div>
-
+                </div>
+                <div className="boxs-inputs">
                   <div className="box-input">
                     <input type="text" name='direccion' onChange={handleChange} value={form2.direccion} required/>
                     <span></span>
                     <label>Dirección</label>
+                  </div>
+
+                  <div className="box-input">
+                    <input type="text" name='telefono' onChange={handleChange} value={form2.telefono} required/>
+                    <span></span>
+                    <label>N° Celular</label>
                   </div>
                 </div>
                 <div className="boxs-inputs">
@@ -383,43 +351,10 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1, grupo1, grado1) =>{
                     <span></span>
                     <label>Gmail</label>
                   </div>
-                <div className="box-select">
-                    <select onChange={handleChange} id='grupo'>
-                      <option value="" selected>Grupo</option>
-                      {!grupo? "" :
-                        grupo.map((element,_)=> 
-                          <option className='opciones' value={element.id_grupo}>{element.letra_grupo}</option>
-                        )
-                      }
-                    </select>
-                </div>
-                </div>
-
-                <div className="boxs-inputs">
-                {/* <div class="file-select" id="src-file1" >
-                  <input 
-                  type="file" name="imagen_libro" onChange= {(e)=>{
-                    mostrarArchivo(e)
-                    setearImagen(e)
-                  }} />
-                  <h5 className='nomImg'></h5>
-                </div>  */}
-                
-                  <div className="box-select">
-                    <select onChange={handleChange} id='grado'>
-                      <option value="" selected>Grado</option>
-                      {!grado? "":
-                        grado.map((element,_)=> 
-                          <option className='opciones' value={element.id_grado}>{element.nombre}</option>
-                        )
-                      }
-                    </select>
-                  </div>
-                  
                 </div>
                 <br />
                 <div className="btnsFormulario">
-                    <button className="btnFor btn-agregar">ACTUALIZAR ESTUDIANTE</button>
+                    <button className="btnFor btn-agregar">ACTUALIZAR BIBLIOTECARIO</button>
                 </div>   
             </form>
           </div>

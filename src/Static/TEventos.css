@@ -1,0 +1,114 @@
+.TablaEventos {
+  width: 80%;
+  margin-left: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 23px;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgb(160 157 157);
+}
+
+.tituloEvento {
+  width: 95%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.TablaEventos .td-0{
+  width: 25%;
+}
+
+.TablaEventos .td-1{
+  width: 15%;
+}
+
+.TablaEventos .buscador{
+  width: 30%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgb(147 147 147);
+  margin-bottom: -3px;
+}
+
+.TablaEventos .buscador input{
+  width: 60%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: #a6a6a6;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+
+/*FORMULARIO*/
+
+.ventanaEvento{
+  width: 30%;
+}
+
+.imgEvento{
+  margin-left: 30px;
+  width: 130px;
+  height: 40px;
+}
+
+.imgEventoBox{
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 16px 0px;
+  border-bottom: 0px;
+}
+
+.ventanaEvento textarea{
+  width: 190px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  outline-color: #2691D9;
+  resize: none;
+  padding: 3px;
+  font-weight: 400;
+  color: #000000;
+  border: 2px solid #adadad;
+  border-radius: 5px;
+}
+
+.ventanaEvento .label{
+  position: absolute;
+  color: #adadad;
+  margin-bottom: 24px;
+  margin-left: 4px;
+  transition: all ease 0.5s;
+}
+
+.ventanaEvento textarea:focus,
+.ventanaEvento textarea:valid{
+  border: 2px solid #2691D9;
+}
+
+.ventanaEvento textarea:focus ~ label,
+.ventanaEvento textarea:valid ~ label{
+  color: #2691D9;
+  margin-bottom: 75px;
+}
+
+.ventanaEvento input[type="date"] {
+  width: 189px;
+}
+
+@media (max-width: 1400px){
+  .ventanaEvento{
+    width: 44%;
+  }
+}

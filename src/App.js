@@ -26,7 +26,6 @@ import { TLibros } from './Components/Pages/Tablas/TLibros';
 import { Estudiantes } from './Components/Pages/Tablas/Estudiantes';
 import { Libro } from './Components/Pages/Libro/Libro';
 import { Reservas } from './Components/Pages/Tablas/Reservas';
-import { Multas } from './Components/Pages/Tablas/Multas';
 import { Prestamo } from './Components/Pages/Tablas/Prestamo';
 import { AgregarLibro } from './Components/Layouts/TablasAdmin/TablaLibros/AgregarLibro';
 import { Busqueda } from './Components/Pages/Busqueda/Busqueda';
@@ -34,6 +33,14 @@ import { AutoresCategorias } from './Components/Pages/DatosLibros/AutoresCategor
 import { NuevoEstudiante } from './Components/Layouts/TablasAdmin/TablaEstudiantes/NuevoEstudiante'
 import { EditorialIdioma } from './Components/Pages/DatosLibros/EditorialIdioma';
 import { Eventos } from './Components/Pages/Eventos/Eventos';
+import { TablaEventos } from './Components/Layouts/TablasAdmin/TablaEventos/TablaEventos';
+import { TablaBibliotecarios } from './Components/Layouts/TablasAdmin/TablaBibliotecarios/TablaBibliotecarios';
+import { NuevoBibliotecario } from './Components/Layouts/TablasAdmin/TablaBibliotecarios/NuevoBibliotecario';
+import { InfraccionesAdmin } from './Components/Pages/Tablas/InfraccionesAdmin';
+
+
+
+
 
 
 
@@ -60,7 +67,6 @@ function App() {
         <Route path='/TEstudiantes' element={<Estudiantes/>} />
         <Route path='/Libro/:id_libro' element={<Libro/>}/>
         <Route path='/Reservas' element={<Reservas/>}/>
-        <Route path='/Multas' element={<Multas/>}/>
         <Route path='/Prestamo' element={<Prestamo/>}/>
         <Route path='/AgregarLibro' element={<AgregarLibro/>}/>
         <Route path='/Busqueda/:nombre' element={<Busqueda/>}/>
@@ -68,6 +74,10 @@ function App() {
         <Route path='/AutoresCategorias' element={<AutoresCategorias/>}/>
         <Route path='/EditorialIdioma' element={<EditorialIdioma/>}/>
         <Route path='/Eventos' element={<Eventos/>}/>
+        <Route path='/TEventos' element={<TablaEventos/>}/>
+        <Route path='/TBibliotecarios' element={<TablaBibliotecarios/>}/>
+        <Route path='/NBibliotecarios' element={<NuevoBibliotecario/>}/>
+        <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
 
       </Routes>
     </BrowserRouter>
