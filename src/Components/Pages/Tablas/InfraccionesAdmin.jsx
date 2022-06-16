@@ -9,7 +9,7 @@ import { Imagenes } from '../../UI/Imagenes/Imagenes';
 
 export const InfraccionesAdmin = () => {
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=8"
+  const url = "https://bookerbackapi.herokuapp.com/modulos/infracciones/"
 
   const eliminacion = () =>{
     Swal.fire({
@@ -33,7 +33,7 @@ export const InfraccionesAdmin = () => {
 
 const [cerrar, setCounter] = useState(true)
 const FormFlotante  = () => {setCounter(!cerrar)}
-const [infraciones, setInfracciones] = useState({})
+const [infraciones, setInfracciones] = useState([])
 
 useEffect(() => {
   peticionGet()
@@ -53,12 +53,12 @@ useEffect(() => {
 },[cerrar]);
 
 /*-------------consumir api---------------*/
-const [libros, setLibros] = useState([])
 
 
 const peticionGet=()=>{
   axios.get(url).then(response=>{
-    setLibros(response.data);
+    setInfracciones(response.data);
+    console.log(response.data);
   }).catch(error=>{
     console.log(error.message);
   })
@@ -128,25 +128,26 @@ const novedades = () => {
             </div>
             <div className='Tabla-Info' >
               {
-                libros.map((libros, index) => 
-                  
-                <div key={index} className='tr-1'>
-                  <div className='td-0'>
-                  <Imagenes clase='img' />
-                  </div>
+                infraciones.map((element,_)=>{
+                  return(
+                  <div className='tr-1'>
                   <div className='td-1'>
-                    <p className='L1P'></p>
+                  <p>{element.id_ejemplar.id_libro.nombre} </p>
                   </div>
-                  <div className='td-2'><p>{libros.id_reserva}</p></div>
+                  <div className='td-2'>
+                    <p className='L1P'>{element.id_estudiante.nombres} {element.id_estudiante.apellidos}</p>
+                  </div>
                   <div className='td-3'><p></p></div>
                   <div className='td-4'><p></p></div>
+                  <div className='td-0'><p>{element.id_tipo_infraccion.nombre}</p></div>
                   <div className='td-5'>
                     <i onClick={FormFlotante} class="fa-solid fa-pen-to-square"></i>
                     <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
                   </div>
                 </div>
-                
-                )}
+                  )
+                })
+              }
             </div>            
           </div>
           <div id='ActivarFrom' className="Activar-From">
