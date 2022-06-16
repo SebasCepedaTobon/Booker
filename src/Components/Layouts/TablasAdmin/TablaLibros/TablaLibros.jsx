@@ -773,12 +773,8 @@ const cerrarEjemplares = () =>{
           <div className="boxTablaEjemplares">
           <div className='Tabla'>
             <div className="TituloLibro">
-              <p>Ejemplares{" " + ejeplaresInfo.length}</p>         
-              <div id='buscador' className="buscador">
-                  <input onChange={librosBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...'/>
-                  <i onClick={librosBusqueda} class="fa-solid fa-magnifying-glass"></i>
-                  
-              </div>
+              <p>Ejemplares{" " + ejeplaresInfo.length}</p>     
+                <i onClick={librosBusqueda} class="fa-solid fa-magnifying-glass"></i>
               <i onClick={cerrarEjemplares} class="fa-solid fa-xmark"></i>              
             </div>
             <div className='tr'>

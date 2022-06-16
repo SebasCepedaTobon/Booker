@@ -27,48 +27,14 @@ export const initialForm = {
 
 export const NuevoEstudiante = () => {
 
-  let imagen_libro=""
-  let setearImg
   const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/"
   const [formEstudiantes, setEstudiantes] = useState(initialForm)
 
   const [grado, setGrado] = useState()
   const [grupo, setGrupo] = useState()
 
-  const uploadImage = () => {
-    const data = new FormData()
-    data.append("file", setearImg)
-    data.append("upload_preset", "booker")
-    data.append("cloud_name","bookerimg")
-    fetch("  https://api.cloudinary.com/v1_1/bookerimg/image/upload",{
-    method:"post",
-    body: data
-    })
-    .then(resp => resp.json())
-    .then(data => {
-      console.log(data.url);
-      urlImagen = data.url
-    console.log(formEstudiantes);
-    })
-    .catch(err => console.log(err))
-  }
-
-  const setearImagen = (e) =>{
-    setearImg=e.target.files[0]
-    uploadImage()
-  }
-
-  const mostrarArchivo = (e) => {
-    console.log(e);
-    const images = e.target.files
-    imagen_libro = images[0].name;
 
 
-    const tituImagen = document.querySelector(".nomImg");
-    console.log(tituImagen);
-    tituImagen.innerText = imagen_libro;
-    // setearImagen(e)
-  };
 
   const fetchGrado=async()=>{
       const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/grados/")
@@ -85,9 +51,7 @@ export const NuevoEstudiante = () => {
   const handleChange = (e) =>{
 
     const doc = document.getElementById('doc')
-    const name = document.getElementById('name')
     const email = document.getElementById('email')
-    const password = document.getElementById('password')
     const tipoDoc = document.getElementById('tipoDoc')
     const grupo = document.getElementById('grupo')
     const grado = document.getElementById('grado')
@@ -110,10 +74,9 @@ export const NuevoEstudiante = () => {
       id_grado: Number(grado.value),
       doc_estudiante:{
         doc : doc.value,
-        name: name.value,
         imagen: urlImagen,
         email: email.value,
-        password: password.value,
+        password: doc.value,
         usuario_activo: true
       }
     })
@@ -197,33 +160,11 @@ export const NuevoEstudiante = () => {
                 </div>
                 <div className="boxs-inputs">
                   <div className="box-input">
-                    <input type="text" onChange={handleChange} id='name' required/>
-                    <span></span>
-                    <label>Nombre de Usuario</label>
-                  </div>
-                  <div className="box-input">
                     <input type="text" onChange={handleChange} id='email' required/>
                     <span></span>
                     <label>Gmail</label>
                   </div>
-
-                  <div className="box-input">
-                    <input type="password" onChange={handleChange} id='password' required/>
-                    <span></span>
-                    <label>Contraseña</label>
-                  </div>
-                </div>
-
-                <div className="boxs-inputs">
-                <div class="file-select" id="src-file1" >
-                  <input 
-                  type="file" name="imagen_libro" onChange= {(e)=>{
-                    mostrarArchivo(e)
-                    setearImagen(e)
-                  }} />
-                  <h5 className='nomImg'></h5>
-                </div> 
-                <div className="box-select">
+                  <div className="box-select">
                   <select onChange={handleChange} id='grado' >
                       <option className='opciones' value="" selected>Grado...</option>
                       {!grado? "" :
@@ -245,7 +186,6 @@ export const NuevoEstudiante = () => {
                       })}
                     </select>
                   </div>
-                  
                 </div>
                 <br />
                 <div className="btnsFormulario">

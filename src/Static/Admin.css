@@ -44,7 +44,7 @@
 
 .pEstadoReservaAC{
     font-weight: bold;
-    color: #2fd319;
+    color: #6ac45e;
 }
 
 .pEstadoReservaC{
@@ -449,7 +449,7 @@ form .box-select{
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    margin-top: 80px;
+    margin-top: 135px;
 }
 
 .boxCard01{
