@@ -28,11 +28,11 @@ export const MainReservados = () => {
 
   const eliminacionAuto = (data) =>{
     Swal.fire({
-      title: '¿Esta seguro de eliminar el autor?',
+      title: '¿Esta seguro de cancelar la reserva?',
       icon: 'warning',
-      confirmButtonText: 'Si, Eliminar',
+      confirmButtonText: 'Si, cancelar',
       showCancelButton: true,
-      cancelButtonText: 'No, cancelar',
+      cancelButtonText: 'No',
       reverseButtons: true
     }).then((resultado) => {
       if (resultado.isConfirmed) {
@@ -99,7 +99,7 @@ export const MainReservados = () => {
         
                   ))
                   }
-                  <button onClick={()=>{eliminacionAuto(reserva)}} className="btn-reser">borrar</button>
+                  <button onClick={()=>{eliminacionAuto(reserva)}} className="btn-reser">Cancelar</button>
 
                 </div>
 

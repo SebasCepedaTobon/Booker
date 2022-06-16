@@ -280,9 +280,9 @@ const modificarAuto = () =>{
               <div className="Desactivar-From">
                   <i className="fa-solid fa-xmark" onClick={modalCerrar2} ></i>
               </div>
-              {form2.titulo === ""
-              ?<h1>NUEVO EVENTO</h1>
-              :<h1>ACTUALIZAR EVENTO</h1>
+              {edit === 1
+              ?<h1>ACTUALIZAR EVENTO</h1>
+              :<h1>NUEVO EVENTO</h1>
               }
                               
             </div>              
@@ -329,11 +329,10 @@ const modificarAuto = () =>{
               
               <br />
               <div className="btnsFormulario">
-                {form2.titulo === ""
-                ?<button className="btnFor btn-agregar">NUEVO EVENTO</button>
-                :<button className="btnFor btn-agregar">ACTUALIZAR EVENTO</button>
-                }
-                
+                {edit === 1
+                ?<button className="btnFor btn-agregar">ACTUALIZAR EVENTO</button>
+                :<button className="btnFor btn-agregar">NUEVO EVENTO</button>
+                }                
               </div>   
             </form>
           </div>

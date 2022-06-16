@@ -79,7 +79,9 @@
   justify-content: center;
   align-items: center;
 }
-
+.td-0infra{
+  text-align: center;
+}
 .td-0 img{
   width: 100px;
 }

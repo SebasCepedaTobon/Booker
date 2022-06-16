@@ -142,8 +142,11 @@ export const TablaReserva = () => {
 
   const ventanaAbrir = () =>{
     const overlay = document.getElementById('overlay')
+    const from_tablas = document.querySelector('.from-tablas')
 
     overlay.style.visibility = "visible"
+    from_tablas.style.transform="scale(1)"
+    from_tablas.style.opacity="2"
   }
 
   const ventanaCerrar = () =>{

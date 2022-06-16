@@ -97,17 +97,17 @@ export const AdminNavegador = () => {
           <NavLink to='/Prestamo' className='vinculo'>
             <div className='box-vinculos'>
               <i className="fa-solid fa-file-circle-plus"></i>
-              <p>Prestamos</p>
+              <p>Préstamos</p>
               <span></span>
             </div>
           </NavLink>
-          {/* <p className='LyE'>INFRACCIONES</p>
+          <p className='LyE'>INFRACCIONES</p>
           <NavLink to='/TablaInfraciones' className='vinculo'>
             <div className='box-vinculos'>
               <i className="fa-solid fa-bullhorn"></i>
               <p>Infracciones</p>
             </div>
-          </NavLink> */}
+          </NavLink>
 
           <p className='LyE'>EVENTOS</p>
           <NavLink to='/TEventos' className='vinculo'>

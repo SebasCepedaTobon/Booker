@@ -119,11 +119,11 @@ const novedades = () => {
               Infracciones
             </div>
             <div className='tr'>
-              <div className='td-0'><p>Imagen</p></div>
               <div className='td-1' ><p>Nombre Libro</p></div>
               <div className='td-2' ><p>Nombre Estudiante</p></div>
               <div className='td-3'><p>Fecha Esperada</p></div>
               <div className='td-4'><p>Fecha Entrega</p></div>
+              <div className='td-0 td-0infra'><p>Tipo<br/>Infracción</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >

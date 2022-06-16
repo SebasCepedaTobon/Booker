@@ -105,7 +105,8 @@ const fetchEditorial=async()=>{
   }
 
 
-  const modalForm  = (idioma_id, editorial_id,estado_id, e) => {
+  const modalForm  = (idioma_id, editorial_id,estado_id) => {
+
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
     overlay.style.visibility = "visible"
@@ -206,20 +207,6 @@ const updateData = (data) =>{
   console.log(form2)
   modalForm(idioma_id, editorial_id,estado_id)
 }
-
-/* const updateDataEstado = (data) =>{
-  categoriasSelecionadas(data)
-
-  let idioma_id=data.id_idioma.id_idioma
-  let editorial_id=data.id_editorial.id_editorial
-  let estado_id=data.estado
-
-  setForm2(data)
-  ventanaEstado()
-} */
-
-
-
 
 const vaciarCate = (e) => {
   
@@ -491,6 +478,43 @@ const librosBusqueda=()=>{
     })    
 }
 
+/*#################################TEMA DE EJEMPLARES###############################*/
+
+const [ejeplaresInfo, setEjemplparesInfo] = useState([])
+
+const ejemplares =(data)=>{
+
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=&id_libro__id_libro=" + data.id_libro).then(response=>{
+      setEjemplparesInfo(response.data);
+      
+    }).catch(error=>{
+      console.log(error.message);
+    })
+
+    abrirEjemplares()
+}
+
+const abrirEjemplares = () =>{
+
+  const overlayEjem = document.getElementById('overlayEjem')
+  const from_tablasEjem = document.querySelector('.box-ejemplares2')
+  overlayEjem.style.visibility = "visible"
+  from_tablasEjem.style.transform="scale(1)"
+  from_tablasEjem.style.opacity="2"
+}
+
+const cerrarEjemplares = () =>{
+
+  const overlayEjem = document.getElementById('overlayEjem')
+  const from_tablasEjem = document.querySelector('.box-ejemplares2')
+
+  overlayEjem.style.visibility = "hidden"
+  from_tablasEjem.style.transform="scale(0.6)"
+  from_tablasEjem.style.opacity="0"
+
+}
+
+
   return(
 
     <div className='MainAdministrativo'>
@@ -574,10 +598,12 @@ const librosBusqueda=()=>{
                         </div>
                         { /*QUEDO EN LOS BOTONES*/ }
                         <div className='td-5'>
+                          <i data-title='Detalles Libro' onClick={()=>{ejemplares(libro)}} class="fa-solid fa-eye"></i>
                           {libro.estado === 'A'
                           ?<div className='prueba' onClick={()=>updateEstado(libro)} ></div>
                           :<div className='prueba prueba2' onClick={()=>updateEstado(libro)} ></div>
                           }
+                          
                           <i onClick={()=>updateData(libro)} data-title='Actualizar Libro'  class="fa-solid fa-pen-to-square"></i>
                         </div>
                       </div>
@@ -734,9 +760,79 @@ const librosBusqueda=()=>{
                 <button className="btnFor btn-actializar">
                     Actualizar
                   </button>
-                
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+
+      { /*------------------overlay ejemplares---------------*/}
+
+      <div id='overlayEjem' className="overlay">
+        <div id='box-ejeplar2' className="box-ejemplares2">
+          <div className="boxTablaEjemplares">
+          <div className='Tabla'>
+            <div className="TituloLibro">
+              <p>Ejemplares{" " + ejeplaresInfo.length}</p>         
+              <div id='buscador' className="buscador">
+                  <input onChange={librosBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...'/>
+                  <i onClick={librosBusqueda} class="fa-solid fa-magnifying-glass"></i>
+                  
+              </div>
+              <i onClick={cerrarEjemplares} class="fa-solid fa-xmark"></i>              
+            </div>
+            <div className='tr'>
+              <div className='td-0'><p>Imagen</p></div>
+              <div className='td-1'><p>Nombre</p></div>
+              <div className='td-2'><p>N° Ejemplar</p></div>
+              <div className='td-3'><p>Autores</p></div>
+              <div className='td-6'><p>Estado</p></div>
+              <div className='td-5'><p>Opciones</p></div>
+            </div>
+            <div className="scrollEjemplares">
+            <div className='Tabla-Info' >
+                  {ejeplaresInfo.map((libro, index)=>{
+                    /* c = libro.categorias
+                    a = libro.autores */
+                                        
+                    return(
+                      <div key={index} className='tr-1'>
+                        <div className='td-0'>
+                          <Imagenes clase='img' url={libro.id_libro.imagen_libro} />
+                        </div>
+                        <div className='td-1'>
+                          <p className='L1P'>{libro.id_libro.nombre}</p>
+                        </div>                        
+                        <div className='td-2'>
+                          <p>{libro.num_ejemplar}</p>
+                        </div>
+                        
+                        <div className='td-3'>
+                          <p>
+                          {
+                            a.map(element => element.nombres).join(', ')
+                          }                      
+                          
+                          </p>
+                        </div>
+                        
+                        <div className="td-6">
+                        {libro.estado === 'D'
+                          ?<p className='pActivo'>Disponible</p>                          
+                          :<p className='pInactivo'>No Disponible</p>
+                        }
+                        </div>
+                        { /*QUEDO EN LOS BOTONES*/ }
+                        <div className='td-5'>
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                      </div>
+                    )
+                  })}
+              
+                </div>
+            </div>
+              </div>
           </div>
         </div>
       </div>

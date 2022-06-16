@@ -8,6 +8,15 @@ import{
   Route
 } from "react-router-dom"
 
+import {
+  PrivateRoute,
+  PrivateAdminRoute,
+  PrivateAdmin,
+  PrivateLogin,
+  PrivateProfileRoute,
+  PrivateHome
+} from './PrivateRouters'
+
 import { Home } from './Components/Pages/Home/Home';
 import { Login } from './Components/Pages/Login/Login';
 import { Admin } from './Components/Pages/Admin/Admin';
@@ -37,6 +46,10 @@ import { TablaEventos } from './Components/Layouts/TablasAdmin/TablaEventos/Tabl
 import { TablaBibliotecarios } from './Components/Layouts/TablasAdmin/TablaBibliotecarios/TablaBibliotecarios';
 import { NuevoBibliotecario } from './Components/Layouts/TablasAdmin/TablaBibliotecarios/NuevoBibliotecario';
 import { InfraccionesAdmin } from './Components/Pages/Tablas/InfraccionesAdmin';
+import { Reservados } from './Components/Pages/Perfil/Reservados';
+import { Tlibros } from './Components/Pages/Tlibros/Tlibros';
+import { Prestados } from './Components/Pages/Perfil/Prestados';
+import { Favoritos } from './Components/Pages/Perfil/Favoritos';
 
 
 function App() {
@@ -44,20 +57,32 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login/>}/>
-        <Route path='/Home' element={<Home/>}/>
-        <Route path='/Admin' element={<Admin/>} />
+        <Route exact path='/' element={<Login/>}/>
+        
+      
+
+        <Route element={PrivateRoute()}>
+          <Route path='/Home' element={<Home/>}/>
+        </Route>
+
+        <Route element={PrivateAdmin()}>
+          <Route path='/Home' element={<Home/>}/>
+        </Route>
+
+        <Route element={PrivateAdminRoute()}>
+          <Route path='/Admin' element={<Admin/>} />
+        </Route>
+
+        <Route element={PrivateProfileRoute()}>
+          <Route path='/Perfil' element={<Perfil/>} />
+          <Route path='/Favoritos' element={<Favoritos/>}/>
+          <Route path='/Historial' element={<Historial/>} />
+          <Route path='/Infracciones' element={<Infracciones/>} />
+          <Route path='/Reservados' element={<Reservados/>}/>
+          <Route path='/Prestados' element={<Prestados/>}/>
+        </Route>
+
         <Route path='/Email' element={<Email/>} />
-        <Route path='/Perfil' element={<Perfil/>} />
-        <Route path='/Historial' element={<Historial/>} />
-        <Route path='/Infracciones' element={<Infracciones/>} />
-        <Route path='/Academicos' element={<Academicos/>}/>
-        <Route path='/Aventura' element={<Aventura/>}/>
-        <Route path='/Comedia' element={<Comedia/>}/>
-        <Route path='/Comics' element={<Comics/>}/>
-        <Route path='/Infantil' element={<Infantil/>}/>
-        <Route path='/Novelas' element={<Novelas/>} />
-        <Route path='/Terror' element={<Terror/>} />
         <Route path='/TLibros' element={<TLibros/>} />
         <Route path='/TEstudiantes' element={<Estudiantes/>} />
         <Route path='/Libro/:id_libro' element={<Libro/>}/>
@@ -73,6 +98,9 @@ function App() {
         <Route path='/TBibliotecarios' element={<TablaBibliotecarios/>}/>
         <Route path='/NBibliotecarios' element={<NuevoBibliotecario/>}/>
         <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
+        <Route path='/libros' element={<Tlibros/>}/>
+        <Route path='/Eventos/:id_evento/' element={<Eventos/>}/>
+        
 
       </Routes>
     </BrowserRouter>

@@ -118,6 +118,14 @@
   font-size: 90px;
 }
 
+.fa-eye{
+  margin: 10px;
+  font-size: 25px;
+  color: rgb(13,95,228);
+  cursor: pointer;
+  transition: all ease 1s;
+}
+
 .imagenEstado {
   width: 30px;
   cursor: pointer;
@@ -207,6 +215,53 @@
   border-radius: 50%;
 }
 
+
+/*------------ventana ejemplares-------------------*/
+
+.box-ejemplares2{
+  width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    transition: all .5s ease;
+}
+
+.boxTablaEjemplares{
+  width: 100%;
+  min-height: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.boxTablaEjemplares .fa-xmark{
+  position: relative;
+  font-size: 35px;
+  color: #ff0000;
+  margin: 0px 0px 0px 10px;
+  bottom: 10px;
+  left: 15px;
+}
+
+.scrollEjemplares{
+  overflow: auto;
+  width: 100%;
+  height: 500px;
+}
+
+.scrollEjemplares::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scrollEjemplares::-webkit-scrollbar-thumb {
+  background: #eaeaea;
+  border-radius: 5px;
+}
+
+
+/*------------FIN ventana ejemplares-------------------*/
+
 @media (max-width: 1400px) {
   .labelLibro2 {
     margin-left: 234px;
@@ -226,18 +281,16 @@
 
   .fa-xmark {
     margin-left: 428px;
-    bottom: 269px;
+    bottom: 324px;
   }
 
   .faEdit {
-    bottom: 258px;
+    bottom: 312px;
   }
 
   .fa-xmarkAuto {
     margin-left: 658px
   }
-
-
 
   .labelLibroAuto {
     margin-left: 465px;
