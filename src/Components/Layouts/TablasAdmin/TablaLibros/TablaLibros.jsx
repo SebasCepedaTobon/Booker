@@ -366,7 +366,7 @@ const handleSubmitEstado = (libro) =>{
   libro.categorias = id_cate
   libro.autores = id_auto
   if (libro.estado === 'A') {    
-    libro.estado = 'I'
+    libro.estado = 'IV'
   }else{
     libro.estado = 'A'
   }
