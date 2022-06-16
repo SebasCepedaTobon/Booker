@@ -711,7 +711,7 @@ const cerrarEjemplares = () =>{
                   <select id='selectEstado' onChange={handleChange}>
                       <option value="">Estado...</option>
                       <option value="A">Activo</option>
-                      <option value="I">Inactivo</option>
+                      <option value="IV">Inactivo</option>
                   </select>
                 </div>
                   <i class="fa-solid fa-xmark faEdit" onClick={vaciarCate} ></i>
