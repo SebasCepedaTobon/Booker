@@ -50,7 +50,8 @@
   text-decoration: none;
   font-size:20px;
   height: 12px;
-  margin-right: 15px;
+  margin-right: 40px;
+  margin-left: 10px;
   font-family:Arial, Helvetica, sans-serif;
   background-color: transparent;
     border-radius: none;
@@ -119,11 +120,12 @@
 .nav2 a{
   color: rgb(255, 255, 255);
   text-decoration: none;
-  font-size:20px;
+  font-size: 20px;
   height: 12px;
-  margin-right: 15px;
-  font-family:Arial, Helvetica, sans-serif;
-  text-shadow: 0px 0px 3px rgb(255, 255, 255);
+  margin-right: 40px;
+  margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 
   
  
 }
@@ -735,7 +737,7 @@ S
   
   width: 90%;
   margin-left: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   margin-top: 30px;
   font-size: 40px;
   font-weight: bold;
@@ -744,18 +746,14 @@ S
  }
 
  .container-eventos{
-   width: 90%;
-   height: 700px;
+ 
    z-index: 5;
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   grid-gap: 20px;
-   grid-auto-rows: minmax(100px, auto);
 
  }
  .container-eventos img{
    width: 100%;
    height: 100%;
+   margin-bottom: 50px;
 
 
  }
@@ -1051,5 +1049,16 @@ S
 
 .icon-like.show{
   background-color: #0d5fe4;
+}
+
+.contendor-cards-libros{
+  width: 80%;
+
+
+}
+
+.todos-libros{
+  display: flex;
+  flex-wrap: wrap;
 }
 

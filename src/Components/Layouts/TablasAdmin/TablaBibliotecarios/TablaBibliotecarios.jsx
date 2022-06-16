@@ -12,6 +12,7 @@ export const TablaBibliotecarios = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/"
 
+  const id_bibliotecario = localStorage.getItem('')
 
 
   const [cerrar, setCounter] = useState(true)
@@ -81,7 +82,7 @@ const updateData2 = async () =>{
     [e.target.name]: e.target.value,
     tipodoc: tipoDoc.value,
 
-    doc_estudiante:{
+    doc_bibliotecario:{
       doc : doc.value,
       name: name.value,
       email: email.value,
@@ -267,10 +268,10 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1) =>{
                   </div>
                   <div className='td-5'>
                     {bibliotecario.doc_bibliotecario.usuario_activo === true
-                    ?<i data-title='Inactivar Bibliotecario' class="fa-solid fa-user-graduate" onClick={()=>updateEstado(bibliotecario)} ></i>
-                    :<div className='activoStuden' onClick={()=>updateEstado(bibliotecario)} ></div>
+                    ?<i data-title='Inactivar Bibliotecario' className="fa-solid fa-user" onClick={()=>updateEstado(bibliotecario)} ></i>
+                    :<i data-title='Activar Bibliotecario' className="fa-solid fa-user-large-slash" onClick={()=>updateEstado(bibliotecario)} ></i>
                     }
-                    <i onClick={()=>updateData(bibliotecario)} class="fa-solid fa-pen-to-square"></i>
+                    <i onClick={()=>updateData(bibliotecario)} className="fa-solid fa-pen-to-square"></i>
                     
                   </div>
                 </div>

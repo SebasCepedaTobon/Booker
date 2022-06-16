@@ -140,7 +140,7 @@ export const MainHome = () => {
       <Eventos/>
 
       <div className="contendor-cards">
-        <div id='titlulo-slider'>Recomendados</div>
+        <div id='titlulo-slider'>Libros Educativos</div>
         <div className='cards'>
           <Slider {...settings}>
             {libros.map((libro) => (

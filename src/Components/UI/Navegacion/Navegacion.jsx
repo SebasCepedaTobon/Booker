@@ -90,6 +90,9 @@ export const Navegacion = () => {
             </div>
             <i class="fa-solid fa-bookmark" id='icon-contador'></i>
           </NavLink>
+          <NavLink to='/libros'>
+            <i class="fa-solid fa-book"></i>Libros
+          </NavLink>
           <NavLink to='/Home' className='nav-icon'>
             <i class="fa-solid fa-house"></i>Home
           </NavLink>

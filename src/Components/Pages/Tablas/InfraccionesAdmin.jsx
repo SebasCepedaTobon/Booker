@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import axios from 'axios';
 import Swal from 'sweetalert2'
 
 import { BotonesCrud } from '../../UI/Botones/BotonesCrud';
@@ -8,6 +8,8 @@ import { AdminNavegador } from '../../UI/NavegadorAdmin/AdminNavegador';
 import { Imagenes } from '../../UI/Imagenes/Imagenes';
 
 export const InfraccionesAdmin = () => {
+
+  const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=8"
 
   const eliminacion = () =>{
     Swal.fire({
@@ -31,9 +33,10 @@ export const InfraccionesAdmin = () => {
 
 const [cerrar, setCounter] = useState(true)
 const FormFlotante  = () => {setCounter(!cerrar)}
+const [infraciones, setInfracciones] = useState({})
 
 useEffect(() => {
-  cargaLibro()
+  peticionGet()
   const overlay = document.getElementById('overlay')
   const from_tablas = document.querySelector('.from-tablas')
 
@@ -52,18 +55,15 @@ useEffect(() => {
 /*-------------consumir api---------------*/
 const [libros, setLibros] = useState([])
 
-const cargaLibro = () => {
-  const TituloLibro = document.querySelector('.TituloLibro')
-  TituloLibro.textContent = "Infracciones"
 
-  fetch("https://rickandmortyapi.com/api/character/?page=16")
-  .then(res => res.json())
-  .then((data) =>{
-    setLibros(data.results)
-  
+const peticionGet=()=>{
+  axios.get(url).then(response=>{
+    setLibros(response.data);
+  }).catch(error=>{
+    console.log(error.message);
   })
 }
-
+/* 
 const multas = () => {
   console.log('multas')
 
@@ -86,7 +86,7 @@ const novedades = () => {
   .then((data) =>{
     setLibros(data.results)
   })
-}
+} */
 
 
   return (   
@@ -99,17 +99,17 @@ const novedades = () => {
         <div className='box-Tabla' >
           <div className='Tabla'>
           <div className='categoriasMN'  >
-          <div className='btnMulta' onClick={cargaLibro}>
+          <div className='btnMulta' >
             <div className='contenidoMultas'>
               <p>Ingracciones</p>
             </div>
           </div>
-          <div className='btnMulta' onClick={multas}>
+          <div className='btnMulta' >
             <div className='contenidoMultas'>
               <p>Multas</p>
             </div>
           </div>
-          <div className='btnMulta' onClick={novedades}>
+          <div className='btnMulta'>
             <div className='contenidoMultas'>
               <p>Novedades</p>
             </div>
@@ -132,14 +132,14 @@ const novedades = () => {
                   
                 <div key={index} className='tr-1'>
                   <div className='td-0'>
-                  <Imagenes clase='img' url={libros.image}/>
+                  <Imagenes clase='img' />
                   </div>
                   <div className='td-1'>
-                    <p className='L1P'>{libros.name}</p>
+                    <p className='L1P'></p>
                   </div>
-                  <div className='td-2'><p>{libros.species}</p></div>
-                  <div className='td-3'><p>{libros.gender}</p></div>
-                  <div className='td-4'><p>{libros.status}</p></div>
+                  <div className='td-2'><p>{libros.id_reserva}</p></div>
+                  <div className='td-3'><p></p></div>
+                  <div className='td-4'><p></p></div>
                   <div className='td-5'>
                     <i onClick={FormFlotante} class="fa-solid fa-pen-to-square"></i>
                     <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>

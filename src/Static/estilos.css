@@ -7,7 +7,7 @@
 }
 
 .box-Informacion{
-    background-image: url(../assets/Imagenes/3.jpg);
+    background-image: url(http://res.cloudinary.com/bookerimg/image/upload/v1655349614/w6vw772m4vqaqlidhslv.jpg);
     background-size: cover;
     width: 50%;
     height: 100%;
@@ -47,22 +47,16 @@
 }
 
 .LG-logo{
-    width: 250px;
-    height: 150px;
+    width: 270px;
+    height: 200px;
 }
 
 .LG-logo img{
-    object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
-.LG-Textos{
-    min-height: 32%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
+
 .LG-info{
     color: white;
     width: 100%;
@@ -317,27 +311,44 @@ color: rgb(219, 35, 35);
 
 }
 
-.botones-perfil{
+.botones-perfil {
     width: 20%;
     display: flex;
     flex-direction: column;
     background-color: #eeeeee80;
-    
     align-items: center;
-    height: 700px;
-
-  
+    height: 600px;
 }
 
-.conatiner-btn-perfil a{
+.container-scroll{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.container-scroll::-webkit-scrollbar {
+    width: 7px;    
+  }
+  
+.container-scroll::-webkit-scrollbar-thumb {
+    background: #eaeaea;
+    border-radius: 5px;
+  }
+
+.conatiner-btn-perfil a {
     display: flex;
     flex-direction: row;
     text-decoration: none;
     color: rgb(95, 95, 95);
     margin-top: 20px;
     transition: all 0.5s;
-
-   
+    width: 150px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .conatiner-btn-perfil .p-perfil{
@@ -1093,3 +1104,91 @@ hr{
     align-items: center;
     justify-content: center;
     }
+
+
+/*Eventos*/
+
+.container-event{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+.titulo-event{
+    font-size: 40px;
+}
+
+
+.fechas{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+
+/*cards-reservados-prestados*/
+
+.ejemplares{
+    margin-top: 40px;
+    width: 600px;
+    height: 300px;
+    background-color: #dbdbdb;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+}
+
+.img-card-res{
+    height: 250px;
+    margin: 20px;
+    border-radius: 7px;
+}
+
+.btn-reser{
+    width: 200px;
+    height: 40px;
+    margin-top: 37%;
+    margin-right: 40px;
+    background-color: #0d5fe4;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+
+    
+}
+
+.datos-reservados{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.datos-reservados p{
+    margin-top: 10px;
+    color: #0d5fe4;
+}
+
+.logoMV{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoMV img{
+    width: 300px;
+    height: 300px;
+}

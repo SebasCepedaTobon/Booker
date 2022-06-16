@@ -17,18 +17,18 @@ export const Libromv = () => {
             <div className="demoPage">
                 <Imagenes url={fondoLibro}/>
                     <h2>MISIÓN</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem molestias consectetur praesentium non nemo sit ab laborum accusamus a placeat iusto quisquam libero, reiciendis officia inventore voluptatum tenetur commodi nulla.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas deleniti sint pariatur! Ducimus magnam deserunt laboriosam sequi nobis pariatur earum quam porro ullam voluptatem consequatur, molestiae, rem cum necessitatibus! Sint.</p>
+                    <p>La misión de Booker es apoyar a las bibliotecas estudiantiles que cuentan con problemas de gestión, implementando funcionalidades desde nuestra plataforma web, para que asi los bibliotecarios puedan gestionar la información de una manera más eficaz, con pocas perdidas de tiempo e información, a la vez, que los estudiantes puedan consultar y reservar sus libros favoritos disponibles en la biblioteca.</p>
   
             </div>
             <div className="demoPage">
                 <Imagenes url={fondoLibro2}/>
                     <h2>VISIÓN</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem molestias consectetur praesentium non nemo sit ab laborum accusamus a placeat iusto quisquam libero, reiciendis officia inventore voluptatum tenetur commodi nulla.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas deleniti sint pariatur! Ducimus magnam deserunt laboriosam sequi nobis pariatur earum quam porro ullam voluptatem consequatur, molestiae, rem cum necessitatibus! Sint.</p>
+                    <p>La visión de Booker es ser el sistema de gestión bibliotecario más grande del país, llegando a diferentes bibliotecas de todas las regiones de Colombia, llegar a ser reconocidos por diferentes estudiantes que disfruten de la lectura, e incentivar el uso de estas bibliotecas en muchos lugares, y tener la posibilidad de llegar a bibliotecas institucionales fuera del país, adaptando nuestra plataforma a las diferentes instituciones.</p>
             </div>
             <div className="demoPage">
-                <Imagenes url={fondoLibro2}/>
-                    <h2>VISIÓN</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem molestias consectetur praesentium non nemo sit ab laborum accusamus a placeat iusto quisquam libero, reiciendis officia inventore voluptatum tenetur commodi nulla.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas deleniti sint pariatur! Ducimus magnam deserunt laboriosam sequi nobis pariatur earum quam porro ullam voluptatem consequatur, molestiae, rem cum necessitatibus! Sint.</p>
+                <div className="logoMV">
+                    <Imagenes url={logo}/>
+                </div>
             </div>
         </HTMLFlipBook>
     </div>

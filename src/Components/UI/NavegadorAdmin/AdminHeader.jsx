@@ -18,7 +18,6 @@ let imagenPerfil
 
 export const AdminHeader = () => {
 
-    const [buscar, setCounter] = useState(true)
     const [libros, setLibros] = useState([])
     const [librosNo, setLibrosNo] = useState([])
     const [bibliotecario, setBibliotecario] = useState()
@@ -59,7 +58,6 @@ export const AdminHeader = () => {
 
     sizeDisponibles = librosNo.length
     sizeNoDisponibles = libros.length
-    const boxBuscador  = () => {setCounter(!buscar)}
   
     useEffect(() => {
 
@@ -70,20 +68,8 @@ export const AdminHeader = () => {
       peticionGetBibliotecario()
       librosDisponibles()
       librosNoDisponibles()
-      const buscador = document.getElementById('buscador')
-      const HeaderAdmin = document.querySelector('.HeaderAdmin')
-
-      if(buscar === true){
-        buscador.style.visibility = "hidden"
-        HeaderAdmin.style.visibility = "visible"
-        
-
-      }else{
-        buscador.style.visibility = "visible"
-        HeaderAdmin.style.visibility = "hidden"
-      }
   
-    },[buscar]);
+    },[]);
     
   return (
     <div className='AdminHeader'>
@@ -100,7 +86,6 @@ export const AdminHeader = () => {
               </div>
             </div>
             <div className="HeaderIconos">
-                <i onClick={boxBuscador} className="fa-solid fa-magnifying-glass"></i>
                 <NavLink to='/home'>
                     <i className="fa-solid fa-calendar-check"></i>
                 </NavLink>
@@ -113,16 +98,11 @@ export const AdminHeader = () => {
                         <p>admin</p>
                     </div>
                     <div className='perfil'>
+                      <Imagenes url={perfil} clase='icono'/>
                     </div>
-                </div>                
-            </div>            
+                </div>           
+            </div> 
         </div>
-        <div id='buscador' className="buscador">
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <input className='elInput' type="text" autoFocus placeholder='Buscar...'/>
-            <i onClick={boxBuscador} className="fa-solid fa-xmark"></i>
-        </div>
-    
     </div>    
   )
 }

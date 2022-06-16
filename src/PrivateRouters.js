@@ -13,9 +13,17 @@ export function PrivateHome() {
   return  rolUser === 'E' ? <Navigate to='/Home' /> : <Outlet />
 }
 
+export function PrivateLogin() {
+  return  rolUser === 'E' ? <Navigate to='/Home' /> : <Outlet />
+}
+
+
+
 export function PrivateAdmin() {
   return  rolUser === 'B' ? <Navigate to='/Admin' /> : <Outlet />
 }
+
+
 
 
 export function PrivateAdminRoute() {

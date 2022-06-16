@@ -241,7 +241,7 @@ export const TablaReserva = () => {
                   {l.map((element,_)=>(
                       <p className='L1P'>{element.id_libro.nombre} </p>
                     ))
-                    }
+                  }
                   </div>
                   <div className='td-0'>
                     <p className='L1P'>{reservas.id_estudiante.doc_estudiante}</p>
@@ -251,13 +251,13 @@ export const TablaReserva = () => {
                   <div className='td-0'>
                     <div className="estadoTablas">
                       {reservas.estado === "AC" &&
-                        <p className='pEstadoReservaAC'>Reservada</p>
+                        <p className='pEstadoReservaC'>Reserva<br/>en gestión</p>
                       }
                       {reservas.estado === "C" &&
-                        <p className='pEstadoReservaC'>Completada</p>
+                        <p className='pEstadoReservaAC'>Reserva<br/>Finalizada</p>
                       }
                       {reservas.estado === "IV" &&
-                        <p className='pEstadoReservaIV'>Inactiva</p>
+                        <p className='pEstadoReservaIV'>Reserva<br/>Inactiva</p>
                       }
                     </div>
                   </div>

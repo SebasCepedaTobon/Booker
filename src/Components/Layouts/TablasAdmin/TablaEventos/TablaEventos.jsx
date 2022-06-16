@@ -16,7 +16,7 @@ export const initialForm = {
   "fec_inicio": "",
   "fec_fin": "",
   "estado": "AV",
-  "id_bibliotecario": 4
+  "id_bibliotecario": null
 }
 
 let edit
@@ -38,6 +38,8 @@ export const TablaEventos = () => {
   useEffect(() => {
     peticionGet()
   }, [])
+
+  let id_bibliotecario2 = localStorage.getItem('id_bibliotecario')
 
   /*------FUNCIONES USADAS PARA AUTORES-------*/
 
@@ -174,7 +176,9 @@ const modificarAuto = () =>{
   const handleChange = (e) =>{
     setForm2({
       ...form2,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      id_bibliotecario : Number(id_bibliotecario2)
+
     })
     console.log(form2);
   }

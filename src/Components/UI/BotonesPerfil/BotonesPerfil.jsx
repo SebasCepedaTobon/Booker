@@ -129,53 +129,64 @@ export const BotonesPerfil = () => {
                   <p id='Bienvenido'>Bienvenido a tu cuenta</p>
               </div>
           </div>
-          <div className='conatiner-btn-perfil' >
-            <p className='p-perfil'>PERFIL</p>
-            <NavLink to='/Perfil' >              
-              <div className='btn-perfil'>
-                <i class="fa-solid fa-book"></i>
-                <p>Mis Datos</p>
-                <span></span>
-              </div>
-            </NavLink>         
-            <p className='p-perfil'>RESERVAS Y RESERVADOS</p>
-            <NavLink to='/Historial'>
-              <div className='btn-perfil'>
-                <i class="fa-solid fa-calendar-check"></i>
-                <p>Reservas</p>
-                <span></span>
-              </div>
-            </NavLink>
-            <NavLink to='/Historial'>
-              <div className='btn-perfil'>
-              <i class="fa-solid fa-file-circle-plus"></i>
-                <p>Reservados</p>                
-                <span></span>
-              </div>
-            </NavLink>
-            <p className='p-perfil'>INFRACCIONES</p>
-              <NavLink to='/Infracciones'>              
+          <div className="container-scroll">
+            <div className='conatiner-btn-perfil'>
+              <p className='p-perfil'>PERFIL</p>
+              <NavLink to='/Perfil' >
+                <div className='btn-perfil'>
+                  <i class="fa-solid fa-book"></i>
+                  <p>Mis Datos</p>
+                  <span></span>
+                </div>
+              </NavLink>
+              <p className='p-perfil'>RESERVAS Y RESERVADOS</p>
+              <NavLink to='/Historial'>
+                <div className='btn-perfil'>
+                  <i class="fa-solid fa-calendar-check"></i>
+                  <p>Reservas</p>
+                  <span></span>
+                </div>
+              </NavLink>
+              <NavLink to='/Reservados'>
+                <div className='btn-perfil'>
+                  <i class="fa-solid fa-file-circle-plus"></i>
+                  <p>Reservados</p>
+                  <span></span>
+                </div>
+              </NavLink>
+              <p className='p-perfil'>PRESTADOS</p>
+              <NavLink to='/Prestados'>
+                <div className='btn-perfil'>
+                  <i class="fa-solid fa-calendar-check"></i>
+                  <p>Prestados</p>
+                  <span></span>
+                </div>
+              </NavLink>
+              <p className='p-perfil'>INFRACCIONES</p>
+              <NavLink to='/Infracciones'>
                 <div className='btn-perfil'>
                   <i class="fa-solid fa-bullhorn"></i>
-                  <p>Infracciones</p>                
+                  <p>Infracciones</p>
                 </div>
               </NavLink>
-            <p className='p-perfil'>FAVORITOS</p>
-              <NavLink to='/Favoritos'>              
+              <p className='p-perfil'>FAVORITOS</p>
+              <NavLink to='/Favoritos'>
                 <div className='btn-perfil'>
                   <i class="fa-solid fa-heart"></i>
-                  <p>Favoritos</p>                
+                  <p>Favoritos</p>
                 </div>
               </NavLink>
-            <p className='p-perfil'>CERRAR SESION</p>
-              <NavLink to='/' onClick={Logout}>              
+              <p className='p-perfil'>CERRAR SESION</p>
+              <NavLink to='/' onClick={Logout}>
                 <div className='btn-perfil' >
                   <i class="fa-solid fa-chalkboard-user"></i>
-                  <p>Salir</p>                
+                  <p>Salir</p>
                 </div>
               </NavLink>
-              
-        </div>
+
+            </div>
+
+          </div>
         <div className="flecha-desplegar" onClick={abrir}>
             <i class="fa-solid fa-arrow-right"></i>
         </div>   

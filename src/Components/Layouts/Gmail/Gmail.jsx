@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
-import logo from '../../../assets/Imagenes/logos/BookerSinNombre.png'
+import logo from '../../../assets/Imagenes/logos/Booker1.png'
 import home from '../../../assets/Imagenes/iconos/home.svg'
 // import Swal from 'sweetalert2'
 import emailjs from '@emailjs/browser';
@@ -49,10 +49,6 @@ export const Gmail = () => {
             <div className='LG-info' >
               <div className='LG-logo'>
                 <Imagenes url={logo} clase={'logo'} />  
-              </div>
-              <div className='LG-Textos'>
-                <h1>¡LA RESERVA DE TUS LIBROS A EL ALCANCE DE TUS MANOS!</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores beatae necessitatibus, repellendus odio modi iusto, repellendus odio modi iusto.</p>
               </div>
             </div>
             <div className="LG-Contactos">

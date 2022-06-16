@@ -1,6 +1,7 @@
 
 export const initialState = {
     reservas: [],
+    favoritos: [],
     capLibro:0
 
 
@@ -10,7 +11,8 @@ export const actionTypes = {
     ADD_TO_RESERVA: "ADD_TO_RESERVA",
     BORRAR_LIBRO: "BORRAR_LIBRO",
     DETALLES_LIBRO: "DETALLES_LIBRO",
-    LIMPIAR_RESERVA:"LIMPIAR_RESERVA"
+    LIMPIAR_RESERVA:"LIMPIAR_RESERVA",
+
    
 }
 

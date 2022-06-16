@@ -39,11 +39,6 @@ import { NuevoBibliotecario } from './Components/Layouts/TablasAdmin/TablaBiblio
 import { InfraccionesAdmin } from './Components/Pages/Tablas/InfraccionesAdmin';
 
 
-
-
-
-
-
 function App() {
   
   return (

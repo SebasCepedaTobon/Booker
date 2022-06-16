@@ -7,10 +7,13 @@ import '../../../slick.css'
 import { AbrirModal } from '../AbrirModal/AbrilModal';
 
 
+
 //Product
 
 
 export const Libros = ({libro}) => {
+
+ 
 
 
   //Funcion que guarda las propiedades del estado de los libros
@@ -18,6 +21,7 @@ export const Libros = ({libro}) => {
 
   const [{reservas}, dispatch] = useStateValue();
   const {ventanaReserva} = AbrirModal()
+
   
 
 
@@ -48,6 +52,7 @@ export const Libros = ({libro}) => {
 
 
   const counterLike = () =>{
+
   }
 
   return (
@@ -64,9 +69,9 @@ export const Libros = ({libro}) => {
                 <button className='btn-agLibro' onClick={addLibros2}>
                   <i class="fa-solid fa-book-bookmark"></i>
                 </button>
-                <button className='icon-like' onClick={counterLike}>
+                {/*<button className='icon-like' onClick={counterLike}>
                   <i class="fa-solid fa-heart"></i>
-                </button>
+                </button>*/}
                 <NavLink to={"/Libro/" + libro.id_libro}><button className='btn-verlibro'><i class="fa-solid fa-eye"></i></button></NavLink>
               </div>
             </div>

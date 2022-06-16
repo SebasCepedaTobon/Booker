@@ -30,6 +30,9 @@ export const MainHistorial = () => {
            'success'
          )
          peticionPost()
+         dispatch({
+          type: actionTypes.LIMPIAR_RESERVA,
+      })
         
        }
      })
@@ -82,9 +85,7 @@ export const MainHistorial = () => {
         "ejemplares": idEjemplares
     }).then(response=>{
         console.log(response);
-        dispatch({
-          type: actionTypes.LIMPIAR_RESERVA,
-      })
+        
       }).catch(error=>{
         console.log(error.message);
       })

@@ -47,8 +47,6 @@ export const TablaLibros = () => {
     }).catch(error=>{
       console.log(error.message);
     })
-
-    
   }
 
   const peticionGetNoDisponible=()=>{
