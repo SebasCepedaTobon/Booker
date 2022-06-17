@@ -267,10 +267,10 @@ const llenarSelect = (numDocumento, name, gmail,  tipoDoc1) =>{
                   }
                   </div>
                   <div className='td-5'>
-                    {bibliotecario.doc_bibliotecario.usuario_activo === true
-                    ?<i data-title='Inactivar Bibliotecario' className="fa-solid fa-user" onClick={()=>updateEstado(bibliotecario)} ></i>
-                    :<i data-title='Activar Bibliotecario' className="fa-solid fa-user-large-slash" onClick={()=>updateEstado(bibliotecario)} ></i>
-                    }
+                  {bibliotecario.doc_bibliotecario.usuario_activo === true
+                    ? <div data-title='Inactivar Libro' className='prueba pruebaEsruden' onClick={()=>updateEstado(bibliotecario)} ></div>
+                    : <div data-title='Activar Libro' className='prueba prueba2 pruebaEsruden' onClick={()=>updateEstado(bibliotecario)} ></div>
+                  }
                     <i onClick={()=>updateData(bibliotecario)} className="fa-solid fa-pen-to-square"></i>
                     
                   </div>

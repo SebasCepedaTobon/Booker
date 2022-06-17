@@ -602,7 +602,7 @@ const cerrarEjemplares = () =>{
                           ?<div data-title='Inactivar Libro' className='prueba' onClick={()=>updateEstado(libro)} ></div>
                           :<div data-title='Activar Libro' className='prueba prueba2' onClick={()=>updateEstado(libro)} ></div>
                           }
-                          <i data-title='Detalles Libro' onClick={()=>{ejemplares(libro)}} class="fa-solid fa-eye"></i>
+                          <i data-title='Detalles Libro' onClick={()=>{ejemplares(libro)}} class="fa-solid fa-eye fa-eyeAdmin"></i>
                           
                           <i onClick={()=>updateData(libro)} data-title='Actualizar Libro'  class="fa-solid fa-pen-to-square"></i>
                         </div>

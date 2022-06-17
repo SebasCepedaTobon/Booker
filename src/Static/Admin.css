@@ -269,6 +269,7 @@
     font-size: 30px;
     cursor: pointer;
     transition: 1s;
+    margin-left: 5px;
 }
 
 .fa-trash-can:hover{
