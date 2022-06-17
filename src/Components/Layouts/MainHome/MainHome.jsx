@@ -11,6 +11,7 @@ import { Categorias } from '../../UI/Categorias/Categorias';
 import { Eventos } from '../../UI/Eventos/Eventos';
 import { Libromv } from '../../UI/LibroMV/Libromv';
 import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
+import axios from 'axios';
 
 //checkoutCard
 
@@ -98,7 +99,28 @@ export const MainHome = () => {
   };
 
   const [libros, setLibros] = useState([])
+  const [librosEdu, setLibrosEdu] = useState([])
   const [cargando, setCargando] = useState(true)
+
+  let url = "https://bookerbackapi.herokuapp.com/modulos/libros/?categorias__id_categoria=4"
+  
+  const PedirDatos = () =>{
+    axios.get(url).then(response=>{
+      setLibrosEdu(response.data);
+    }).catch(error=>{
+      console.log(error.message);
+    })
+       
+
+  }
+
+
+  
+  useEffect(() => {
+      PedirDatos() 
+      //llenarInputs()
+
+    }, [])
 
 
 
@@ -143,7 +165,7 @@ export const MainHome = () => {
         <div id='titlulo-slider'>Libros Educativos</div>
         <div className='cards'>
           <Slider {...settings}>
-            {libros.map((libro) => (
+            {librosEdu.map((libro) => (
               <CardsSlider
                 key={libro.id_libro}
                 libro={libro}

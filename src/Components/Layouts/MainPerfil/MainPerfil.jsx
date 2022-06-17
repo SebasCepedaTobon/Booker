@@ -75,8 +75,11 @@ export const MainPerfil = () => {
     console.log(Estudiante)
 
     axios.put(url, Estudiante)
+    .then((res)=>{
+      reload()
+    })
 
-    reload()
+  
 
   }
 

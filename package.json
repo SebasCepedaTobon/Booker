@@ -1,9 +1,6 @@
 {
   "name": "booker",
   "version": "0.1.0",
-  "engines": {
-    "node": "16.x"
-  },
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.5.0",

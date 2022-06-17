@@ -1033,6 +1033,7 @@ S
   font-size: 20px;
   width: 150px;
   height: 40px;
+  margin-bottom: 50px;
   border-radius: 5px;
   cursor: pointer;
   transition: 1s;
