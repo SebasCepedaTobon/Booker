@@ -303,7 +303,7 @@ color: rgb(219, 35, 35);
     flex-direction: row;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
+    background-color: #eeeeee;
    
 
 
@@ -315,9 +315,8 @@ color: rgb(219, 35, 35);
     width: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #eeeeee80;
+    background-color: white;
     align-items: center;
-    height: 600px;
 }
 
 .container-scroll{
@@ -420,9 +419,13 @@ hr{
     color: #2691d9;
 }
 
-.datos-perfil{
-    width: 70%;
+.datos-perfil {
+    width: 73%;
+    margin-top: 50px;
     margin-left: 50px;
+    background-color: white;
+    margin-bottom: 100px;
+    border-radius: 10px;
 }
 
 .p-hr img{
@@ -1088,6 +1091,7 @@ hr{
       align-items: center;
       flex-direction: column;
       margin-bottom: 100px;
+      margin-top: 40px;
 
   }
 
@@ -1135,11 +1139,12 @@ hr{
 
 /*cards-reservados-prestados*/
 
-.ejemplares{
+.ejemplares {
     margin-top: 40px;
+    margin-left: 40px;
     width: 600px;
     height: 300px;
-    background-color: #dbdbdb;
+    background-color: #eeeeee;
     border-radius: 7px;
     display: flex;
     flex-direction: row;

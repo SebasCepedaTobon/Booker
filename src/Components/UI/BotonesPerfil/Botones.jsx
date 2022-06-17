@@ -1,9 +1,9 @@
 import React, {useState, useEffect, Component} from 'react'
 import { NavLink } from 'react-router-dom'
+import { Imagenes } from '../Imagenes/Imagenes'
 import '../../../Static/Admin.css'
 import '../../../Static/MediaQueriesAdmin.css'
 import axios from 'axios'
-
 
 
 export const Botones = () => {

@@ -24,7 +24,7 @@ export const MainPrestados = () => {
 
     }
 
-    const eliminacionAuto = (data) => {
+    /*const eliminacionAuto = (data) => {
         Swal.fire({
             title: '¿Esta seguro de eliminar el autor?',
             icon: 'warning',
@@ -51,7 +51,7 @@ export const MainPrestados = () => {
                 PedirDatos()
                 console.log(res);
             })
-    }
+    }*/
 
 
 
@@ -96,8 +96,7 @@ export const MainPrestados = () => {
         
                   ))
                   }
-                  <button onClick={()=>{eliminacionAuto(reserva)}} className="btn-reser">borrar</button>
-
+                  
                 </div>
 
                
