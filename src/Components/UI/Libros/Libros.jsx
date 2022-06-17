@@ -19,7 +19,8 @@ export const Libros = ({libro}) => {
   //Funcion que guarda las propiedades del estado de los libros
   const {nombre , id_libro, imagen_libro,  } = libro;
 
-  const [{reservas}, dispatch] = useStateValue();
+  const [{favoritos}, dispatch] = useStateValue();
+
   const {ventanaReserva} = AbrirModal()
 
   
@@ -53,6 +54,16 @@ export const Libros = ({libro}) => {
 
   const counterLike = () =>{
 
+    dispatch({
+      type: actionTypes.ADD_TO_FAVORITOS,
+      item: {
+        id_libro,
+        nombre,
+        imagen_libro,
+      }
+    })
+
+
   }
 
   return (
@@ -69,9 +80,9 @@ export const Libros = ({libro}) => {
                 <button className='btn-agLibro' onClick={addLibros2}>
                   <i class="fa-solid fa-book-bookmark"></i>
                 </button>
-                {/*<button className='icon-like' onClick={counterLike}>
+                <button className='icon-like' onClick={counterLike}>
                   <i class="fa-solid fa-heart"></i>
-                </button>*/}
+                </button>
                 <NavLink to={"/Libro/" + libro.id_libro}><button className='btn-verlibro'><i class="fa-solid fa-eye"></i></button></NavLink>
               </div>
             </div>
