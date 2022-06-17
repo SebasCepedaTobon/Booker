@@ -118,7 +118,7 @@
   font-size: 90px;
 }
 
-.fa-eye{
+.fa-eyeAdmin{
   margin: 10px;
   font-size: 25px;
   color: rgb(13,95,228);
@@ -162,18 +162,9 @@
   font-size: 18px;
 }
 
-.fa-user {
-  color: #0D5FE4;
-  font-size: 30px;
-  cursor: pointer;
-  transition: all ease 1s;
-}
 
-.fa-user-large-slash {
-  color: #0D5FE4;
-  font-size: 30px;
-  cursor: pointer;
-  transition: all ease 1s;
+.pruebaEsruden{
+  margin-right: 5px;
 }
 
 .fa-user-graduate:hover {

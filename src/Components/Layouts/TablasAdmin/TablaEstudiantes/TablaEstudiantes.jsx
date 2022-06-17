@@ -294,8 +294,8 @@ export const TablaEstudiantes = () => {
                       </div>
                       <div className='td-5'>
                         {estudiantes.doc_estudiante.usuario_activo === true
-                          ? <i className="fa-solid fa-user" data-title='Inactivar Estudiante' onClick={() => updateEstado(estudiantes)}></i>
-                          : <i onClick={() => updateEstado(estudiantes)} class="fa-solid fa-user-large-slash"></i>
+                          ? <div data-title='Inactivar Libro' className='prueba pruebaEsruden' onClick={() => updateEstado(estudiantes)} ></div>
+                          : <div data-title='Activar Libro' className='prueba prueba2 pruebaEsruden' onClick={() => updateEstado(estudiantes)} ></div>
                         }
                         <i onClick={() => updateData(estudiantes)} class="fa-solid fa-pen-to-square"></i>
 
