@@ -145,8 +145,8 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: -23px;
-  top: 40%;
+  right: -30px;
+  top: 47%;
   width: 56px;
   height: 41px;
   border-bottom-right-radius: 10px;
@@ -161,9 +161,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .config img{
-  width: 8px;
-  margin-top: 5px;
-  margin-left: 30px;
+  width: 23px;
+  margin-top: 3px;
+  margin-left: 22px;
   transform: rotate(0deg);
 }
 
