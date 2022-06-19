@@ -43,6 +43,10 @@ import { Reservados } from './Components/Pages/Perfil/Reservados';
 import { Tlibros } from './Components/Pages/Tlibros/Tlibros';
 import { Prestados } from './Components/Pages/Perfil/Prestados';
 import { Favoritos } from './Components/Pages/Perfil/Favoritos';
+import { ImportarEstudiantes } from './Components/Pages/ImportarEstudiantes/ImportarEstudiantes';
+import { PerfilBibliotecario } from './Components/Pages/PerfilBibliotecario/PerfilBibliotecario';
+
+
 
 
 function App() {
@@ -91,6 +95,8 @@ function App() {
         <Route path='/TBibliotecarios' element={<TablaBibliotecarios/>}/>
         <Route path='/NBibliotecarios' element={<NuevoBibliotecario/>}/>
         <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
+        <Route path='/ImportarEstudiantes' element={<ImportarEstudiantes/>}/>
+        <Route path='/PerfilBibliotecario' element={<PerfilBibliotecario/>}/>
         <Route path='/libros' element={<Tlibros/>}/>
         <Route path='/Eventos/:id_evento/' element={<Eventos/>}/>
         

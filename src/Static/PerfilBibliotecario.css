@@ -1,0 +1,175 @@
+.TablaPerilUsuario{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxperfilbibliotecario{
+    width: 85%;
+    height: 60%;
+    margin-left: 88px;
+}
+
+.boxperfilbibliotecario .box1{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 100%;
+    height: 85%;
+    background-image: url(http://res.cloudinary.com/bookerimg/image/upload/v1655631033/x8xqynmdm8gu3twdunxv.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.boxperfilbibliotecario .box2{
+   
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 100%;
+    height: 15%;
+    background-color: white;
+}
+
+.datosBibliotecario{
+    width: 98%;
+    height: 170px;
+}
+
+.theDatos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+}
+
+.theDatosImg{
+    position: fixed;
+    top: 52%;
+    left: 24%;
+    border: 6px solid white;
+    border-radius: 5px;
+    width: 140px;
+    height: 130px;
+    box-shadow: 0px 0px 10px rgb(160, 157, 157);
+}
+
+.theDatosImg .icono{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.theDatosImg button{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    bottom: 34px;
+    border: none;
+    background-color: transparent;
+    color: transparent;
+    transition: all ease 0.5s;
+    cursor: pointer;
+}
+
+.theDatosImg button:hover{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    bottom: 34px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.663);
+    color: white;
+    text-shadow: white;
+}
+
+.theDatosP{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 77%;
+    height: 60%;
+    text-shadow:0px 0px 10px rgb(0, 0, 0);
+}
+
+.theDatosP .N{
+    font-size: 25px;
+    font-weight: bold; 
+}
+
+.theDatosP .C{
+    font-size: 20px;
+    font-weight: 600; 
+}
+
+.boxperfilbibliotecario .box2{
+    display: flex;
+    align-items: center;    
+    justify-content: end;
+}
+
+.butonesPerfilBibliotecario{
+    width: 75%;
+    display: flex;
+}
+
+.btn-perfilBibliotecario{
+    width: 138px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    background: rgba(5, 88, 171, 0.872);
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0px 0px 15px rgb(119 109 109);
+}
+
+.btn-libroPerfil{
+    width: 168px;
+    margin-left: 40%;
+}
+
+.btn-perfilBibliotecario:hover{
+    box-shadow: 0px 0px 15px black;
+    color: white;
+}
+   
+.btn-perfilBibliotecario span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 97.4%;
+    height: 96%;
+    background: transparent;
+    z-index: -1;    
+}
+
+.btn-perfilBibliotecario span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 1s;
+}
+   
+.btn-perfilBibliotecario:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: rgba(66, 150, 234, 0.872); 
+}
+

@@ -12,7 +12,6 @@ import { NavLink } from 'react-router-dom';
 
 
 let c = []
-
 let a = []
 
 let cate_idM = []
@@ -614,7 +613,7 @@ const cerrarEjemplares = () =>{
               </div>
 
         <div id='Activar-From' className="Activar-From">
-        <NavLink to='/AgregarLibro' className='vinculo' activeclassname="active"> 
+        <NavLink to='/AgregarLibro' className='vinculoLibro' activeclassname="active"> 
         <i class="fa-solid fa-folder-plus"></i>
         </NavLink>
         </div> 

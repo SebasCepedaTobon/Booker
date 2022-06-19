@@ -69,8 +69,6 @@
 /*Clases utilizadas en todas las URLS del sitio admin*/
 
 
-
-
 .MainAdministrativo{
     display: flex;
     width: 100%;
@@ -287,7 +285,7 @@
     color: #0d5fe4;
 }
 
-.Activar-From .vinculo{
+.Activar-From .vinculoLibro{
     color: #0d5fe4;
 }
 
@@ -804,168 +802,6 @@ form .box-select{
 
 
 /*-------------------HEADER ANTIGUO----------------------*/
-
-.AdminHeader{
-    position: fixed;
-    width: 81%;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    background: #EEEEEE;
-    justify-content: center;
-    box-shadow: 0px 15px 34px #EEEEEE;
-    z-index: 300;
-}
-
-.HeaderAdmin{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #0d5fe4;
-    padding: 8px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #000000;
-}
-
-.AdminHeader .buscador{
-    width: 76%;
-    height: 56px;
-    display: flex;
-    visibility: hidden;
-    align-items: center;
-    justify-content: space-around;
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px rgb(147, 147, 147);
-}
-.AdminHeader .buscador input{
-    width: 80%;
-    height: 30px;
-    position: relative;
-    right: 40px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    color: #a6a6a6;
-    font-size: 16px;
-    background-color: transparent;    
-}
-
-.AdminHeader .buscador input::placeholder{
-    padding-left: 15px;
-    color: #a6a6a6;
-}
-
-.AdminHeader .buscador i{
-    color: #000000;
-}
-
-.HeaderIconos{
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-right: 30px;
-    color: white;
-}
-
-.HeaderAdmin .sitio{
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    margin-left: 130px;
-}
-
-.AdminHeader i{
-    font-size: 25px;
-    color: white;
-    cursor: pointer;
-}
-
-.HeaderAdmin .box-perfilHeader{
-    min-width: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.HeaderAdmin .box-perfilHeader p {
-    width: 100%;
-    text-align: end;
-}
-
-.HeaderAdmin .perfil{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    padding-left: 10px;
-}
-
-.HeaderAdmin .perfil .icono{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-
-.box-buscadorAdmin{
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-}
-.box-buscadorAdmin .buscador{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-}
-
-.box-buscadorAdmin .buscador input{
-    outline: none;
-    box-sizing: border-box;
-    height: 30px;
-    width: 0px;
-    padding: 0 20px;
-    border-radius: 16px;
-    font-size: 16px;
-    border: 1px solid transparent;
-    transition: all .7s ease;
-    background-color: #0d5fe4;
-}
-
-.buscador input::placeholder{
-    color: gray;
-}
-
-.btn-ico-Buscar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    min-height: 40px;
-    border-radius: 3px;
-    text-align: center;
-    cursor: pointer;
-    transition: .5s;
-}
-
-.btn-ico-Buscar .ico-Buscar{
-    font-size: 25px;
-    line-height: 80px;
-    transition: all .7 ease;
-}
-
-.box-buscadorAdmin .buscador:hover input{
-    width: 350px;
-    border: 1px solid black;
-}
-
-.box-buscadorAdmin .buscador:hover{
-   position: relative;
-}
 
 
 /*----------------------------chackbos-----------------------*/

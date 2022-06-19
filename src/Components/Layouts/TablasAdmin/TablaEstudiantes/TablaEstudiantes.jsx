@@ -250,7 +250,7 @@ export const TablaEstudiantes = () => {
               <p>Estudiantes</p>
               <div id='buscador' className="buscador">
                 <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
-                <i onClick={peticionGetBusqueda} class="fa-solid fa-magnifying-glass"></i>
+                <i onClick={peticionGetBusqueda} className="fa-solid fa-magnifying-glass"></i>
               </div>
             </div>
             <div className='tr'>
@@ -264,9 +264,9 @@ export const TablaEstudiantes = () => {
             </div>
             <div className='Tabla-Info' >
               {
-                estudiantes.map((estudiantes, _) => {
+                estudiantes.map((estudiantes, key) => {
                   return (
-                    <div className='tr-1'>
+                    <div key={key} className='tr-1'>
                       <div className='td-0'>
                         <div className='perfil' >
                           {estudiantes.doc_estudiante.imagen === null
@@ -297,7 +297,7 @@ export const TablaEstudiantes = () => {
                           ? <div data-title='Inactivar Libro' className='prueba pruebaEsruden' onClick={() => updateEstado(estudiantes)} ></div>
                           : <div data-title='Activar Libro' className='prueba prueba2 pruebaEsruden' onClick={() => updateEstado(estudiantes)} ></div>
                         }
-                        <i onClick={() => updateData(estudiantes)} class="fa-solid fa-pen-to-square"></i>
+                        <i onClick={() => updateData(estudiantes)} className="fa-solid fa-pen-to-square"></i>
 
                       </div>
                     </div>
@@ -311,7 +311,7 @@ export const TablaEstudiantes = () => {
           </div>
           <NavLink to='/NuevoEstudiante'  >
             <div id='Activar-From' className='Activar-From'>
-              <i class="fa-solid fa-folder-plus"></i>
+              <i className="fa-solid fa-folder-plus"></i>
             </div>
           </NavLink>
         </div>
@@ -322,7 +322,7 @@ export const TablaEstudiantes = () => {
           <div className='Estudiantes-from' >
             <div className="from-Titulo">
               <div className="Desactivar-From">
-                <i onClick={ventanaFlotante} class="fa-solid fa-xmark"></i>
+                <i onClick={ventanaFlotante} className="fa-solid fa-xmark"></i>
               </div>
               <h1>ACTUALIZAR ESTUDIANTE</h1>
             </div>
@@ -330,7 +330,7 @@ export const TablaEstudiantes = () => {
               <div className='boxs-inputs'>
                 <div className="box-select">
                   <select id='tipoDoc' onChange={handleChange}>
-                    <option value="" selected>Tipo Documento...</option>
+                    <option selected>Tipo Documento...</option>
                     <option className='opciones' value="CC">Cédula de Ciudadanía</option>
                     <option className='opciones' value="TI">Tarjeta de Identidad</option>
                   </select>
@@ -373,20 +373,20 @@ export const TablaEstudiantes = () => {
                 </div>
                 <div className="box-select">
                   <select onChange={handleChange} id='grupo'>
-                    <option value="" selected>Grupo</option>
+                    <option selected>Grupo</option>
                     {!grupo ? "" :
-                      grupo.map((element, _) =>
-                        <option className='opciones' value={element.id_grupo}>{element.letra_grupo}</option>
+                      grupo.map((element, key) =>
+                        <option key={key} className='opciones' value={element.id_grupo}>{element.letra_grupo}</option>
                       )
                     }
                   </select>
                 </div>
                 <div className="box-select">
                   <select onChange={handleChange} id='grado'>
-                    <option value="" selected>Grado</option>
+                    <option selected>Grado</option>
                     {!grado ? "" :
-                      grado.map((element, _) =>
-                        <option className='opciones' value={element.id_grado}>{element.nombre}</option>
+                      grado.map((element, key) =>
+                        <option key={key} className='opciones' value={element.id_grado}>{element.nombre}</option>
                       )
                     }
                   </select>

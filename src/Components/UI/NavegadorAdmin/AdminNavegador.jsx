@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../Imagenes/Imagenes'
 import booker from '../../../assets/Imagenes/logos/BookerAdmin.png'
 import '../../../Static/Admin.css'
-import flecha from '../../../assets/Imagenes/Admin/flecha23.png'
 import '../../../Static/MediaQueriesAdmin.css'
 import '../../../Static/AdminNavegador.css'
 
@@ -41,7 +40,8 @@ export const AdminNavegador = () => {
       </div>
       <div onClick={mostrarNavegador} className='config'>
         <div className="flechaBox">
-          <Imagenes id='imgFlecha' url={flecha} />
+          <i id='imgFlecha' className="fa-solid fa-arrow-right-from-bracket"></i>
+          {/* <i id='imgFlecha' className="fa-solid fa-angle-right"></i> */}
         </div>
       </div>
       <div className='Menu-Padre'>
@@ -60,9 +60,15 @@ export const AdminNavegador = () => {
               <span></span>
             </div>
           </NavLink>
+          <NavLink to='/ImportarEstudiantes' className='vinculoCateAuto'>
+            <div className='box-vinculoCateAuto'>
+              <i className="fa-solid fa-chalkboard-user"></i>
+              <p>Importar Estudiantes</p>
+            </div>
+          </NavLink>
           <NavLink to='/TBibliotecarios' className='vinculo'>
             <div className='box-vinculos'>
-              <i class="fa-solid fa-user-shield"></i>
+              <i className="fa-solid fa-user-shield"></i>
               <p>Bibliotecarios</p>
               <span></span>
             </div>

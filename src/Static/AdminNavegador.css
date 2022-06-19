@@ -134,7 +134,7 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 15px;
 }
 
-.Admin-Navegador i{
+.vinculo i{
   font-size: 20px;
   padding-right: 10px;
 }
@@ -154,17 +154,12 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(13,95,228);
 }
 
-.boxFlecha{
-  background-color: white;
-  width: 30px;
-  height: 90px;
-}
-
-.config img{
-  width: 23px;
+.fa-arrow-right-from-bracket{
   margin-top: 3px;
-  margin-left: 22px;
+  margin-left: 25px;
+  color: white;
   transform: rotate(0deg);
+  font-size: 20px;
 }
 
 .LyE{
