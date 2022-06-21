@@ -127,33 +127,22 @@ const novedades = () => {
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
-              {
-                infraciones.map((element,_)=>{
-                  let libro = element.id_ejemplar
-                  return(
                   <div className='tr-1'>
                   <div className='td-1'>
                   <p>
-                    {libro.map((nombre, key) => (
-                      nombre.id_libro
-                    ))
-                    }
                      </p>
                   </div>
                   <div className='td-2'>
-                    <p className='L1P'>{element.id_estudiante.nombres} {element.id_estudiante.apellidos}</p>
+                    <p className='L1P'></p>
                   </div>
                   <div className='td-3'><p></p></div>
                   <div className='td-4'><p></p></div>
-                  <div className='td-0'><p>{element.id_tipo_infraccion.nombre}</p></div>
+                  <div className='td-0'><p></p></div>
                   <div className='td-5'>
                     <i onClick={FormFlotante} class="fa-solid fa-pen-to-square"></i>
                     <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
                   </div>
                 </div>
-                  )
-                })
-              }
             </div>            
           </div>
           <div id='ActivarFrom' className="Activar-From">

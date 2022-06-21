@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AdminHeader } from '../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../UI/NavegadorAdmin/AdminNavegador'
 import '../../../Static/ImportarEstudiantes.css'
+import Swal from 'sweetalert2';
 import axios from 'axios'
 
 export const ImportarEstudiantes = () => {
@@ -19,9 +20,31 @@ export const ImportarEstudiantes = () => {
             f.append("csv", archivos[index]);
         }
 
-        await axios.post("https://bookerbackapi.herokuapp.com/importar-estudiantes/", f)
+        Swal.fire({
+          title: '¿Esta seguro de importar la lista de estudiantes?',
+          icon: 'warning',
+          confirmButtonText: 'Si, importar',
+          showCancelButton: true,
+          cancelButtonText: 'No, cancelar',
+          reverseButtons: true
+        }).then((resultado) => {
+          if (resultado.isConfirmed) {
+            metodoPost(f)
+          }
+        })
+        
+    }
+
+    const metodoPost = async(f) =>{
+
+      await axios.post("https://bookerbackapi.herokuapp.com/importar-estudiantes/", f)
         .then(response => {
             console.log(response.data);
+            Swal.fire(
+              'Eliminado',
+              'Estudiante eliminado correctamente',
+              'success'
+            )
         }).catch(error=>{
             console.log(error);
         })

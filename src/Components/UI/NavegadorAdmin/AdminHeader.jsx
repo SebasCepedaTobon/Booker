@@ -31,7 +31,9 @@ export const AdminHeader = () => {
 
     const peticionGetBibliotecario=()=>{
 
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/" + id_bibliotecario + "/").then(response=>{
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/" + id_bibliotecario + "/")
+      
+      .then(response=>{
         console.log(response.data);
         imagenPerfil = response.data.doc_bibliotecario.imagen
         nombres = response.data.nombres
@@ -66,7 +68,6 @@ export const AdminHeader = () => {
     useEffect(() => {
 
       id_bibliotecario = localStorage.getItem('id_bibliotecario')
-      peticionGetBibliotecario()
       librosDisponibles()
       librosNoDisponibles()
 
@@ -79,6 +80,11 @@ export const AdminHeader = () => {
         box_perfil.style.top = "13%"
       }
     },[cerrar]);
+
+    useEffect(() => {
+      peticionGetBibliotecario()
+    }, [])
+    
 
   return (
     <div className='AdminHeader'>
@@ -116,7 +122,7 @@ export const AdminHeader = () => {
                 <p>Perfil</p>
             </NavLink>
             <NavLink to='/TLibros' className='vinculoPerfil'>
-                <i class="fa-regular fa-circle-xmark"></i>
+                <i className="fa-regular fa-circle-xmark"></i>
                 <p>Cerrar sesión</p>
             </NavLink>
           </div>
