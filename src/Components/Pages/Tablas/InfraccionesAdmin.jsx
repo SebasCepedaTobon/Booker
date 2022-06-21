@@ -129,10 +129,16 @@ const novedades = () => {
             <div className='Tabla-Info' >
               {
                 infraciones.map((element,_)=>{
+                  let libro = element.id_ejemplar
                   return(
                   <div className='tr-1'>
                   <div className='td-1'>
-                  <p>{element.id_ejemplar.id_libro.nombre} </p>
+                  <p>
+                    {libro.map((nombre, key) => (
+                      nombre.id_libro
+                    ))
+                    }
+                     </p>
                   </div>
                   <div className='td-2'>
                     <p className='L1P'>{element.id_estudiante.nombres} {element.id_estudiante.apellidos}</p>

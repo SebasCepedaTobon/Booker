@@ -364,10 +364,10 @@ const handleSubmitEstado = (libro) =>{
 
   libro.categorias = id_cate
   libro.autores = id_auto
-  if (libro.estado === 'A') {    
+  if (libro.estado === 'AV') {    
     libro.estado = 'IV'
   }else{
-    libro.estado = 'A'
+    libro.estado = 'AV'
   }
   
   Swal.fire({
@@ -590,14 +590,14 @@ const cerrarEjemplares = () =>{
                         </div>
                         
                         <div className="td-6">
-                        {libro.estado === 'A'
+                        {libro.estado === 'AV'
                           ?<p className='pActivo'>Activo</p>                          
                           :<p className='pInactivo'>Inactivo</p>
                         }
                         </div>
                         { /*QUEDO EN LOS BOTONES*/ }
                         <div className='td-5'>
-                          {libro.estado === 'A'
+                          {libro.estado === 'AV'
                           ?<div data-title='Inactivar Libro' className='prueba' onClick={()=>updateEstado(libro)} ></div>
                           :<div data-title='Activar Libro' className='prueba prueba2' onClick={()=>updateEstado(libro)} ></div>
                           }
@@ -709,7 +709,7 @@ const cerrarEjemplares = () =>{
                 <div className="box-select">                  
                   <select id='selectEstado' onChange={handleChange}>
                       <option value="">Estado...</option>
-                      <option value="A">Activo</option>
+                      <option value="AV">Activo</option>
                       <option value="IV">Inactivo</option>
                   </select>
                 </div>
