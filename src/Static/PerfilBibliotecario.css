@@ -64,27 +64,61 @@
     height: 100%;
 }
 
+.box-camara{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    bottom: 134px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.box-camara:hover{
+    background-color: rgba(0, 0, 0, 0.539);
+    color: white;
+}
+
+.box-camara[fa-camera]:hover{
+    color: white;
+}
+
+.boxi-camara{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+}
+
+.fa-camera{
+    position: absolute;
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0);
+}
+
 .theDatosImg input{
     position: relative;
     width: 100%;
-    height: 30px;
-    bottom: 34px;
+    height: 100%;
     border: none;
-    background-color: transparent;
     color: transparent;
     transition: all ease 0.5s;
     cursor: pointer;
+    display: block;
+    opacity: 0;
+    z-index: 1000;
+}
+
+.theDatosImg input::before{
+    content: '';
 }
 
 .theDatosImg input:hover{
-    position: relative;
-    width: 100%;
-    height: 30px;
-    bottom: 34px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.663);
-    color: white;
-    text-shadow: white;
+    background-color: rgba(0, 0, 0, 0.344);
 }
 
 .theDatosP{

@@ -7,34 +7,43 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Imagenes } from "../../UI/Imagenes/Imagenes";
 
-let id_bibliotecario;
-let imagen2;
+
 
 export const PerfilBibliotecario = () => {
+  let id_bibliotecario;
+  let imagen2;
+
+
+  id_bibliotecario = localStorage.getItem("id_bibliotecario");
   let setearImg;
   const url = "https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/";
 
-  const peticionGetBibliotecario = () => {
-    id_bibliotecario = localStorage.getItem("id_bibliotecario");
+  const [bibliotecario, setBibliotecario] = useState({});
+  /* onst [imagen, setImagen] = useState(); */
+  const [cerrar, setCounter] = useState(true);
+  const [form2, setForm2] = useState({});
+  const [formImg, setFormImg] = useState({});
+  const [editImg, setEditImg] = useState(true);
 
-    axios
+  const peticionGetBibliotecario = async () => {
+
+    await axios
       .get(url + id_bibliotecario + "/")
       .then((response) => {
         console.log(response.data);
         setForm2(response.data);
+        setFormImg(response.data);
         setBibliotecario(response.data.doc_bibliotecario);
-        setImagen(response.data.doc_bibliotecario.imagen);
+
+        /* setImagen(response.data.doc_bibliotecario.imagen); */
       })
       .catch((error) => {
         console.log(error.message);
       });
-  };
 
-  const [bibliotecario, setBibliotecario] = useState({});
-  const [imagen, setImagen] = useState();
-  const [cerrar, setCounter] = useState(true);
-  const [form2, setForm2] = useState({});
+    };
 
+    
   const ventanaFlotante = () => {
     const doc = document.getElementById("doc");
     doc.value = bibliotecario.doc;
@@ -48,7 +57,6 @@ export const PerfilBibliotecario = () => {
   };
 
   useEffect(() => {
-    peticionGetBibliotecario();
 
     const overlay = document.getElementById("overlay");
     const from_tablas = document.querySelector(".from-tablas");
@@ -63,6 +71,12 @@ export const PerfilBibliotecario = () => {
       from_tablas.style.opacity = "2";
     }
   }, [cerrar]);
+
+
+  useEffect(() => {
+    peticionGetBibliotecario();
+  }, [])
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,10 +97,11 @@ export const PerfilBibliotecario = () => {
 
   const updateData = async () => {
     let endpoint = url + form2.id_bibliotecario + "/";
-    await axios.put(endpoint, form2).then((res) => {
-      
+    await axios.put(endpoint, form2)
+    .then((res) => {
       peticionGetBibliotecario();
       ventanaFlotante();
+      window.location.href = "/PerfilBibliotecario"  
       console.log(res);
     });
   };
@@ -128,16 +143,56 @@ export const PerfilBibliotecario = () => {
       .then((data) => {
         imagen2 = data.url;
         console.log(data.url);
-
-        setForm2({
-          ...form2,
-          nombres: "jj",
-          imagen: data.url,
+        
+        setBibliotecario({
+          ...bibliotecario,
+          imagen: imagen2
         });
-        console.log(form2);
-        console.log(form2);
       })
       .catch((err) => console.log(err));
+
+      Swal.fire({
+        title: "¿Esta seguro de guardar los cambios?",
+        icon: "warning",
+        confirmButtonText: "Si, Guardar",
+        showCancelButton: true,
+        cancelButtonText: "No, cancelar",
+        reverseButtons: true,
+      }).then((resultado) => {
+        if (resultado.isConfirmed) {
+          setEditImg(false)
+        }
+      });
+  };
+
+
+  useEffect(() => {
+    llenarImg()
+
+  }, [bibliotecario])
+
+  
+
+  const llenarImg = () => {
+
+    setFormImg({
+      ...formImg,
+        doc_bibliotecario: bibliotecario,
+    });
+  }
+
+  const updateDataImg = () => {
+    console.log(bibliotecario);
+    console.log(formImg);
+    let endpoint = url + formImg.id_bibliotecario + "/";
+    axios.put(endpoint, formImg)
+    .then((res) => { 
+      console.log(res);
+      setEditImg(true)
+      window.location.href = "/PerfilBibliotecario"
+  });        
+    
+
   };
 
   return (
@@ -153,13 +208,24 @@ export const PerfilBibliotecario = () => {
               <div className="datosBibliotecario">
                 <div className="theDatos">
                   <div className="theDatosImg">
-                    <Imagenes clase="icono" />
-                    <input
-                      type="file"
-                      onChange={(e) => {
-                        setearImagen(e);
-                      }}
-                    />
+                    <Imagenes clase="icono" url={bibliotecario.imagen}/>
+                    <div className="box-camara">
+                      <div className="boxi-camara">
+                        <i className="fa-solid fa-camera"></i>
+                      </div>
+                      <input
+                        type="file"
+                        onChange={(e) => {
+                          setearImagen(e);
+                        }}
+                      />
+                    </div>
+
+                    {
+                      editImg === false
+                      ? updateDataImg()
+                      :console.log("No se llamo, porque no tiene datos, es claro no es tigo")
+                    }
                   </div>
 
                   <div className="theDatosP">
@@ -193,7 +259,7 @@ export const PerfilBibliotecario = () => {
           <div className="Estudiantes-from NBibliotecario">
             <div className="from-Titulo">
               <div className="Desactivar-From">
-                <i onClick={ventanaFlotante} class="fa-solid fa-xmark"></i>
+                <i onClick={ventanaFlotante} className="fa-solid fa-xmark"></i>
               </div>
               <h1>ACTUALIZAR PERFIL</h1>
             </div>
@@ -279,6 +345,7 @@ export const PerfilBibliotecario = () => {
                 <div className="box-input">
                   <input
                     type="text"
+                    name="name"
                     onChange={handleChange}
                     id="name"
                     required

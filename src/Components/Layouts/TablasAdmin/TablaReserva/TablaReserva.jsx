@@ -37,7 +37,7 @@ export const TablaReserva = () => {
     cambioFiltro.textContent = "Reservas Inactivas"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=IV").then(response=>{
       setReservas(response.data);
-
+      console.log(response.data);
       
     }).catch(error=>{
       console.log(error.message);
@@ -49,7 +49,7 @@ export const TablaReserva = () => {
     cambioFiltro.textContent = "Reservas Completadas"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C").then(response=>{
       setReservas(response.data);
-      
+      console.log(response.data);      
     
     }).catch(error=>{
       console.log(error.message);
@@ -288,10 +288,11 @@ export const TablaReserva = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <div className="box-select">                  
-                <select id='estadoReserva' onChange={handleChange}>
-                    <option value="AC">Reservada</option>
-                    <option value="C">Completada</option>
-                    <option value="IV">Inactiva</option>
+                <select id='estadoReserva' value={form2.estado}  onChange={handleChange}>
+                  <option value="">Estado de reserva</option>
+                  <option value="AC">Reservada en gestión</option>
+                  <option value="C">Finalizar Reserva</option>
+                  <option value="IV">Inactivar Reserva</option>
                 </select>
             </div>              
               <div className="btnsFormulario">
@@ -303,29 +304,6 @@ export const TablaReserva = () => {
           </div>
         </div>
       </div>
-
-      {/* <div id="prestamoOverlay" className='prestamoOverlay'>
-          <div className='RM-from'>
-            <div className="from-Titulo">
-              <div className="Desactivar-From">
-                <i onClick={ventanaCerrarFecha} class="fa-solid fa-xmark"></i>
-              </div>
-              <h1>ESTADO DE RESERVA</h1>                
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className="box-input">
-                <input type="date" required/>
-                <span></span>
-                <label className='labelDate'>Fecha Prestamo</label>
-              </div>            
-              <div className="btnsFormulario">
-                  <button className="btnFor btn-actializar">
-                    Actualizar
-                  </button>
-              </div>
-            </form>
-          </div>
-        </div> */}
     </div>
   )
 }

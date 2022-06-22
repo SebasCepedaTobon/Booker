@@ -57,29 +57,11 @@ const [cerrar, setCounter] = useState(true)
 const [prestamos, setPrestamos] = useState([])
 
 const peticionGet=()=>{
-  /* const cambioFiltro = document.querySelector('.cambioFiltro')
-  cambioFiltro.textContent = "Reservas" */
 
-
+  
   axios.get(url).then(response=>{
     setPrestamos(response.data);
-/* 
-    librosEstado = response.data
-    librosEstado.map((element,_) => {
-      let id = element.id_reserva
-      let pEstado = document.getElementById(id)
-      let estado = element.estado
-      if (estado === 'AC') {
-        pEstado.textContent = "Reservada"
-        pEstado.style.color = "#2fd319"
-      }if(estado === 'IV'){
-        pEstado.textContent = "Inactiva"
-        pEstado.style.color = "#CA2020"
-      }if(estado === 'C'){
-        pEstado.textContent = "Completada"
-        pEstado.style.color = "#0D5FE4"
-      }
-    }) */
+    console.log(response.data);
   }).catch(error=>{
     console.log(error.message);
   })

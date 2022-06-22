@@ -248,6 +248,11 @@
   border-radius: 5px;
 }
 
+.fa-plus{
+  cursor: pointer;
+  font-size: 25px;
+}
+
 
 /*------------FIN ventana ejemplares-------------------*/
 

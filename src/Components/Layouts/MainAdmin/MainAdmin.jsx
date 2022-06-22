@@ -25,6 +25,7 @@ export const MainAdmin = () => {
       <div className='box-Header-Admin' >
         <AdminHeader/>
         <div className="box-carsd-Admin">
+          <div className="boxAdminCardd">
           <div className="boxCard01">
             <div className="cardAdmin">
               <div className="info-btn">
@@ -121,6 +122,7 @@ export const MainAdmin = () => {
               </div>
             </div>
           </div>
+          </div>          
         </div>
       </div>
     </div>

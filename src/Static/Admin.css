@@ -443,12 +443,21 @@ form .box-select{
 
 
  .box-carsd-Admin{
-    width: 85%;
+    width: 88%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
-    margin-top: 135px;
+}
+
+.boxAdminCardd{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    margin-top: 20px;
+    margin-left: 25px;
 }
 
 .boxCard01{
