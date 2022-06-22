@@ -489,7 +489,6 @@ export const TablaLibros = () => {
     console.log(numEjemplaresLibro);
 
     const nuevoEjemplar = {
-      "num_ejemplar": "",
       "estado": "D",
       "id_libro": id_libroEjemplar
     }

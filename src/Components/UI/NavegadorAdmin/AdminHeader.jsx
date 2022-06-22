@@ -121,7 +121,7 @@ export const AdminHeader = () => {
               <i className="fa-regular fa-user"></i>
                 <p>Perfil</p>
             </NavLink>
-            <NavLink to='/TLibros' className='vinculoPerfil'>
+            <NavLink to='/' className='vinculoPerfil'>
                 <i className="fa-regular fa-circle-xmark"></i>
                 <p>Cerrar sesión</p>
             </NavLink>
