@@ -3,6 +3,7 @@ import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil'
 import axios from 'axios';
 import { VentanaReserva2 } from '../../UI/VentanaReserva/VantanaReserva2';
 import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
+import { Alerta } from '../../UI/Alerta/Alerta';
 
 
 
@@ -16,7 +17,9 @@ export const MainPerfil = () => {
 
   const [Estudiante, setEstudiante] = useState({}) 
   const [grupo, setGrupo] = useState([])
+  const [grado, setGrado] = useState([])
   const [Documento, setDocumento] = useState({})
+  const [alerta, setAlerta] = useState(false)
   
 
   
@@ -27,6 +30,7 @@ export const MainPerfil = () => {
     axios.get(url).then(response=>{
       setEstudiante(response.data);
       setGrupo(response.data.id_grupo)
+      setGrado(response.data.id_grado)
       setDocumento(response.data.doc_estudiante)
     }).catch(error=>{
       console.log(error.message);
@@ -47,7 +51,6 @@ export const MainPerfil = () => {
   
 
   const change = (e)=>{
-    console.log(Documento.email);
 
     //const email = document.getElementById('email')
     //const name = document.getElementById('name')
@@ -56,12 +59,15 @@ export const MainPerfil = () => {
         ...Estudiante,
         [e.target.name]: e.target.value,
         id_grupo: grupo.id_grupo,
-        id_grado: 2,
-        
+        id_grado: grado.id_grado,
     })
+
+
 
     console.log(Estudiante);
   }
+
+
 
   const recharge = (e) =>{
     e.preventDefault()
@@ -76,16 +82,13 @@ export const MainPerfil = () => {
 
     axios.put(url, Estudiante)
     .then((res)=>{
-      reload()
+      setAlerta(!alerta)
     })
 
   
 
   }
 
-  const reload = () => {
-    window.location.reload(true);
-}
 
 
 
@@ -94,6 +97,14 @@ export const MainPerfil = () => {
 
   return (
       <>
+        <Alerta 
+            estado={alerta} 
+            cambiarEstado={setAlerta}>
+            
+            
+            <p>¡Se han guardado los cambios!</p>
+
+        </Alerta>
         <div className='contenedor-perfil'>
             <Navegacion3/>
             <BotonesPerfil/>
@@ -132,6 +143,17 @@ export const MainPerfil = () => {
                                   <span></span>
                                   <label>Dirección</label>
                               </div>
+                              {/*<div className="box-input">
+                                  <input type="text" name='name' onChange={change} required value={Documento.name} />
+                                  <span></span>
+                                  <label>Nombre de Usuario</label>
+                              </div>
+                              <div className="box-input">
+                  
+                                  <input type="text" name='email' onChange={change} required value={Documento.email} />
+                                  <span></span>
+                                  <label>Email</label>
+                              </div>*/}
                               <div className="btnsFormulario">
                               <button className="btnFor2 btn-agregar" onClick={btnEditar}>Confirmar</button>
                           </div>

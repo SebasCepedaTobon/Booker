@@ -38,6 +38,9 @@ export const MainLogin = () => {
 
   const btnIngresar = () => {
 
+
+
+
     let url = "https://bookerbackapi.herokuapp.com"
 
     axios.post(url, state.form)
@@ -63,7 +66,8 @@ export const MainLogin = () => {
             localStorage.setItem('doc_admin', res.data.user.doc)
             localStorage.setItem('tipo_usuario', res.data.user.tipo_usuario)
           }
-          
+
+
           console.log("logueado correctamente")
 
 

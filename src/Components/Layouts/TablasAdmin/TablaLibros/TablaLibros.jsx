@@ -488,7 +488,10 @@ export const TablaLibros = () => {
     const numEjemplaresLibro = ejeplaresInfo[ejeplaresInfo.length - 1].num_ejemplar
     console.log(numEjemplaresLibro);
 
+    const ultimoNumEjemplar = Number(numEjemplaresLibro) + 1
+
     const nuevoEjemplar = {
+      "num_ejemplar": ultimoNumEjemplar, 
       "estado": "D",
       "id_libro": id_libroEjemplar
     }
@@ -510,7 +513,7 @@ export const TablaLibros = () => {
     console.log(id_libroEjemplar);
 
     if (data.id_libro === null) {
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=&id_libro__id_libro=" + id_libroEjemplar )
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?id_libro__id_libro=" + data.id_libro + "&ordering=num_ejemplar")
       .then(response => {
       setEjemplparesInfo(response.data);
       console.log(response.data);
@@ -520,7 +523,7 @@ export const TablaLibros = () => {
       })
       
     }else{
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=&id_libro__id_libro=" + data.id_libro)
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?id_libro__id_libro=" + data.id_libro + "&ordering=num_ejemplar")
       .then(response => {
       setEjemplparesInfo(response.data);
       console.log(response.data);

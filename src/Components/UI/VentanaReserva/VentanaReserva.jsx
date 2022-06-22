@@ -47,7 +47,7 @@ export const VentanaReserva = () => {
           
             <div className="conatiner-info-reservas">
               <h2>{libros.nombre}</h2>
-              <p className='estado'>{libros.estado === "A" ? 
+              <p className='estado'>{libros.estado === "AV" ? 
                 (<p>Activo</p>):
                 (<p>Inactivo</p>)}
               </p>

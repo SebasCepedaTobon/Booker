@@ -4,6 +4,7 @@ import { Libros } from '../../UI/Libros/Libros';
 import { Spinner } from '../../UI/Spinner/Spinner';
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
+import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
 
 export const MainTLibros = () => {
 
@@ -42,6 +43,7 @@ export const MainTLibros = () => {
             </div>
           
         </div>
+        <VentanaReserva/>
     </>
     
   )

@@ -12,7 +12,7 @@ export const actionTypes = {
     BORRAR_LIBRO: "BORRAR_LIBRO",
     DETALLES_LIBRO: "DETALLES_LIBRO",
     LIMPIAR_RESERVA:"LIMPIAR_RESERVA",
-    ADD_TO_FAVORITOS:"ADD_TO_FAVORITOS"
+    ADD_TO_FAVORITOS: "ADD_TO_FAVORITOS"
 
    
 }
@@ -31,19 +31,6 @@ const reducer = (state, action) => {
         } :{
             ...state,
             reservas: [...state.reservas, {...action.item, quantity:1}],
-            
-        }
-        case "ADD_TO_FAVORITOS":
-            let itemInFavoritos = state.favoritos.find(item => item.id_libro === action.item.id_libro)
-        return itemInFavoritos ? {
-            ...state,
-            favoritos: state.favoritos.map(item=> 
-                item.id_libro===action.item.id_libro
-                ? {...item, quantity: item.quantity+1}
-                :item)
-        } :{
-            ...state,
-            favoritos: [...state.favoritos, {...action.item, quantity:1}],
             
         }
         case "BORRAR_LIBRO":
@@ -67,6 +54,19 @@ const reducer = (state, action) => {
         case "LIMPIAR_RESERVA":{
             return initialState
         
+            
+        }
+        case "ADD_TO_FAVORITOS":
+            let itemInfavoritos = state.favoritos.find(item => item.id_libro === action.item.id_libro)
+        return itemInfavoritos ? {
+            ...state,   
+            favoritos: state.favoritos.map(item=> 
+                item.id_libro===action.item.id_libro
+                ? {...item, quantity: item.quantity+1}
+                :item)
+        } :{
+            ...state,
+            favoritos: [...state.favoritos, {...action.item, quantity:1}],
             
         }
         default: return state;

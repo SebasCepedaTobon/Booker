@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Imagenes } from '../Imagenes/Imagenes'
 import axios from 'axios'
 import { Logout } from '../../../Logout'
+import { Alerta } from '../Alerta/Alerta'
 
 
 
@@ -10,14 +11,13 @@ import { Logout } from '../../../Logout'
 export const BotonesPerfil = () => {
 
     
-    const userName_estudiante = localStorage.getItem('name')
     const id_estudiante = localStorage.getItem('id_estudiante')
     const [form2, setForm2] = useState({})
     const [imagen, setImagen] = useState([])
+    const [alerta, setAlerta] = useState(false)
 
 
     const [Estudiante, setEstudiante] = useState({}) 
-    console.log(Estudiante)
 
     const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/" + id_estudiante+ '/'
 
@@ -67,40 +67,32 @@ export const BotonesPerfil = () => {
     ...form2,
     apellidos: Estudiante.apellidos,
     direccion: Estudiante.direccion,
-    doc_estudiante: {doc: '10052895', last_login: null, name: 'cr7', email: 'cristian@gmail.com', imagen: data.url},
-    id_estudiante: 3,
+    doc_estudiante: {doc: imagen.doc, last_login: null, name: imagen.name, email: imagen.email, imagen: data.url},
+    id_estudiante: id_estudiante,
     id_grado: Estudiante.id_grado.id_grado,
     id_grupo: Estudiante.id_grupo.id_grupo,
-    nombres: "Cristiano Ronaldo",
-    telefono: "3212084206",
-    tipodoc: "CC"
+    nombres: Estudiante.nombres,
+    telefono: Estudiante.telefono,
+    tipodoc: Estudiante.tipodoc
   })
   
   })
   .catch(err => console.log(err))
 
-  /* handleChange(e) */
-    
-
-  
-
     }
 
 
 
-
-
-
-    console.log(form2);
-
     const PeticionPut = () =>{
         
         
-        axios.put(url,form2).then(res=>{
-            console.log(res)
+        axios.put(url,form2)
+        .then(res=>{
+          reload()
+            
         })
 
-        reload()
+       
         
     }
 
@@ -115,17 +107,24 @@ export const BotonesPerfil = () => {
     
 
   return (
-      <div className="botones-perfil">
+    <>
+
+    <div className="botones-perfil">
+
           <div className="img-nombre">
             <div className="container-avatar1">
-                <Imagenes url={imagen.imagen}/></div>
-            <input type="file" onChange={(e)=>{
+
+                <Imagenes url={imagen.imagen}/>
+                
+                <input className="input-img"  type="file" onChange={(e)=>{
                 setImage(e)
-            }}/>
-            <button onClick={PeticionPut}>confirmar</button>
+               
+                }}/>
+            </div>
+            <button className='btn-confirmar' onClick={PeticionPut}>confirmar</button>
 
               <div className="usu">
-                  <h2>{userName_estudiante}</h2>
+                  <h2>{imagen.name}</h2>
                   <p id='Bienvenido'>Bienvenido a tu cuenta</p>
               </div>
           </div>
@@ -192,6 +191,8 @@ export const BotonesPerfil = () => {
         </div>   
          
       </div>
+    </>
+      
     
   )
 }

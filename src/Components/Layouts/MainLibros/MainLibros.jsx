@@ -5,6 +5,7 @@ import { useStateValue } from '../../../StateProvider'
 import { useParams } from 'react-router';
 import { Spinner } from '../../UI/Spinner/Spinner';
 import { Navegacion3 } from '../../UI/Navegacion/Navegacion3'
+import { Alerta } from '../../UI/Alerta/Alerta';
 
 
 
@@ -16,6 +17,7 @@ export const MainLibros = ( ) => {
 
     const { id_libro } = useParams();
     const [cargando, setCargando] = useState(true);
+    const [alerta, setAlerta] = useState(false)
    
 
 
@@ -53,12 +55,21 @@ export const MainLibros = ( ) => {
 
             }
         })
+
+        setAlerta(!alerta)
        
       }
 
 
     return (
         <>
+        <Alerta 
+            estado={alerta} 
+            cambiarEstado={setAlerta}
+            
+        ><p>Reserva realizada</p>
+
+        </Alerta>
          <Navegacion3/>
         <div className='mainlibros'>
             

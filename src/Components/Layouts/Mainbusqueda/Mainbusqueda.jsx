@@ -3,6 +3,10 @@ import { useParams } from 'react-router';
 import { Libros } from '../../UI/Libros/Libros';
 import { Navegacion3 } from '../../UI/Navegacion/Navegacion3';
 import { Spinner } from '../../UI/Spinner/Spinner';
+import { Alertafavoritos } from '../../UI/VentanaReserva/Alertafavoritos';
+import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
+
+
 
 
 
@@ -62,6 +66,8 @@ export const Mainbusqueda = () => {
           
         </div>
     </div>
+    <VentanaReserva/>
+    <Alertafavoritos/>
     </>
     
       

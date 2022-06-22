@@ -72,6 +72,11 @@ export const Navegacion = () => {
     }
   }
 
+  const ver = () =>{
+    document.querySelector('.container-perfil-cerrar').classList.toggle('show')
+  }
+
+
   
 
 
@@ -101,12 +106,17 @@ export const Navegacion = () => {
               <i class="fa-solid fa-user-pen"></i>Admin
             </NavLink>
           </div>
-          <NavLink to='/Perfil' className="Perfil-icon"><Imagenes url={Documento.imagen} /></NavLink>
+          <NavLink to='' className="Perfil-icon" onClick={ver}><Imagenes url={Documento.imagen} /></NavLink>
           <div className='menu-btn' onClick={abrir}>
             <i class="fas fa-bars" ></i>
           </div>
         </div>
       </div>
+
+      {/*<div className="container-perfil-cerrar">
+        <a href="">ver perfil</a>
+        <a href="">cerrar sesion</a>
+  </div>*/}
       
     </>
    

@@ -94,6 +94,10 @@
 }
 
 
+
+
+
+
 /**/
 
 .logo img{
@@ -125,8 +129,7 @@
   margin-right: 40px;
   margin-left: 10px;
   font-family: Arial, Helvetica, sans-serif;
-  text-shadow: 
-  
+
  
 }
 
@@ -1018,6 +1021,8 @@ S
   margin-left: 50px;
 }
 
+
+
 .boxs-inputs2 {
   display: flex;
   width: 100%;
@@ -1041,7 +1046,7 @@ S
 }
 
 .container-inputs-input{
-  width: 70%;
+  width: 90%;
   grid-gap: 40px;
   display: flex;
   flex-wrap: wrap;
@@ -1062,4 +1067,11 @@ S
   display: flex;
   flex-wrap: wrap;
 }
+
+
+.on{
+  filter: grayscale(1);
+
+}
+
 

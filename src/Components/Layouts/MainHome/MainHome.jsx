@@ -12,6 +12,7 @@ import { Eventos } from '../../UI/Eventos/Eventos';
 import { Libromv } from '../../UI/LibroMV/Libromv';
 import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
 import axios from 'axios';
+import { Alertafavoritos } from '../../UI/VentanaReserva/Alertafavoritos';
 
 //checkoutCard
 
@@ -66,8 +67,8 @@ export const MainHome = () => {
   const settings2 = {
     dots: true,
     //infinite: true,
-    slidesToShow:3,
-    slidesToScroll: 3,
+    slidesToShow:4,
+    slidesToScroll: 4,
     //autoplay: true,
     speed: 2000,
     //autoplaySpeed: 8000,
@@ -176,6 +177,7 @@ export const MainHome = () => {
       </div>
       <Libromv/>
       <VentanaReserva/>
+      <Alertafavoritos/>
     </div>  
   )
   
