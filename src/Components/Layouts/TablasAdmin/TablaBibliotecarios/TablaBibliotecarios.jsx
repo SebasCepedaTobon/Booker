@@ -12,7 +12,7 @@ export const TablaBibliotecarios = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/"
 
-  const id_bibliotecario = localStorage.getItem('')
+  const urlOdenada = "https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?ordering=id_bibliotecario"
 
 
   const [cerrar, setCounter] = useState(true)
@@ -21,21 +21,29 @@ export const TablaBibliotecarios = () => {
   const [form2, setForm2] = useState({})
 
   const peticionGet = () => {
-    axios.get(url).then(response => {
+    const inputAyIbibliotecario = document.getElementById('a&ibibliotecario')
+    inputAyIbibliotecario.textContent = "Bibliotecarios"
+    axios.get(urlOdenada).then(response => {
       setBibliotecario(response.data);
     }).catch(error => {
       console.log(error.message);
     })
   }
   const peticionGetInactivo = () => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?doc_bibliotecario__usuario_activo=false").then(response => {
+    const inputAyIbibliotecario = document.getElementById('a&ibibliotecario')
+    inputAyIbibliotecario.textContent = "Bibliotecarios Inactivos"
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?doc_bibliotecario__usuario_activo=false&ordering=id_bibliotecario")
+    .then(response => {
       setBibliotecario(response.data);
     }).catch(error => {
       console.log(error.message);
     })
   }
   const peticionGetActivos = () => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?doc_bibliotecario__usuario_activo=true").then(response => {
+    const inputAyIbibliotecario = document.getElementById('a&ibibliotecario')
+    inputAyIbibliotecario.textContent = "Bibliotecarios Activos"
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?doc_bibliotecario__usuario_activo=true&ordering=id_bibliotecario")
+    .then(response => {
       setBibliotecario(response.data);
     }).catch(error => {
       console.log(error.message);
@@ -95,7 +103,6 @@ export const TablaBibliotecarios = () => {
   const updateData = (data) => {
 
     console.log(data.doc_bibliotecario.usuario_activo);
-
     console.log(data.doc_bibliotecario.password);
 
     let numDocumento = data.doc_bibliotecario.doc
@@ -148,16 +155,26 @@ export const TablaBibliotecarios = () => {
 
   const peticionGetBusqueda = () => {
     const inputBuscar = document.getElementById('elInput')
+    
+    const inputAyIbibliotecario = document.getElementById('a&ibibliotecario')
+    let estado
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?search=" + inputBuscar.value).then(response => {
+    if(inputAyIbibliotecario.textContent === "Bibliotecarios Activos"){
+      estado = true      
+    }else if (inputAyIbibliotecario.textContent === "Bibliotecarios Inactivos") {
+      estado = false  
+    }
+
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/?doc_bibliotecario__usuario_activo="+estado+"&ordering=id_bibliotecario&search="+ inputBuscar.value)
+    .then(response => {
       setBibliotecario(response.data);
     }).catch(error => {
       console.log(error.message);
     })
   }
+  
 
   const handleSubmitEstado = (bibliotecarios) => {
-
     if (bibliotecarios.doc_bibliotecario.usuario_activo === true) {
       bibliotecarios.doc_bibliotecario.usuario_activo = false
     } else {
@@ -219,7 +236,7 @@ export const TablaBibliotecarios = () => {
               </div>
             </div>
             <div className="TituloLibro">
-              <p>Bibliotecarios</p>
+              <p id='a&ibibliotecario'></p>
               <div id='buscador' className="buscador">
                 <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
                 <i onClick={peticionGetBusqueda} class="fa-solid fa-magnifying-glass"></i>
@@ -261,12 +278,12 @@ export const TablaBibliotecarios = () => {
                           ? <p className='activoEstudiantes' >Activo</p>
                           : <p className='inactivoEstudiantes'>Inactivo</p>
                         }
-                      </div>
-                      <div className='td-5'>
                         {bibliotecario.doc_bibliotecario.usuario_activo === true
                           ? <div data-title='Inactivar Libro' className='prueba pruebaEsruden' onClick={() => updateEstado(bibliotecario)} ></div>
                           : <div data-title='Activar Libro' className='prueba prueba2 pruebaEsruden' onClick={() => updateEstado(bibliotecario)} ></div>
                         }
+                      </div>
+                      <div className='td-5'>
                         <i onClick={() => updateData(bibliotecario)} className="fa-solid fa-pen-to-square"></i>
 
                       </div>

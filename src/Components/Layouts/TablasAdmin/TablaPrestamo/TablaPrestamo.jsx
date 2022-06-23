@@ -12,9 +12,11 @@ import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 
 export const TablaPrestamo = () => {
 
+  
+
   const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"
 
-  const eliminacion = () =>{
+  const eliminacion = (data) =>{
     Swal.fire({
       title: '¿Esta seguro de eliminar este libro?',
       icon: 'warning',
@@ -24,13 +26,19 @@ export const TablaPrestamo = () => {
       reverseButtons: true
      }).then((resultado) => {
       if (resultado.isConfirmed) {
-        Swal.fire(
-          'Eliminado',
-          'El libro se elimino correctamente',
-          'success'
-         )
+        peticionDelete(data)
        }
      })
+  }
+
+  const peticionDelete = async (data) =>{
+  
+    let endpoint  = url+data.id_de_prestamo + "/"
+    await axios.delete(endpoint)
+    .then((res)=>{
+      peticionGet()
+      console.log(res);
+    })
   }
 
   const devuelto = () =>{
@@ -145,7 +153,7 @@ const seleccionAdd = () => {
                       </div>
                       <div className='td-5'>
                         <i onClick={seleccion}class="fa-solid fa-pen-to-square"></i>
-                        <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
+                        <i onClick={()=>eliminacion(prestamo)} class="fa-solid fa-trash-can" ></i>
                       </div>
                     </div>
                   )

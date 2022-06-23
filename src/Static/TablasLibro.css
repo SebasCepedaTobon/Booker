@@ -184,26 +184,6 @@
   transform: scale(1.10);
 }
 
-.UsuarioActivo {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: 40px;
-  width: 15px;
-  height: 15px;
-  background-color: rgb(11, 240, 11);
-  border-radius: 50%;
-}
-
-.UsuarioInactivo {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: 40px;
-  width: 15px;
-  height: 15px;
-  background-color: rgb(240, 34, 11);
-  border-radius: 50%;
-}
-
 
 /*------------ventana ejemplares-------------------*/
 

@@ -159,7 +159,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-top: 0.5px solid rgb(162, 162, 162);
+    border-bottom: 0.5px solid rgb(162, 162, 162);
 }
 
 .td-0{
@@ -248,6 +248,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .fa-pen-to-square{

@@ -27,6 +27,7 @@ let auto = []
 export const TablaLibros = () => {
 
   let url = "https://bookerbackapi.herokuapp.com/modulos/libros/";
+  let urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/libros/?ordering=id_libro"
   const [libros, setLibros] = useState([])
   const [categorias, setCategorias] = useState()
   const [autores, setAutores] = useState()
@@ -40,7 +41,8 @@ export const TablaLibros = () => {
   const [form2, setForm2] = useState({})
 
   const peticionGet = () => {
-    axios.get(url).then(response => {
+    axios.get(urlOrdenada)
+    .then(response => {
       setLibros(response.data);
 
     }).catch(error => {
@@ -50,7 +52,8 @@ export const TablaLibros = () => {
 
   const peticionGetNoDisponible = () => {
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=I").then(response => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=IV")
+    .then(response => {
       setLibros(response.data);
 
     }).catch(error => {
@@ -60,7 +63,8 @@ export const TablaLibros = () => {
 
   const peticionGetDisponible = () => {
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=A").then(response => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV")
+    .then(response => {
       setLibros(response.data);
 
     }).catch(error => {

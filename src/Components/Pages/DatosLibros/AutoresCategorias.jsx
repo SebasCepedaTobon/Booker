@@ -67,15 +67,7 @@ const updateData2 = async () =>{
   })
 }
 
-const peticionDelete = async (data) =>{
 
-  let endpoint  = url+data.id_categoria + "/"
-  await axios.delete(endpoint)
-  .then((res)=>{
-    window.location.href="/AutoresCategorias"
-    console.log(res);
-  })
-}
 
 const modificar = (data) =>{
   Swal.fire({
@@ -104,6 +96,16 @@ const eliminacion = (data) =>{
     if (resultado.isConfirmed) {
       peticionDelete(data)
     }
+  })
+}
+
+const peticionDelete = async (data) =>{
+
+  let endpoint  = url+data.id_categoria + "/"
+  await axios.delete(endpoint)
+  .then((res)=>{
+    window.location.href="/AutoresCategorias"
+    console.log(res);
   })
 }
 
@@ -322,7 +324,7 @@ const modificarAuto = () =>{
             <div className='tr'>
               <div className='td-0'><p>ID</p></div>
               <div className='td-1' ><p>Nombre Categoria</p></div>
-              <div className='td-6'><p>Opción</p></div>
+              <div className='td-4'><p>Opción</p></div>
             </div>
             <div className="overflowTabla">
               <div className='Tabla-Info' >
@@ -336,7 +338,7 @@ const modificarAuto = () =>{
                     </div>
                     <div className='td-1'><p>{element.nombre}</p>
                     </div>
-                    <div className='td-6'>
+                    <div className='td-4'>
                     <i class="fa-solid fa-pen-to-square" onClick={()=>updateData(element)}></i>
                     <i class="fa-solid fa-trash-can" onClick={()=>eliminacion(element)} ></i>
                     </div>
@@ -360,7 +362,7 @@ const modificarAuto = () =>{
             <div className='tr'>
               <div className='td-0'><p>ID</p></div>
               <div className='td-1' ><p>Nombre Autor</p></div>
-              <div className='td-6'><p>Opción</p></div>
+              <div className='td-4'><p>Opción</p></div>
             </div>
 
             <div className="overflowTabla">
@@ -374,7 +376,7 @@ const modificarAuto = () =>{
                   </div>
                   <div className='td-1'><p>{element.nombres} {element.apellidos}</p>
                   </div>
-                  <div className='td-6'>
+                  <div className='td-4'>
                   <i class="fa-solid fa-pen-to-square" onClick={()=>updateDataAuto(element)}></i>
                   <i class="fa-solid fa-trash-can" onClick={()=>eliminacionAuto(element)} ></i>
                   </div>

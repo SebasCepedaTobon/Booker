@@ -77,14 +77,6 @@ export const MainHistorial = () => {
       }
     }
 
-    
-
-
-
-
-
-   
-
 
     const peticionPost=async()=>{
       

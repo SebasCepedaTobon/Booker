@@ -42,11 +42,15 @@ export const ImportarEstudiantes = () => {
       await axios.post("https://bookerbackapi.herokuapp.com/importar-estudiantes/", f)
         .then(response => {
             console.log(response.data);
-            Swal.fire(
-              'Eliminado',
-              'Estudiante eliminado correctamente',
-              'success'
-            )
+            Swal.fire({
+              title: 'Estudiantes importados corectamente',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            }).then((resultado) => {
+              if (resultado.isConfirmed) {
+                window.location.href = "/TEstudiantes"
+              }
+            })
         }).catch(error=>{
             console.log(error);
         })

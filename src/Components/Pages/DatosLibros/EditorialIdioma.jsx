@@ -322,7 +322,7 @@ const modificarIdioma = () =>{
             <div className='tr'>
               <div className='td-0'><p>ID</p></div>
               <div className='td-1' ><p>Nombre del Editorial</p></div>
-              <div className='td-6'><p>Opción</p></div>
+              <div className='td-4'><p>Opción</p></div>
             </div>
             <div className="overflowTabla">
               <div className='Tabla-Info' >
@@ -336,7 +336,7 @@ const modificarIdioma = () =>{
                     </div>
                     <div className='td-1'><p>{element.nombre}</p>
                     </div>
-                    <div className='td-6'>
+                    <div className='td-4'>
                     <i class="fa-solid fa-pen-to-square" onClick={()=>updateData(element)}></i>
                     <i class="fa-solid fa-trash-can" onClick={()=>eliminacion(element)} ></i>
                     </div>
@@ -360,7 +360,7 @@ const modificarIdioma = () =>{
             <div className='tr'>
               <div className='td-0'><p>ID</p></div>
               <div className='td-1' ><p>Nombre Idioma</p></div>
-              <div className='td-6'><p>Opción</p></div>
+              <div className='td-4'><p>Opción</p></div>
             </div>
 
             <div className="overflowTabla">
@@ -374,7 +374,7 @@ const modificarIdioma = () =>{
                   </div>
                   <div className='td-1'><p>{element.nombre}</p>
                   </div>
-                  <div className='td-6'>
+                  <div className='td-4'>
                   <i class="fa-solid fa-pen-to-square" onClick={()=>updateDataIdioma(element)}></i>
                   <i class="fa-solid fa-trash-can" onClick={()=>eliminacionIdioma(element)} ></i>
                   </div>
