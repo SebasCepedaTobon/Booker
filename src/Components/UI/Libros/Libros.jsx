@@ -1,10 +1,8 @@
 
-
-
-
 import React, {useState, useEffect} from 'react';
 import { Imagenes } from '../../UI/Imagenes/Imagenes'
 import { NavLink } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import { actionTypes } from '../../../reducer';
 import { useStateValue } from '../../../StateProvider'
 import '../../../slick.css'
@@ -20,16 +18,41 @@ import axios from 'axios';
 
 export const Libros = ({libro}) => {
 
+  let limiteDeReservas2
+
   const id_estudiante = localStorage.getItem('id_estudiante')
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/favoritos/"
   const urlLibros = "https://bookerbackapi.herokuapp.com/modulos/libros/"
   let Favoritos = []
 
-  
 
- 
+  const [limitePrestamos, setLimitePresgamo] = useState([])
+  const [limiteReservas, setLimiteReservas] = useState([])
+  const [limiteEjemplares, setLimiteEjemplares] = useState([])
 
+
+
+  const peticionGetPrestamos = (idLibros) => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro=" + idLibros)
+    .then(response => {
+      setLimitePresgamo(response.data);
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+  const peticionGetReserva = () => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=" + id_estudiante + "&estado=AC")
+    .then(response => {
+      setLimiteReservas(response.data);
+      console.log(response.data);
+
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
 
   //Funcion que guarda las propiedades del estado de los libros
   const {nombre , id_libro, imagen_libro,  } = libro;
@@ -39,18 +62,11 @@ export const Libros = ({libro}) => {
   const {ventanaReserva} = AbrirModal()
   const {ventanaAlerta} = AbrirAlerta()
 
- 
-
-  
-
-
-  
-
-
-
   //Funcion para agregar libros a las reservas
   let idLibros
   const addLibros = () => {
+
+    
     
     dispatch({
       type: actionTypes.ADD_TO_RESERVA,
@@ -64,12 +80,39 @@ export const Libros = ({libro}) => {
   }
 
   const addLibros2 = () =>{
-    idLibros = id_libro
-    dispatch({
-      type: actionTypes.DETALLES_LIBRO,
-      id_libro:id_libro
-    })
-    addLibros()
+
+    /* limiteDeReservas2 = limiteReservas.length + limitePrestamos.length
+
+    console.log(limiteReservas.length);
+    console.log(limitePrestamos.length);
+    
+    console.log(limiteDeReservas2);
+    
+
+    if (limiteDeReservas2 >= 3) {
+      Swal.fire({
+        title: 'Limite completado (3)',
+        text : 'Tienes ' +limiteReservas.length + " reservas y " + limitePrestamos.length + " prestamos",
+        imageUrl: 'http://res.cloudinary.com/bookerimg/image/upload/v1655999157/rszijzzj97eg3jq2ahft.png'
+        
+      }
+      )   
+    }else{} */
+
+      idLibros = id_libro
+      dispatch({
+        type: actionTypes.DETALLES_LIBRO,
+        id_libro:id_libro
+      })
+
+      peticionGetPrestamos(idLibros)
+
+      if (limitePrestamos.length === 0) {
+        alert("No se pued HP")
+      }else{
+        addLibros()      
+      }
+
   }
 
   /*
@@ -99,11 +142,6 @@ export const Libros = ({libro}) => {
     if(counter % 2 == 0){
       blanco.classList.add('on')
       blanco.classList.remove('off')
-      
-      
-
-
-
 
     }
     else{
@@ -149,26 +187,28 @@ export const Libros = ({libro}) => {
 
   }
 
-  const peticionPost=async()=>{
+  const peticionPost=()=>{
       
-    await axios.post(url, {
+    axios.post(url, {
       "id_estudiante": id_estudiante,
       "libros": Favoritos
   }).then(response=>{
       console.log(response);
       
-    }).catch(error=>{
+    }).catch(error => {
       console.log(error.message);
     })
 
- 
-
-   
   }
 
   useEffect(() => {
-     peticionGet() 
- }, [Favoritos])
+    peticionGetReserva()
+  }, [])
+  
+
+  useEffect(() => {
+     peticionGet()
+ }, [])
  
 
   return (
@@ -188,9 +228,6 @@ export const Libros = ({libro}) => {
                 <button className='btn-agLibro' onClick={addLibros2}>
                   <i class="fa-solid fa-book-bookmark"></i>
                 </button>
-    
-                
-                
 
                 <button className='off' onClick={addFavortios} id='favoritos'>
 

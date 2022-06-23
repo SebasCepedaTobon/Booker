@@ -1364,3 +1364,7 @@ hr{
     border-radius: 5px;
 }
 
+.swal2-image {
+    max-width: 23% !important;
+}
+

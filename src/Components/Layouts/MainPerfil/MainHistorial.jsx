@@ -36,9 +36,6 @@ export const MainHistorial = () => {
         
        }
      })
-
-
-
   }
 
 
@@ -65,11 +62,6 @@ export const MainHistorial = () => {
         axios.get(urlEjem + reservas[index].id_libro).then(response=>{
          
           idEjemplares.push(response.data[0].id_ejemplar)
-
-          
-        
-
-        
           
         }).catch(error=>{
           console.log(error.message);
@@ -78,17 +70,17 @@ export const MainHistorial = () => {
     }
 
 
-    const peticionPost=async()=>{
+    const peticionPost=()=>{
       
-      await axios.post(url, {
+      axios.post(url, {
         "estado": "AC",
         "id_estudiante": id_estudiante,
         "ejemplares": idEjemplares
     }).then(response=>{
         console.log(response);
         
-      }).catch(error=>{
-        console.log(error.message);
+      }).catch(error => {
+        console.log(error);
       })
 
    

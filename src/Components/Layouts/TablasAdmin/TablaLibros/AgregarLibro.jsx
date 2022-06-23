@@ -221,7 +221,6 @@ export const AgregarLibro = () => {
     console.log(formLibros);
     await axios.post(url, formLibros)
       .then(res => {
-
         window.location.href = "/TLibros"
         console.log(res)
       })

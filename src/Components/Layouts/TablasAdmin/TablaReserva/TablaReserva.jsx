@@ -31,6 +31,20 @@ export const TablaReserva = () => {
     })
   }
 
+  const peticionPost = async () =>{
+    await axios.post(url, {
+      "estado": "AC",
+      "id_estudiante": 5,
+      "ejemplares": [76]
+  })
+    .then(res=>{
+        console.log(res)
+    })
+    .catch(error => {
+      console.log(error.response.data.message);
+    })
+}
+
   const peticionDelete = async (data) => {
 
     let endpoint = url + data.id_reserva + "/"
@@ -322,6 +336,8 @@ export const TablaReserva = () => {
                 )}
             </div>
           </div>
+
+          <button onClick={peticionPost} ></button>
 
         </div>
       </div>
