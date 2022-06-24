@@ -23,7 +23,6 @@ export const Libros = ({libro}) => {
   const id_estudiante = localStorage.getItem('id_estudiante')
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/favoritos/"
-  const urlLibros = "https://bookerbackapi.herokuapp.com/modulos/libros/"
   let Favoritos = []
 
 
