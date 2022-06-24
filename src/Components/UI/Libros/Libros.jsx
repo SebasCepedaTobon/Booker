@@ -16,9 +16,9 @@ import axios from 'axios';
 //Product
 
 
+let num = 0
 export const Libros = ({libro}) => {
 
-  let limiteDeReservas2
 
   const id_estudiante = localStorage.getItem('id_estudiante')
 
@@ -27,23 +27,43 @@ export const Libros = ({libro}) => {
   let Favoritos = []
 
 
-  const [limitePrestamos, setLimitePresgamo] = useState([])
-  const [limiteReservas, setLimiteReservas] = useState([])
-  const [limiteEjemplares, setLimiteEjemplares] = useState([])
+  const [ejemplaresDisponibles, setEjemplaresDisponibles] = useState([1])
+  const [fechaDisponibles, setFechasDisponibles] = useState([])
 
 
+  const peticionFechas = () =>{
 
-  const peticionGetPrestamos = (idLibros) => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro=" + idLibros)
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC")
     .then(response => {
-      setLimitePresgamo(response.data);
-      console.log(response.data);
+      setFechasDisponibles(response.data);
+      console.log(response.data);      
     }).catch(error => {
       console.log(error.message);
     })
   }
 
-  const peticionGetReserva = () => {
+
+
+  const peticionGetPrestamos = (id_libro) => {
+    
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro=" + id_libro)
+    .then(response => {
+      setEjemplaresDisponibles(response.data);
+      console.log(response.data);
+
+      if (response.data.length === 0) {
+        console.log("Hola es 0");
+        num = 1
+      }else{
+        console.log("Hola es mayor a 0");
+        num = 2
+      }
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+/*   const peticionGetReserva = () => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=" + id_estudiante + "&estado=AC")
     .then(response => {
       setLimiteReservas(response.data);
@@ -52,7 +72,7 @@ export const Libros = ({libro}) => {
     }).catch(error => {
       console.log(error.message);
     })
-  }
+  } */
 
   //Funcion que guarda las propiedades del estado de los libros
   const {nombre , id_libro, imagen_libro,  } = libro;
@@ -66,95 +86,50 @@ export const Libros = ({libro}) => {
   let idLibros
   const addLibros = () => {
 
-    
-    
-    dispatch({
-      type: actionTypes.ADD_TO_RESERVA,
-      item: {
-        id_libro,
-        nombre,
-        imagen_libro,
-      }
-    })
-    ventanaReserva()
+    console.log(ejemplaresDisponibles.length);
+      console.log(ejemplaresDisponibles);
+
+      console.log(ejemplaresDisponibles.length);
+      console.log(ejemplaresDisponibles);
+
+        dispatch({
+          type: actionTypes.ADD_TO_RESERVA,
+          item: {
+            id_libro,
+            nombre,
+            imagen_libro,
+          }
+        })
+        ventanaReserva()
   }
 
+
   const addLibros2 = () =>{
-
-    /* limiteDeReservas2 = limiteReservas.length + limitePrestamos.length
-
-    console.log(limiteReservas.length);
-    console.log(limitePrestamos.length);
-    
-    console.log(limiteDeReservas2);
-    
-
-    if (limiteDeReservas2 >= 3) {
-      Swal.fire({
-        title: 'Limite completado (3)',
-        text : 'Tienes ' +limiteReservas.length + " reservas y " + limitePrestamos.length + " prestamos",
-        imageUrl: 'http://res.cloudinary.com/bookerimg/image/upload/v1655999157/rszijzzj97eg3jq2ahft.png'
-        
-      }
-      )   
-    }else{} */
 
       idLibros = id_libro
       dispatch({
         type: actionTypes.DETALLES_LIBRO,
         id_libro:id_libro
       })
-
-      peticionGetPrestamos(idLibros)
-
-      if (limitePrestamos.length === 0) {
-        alert("No se pued HP")
-      }else{
-        addLibros()      
-      }
-
-  }
-
-  /*
-
-  const useCount = () =>{
-
-    const [counter,setCounter] = useState(0)
-    console.log(counter)
-
-      const btnoff = () =>setCounter(counter+1)
-
-      return{
-        counter,
-        btnoff
-      }
-
-  }
-  
-    const {counter,btnoff} = useCount()
-
-  useEffect(()=>{
-    const btnCard = document.getElementById('favoritos')
-    const blanco = document.getElementById('libro')
-
-
-
-    if(counter % 2 == 0){
-      blanco.classList.add('on')
-      blanco.classList.remove('off')
-
-    }
-    else{
-      blanco.classList.add('off')
-      blanco.classList.remove('on')
-    
+        addLibros()    
       
-    }
+    } 
 
+    useEffect(() => {
 
-  },[counter])
+      console.log(num +  " Es toy en num");
+      
+      if (num === 1) {
+        alert("Que no se puedeeeeee")
+        num = 0
+         
+      }else if(num === 2){
+        addLibros2()
+        num = 0 
+      }
 
-*/
+    }, [ejemplaresDisponibles])
+    
 
 
 
@@ -167,15 +142,9 @@ export const Libros = ({libro}) => {
         nombre,
         imagen_libro,
       }
-
-     
     })
-
     ventanaAlerta()
     peticionPost()
-    
-
-  
   }
 
 
@@ -201,12 +170,9 @@ export const Libros = ({libro}) => {
 
   }
 
-  useEffect(() => {
-    peticionGetReserva()
-  }, [])
-  
 
   useEffect(() => {
+    peticionFechas()
      peticionGet()
  }, [])
  
@@ -225,7 +191,9 @@ export const Libros = ({libro}) => {
               <div className="container_vacio">
               </div>
               <div className="container_botones">
-                <button className='btn-agLibro' onClick={addLibros2}>
+                <button className='btn-agLibro' onClick={() => {
+                  peticionGetPrestamos(libro.id_libro)
+                }}>
                   <i class="fa-solid fa-book-bookmark"></i>
                 </button>
 
@@ -238,6 +206,23 @@ export const Libros = ({libro}) => {
             </div>
           </div>
           <div className="blanco" id='blancos'>
+            {fechaDisponibles.map(element => {
+              let prestamo = element.prestamos
+                return(
+                  <div>
+                    <div>
+                      {
+                        prestamo.map((element2, key ) => {
+                          return(
+                            <p>{element2.fec_devolucion}</p>
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
+                  )
+              })
+            }
             <h2>{libro.nombre}</h2>
             {libro.autores.map(autor =>{
               return(
