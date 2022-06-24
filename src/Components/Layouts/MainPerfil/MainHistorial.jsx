@@ -12,31 +12,7 @@ import { actionTypes } from '../../../reducer';
 
 
 export const MainHistorial = () => {
- 
-  const reserva = () =>{
-    Swal.fire({
-      title: '¿Estas seguro de realizar la reserva?',
-      icon: 'info',
-      confirmButtonText: 'Si, reservar',
-      showCancelButton: true,
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-      }).then((resultado) => {
-      if (resultado.isConfirmed) {
 
-        Swal.fire(
-           'Reserva realizada exitosamente',
-           '',
-           'success'
-         )
-         peticionPost()
-         dispatch({
-          type: actionTypes.LIMPIAR_RESERVA,
-      })
-        
-       }
-     })
-  }
 
 
 
@@ -77,10 +53,50 @@ export const MainHistorial = () => {
         "id_estudiante": id_estudiante,
         "ejemplares": idEjemplares
     }).then(response=>{
-        console.log(response);
+      Swal.fire({
+        title: '¿Estas seguro de realizar la reserva?',
+        icon: 'info',
+        confirmButtonText: 'Si, reservar',
+        showCancelButton: true,
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true
+        }).then((resultado) => {
+        if (resultado.isConfirmed) {
+  
+          Swal.fire(
+             'Reserva realizada exitosamente',
+             '',
+             'success'
+           )
+           //peticionPost()
+           dispatch({
+            type: actionTypes.LIMPIAR_RESERVA,
+        })
+          
+         }
+       })
         
+
       }).catch(error => {
         console.log(error);
+
+        if(error.response.status === 401){
+          Swal.fire(
+            'El estudiante ha superado al limite de ejemplares prestados o reservados (3)',
+            '',
+            'info'
+          )
+        }
+
+        else if(error.response.status === 409){
+          Swal.fire(
+            'El estudiante ha cometido una infraccion por lo tanto no podra reservar libros',
+            '',
+            'info'
+          )
+        }
+
+        
       })
 
    
@@ -88,10 +104,9 @@ export const MainHistorial = () => {
      
     }
 
-    
 
 
-
+  
 
     useEffect(() => {
       peticionGet() 
@@ -113,7 +128,7 @@ export const MainHistorial = () => {
                     (
                       <>
                       {reservas.map((libro => <Checkoud key={libro.id} libro={libro}/>))}
-                      <button className='btn-confirmar-reserva' onClick={reserva} >confirmar</button>
+                      <button className='btn-confirmar-reserva' onClick={peticionPost} >confirmar</button>
                       </>
                       )
                 }
