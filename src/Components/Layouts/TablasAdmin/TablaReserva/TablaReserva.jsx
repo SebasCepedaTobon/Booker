@@ -6,6 +6,7 @@ import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 import libro from '../../../../assets/Imagenes/Libros/libro2.jpg';
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
+import '../../../../Static/TablaReserva.css'
 
 
 
@@ -226,20 +227,39 @@ export const TablaReserva = () => {
   const abrirPrestamos = () => {
 
     const overlayEjem = document.getElementById('overlayEjem')
-    const from_tablasEjem = document.querySelector('.box-ejemplares2')
+    const from_tablasEjem = document.querySelector('.box-prestamos')
     overlayEjem.style.visibility = "visible"
     from_tablasEjem.style.transform = "scale(1)"
     from_tablasEjem.style.opacity = "2"
+    ventanaCerrar()
   }
 
   const cerrarPrestamos = () => {
 
     const overlayEjem = document.getElementById('overlayEjem')
-    const from_tablasEjem = document.querySelector('.box-ejemplares2')
+    const from_tablasEjem = document.querySelector('.box-prestamos')
 
     overlayEjem.style.visibility = "hidden"
     from_tablasEjem.style.transform = "scale(0.6)"
     from_tablasEjem.style.opacity = "0"
+
+  }
+
+  const abrirPrestamos2 = () => {
+
+    const overlayEjem = document.getElementById('overlayEjem2')
+    const from_tablasEjem = document.querySelector('.box-prestamos2')
+    overlayEjem.style.visibility = "visible"
+    from_tablasEjem.style.transform = "scale(1)"
+  }
+
+  const cerrarPrestamos2 = () => {
+
+    const overlayEjem = document.getElementById('overlayEjem2')
+    const from_tablasEjem = document.querySelector('.box-prestamos2')
+
+    overlayEjem.style.visibility = "hidden"
+    from_tablasEjem.style.transform = "scale(0.6)"
 
   }
 
@@ -371,25 +391,24 @@ export const TablaReserva = () => {
       </div>
 
       <div id='overlayEjem' className="overlay">
-        <div id='box-ejeplar2' className="box-ejemplares2">
-          <div className="boxTablaEjemplares">
-            <div className='Tabla'>
-              <i onClick={cerrarPrestamos} class="fa-solid fa-xmark"></i>
+        <div id='box-ejeplar2' className="box-prestamos ">
+          <div className="boxPrestamos">
+            <div className='tablaPrestamos'>
+              {/* <i onClick={cerrarPrestamos} class="fa-solid fa-xmark"></i> */}
               <div className="TituloLibro">
               </div>
               <div className='tr'>
-                <div className='td-0'><p>Nombre Libro</p></div>
+                <div className='td-1'><p>Documento Estudiante</p></div>
                 <div className='td-1'><p>Nombre Estudiante</p></div>
                 <div className='td-2'><p>Fecha Prestamo</p></div>
                 <div className='td-6'><p>Estado</p></div>
-                <div className='td-3'><p>Fecha Entrega</p></div>
-                <div className='td-5'><p>Opciones</p></div>
+                <div className='td-5 td-0infra'><p>Añadir Fecha<br/>Devolución</p></div>
               </div>
-              <div className="scrollEjemplares">
+              <div className="scrollPrestamos">
                 <div className='Tabla-Info' >
                   <div className='tr-1'>
-                    <div className='td-0'>
-                      <p></p>
+                    <div className='td-1'>
+                      <p>{estudiantes.doc_estudiante}</p>
                     </div>
                     <div className='td-1'>
                       <p className='L1P'>{estudiantes.nombres}</p>
@@ -410,17 +429,62 @@ export const TablaReserva = () => {
                       }
                     </div>
 
-                    <div className='td-3'>
-                      <p>
+                    { /*QUEDO EN LOS BOTONES*/}
+                    <div className='td-5'>
+                      <i class="fa-solid fa-calendar-plus" onClick={abrirPrestamos2} ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                      </p>
+    {/* PRESTAMOS DETALLADOS */}
+      <div id='overlayEjem2' className="overlay">
+        <div id='box-ejeplar2' className="box-prestamos2 ">
+          <div className="boxPrestamos2">
+            <div className='tablaPrestamos'>
+              <i onClick={cerrarPrestamos2} class="fa-solid fa-xmark"></i>
+              <div className="TituloLibro">
+              </div>
+              <div className='tr'>
+                <div className='td-1'><p>Documento Estudiante</p></div>
+                <div className='td-1'><p>Nombre Estudiante</p></div>
+                <div className='td-2'><p>Fecha Prestamo</p></div>
+                <div className='td-6'><p>Estado</p></div>
+                <div className='td-5 td-0infra'><p>Añadir Fecha<br/>Devolución</p></div>
+              </div>
+              <div className="scrollPrestamos">
+                <div className='Tabla-Info' >
+                  <div className='tr-1'>
+                    <div className='td-1'>
+                      <p>{estudiantes.doc_estudiante}</p>
+                    </div>
+                    <div className='td-1'>
+                      <p className='L1P'>{estudiantes.nombres}</p>
+                    </div>
+                    <div className='td-2'>
+                      <p>{prestamos.fec_prestamo}</p>
+                    </div>
+
+                    <div className="td-6">
+                      {prestamos.estado === "AC" &&
+                        <p>Ejemplar<br />Prestado</p>
+                      }
+                      {prestamos.estado === "IV" &&
+                        <p>Prestamo Finalizado</p>
+                      }
+                      {prestamos.estado === "" &&
+                        <p>Prestamo en <br />Infración</p>
+                      }
                     </div>
 
                     { /*QUEDO EN LOS BOTONES*/}
                     <div className='td-5'>
-                      <i class="fa-solid fa-trash-can" ></i>
+                      <i class="fa-solid fa-calendar-plus"></i>
                     </div>
-
                   </div>
                 </div>
               </div>
