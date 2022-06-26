@@ -22,32 +22,23 @@ export const MainLogin = () => {
     e.preventDefault()
   }
 
-
   const change = async (e) => {
 
     await setState({
 
       form: {
-
         ...state.form,
-
         [e.target.name]: e.target.value
       }
     })
   }
 
   const btnIngresar = () => {
-
-
-
-
     let url = "https://bookerbackapi.herokuapp.com"
 
     axios.post(url, state.form)
-
       .then(res => {
         console.log(res)
-
 
         if (res.status === 200 || res.status === 201) {
 
@@ -69,7 +60,6 @@ export const MainLogin = () => {
 
 
           console.log("logueado correctamente")
-
 
         } else {
 

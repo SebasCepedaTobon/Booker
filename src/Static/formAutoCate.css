@@ -128,7 +128,7 @@
 
 .boxAuto{
   width: 372px;
-  height: 340px;
+  height: auto;
 }
 
 .boxIdioma{
@@ -180,4 +180,41 @@
 .swal2-container{
   z-index: 4001 !important;
 }
+
+/*CAMBIAR CONTRASEÑA*/
+
+.cambioPassword{
+  visibility: visible !important;
+  z-index: 1000 !important;
+}
+
+.cambioPass2{
+  width: 383px !important;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.cambioPass2 form{
+  padding: 0px 15px 22px !important;
+}
+
+.cambioPass2 button{
+  width: 270px !important;
+}
+
+/*Recuperar*/
+.recuperar{
+  visibility: hidden;
+}
+
+#Auto11{
+  z-index: 4000;
+}
+
+.swal2-popup{
+  width: 23em !important;
+  left: -491px !important;
+}
+
 

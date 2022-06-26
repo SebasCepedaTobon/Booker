@@ -86,18 +86,8 @@ export const MainHistorial = () => {
             'info'
           )
         }
-
-        
       })
-
-   
-
-     
     }
-
-
-
-  
 
     useEffect(() => {
       peticionGet() 

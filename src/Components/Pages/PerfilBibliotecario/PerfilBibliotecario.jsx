@@ -243,6 +243,12 @@ export const PerfilBibliotecario = () => {
                     <span></span>
                   </div>
                 </div>
+                <NavLink className="card-Admin" to="/CambiarContrasena">
+                  <div className="btn-perfilBibliotecario btn-libroPerfil">
+                    <p>Cambio de contraseña</p>
+                    <span></span>
+                  </div>
+                </NavLink>
                 <NavLink className="card-Admin" to="/TEstudiantes">
                   <div className="btn-perfilBibliotecario btn-libroPerfil">
                     <p>Libros Favoritos</p>

@@ -63,7 +63,7 @@ export const TablaPrestamo = () => {
   }
 
 const [prestamos, setPrestamos] = useState([])
-const [prestamos1, setPrestamos1] = useState({})
+const [prestamos1, setPrestamos1] = useState()
 const [detallesPrestamo, setDetallesPrestamo] = useState([])
 const [estudiantes, setEstudiantes] = useState({})
 
@@ -87,8 +87,8 @@ useEffect(() => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + libro.id_de_prestamo)
       .then(response => {
         fechaPrestamo = libro.fec_prestamo
-        setPrestamos1(response.data);
-        console.log(response.data);
+        setPrestamos1([response.data]);
+        console.log([response.data]);
         setEstudiantes(response.data.id_estudiante)
         setDetallesPrestamo(response.data.prestamos)
         abrirPrestamos()
@@ -160,6 +160,30 @@ useEffect(() => {
     })
   }
 
+
+  const preInfracion = (infra) => {
+    
+    console.log(infra);
+    if (infra.estado === 'AC') {
+      infra.estado = 'INF'      
+    }else if (infra.estado === 'C') {
+      alert('Este prestamo fue devuelto')
+    }
+    updateDataInfracion(infra)
+  }
+
+  const updateDataInfracion = async (infra) =>{
+    console.log(infra)
+
+    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+infra.id_de_prestamo+'/'
+    await axios.put(endpoint, infra)
+    .then((res) => {
+        console.log(res);
+        alert('Infración creada')
+    }).catch(error => {
+      console.log(error);
+    })
+  }
 
   return (
 
@@ -242,6 +266,9 @@ useEffect(() => {
               <div className="scrollPrestamos">
                 <div className='Tabla-Info' >
                   <div className='tr-1'>
+                    {
+                      console.log(prestamos1)
+                    }
                     <div className='td-1'>
                       <p>{estudiantes.doc_estudiante}</p>
                     </div>
@@ -249,19 +276,10 @@ useEffect(() => {
                       <p className='L1P'>{estudiantes.nombres}<br/>{estudiantes.apellidos}</p>
                     </div>
                     <div className='td-2'>
-                      <p>{prestamos1.fec_prestamo}</p>
+                      <p>{prestamos.fec_prestamo}</p>
                     </div>
-
                     <div className="td-6">
-                      {prestamos1.estado === "AC" &&
-                        <p>Ejemplar<br />Préstado</p>
-                      }
-                      {prestamos1.estado === "IV" &&
-                        <p>Préstamo Finalizado</p>
-                      }
-                      {prestamos1.estado === "INF" &&
-                        <p>Préstamo en <br />Infración</p>
-                      }
+                      <button onClick={()=>{preInfracion(prestamos1)}} >Confirmar Infración</button>
                     </div>
                   </div>
                 </div>

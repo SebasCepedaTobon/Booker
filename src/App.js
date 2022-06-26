@@ -46,9 +46,7 @@ import { Favoritos } from './Components/Pages/Perfil/Favoritos';
 import { ImportarEstudiantes } from './Components/Pages/ImportarEstudiantes/ImportarEstudiantes';
 import { PerfilBibliotecario } from './Components/Pages/PerfilBibliotecario/PerfilBibliotecario';
 import { NuevoPrestamo } from './Components/Layouts/TablasAdmin/TablaPrestamo/NuevoPrestamo';
-
-
-
+import { CambiarContrasena } from './Components/Pages/PerfilBibliotecario/CambiarContrasena';
 
 function App() {
   
@@ -98,7 +96,9 @@ function App() {
         <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
         <Route path='/ImportarEstudiantes' element={<ImportarEstudiantes/>}/>
         <Route path='/PerfilBibliotecario' element={<PerfilBibliotecario/>}/>
+        <Route path='/CambiarContrasena' element={<CambiarContrasena/>}/>
         <Route path='/NuevoPrestamo' element={<NuevoPrestamo/>}/>
+        
         <Route path='/libros' element={<Tlibros/>}/>
         <Route path='/Eventos/:id_evento/' element={<Eventos/>}/>
         
