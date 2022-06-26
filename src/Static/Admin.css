@@ -196,6 +196,7 @@
     width: 40px;
 }
 
+
 .td-1{
     width: 16%;
     height: 100%;
@@ -208,7 +209,13 @@
 
 .tr-1 .documento{
     width: 80%;
-    
+}
+
+.td-4 .img{
+    width: 40px;
+    height: 60px;
+    margin: 2px;
+    border-radius: 5px;
 }
 
 .td-2{

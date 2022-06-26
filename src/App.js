@@ -45,6 +45,8 @@ import { Prestados } from './Components/Pages/Perfil/Prestados';
 import { Favoritos } from './Components/Pages/Perfil/Favoritos';
 import { ImportarEstudiantes } from './Components/Pages/ImportarEstudiantes/ImportarEstudiantes';
 import { PerfilBibliotecario } from './Components/Pages/PerfilBibliotecario/PerfilBibliotecario';
+import { NuevoPrestamo } from './Components/Layouts/TablasAdmin/TablaPrestamo/NuevoPrestamo';
+
 
 
 
@@ -96,6 +98,7 @@ function App() {
         <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
         <Route path='/ImportarEstudiantes' element={<ImportarEstudiantes/>}/>
         <Route path='/PerfilBibliotecario' element={<PerfilBibliotecario/>}/>
+        <Route path='/NuevoPrestamo' element={<NuevoPrestamo/>}/>
         <Route path='/libros' element={<Tlibros/>}/>
         <Route path='/Eventos/:id_evento/' element={<Eventos/>}/>
         

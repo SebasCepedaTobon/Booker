@@ -12,6 +12,7 @@ import '../../../../Static/TablaReserva.css'
 
 let id_estudianteId
 let ejemplaresId = []
+let id_bibliotecario
 
 export const TablaReserva = () => {
 
@@ -59,9 +60,9 @@ export const TablaReserva = () => {
 
   const [reservas, setReservas] = useState([])
   const [form2, setForm2] = useState({})
-  const [prestamos, setPrestamos] = useState({})
+  const [prestamos, setPrestamos] = useState([])
   const [estudiantes, setEstudiantes] = useState({})
-  const [ejemplares, setEjemplares] = useState([])
+  const [detallesPrestamo, setDetallesPrestamo] = useState([])
 
 
   const peticionGet = () => {
@@ -157,34 +158,36 @@ export const TablaReserva = () => {
           peticionGet()
           ventanaCerrar()
         }
-
-
         console.log(res);
         const id_prestamos = res.data.id_de_prestamo
         peticionGetPrestamos(id_prestamos)
-
-
+        
       }).catch(error => {
         console.log(error.message);
       })
   }
+
+
+  /*------------------------------------------------ENPIESA DETALLES PRESTAMOS-----------------------------------*/
+
 
   const peticionGetPrestamos = (id_prestamos) => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + id_prestamos)
       .then(response => {
         setPrestamos(response.data);
-        setEstudiantes(response.data.id_estudiante)
-        setEjemplares(response.data.prestamos)
         console.log(response.data);
-      }).catch(error => {
+        setEstudiantes(response.data.id_estudiante)
+        setDetallesPrestamo(response.data.prestamos)
+      }).catch(error => { 
         console.log(error.message);
       })
   }
 
 
-  useEffect(() => {
-    peticionGet()
 
+  useEffect(() => {
+    id_bibliotecario = localStorage.getItem('id_bibliotecario')
+    peticionGet()
   }, []);
 
   const ventanaAbrir = () => {
@@ -218,7 +221,6 @@ export const TablaReserva = () => {
 
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?search=" + inputBuscar.value).then(response => {
       setReservas(response.data);
-
     }).catch(error => {
       console.log(error.message);
     })
@@ -232,6 +234,7 @@ export const TablaReserva = () => {
     from_tablasEjem.style.transform = "scale(1)"
     from_tablasEjem.style.opacity = "2"
     ventanaCerrar()
+    abrirPrestamos2()
   }
 
   const cerrarPrestamos = () => {
@@ -242,16 +245,17 @@ export const TablaReserva = () => {
     overlayEjem.style.visibility = "hidden"
     from_tablasEjem.style.transform = "scale(0.6)"
     from_tablasEjem.style.opacity = "0"
-
+    cerrarPrestamos2()
   }
 
   const abrirPrestamos2 = () => {
-
     const overlayEjem = document.getElementById('overlayEjem2')
     const from_tablasEjem = document.querySelector('.box-prestamos2')
     overlayEjem.style.visibility = "visible"
     from_tablasEjem.style.transform = "scale(1)"
+    from_tablasEjem.style.opacity = "2" 
   }
+
 
   const cerrarPrestamos2 = () => {
 
@@ -260,9 +264,36 @@ export const TablaReserva = () => {
 
     overlayEjem.style.visibility = "hidden"
     from_tablasEjem.style.transform = "scale(0.6)"
+    from_tablasEjem.style.opacity = "0"
 
   }
 
+  const antesHandleChange = (data) =>{
+    const input1 = document.getElementById(data.id_prestamo)
+
+    data.fec_devolucion = input1.value
+
+    handleSubmitPrestamos(data)        
+  }
+
+  const handleSubmitPrestamos = (data) =>{
+    console.log(data);
+    console.log(data.id_ejemplar.id_libro.id_libro);
+    updateDataPrestamos(data)
+  }
+
+  const updateDataPrestamos = async (data) =>{
+    console.log(data)
+    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/prestamos/"+data.id_prestamo+'/'
+    await axios.put(endpoint, data)
+    .then((res) => {
+        /* peticionGetPrestamosUpdate() */
+        console.log(res);
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+  
 
 
   return (
@@ -301,11 +332,11 @@ export const TablaReserva = () => {
               <p className='cambioFiltro'></p>
               <div id='buscador' className="buscador">
                 <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
-                <i onClick={peticionGetBusqueda} class="fa-solid fa-magnifying-glass"></i>
+                <i onClick={peticionGetBusqueda} className="fa-solid fa-magnifying-glass"></i>
               </div>
             </div>
             <div className='tr'>
-              <div className='td-0'><p>Imagen</p></div>
+              <div className='td-4'><p>Imagen</p></div>
               <div className='td-1' ><p>Nombre Libro</p></div>
               <div className='td-1'><p>Nombre Estudiante</p></div>
               <div className='td-1'><p>Fecha Reserva</p></div>
@@ -319,20 +350,20 @@ export const TablaReserva = () => {
                   let l = reservas.ejemplares
                   return (
                     <div key={index} className='tr-1'>
-                      <div className='td-0'>
-                        {l.map((element, _) => (
-                          <Imagenes clase='img' url={element.id_libro.imagen_libro} />
+                      <div className='td-4'>
+                        {l.map((element, key) => (
+                          <Imagenes key={key} clase='img' url={element.id_libro.imagen_libro} />
                         ))
                         }
                       </div>
                       <div className='td-1'>
-                        {l.map((element, _) => (
-                          <p className='L1P'>{element.id_libro.nombre} </p>
+                        {l.map((element, key) => (
+                          <p key={key} className='L1P'>-- {element.id_libro.nombre} <br /></p>
                         ))
                         }
                       </div>
                       <div className='td-1'><p>{reservas.id_estudiante.nombres}</p></div>
-                      <div className='td-1'><input className='fechaReserva' value={reservas.fecha_reserva} disabled minlength="4" maxlength="8" size="6" /></div>
+                      <div className='td-1'><p>{reservas.fecha_reserva}</p></div>
                       <div className='td-0'>
                         <div className="estadoTablas">
                           {reservas.estado === "AC" &&
@@ -347,8 +378,8 @@ export const TablaReserva = () => {
                         </div>
                       </div>
                       <div className='td-4'>
-                        <i onClick={() => updateData(reservas)} class="fa-solid fa-pen-to-square"></i>
-                        <i onClick={() => eliminacion(reservas)} class="fa-solid fa-pen-to-square"></i>
+                        <i onClick={() => updateData(reservas)} className="fa-solid fa-pen-to-square"></i>
+                        <i onClick={() => eliminacion(reservas)} className="fa-solid fa-pen-to-square"></i>
                       </div>
                     </div>
                   )
@@ -356,9 +387,6 @@ export const TablaReserva = () => {
                 )}
             </div>
           </div>
-
-          <button onClick={peticionPost} ></button>
-
         </div>
       </div>
 
@@ -367,7 +395,7 @@ export const TablaReserva = () => {
           <div className='RM-from'>
             <div className="from-Titulo">
               <div className="Desactivar-From">
-                <i onClick={ventanaCerrar} class="fa-solid fa-xmark"></i>
+                <i onClick={ventanaCerrar} className="fa-solid fa-xmark"></i>
               </div>
               <h1>ESTADO DE RESERVA</h1>
             </div>
@@ -394,15 +422,15 @@ export const TablaReserva = () => {
         <div id='box-ejeplar2' className="box-prestamos ">
           <div className="boxPrestamos">
             <div className='tablaPrestamos'>
-              {/* <i onClick={cerrarPrestamos} class="fa-solid fa-xmark"></i> */}
               <div className="TituloLibro">
+                <p className='pTituloDetallesP'>Actualizar Fecha devolución</p>
+                <i onClick={cerrarPrestamos} className="fa-solid fa-xmark"></i>
               </div>
               <div className='tr'>
                 <div className='td-1'><p>Documento Estudiante</p></div>
                 <div className='td-1'><p>Nombre Estudiante</p></div>
                 <div className='td-2'><p>Fecha Prestamo</p></div>
                 <div className='td-6'><p>Estado</p></div>
-                <div className='td-5 td-0infra'><p>Añadir Fecha<br/>Devolución</p></div>
               </div>
               <div className="scrollPrestamos">
                 <div className='Tabla-Info' >
@@ -411,7 +439,7 @@ export const TablaReserva = () => {
                       <p>{estudiantes.doc_estudiante}</p>
                     </div>
                     <div className='td-1'>
-                      <p className='L1P'>{estudiantes.nombres}</p>
+                      <p className='L1P'>{estudiantes.nombres}<br/>{estudiantes.apellidos}</p>
                     </div>
                     <div className='td-2'>
                       <p>{prestamos.fec_prestamo}</p>
@@ -427,11 +455,6 @@ export const TablaReserva = () => {
                       {prestamos.estado === "" &&
                         <p>Prestamo en <br />Infración</p>
                       }
-                    </div>
-
-                    { /*QUEDO EN LOS BOTONES*/}
-                    <div className='td-5'>
-                      <i class="fa-solid fa-calendar-plus" onClick={abrirPrestamos2} ></i>
                     </div>
                   </div>
                 </div>
@@ -442,50 +465,44 @@ export const TablaReserva = () => {
       </div>
 
     {/* PRESTAMOS DETALLADOS */}
-      <div id='overlayEjem2' className="overlay">
+      <div id='overlayEjem2' className="overlayDePrestamos">
         <div id='box-ejeplar2' className="box-prestamos2 ">
           <div className="boxPrestamos2">
             <div className='tablaPrestamos'>
-              <i onClick={cerrarPrestamos2} class="fa-solid fa-xmark"></i>
               <div className="TituloLibro">
               </div>
               <div className='tr'>
-                <div className='td-1'><p>Documento Estudiante</p></div>
-                <div className='td-1'><p>Nombre Estudiante</p></div>
+                <div className='td-0'><p>Imagen Libro</p></div>
+                <div className='td-1'><p>Nombre Libro</p></div>
                 <div className='td-2'><p>Fecha Prestamo</p></div>
-                <div className='td-6'><p>Estado</p></div>
-                <div className='td-5 td-0infra'><p>Añadir Fecha<br/>Devolución</p></div>
+                <div className='td-4'><p>Fecha Devolución</p></div>
               </div>
-              <div className="scrollPrestamos">
+              <div className="scrollDetalles">
                 <div className='Tabla-Info' >
-                  <div className='tr-1'>
-                    <div className='td-1'>
-                      <p>{estudiantes.doc_estudiante}</p>
-                    </div>
-                    <div className='td-1'>
-                      <p className='L1P'>{estudiantes.nombres}</p>
-                    </div>
-                    <div className='td-2'>
-                      <p>{prestamos.fec_prestamo}</p>
-                    </div>
+                  {detallesPrestamo.map((element, key) => {
+                    return(
+                      <div key={key} className='tr-1'>
+                        <div className='td-0'>
+                          <Imagenes clase='img' url={element.id_ejemplar.id_libro.imagen_libro} />
+                        </div>
+                        <div className='td-1'>
+                          <p>{element.id_ejemplar.id_libro.nombre}</p>
+                        </div>
+                        <div className='td-2'>
+                          <p>{prestamos.fec_prestamo}</p>
+                        </div>
 
-                    <div className="td-6">
-                      {prestamos.estado === "AC" &&
-                        <p>Ejemplar<br />Prestado</p>
-                      }
-                      {prestamos.estado === "IV" &&
-                        <p>Prestamo Finalizado</p>
-                      }
-                      {prestamos.estado === "" &&
-                        <p>Prestamo en <br />Infración</p>
-                      }
+                        { /*QUEDO EN LOS BOTONES*/}
+                        <div className='td-4'>
+                          <div className="box-inputRP">
+                            <input type="date" id={element.id_prestamo} onChange={()=>{antesHandleChange(element)}} required/>
+                            <label>Fecha devolución</label>
+                          </div>
+                        </div>
                     </div>
-
-                    { /*QUEDO EN LOS BOTONES*/}
-                    <div className='td-5'>
-                      <i class="fa-solid fa-calendar-plus"></i>
-                    </div>
-                  </div>
+                    )
+                  })
+                  }
                 </div>
               </div>
             </div>
