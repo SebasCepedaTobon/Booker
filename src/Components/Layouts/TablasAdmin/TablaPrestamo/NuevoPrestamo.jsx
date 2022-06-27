@@ -67,7 +67,8 @@ export const NuevoPrestamo = () => {
   }
 
   const peticionGetTreservas = () => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=634&estado=AC")
+    console.log(idEstudiante);
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=" + idEstudiante +  "&estado=AC")
     .then(response => {
       console.log(response.data.length)
       tamaReservas = response.data.length
@@ -77,7 +78,7 @@ export const NuevoPrestamo = () => {
   }
 
   const peticionGetTPrestamos = () => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&id_estudiante__id_estudiante=634")
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&id_estudiante__id_estudiante=" + idEstudiante)
     .then(response => {
       console.log(response.data.length)
       tamaPrestamo = response.data.length
@@ -156,8 +157,6 @@ export const NuevoPrestamo = () => {
 
   useEffect(() => {
     peticionGet()
-    peticionGetTPrestamos()
-    peticionGetTreservas()
     ventanaAbrir()
   }, [])
 
@@ -237,6 +236,7 @@ export const NuevoPrestamo = () => {
     }).catch(error => {
       console.log(error.message);
     })
+    
   }
 
 
@@ -423,7 +423,10 @@ export const NuevoPrestamo = () => {
               </div>
               <p id='noExiste'></p>
               <div className="btnsFormulario">
-                <button className="btnFor btn-actializar">
+                <button onClick={()=>{
+                  peticionGetTreservas()
+                  peticionGetTPrestamos()
+                }} className="btnFor btn-actializar">
                   VALIDAR
                 </button>
               </div>

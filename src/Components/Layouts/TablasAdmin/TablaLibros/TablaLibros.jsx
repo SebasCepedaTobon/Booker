@@ -41,17 +41,25 @@ export const TablaLibros = () => {
   const [form2, setForm2] = useState({})
 
   const peticionGet = () => {
+
+    const libros22 = document.getElementById('libros22')
+
+    libros22.textContent = "Libros"
+
     axios.get(urlOrdenada)
     .then(response => {
       setLibros(response.data);
-
+      console.log(response.data);
+      console.log(response.data.estado);
     }).catch(error => {
       console.log(error.message);
     })
   }
 
   const peticionGetNoDisponible = () => {
+    const libros22 = document.getElementById('libros22')
 
+    libros22.textContent = "Libros Inactivos"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=IV")
     .then(response => {
       setLibros(response.data);
@@ -62,7 +70,9 @@ export const TablaLibros = () => {
   }
 
   const peticionGetDisponible = () => {
+    const libros22 = document.getElementById('libros22')
 
+    libros22.textContent = "Libros Activos"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV")
     .then(response => {
       setLibros(response.data);
@@ -190,6 +200,7 @@ export const TablaLibros = () => {
       id_editorial: Number(id_editorial.value),
       categorias: cate_idM,
       autores: auto_idM,
+      seleccionado: "SL",
       estado: estado.value
     })
     console.log(form2);
@@ -472,13 +483,28 @@ export const TablaLibros = () => {
 
   const librosBusqueda = () => {
     const inputBuscar = document.getElementById('elInput')
+    console.log(inputBuscar.value)
+    const libros22 = document.getElementById('libros22')
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?search=" + inputBuscar.value).then(response => {
+    let estado = ""
+    if (libros22.textContent === "Libros Activos") {
+      estado = "AV"
+    }else if (libros22.textContent === "Libros Inactivos") {
+      estado = "IV"
+    }
+
+    if (inputBuscar.value === "" && libros22.textContent === "Libros") {
+      peticionGet()
+    }else{
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado="+ estado +"&search=" + inputBuscar.value)
+      .then(response => {
+        console.log("https://bookerbackapi.herokuapp.com/modulos/libros/?estado="+ estado +"&search=" + inputBuscar.value);
       setLibros(response.data);
-
+      console.log(response.data);
     }).catch(error => {
       console.log(error.message);
     })
+    }
   }
 
   /*#################################TEMA DE EJEMPLARES###############################*/
@@ -628,7 +654,7 @@ export const TablaLibros = () => {
 
             </div>
             <div className="TituloLibro">
-              <p>Libros</p>
+              <p id='libros22'></p>
 
               <div id='buscador' className="buscador">
                 <input onChange={librosBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
@@ -671,6 +697,11 @@ export const TablaLibros = () => {
                           a.map(element => element.nombres).join(', ')
                         }
 
+                      </p>
+                    </div>
+                    <div className='td-3'>
+                      <p>
+                        {libro.seleccionado}
                       </p>
                     </div>
 
