@@ -13,7 +13,7 @@ export const Checkoud = ({libro}) => {
 
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {nombre , id_libro, imagen_libro,  quantity } = libro;
+  const {nombre , id_libro, imagen_libro } = libro;
 
 
   const [{reservas}, dispatch] = useStateValue();
@@ -46,9 +46,6 @@ export const Checkoud = ({libro}) => {
         </div>
         <div className="blanco2">
           <h2>{libro.nombre}</h2>
-          <div className="cantidad-libros">
-            <p>{libro.quantity}</p>
-          </div>
         </div>
       </div>
       

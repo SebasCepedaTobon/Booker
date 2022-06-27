@@ -9,7 +9,7 @@ export const MainInfracciones = () => {
     <div className='contenedor-perfil'>
         <Navegacion3/>
         <BotonesPerfil/>
-        <div className="datos-perfil">
+        <div className="datos-perfil3">
             <h2 id='Tu-cuenta'>Tus Infracciones</h2>
             <div className="p-hr">
                 <h3>No tienes infracciones por ahora...</h3>

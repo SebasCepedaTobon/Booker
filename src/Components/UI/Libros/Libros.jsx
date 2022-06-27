@@ -20,22 +20,24 @@ let num = 0
 export const Libros = ({libro}) => {
 
 
+
   const id_estudiante = localStorage.getItem('id_estudiante')
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/favoritos/"
   let Favoritos = []
 
 
+
   const [ejemplaresDisponibles, setEjemplaresDisponibles] = useState([1])
   const [fechaDisponibles, setFechasDisponibles] = useState([])
+
 
 
   const peticionFechas = () =>{
 
     axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC")
     .then(response => {
-      setFechasDisponibles(response.data);
-      console.log(response.data);      
+      setFechasDisponibles(response.data);    
     }).catch(error => {
       console.log(error.message);
     })
@@ -48,13 +50,10 @@ export const Libros = ({libro}) => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro=" + id_libro)
     .then(response => {
       setEjemplaresDisponibles(response.data);
-      console.log(response.data);
 
       if (response.data.length === 0) {
-        console.log("Hola es 0");
         num = 1
       }else{
-        console.log("Hola es mayor a 0");
         num = 2
       }
     }).catch(error => {
@@ -115,11 +114,14 @@ export const Libros = ({libro}) => {
     } 
 
     useEffect(() => {
-
-      console.log(num +  " Es toy en num");
       
       if (num === 1) {
-        alert("Que no se puedeeeeee")
+        Swal.fire(
+          'El libro no esta disponible',
+          'Fecha estimada de disponibilidad: ' + id_prestamos,
+         
+          
+        )
         num = 0
          
       }else if(num === 2){
@@ -143,15 +145,17 @@ export const Libros = ({libro}) => {
       }
     })
     ventanaAlerta()
-    peticionPost()
+    peticionGet(id_libro)
+  
+
   }
 
 
-  const peticionGet=()=>{
-    console.log("entra get");
-    for (let index = 0; index < favoritos.length; index++) {
-        Favoritos.push( favoritos[index].id_libro)
-    }
+  const peticionGet=(id_libro)=>{
+    Favoritos.push(id_libro)
+
+    peticionPost()
+    
 
   }
 
@@ -172,10 +176,11 @@ export const Libros = ({libro}) => {
 
   useEffect(() => {
     peticionFechas()
-     peticionGet()
+
+  
  }, [])
  
-
+  let id_prestamos;
   return (
     <>
 
@@ -205,15 +210,16 @@ export const Libros = ({libro}) => {
             </div>
           </div>
           <div className="blanco" id='blancos'>
+            <div className="fechas-devolucion">
             {fechaDisponibles.map(element => {
               let prestamo = element.prestamos
                 return(
                   <div>
                     <div>
                       {
-                        prestamo.map((element2, key ) => {
+                        prestamo.map((element2) => {
                           return(
-                            <p>{element2.fec_devolucion}</p>
+                            id_prestamos = element2.fec_devolucion
                           )
                         })
                       }
@@ -222,6 +228,9 @@ export const Libros = ({libro}) => {
                   )
               })
             }
+
+            </div>
+            
             <h2>{libro.nombre}</h2>
             {libro.autores.map(autor =>{
               return(

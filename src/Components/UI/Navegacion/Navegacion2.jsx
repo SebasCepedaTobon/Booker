@@ -62,11 +62,51 @@ export const Navegacion2 = () => {
     }
   }
 
+
+  
+  const [libros, setLibros] = useState([])
+  console.log(libros)
+
+
+  const [busqueda, setBusqueda] = useState("");
+
+
+  const buscar = (e) => {
+    e.preventDefault();
+    fetch('https://bookerbackapi.herokuapp.com/modulos/libros/?search='+busqueda)
+    .then(res => res.json())
+    .then(data =>{
+      setLibros(data)
+    })
+
+
+  }
+
+
+  const cambiarState = (e) =>{
+    setBusqueda(e.target.value)
+  }
+
   return (
     <>
       <div className="nav2">
         <div className="logo">
           <NavLink to='/Home'><Imagenes url={logo} /></NavLink>
+        </div>
+        <div id="container">
+          <form  id="searchform" onSubmit={buscar}>
+            <label for="s">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+            <input 
+            type="text"  
+            placeholder="Buscar" 
+            class="" 
+            id="s" 
+            onChange={cambiarState}
+            />
+            <NavLink to={"/Busqueda/"+busqueda}><button type='submit'></button></NavLink>
+          </form>
         </div>
         <div className="nav-a2">
           <NavLink to='/Historial'>

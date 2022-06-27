@@ -2,15 +2,36 @@ import React, {useState, useEffect} from 'react'
 import { Navegacion3 } from '../../UI/Navegacion/Navegacion3'
 import { Libros } from '../../UI/Libros/Libros';
 import { Spinner } from '../../UI/Spinner/Spinner';
-import { actionTypes } from '../../../reducer';
-import { useStateValue } from '../../../StateProvider'
 import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
+import { Categorias } from '../../UI/Categorias/Categorias';
 
 export const MainTLibros = () => {
 
 
-    const [libros, setLibros] = useState([])
     const [cargando, setCargando] = useState(true)
+
+    
+    const [libros, setLibros] = useState([])
+
+
+  const [busqueda, setBusqueda] = useState("");
+
+
+  const buscar = (e) => {
+    e.preventDefault();
+    fetch('https://bookerbackapi.herokuapp.com/modulos/libros/?search='+busqueda)
+    .then(res => res.json())
+    .then(data =>{
+      setLibros(data)
+    })
+
+
+  }
+
+
+  const cambiarState = (e) =>{
+    setBusqueda(e.target.value)
+  }
   
   
   
@@ -32,7 +53,18 @@ export const MainTLibros = () => {
   return (
     <>
         <Navegacion3/>
+        {/*<Categorias/>*/}
+       
         <div className="contendor-cards-busquedas">
+        <form className="barra-busqueda" onSubmit={buscar}>
+                
+                <input 
+                  type="text" 
+                  placeholder='BUSCAR' 
+                  id='Buscador' 
+                  onChange= {cambiarState}
+                />
+        </form>
             <div className="cards-busquedas">
                 {libros.map((libro) => (
                 <Libros

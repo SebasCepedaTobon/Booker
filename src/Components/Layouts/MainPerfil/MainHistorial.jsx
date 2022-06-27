@@ -13,6 +13,32 @@ import { actionTypes } from '../../../reducer';
 
 export const MainHistorial = () => {
 
+const reservar = () =>{
+  Swal.fire({
+    title: '¿Estas seguro de realizar la reserva?',
+    icon: 'info',
+    confirmButtonText: 'Si, reservar',
+    showCancelButton: true,
+    cancelButtonText: 'No, cancelar',
+    reverseButtons: true
+    }).then((resultado) => {
+
+    if (resultado.isConfirmed) {
+
+      peticionPost()
+
+  
+     
+
+      
+     }
+    
+   })
+
+}
+
+       
+
 
 
 
@@ -47,34 +73,25 @@ export const MainHistorial = () => {
 
 
     const peticionPost=()=>{
+
+
       
       axios.post(url, {
         "estado": "AC",
         "id_estudiante": id_estudiante,
         "ejemplares": idEjemplares
-    }).then(response=>{
-      Swal.fire({
-        title: '¿Estas seguro de realizar la reserva?',
-        icon: 'info',
-        confirmButtonText: 'Si, reservar',
-        showCancelButton: true,
-        cancelButtonText: 'No, cancelar',
-        reverseButtons: true
-        }).then((resultado) => {
-        if (resultado.isConfirmed) {
-  
-          Swal.fire(
-             'Reserva realizada exitosamente',
-             '',
-             'success'
-           )
-           //peticionPost()
-           dispatch({
-            type: actionTypes.LIMPIAR_RESERVA,
+      }).then(response => {
+        dispatch({
+          type: actionTypes.LIMPIAR_RESERVA,
         })
-          
-         }
-       })
+        Swal.fire(
+          'Reserva realizada exitosamente',
+          '',
+          'success'
+        )
+
+      console.log(response.data)
+      
         
 
       }).catch(error => {
@@ -118,7 +135,7 @@ export const MainHistorial = () => {
     <div className='contenedor-perfil'>
         <Navegacion3/>
         <BotonesPerfil/>
-        <div className="datos-perfil">
+        <div className="datos-perfil3">
             <h2 id='Tu-cuenta'>Tus Reservas</h2>
             <div className="info-reservas">
                 {reservas.length === 0 ? (<div className='no-reserva'>
@@ -128,7 +145,7 @@ export const MainHistorial = () => {
                     (
                       <>
                       {reservas.map((libro => <Checkoud key={libro.id} libro={libro}/>))}
-                      <button className='btn-confirmar-reserva' onClick={peticionPost} >confirmar</button>
+                      <button className='btn-confirmar-reserva' onClick={reservar} >confirmar</button>
                       </>
                       )
                 }

@@ -22,10 +22,9 @@ export const Header = () => {
 
 
   const [libros, setLibros] = useState([])
-  console.log(libros)
+
 
   const [busqueda, setBusqueda] = useState("");
-  console.log(busqueda)
 
 
   const buscar = (e) => {

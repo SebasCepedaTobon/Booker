@@ -7,7 +7,6 @@ import '../../../slick.css'
 import { Libros } from '../../UI/Libros/Libros';
 import { CardsSlider } from '../../UI/CardsSlider/CardsSlider';
 import { Spinner } from '../../UI/Spinner/Spinner';
-import { Categorias } from '../../UI/Categorias/Categorias';
 import { Eventos } from '../../UI/Eventos/Eventos';
 import { Libromv } from '../../UI/LibroMV/Libromv';
 import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
@@ -75,6 +74,13 @@ export const MainHome = () => {
     cssEase: "linear",
     initialSlide: 0,
       responsive: [
+        {
+          breakpoint: 1400,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+          }
+        },
         {
           breakpoint: 1024,
           settings: {

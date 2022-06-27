@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useStateValue } from '../../../StateProvider'
 import { AbrirModal } from '../AbrirModal/AbrilModal';
 import { Imagenes } from '../Imagenes/Imagenes';
+import axios from 'axios'
 
 export const VentanaReserva = () => {
 
@@ -10,14 +11,28 @@ export const VentanaReserva = () => {
   const [{capLibro, reservas}, dispatch] = useStateValue();
   const {ocultarReserva} = AbrirModal()
   const [libros, setLibros] = useState()
+  const [idioma, setIdioma] = useState()
 
-  useEffect(()=> {
-    fetch("https://bookerbackapi.herokuapp.com/modulos/libros/" + capLibro)
-    .then(res => res.json())
-    .then((data) =>{
-      setLibros(data)
+
+  const url = "https://bookerbackapi.herokuapp.com/modulos/libros/" + capLibro 
+
+  const PedirDatos = () =>{
+    axios.get(url).then(response=>{
+      setLibros(response.data)
+      setIdioma(response.data.id_idioma.nombre)
+
+
+    }).catch(error=>{
+      console.log(error.message);
     })
-  }, [capLibro]);
+       
+
+  }
+
+  useEffect(() => {
+    PedirDatos() 
+
+  }, [capLibro])
 
 
 
@@ -27,8 +42,11 @@ export const VentanaReserva = () => {
           <div className="libros-check">
             <div className="nueva-reserva-close">
               <p id='p-reserva'>¡Tienes una nueva reserva!</p>
-              <a className='btn-vermas2' onClick={ocultarReserva}>
-                X
+              
+              <a className='btn-vermas2'>
+                <div className="Desactivar-From">
+                  <i class="fa-solid fa-xmark" onClick={ocultarReserva}></i>
+                </div>
               </a>
 
             </div>
@@ -47,10 +65,22 @@ export const VentanaReserva = () => {
           
             <div className="conatiner-info-reservas">
               <h2>{libros.nombre}</h2>
-              <p className='estado'>{libros.estado === "AV" ? 
-                (<p>Activo</p>):
-                (<p>Inactivo</p>)}
-              </p>
+              {libros.autores.map((libro)=>{
+                return(
+                  <p>{libro.nombres} {libro.apellidos}</p>
+                ) 
+                    
+              })}
+              <p>{idioma}</p>
+              {libros.categorias.map((libro)=>{
+                return(
+                  <p>{libro.nombre}</p>
+                ) 
+                    
+              })}
+       
+            
+           
               
 
             </div>

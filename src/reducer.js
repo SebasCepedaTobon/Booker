@@ -21,16 +21,9 @@ const reducer = (state, action) => {
     console.log(action)
     switch(action.type){
         case "ADD_TO_RESERVA":
-            let itemInCart = state.reservas.find(item => item.id_libro === action.item.id_libro)
-        return itemInCart ? {
+        return {
             ...state,
-            reservas: state.reservas.map(item=> 
-                item.id_libro===action.item.id_libro
-                ? {...item, quantity: item.quantity+1}
-                :item)
-        } :{
-            ...state,
-            reservas: [...state.reservas, {...action.item, quantity:1}],
+            reservas: [...state.reservas,action.item],
             
         }
         case "BORRAR_LIBRO":
@@ -57,16 +50,10 @@ const reducer = (state, action) => {
             
         }
         case "ADD_TO_FAVORITOS":
-            let itemInfavoritos = state.favoritos.find(item => item.id_libro === action.item.id_libro)
-        return itemInfavoritos ? {
+        
+        return  {
             ...state,   
-            favoritos: state.favoritos.map(item=> 
-                item.id_libro===action.item.id_libro
-                ? {...item, quantity: item.quantity+1}
-                :item)
-        } :{
-            ...state,
-            favoritos: [...state.favoritos, {...action.item, quantity:1}],
+            favoritos: [...state.favoritos, action.item],
             
         }
         default: return state;
