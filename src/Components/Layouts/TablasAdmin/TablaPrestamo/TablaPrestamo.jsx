@@ -13,6 +13,8 @@ import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 
 let fechaPrestamo
 
+let prestamoUpdate
+
 export const TablaPrestamo = () => {
   const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"
 
@@ -88,6 +90,7 @@ useEffect(() => {
       .then(response => {
         fechaPrestamo = libro.fec_prestamo
         setPrestamos1([response.data]);
+        prestamoUpdate.push(response.data)
         console.log([response.data]);
         setEstudiantes(response.data.id_estudiante)
         setDetallesPrestamo(response.data.prestamos)
@@ -155,9 +158,21 @@ useEffect(() => {
     axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
+        peticionGetDetalles(data)
     }).catch(error => {
       console.log(error);
     })
+  }
+
+  const peticionGetDetalles  = (data) => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/prestamos/" + data.id_prestamo)
+      .then(response => {
+        setDetallesPrestamo(response.data)
+        abrirPrestamos()
+      }).catch(error => { 
+        console.log(error.message);
+      })
+
   }
 
 
