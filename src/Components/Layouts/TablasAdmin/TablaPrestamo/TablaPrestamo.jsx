@@ -13,7 +13,7 @@ import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 
 let fechaPrestamo
 
-let prestamoUpdate
+let prestamoUpdate = []
 
 export const TablaPrestamo = () => {
   const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"
@@ -149,7 +149,6 @@ useEffect(() => {
     }else if (data.estado === 'C') {
       alert('Este prestamo esta ya esta completado')
     }
-
     updateEstado2(data)
   }
 
@@ -158,13 +157,13 @@ useEffect(() => {
     axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
-        peticionGetDetalles(data)
+        /* peticionGetDetalles(data) */
     }).catch(error => {
       console.log(error);
     })
   }
 
-  const peticionGetDetalles  = (data) => {
+/*   const peticionGetDetalles  = (data) => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/prestamos/" + data.id_prestamo)
       .then(response => {
         setDetallesPrestamo(response.data)
@@ -173,18 +172,20 @@ useEffect(() => {
         console.log(error.message);
       })
 
-  }
+  } */
 
 
   const preInfracion = (infra) => {
+
+    console.log(infra);
     
     console.log(infra);
     if (infra.estado === 'AC') {
-      infra.estado = 'INF'      
+      infra.estado = 'INF'
     }else if (infra.estado === 'C') {
-      alert('Este prestamo fue devuelto')
+      console.log('Este prestamo fue devuelto')
     }
-    updateDataInfracion(infra)
+    //updateDataInfracion(infra)
   }
 
   const updateDataInfracion = async (infra) =>{
@@ -194,7 +195,7 @@ useEffect(() => {
     await axios.put(endpoint, infra)
     .then((res) => {
         console.log(res);
-        alert('Infración creada')
+        console.log('Infración creada')
     }).catch(error => {
       console.log(error);
     })
@@ -246,7 +247,7 @@ useEffect(() => {
                         }
                       </div> */}
                       <div className='td-5'>
-                        <i onClick={()=>{peticionGetPrestamos(prestamo)}} className="fa-solid fa-pen-to-square"></i>
+                        <i onClick={()=>{peticionGetPrestamos(prestamo)}}  class="fa-solid fa-eye fa-eyeAdmin"></i>
                         <i onClick={()=>eliminacion(prestamo)} className="fa-solid fa-trash-can" ></i>
                       </div>
                     </div>
@@ -276,27 +277,31 @@ useEffect(() => {
                 <div className='td-1'><p>Documento Estudiante</p></div>
                 <div className='td-1'><p>Nombre Estudiante</p></div>
                 <div className='td-2'><p>Fecha Préstamo</p></div>
-                <div className='td-6'><p>Estado</p></div>
+                <div className='td-6'><p>Confirmar Infracción</p></div>
               </div>
               <div className="scrollPrestamos">
                 <div className='Tabla-Info' >
-                  <div className='tr-1'>
-                    {
-                      console.log(prestamos1)
-                    }
-                    <div className='td-1'>
-                      <p>{estudiantes.doc_estudiante}</p>
+                {
+                  prestamoUpdate.map((element, key) => {
+                    return(
+                    <div className='tr-1'>
+                      
+                      <div className='td-1'>
+                        <p>{element.id_estudiante.doc_estudiante}</p>
+                      </div>
+                      <div className='td-1'>
+                        <p className='L1P'>{element.id_estudiante.nombres}<br/>{element.id_estudiante.apellidos}</p>
+                      </div>
+                      <div className='td-2'>
+                        <p>{element.fec_prestamo}</p>
+                      </div>
+                      <div className="td-6">
+                        <button id='confirmasPP' onClick={()=>{preInfracion(element)}}>Confirmar Infración</button>
+                      </div>
                     </div>
-                    <div className='td-1'>
-                      <p className='L1P'>{estudiantes.nombres}<br/>{estudiantes.apellidos}</p>
-                    </div>
-                    <div className='td-2'>
-                      <p>{prestamos.fec_prestamo}</p>
-                    </div>
-                    <div className="td-6">
-                      <button onClick={()=>{preInfracion(prestamos1)}} >Confirmar Infración</button>
-                    </div>
-                  </div>
+                    )
+                  })
+                  }
                 </div>
               </div>
             </div>
@@ -341,13 +346,13 @@ useEffect(() => {
 
                         { /*QUEDO EN LOS BOTONES*/}
                         <div className="td-6">
-                          {prestamos1.estado === "AC" &&
+                          {element.estado === "AC" &&
                             <p>Prestado</p>
                           }
-                          {prestamos1.estado === "C" &&
+                          {element.estado === "C" &&
                             <p>Prestamo Finalizado</p>
                           }
-                          {prestamos1.estado === "INF" &&
+                          {element.estado === "INF" &&
                             <p>Prestamo con<br />Infración</p>
                           }
                         </div>

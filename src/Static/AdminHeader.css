@@ -140,21 +140,6 @@
 }
 
 
-
-
-.boxLibrosCantidad{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 120px;
-    margin-left: 200px;
-}
-
-.boxLibrosCantidad i{
-    font-size: 35px;
-    cursor: auto;
-}
-
 .notificacionCantidad{
     position: absolute;
     z-index: 1000;

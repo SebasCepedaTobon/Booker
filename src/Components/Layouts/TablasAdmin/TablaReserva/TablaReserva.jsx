@@ -379,7 +379,7 @@ export const TablaReserva = () => {
                       </div>
                       <div className='td-4'>
                         <i onClick={() => updateData(reservas)} className="fa-solid fa-pen-to-square"></i>
-                        <i onClick={() => eliminacion(reservas)} className="fa-solid fa-pen-to-square"></i>
+                        <i onClick={() => eliminacion(reservas)} className="fa-solid fa-trash-can"></i>
                       </div>
                     </div>
                   )
@@ -424,7 +424,7 @@ export const TablaReserva = () => {
             <div className='tablaPrestamos'>
               <div className="TituloLibro">
                 <p className='pTituloDetallesP'>Actualizar Fecha devolución</p>
-                <i onClick={cerrarPrestamos} className="fa-solid fa-xmark"></i>
+                <button id='confirmasPP' onClick={cerrarPrestamos}>Actualizar Prestamo</button>
               </div>
               <div className='tr'>
                 <div className='td-1'><p>Documento Estudiante</p></div>

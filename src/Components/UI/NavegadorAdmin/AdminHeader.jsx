@@ -90,16 +90,6 @@ export const AdminHeader = () => {
     <div className='AdminHeader'>
         <div className="HeaderAdmin">
             <p className='sitio'>Sitio Administrativo</p>
-            <div className='boxLibrosCantidad'>
-              <i className="fa-solid fa-book" data-title='Libros Disponibles'></i>
-              <div className="Disponible notificacionCantidad">
-                <p>{sizeDisponibles}</p>
-              </div>
-              <Imagenes url={NoDisponibles}  />
-              <div className="noDisponible notificacionCantidad">
-                <p>{sizeNoDisponibles}</p>
-              </div>
-            </div>
             <div className="HeaderIconos">
                 <div className="box-perfilHeader" onClick={FormFlotante}>
                     <div className="userHeader">

@@ -10,12 +10,13 @@ import '../../../../Static/TablasLibro.css'
 import '../../../../Static/TablaReserva.css'
 import { NavLink } from 'react-router-dom';
 
-
-
 let c = []
 let a = []
 let idEjemplares = []
 let idEstudiante
+let tamaReservas
+let tamaPrestamo
+let validarEstudiante
 
 
 export const NuevoPrestamo = () => {
@@ -24,29 +25,62 @@ export const NuevoPrestamo = () => {
   const urlEjem = "https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro="
   const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
   const [libros, setLibros] = useState([])
-
+  const [prestamos, setPrestamos] = useState([])
+  const [estudiantes, setEstudiantes] = useState({})
+  const [detallesPrestamo, setDetallesPrestamo] = useState([])
 
   const peticionGetPrestamo=(libro)=>{
+    
+    console.log(idEjemplares.length)
 
-    for (let index = 0; index < 1; index++) {
-      axios.get(urlEjem + libro.id_libro).then(response=>{
-
-        console.log(response.data)
-        idEjemplares.push(response.data[0].id_ejemplar)
-        console.log(idEjemplares)
-
-        ventanaAbrir()
-        
-      }).catch(error=>{
-        console.log(error.message);
+    let sumaP= idEjemplares.length + tamaReservas + tamaPrestamo
+    console.log(sumaP);
+    
+    if (sumaP >= 3) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Limite de prestamos superados',
+        showConfirmButton: false,
+        timer: 1600
       })
-    }
+    }else{
+      for (let index = 0; index < 1; index++) {
+        axios.get(urlEjem + libro.id_libro).then(response=>{
+          console.log(response.data)
+          idEjemplares.push(response.data[0].id_ejemplar)
+          console.log(idEjemplares)
+        }).catch(error=>{
+          console.log(error.message);
+        })
+      }
+    }    
   }
 
   const peticionGet = () => {
     axios.get(urlOrdenada)
     .then(response => {
       setLibros(response.data);
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+  const peticionGetTreservas = () => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=634&estado=AC")
+    .then(response => {
+      console.log(response.data.length)
+      tamaReservas = response.data.length
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+  const peticionGetTPrestamos = () => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&id_estudiante__id_estudiante=634")
+    .then(response => {
+      console.log(response.data.length)
+      tamaPrestamo = response.data.length
     }).catch(error => {
       console.log(error.message);
     })
@@ -84,14 +118,30 @@ export const NuevoPrestamo = () => {
         "ejemplares": idEjemplares
     }).then((res) => {
         console.log(res);
-        peticionDelete(id_reserva)
+        const id_prestamos = res.data.id_de_prestamo
+        peticionGetPrestamos(id_prestamos, id_reserva)
+        
     }).catch(error => {
         console.log(error);   
     }) 
   }
 
-  const peticionDelete = (id_reserva) => {
+  const peticionGetPrestamos = (id_prestamos, id_reserva) => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + id_prestamos)
+      .then(response => {
+        setPrestamos(response.data);
+        console.log(response.data);
+        setEstudiantes(response.data.id_estudiante)
+        setDetallesPrestamo(response.data.prestamos)
+        peticionDelete(id_reserva)
+        abrirPrestamos()
+      }).catch(error => { 
+        console.log(error.message);
+      })
+  }
 
+
+  const peticionDelete = (id_reserva) => {
     console.log(id_reserva)
 
     let endpoint = url + id_reserva + '/'
@@ -106,31 +156,46 @@ export const NuevoPrestamo = () => {
 
   useEffect(() => {
     peticionGet()
+    peticionGetTPrestamos()
+    peticionGetTreservas()
+    ventanaAbrir()
   }, [])
 
 
   
   const librosBusqueda = () => {
     const inputBuscar = document.getElementById('elInput')
+    console.log(inputBuscar.value)
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?search=" + inputBuscar.value).then(response => {
+    if (inputBuscar.value === "") {
+      peticionGet()      
+    }else{
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV&search=" + inputBuscar.value).then(response => {
       setLibros(response.data);
+      console.log(response.data);
     }).catch(error => {
       console.log(error.message);
     })
+    }
   }
 
 
   const ventanaAbrir = () => {
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
-
     overlay.style.visibility = "visible"
     from_tablas.style.transform = "scale(1)"
     from_tablas.style.opacity = "2"
   }
 
   const ventanaCerrar = () => {
+    const input = document.getElementById('inpurEstuden')
+
+    setTimeout(() => {
+      input.value = ""
+    }, 900);
+
+    
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
 
@@ -142,24 +207,119 @@ export const NuevoPrestamo = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    peticionPost()
+    const p = document.getElementById('noExiste')
+      if(validarEstudiante === 1){
+        p.textContent = "No coninciden"
+      }else{
+        ventanaCerrar()
+        p.textContent = ""
+      }
+       
   }
 
   const buscarEstudiante = () => {
+    console.log(validarEstudiante)
+    const p = document.getElementById('noExiste')
     const inpurEstuden = document.getElementById('inpurEstuden')
-
     axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=" + inpurEstuden.value)
     .then(response => {
       console.log(response.data)
-      console.log(response.data[0].id_estudiante)
-      idEstudiante = response.data[0].id_estudiante
+      if(response.data.length === 0){
+        p.textContent = "No coninciden"
+        validarEstudiante = 1
+      }else{
+        console.log(response.data[0].id_estudiante)
+        idEstudiante = response.data[0].id_estudiante
+        p.textContent = ""
+        validarEstudiante = 2
+      }
+      
     }).catch(error => {
       console.log(error.message);
     })
   }
 
 
+  const abrirPrestamos = () => {
 
+    const overlayEjem = document.getElementById('overlayEjem')
+    const from_tablasEjem = document.querySelector('.box-prestamos')
+    overlayEjem.style.visibility = "visible"
+    from_tablasEjem.style.transform = "scale(1)"
+    from_tablasEjem.style.opacity = "2"
+    ventanaCerrar()
+    abrirPrestamos2()
+  }
+
+  const cerrarPrestamos = () => {
+
+    const overlayEjem = document.getElementById('overlayEjem')
+    const from_tablasEjem = document.querySelector('.box-prestamos')
+
+    overlayEjem.style.visibility = "hidden"
+    from_tablasEjem.style.transform = "scale(0.6)"
+    from_tablasEjem.style.opacity = "0"
+    cerrarPrestamos2()
+  }
+
+  const abrirPrestamos2 = () => {
+    const overlayEjem = document.getElementById('overlayEjem2')
+    const from_tablasEjem = document.querySelector('.box-prestamos2')
+    overlayEjem.style.visibility = "visible"
+    from_tablasEjem.style.transform = "scale(1)"
+    from_tablasEjem.style.opacity = "2" 
+  }
+
+
+  const cerrarPrestamos2 = () => {
+
+    const overlayEjem = document.getElementById('overlayEjem2')
+    const from_tablasEjem = document.querySelector('.box-prestamos2')
+
+    overlayEjem.style.visibility = "hidden"
+    from_tablasEjem.style.transform = "scale(0.6)"
+    from_tablasEjem.style.opacity = "0"
+
+  }
+
+
+  const antesHandleChange = (data) =>{
+    const input1 = document.getElementById(data.id_prestamo)
+
+    data.fec_devolucion = input1.value
+
+    handleSubmitPrestamos(data)        
+  }
+
+  const handleSubmitPrestamos = (data) =>{
+    console.log(data);
+    console.log(data.id_ejemplar.id_libro.id_libro);
+    updateDataPrestamos(data)
+  }
+
+  const updateDataPrestamos = async (data) =>{
+    console.log(data)
+    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/prestamos/"+data.id_prestamo+'/'
+    await axios.put(endpoint, data)
+    .then((res) => {
+        /* peticionGetPrestamosUpdate() */
+        console.log(res);
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  const redireccionPrestamo = () => {
+    Swal.fire({
+      title: 'Prestamo actualizado correctamente',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    }).then((resultado) => {
+      if (resultado.isConfirmed) {
+        window.location.href = "/Prestamo"
+      }
+    })
+  }
 
 
   return (
@@ -173,9 +333,9 @@ export const NuevoPrestamo = () => {
         <div className='box-Tabla' >
           <div className='Tabla'>
             <div className='categoriasMN'  >
-              <div className='btnMulta' onClick={peticionGet} >
+              <div className='btnMulta' onClick={peticionPost} >
                 <div className='contenidoMultas' >
-                  <p>Libros disponibles para prestar</p>
+                  <p>Finalizar Prestamo</p>
                 </div>
               </div>
             </div>
@@ -249,25 +409,119 @@ export const NuevoPrestamo = () => {
           <div className='RM-from'>
             <div className="from-Titulo">
               <div className="Desactivar-From">
-                <i onClick={ventanaCerrar} className="fa-solid fa-xmark"></i>
+                <NavLink to='/Prestamo'>
+                  <i className="fa-solid fa-xmark"></i>
+                </NavLink>
               </div>
-              <h1>ESTADO DE RESERVA</h1>
+              <h1 className='h1MaxMin'>DOCUMENTO DEL ESTUDIANTE</h1>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="box-input">
                   <input type="text" id='inpurEstuden' onChange={buscarEstudiante} required />
                   <span></span>
-                  <label>Documento</label>
-                </div>
+                  <label>Documento Estudiante</label>
+              </div>
+              <p id='noExiste'></p>
               <div className="btnsFormulario">
                 <button className="btnFor btn-actializar">
-                  Actualizar
+                  VALIDAR
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
+      <div id='overlayEjem' className="overlay">
+        <div id='box-ejeplar2' className="box-prestamos ">
+          <div className="boxPrestamos">
+            <div className='tablaPrestamos'>
+              <div className="TituloLibro">
+                <p className='pTituloDetallesP'>Actualizar Fecha devolución</p>
+                <button id='confirmasPP' onClick={redireccionPrestamo}>Confirmar Prestamo</button>
+              </div>
+              <div className='tr'>
+                <div className='td-1'><p>Documento Estudiante</p></div>
+                <div className='td-1'><p>Nombre Estudiante</p></div>
+                <div className='td-2'><p>Fecha Prestamo</p></div>
+                <div className='td-6'><p>Estado</p></div>
+              </div>
+              <div className="scrollPrestamos">
+                <div className='Tabla-Info' >
+                  <div className='tr-1'>
+                    <div className='td-1'>
+                      <p>{estudiantes.doc_estudiante}</p>
+                    </div>
+                    <div className='td-1'>
+                      <p className='L1P'>{estudiantes.nombres}<br/>{estudiantes.apellidos}</p>
+                    </div>
+                    <div className='td-2'>
+                      <p>{prestamos.fec_prestamo}</p>
+                    </div>
+
+                    <div className="td-6">
+                      {prestamos.estado === "AC" &&
+                        <p>Ejemplar<br />Prestado</p>
+                      }
+                      {prestamos.estado === "IV" &&
+                        <p>Prestamo Finalizado</p>
+                      }
+                      {prestamos.estado === "" &&
+                        <p>Prestamo en <br />Infración</p>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {/* PRESTAMOS DETALLADOS */}
+      <div id='overlayEjem2' className="overlayDePrestamos">
+        <div id='box-ejeplar2' className="box-prestamos2 ">
+          <div className="boxPrestamos2">
+            <div className='tablaPrestamos'>
+              <div className="TituloLibro">
+              </div>
+              <div className='tr'>
+                <div className='td-0'><p>Imagen Libro</p></div>
+                <div className='td-1'><p>Nombre Libro</p></div>
+                <div className='td-2'><p>Fecha Prestamo</p></div>
+                <div className='td-4'><p>Fecha Devolución</p></div>
+              </div>
+              <div className="scrollDetalles">
+                <div className='Tabla-Info' >
+                  {detallesPrestamo.map((element, key) => {
+                    return(
+                      <div key={key} className='tr-1'>
+                        <div className='td-0'>
+                          <Imagenes clase='img' url={element.id_ejemplar.id_libro.imagen_libro} />
+                        </div>
+                        <div className='td-1'>
+                          <p>{element.id_ejemplar.id_libro.nombre}</p>
+                        </div>
+                        <div className='td-2'>
+                          <p>{prestamos.fec_prestamo}</p>
+                        </div>
+
+                        { /*QUEDO EN LOS BOTONES*/}
+                        <div className='td-4'>
+                          <div className="box-inputRP">
+                            <input type="date" id={element.id_prestamo} onChange={()=>{antesHandleChange(element)}} required/>
+                            <label>Fecha devolución</label>
+                          </div>
+                        </div>
+                    </div>
+                    )
+                  })
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>     
     </div>
   )
 }

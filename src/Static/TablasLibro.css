@@ -233,6 +233,22 @@
   font-size: 25px;
 }
 
+.anadirEjemplar{
+  background-color: #0d5fe4;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    height: 40px;
+    margin-top: 5px;
+    width: 200px;
+}
+
+.anadirEjemplar:hover{
+  background-color: #1b6ae9;
+}
+
 
 /*------------FIN ventana ejemplares-------------------*/
 
