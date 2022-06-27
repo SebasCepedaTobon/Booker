@@ -241,7 +241,7 @@ const modificarAuto = () =>{
               <div className='td-1' ><p>Titulo</p></div>
               <div className='td-3' ><p>Fecha Inicio</p></div>
               <div className='td-3' ><p>Fecha Finalización</p></div>
-              <div className='td-6'><p>Opción</p></div>
+              <div className='td-4'><p>Opción</p></div>
             </div>
 
             <div className="overflowTabla">
@@ -256,7 +256,7 @@ const modificarAuto = () =>{
                   <div className='td-1'><p>{element.titulo}</p></div>
                   <div className='td-3'><p>{element.fec_inicio}</p></div>
                   <div className='td-3'><p>{element.fec_fin}</p></div>
-                  <div className='td-6'>
+                  <div className='td-4'>
                   <i className="fa-solid fa-pen-to-square" onClick={()=>updateDataAuto(element)}></i>
                   <i className="fa-solid fa-trash-can" onClick={()=>eliminacionAuto(element)} ></i>
                   </div>

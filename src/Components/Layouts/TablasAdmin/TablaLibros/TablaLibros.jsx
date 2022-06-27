@@ -41,17 +41,25 @@ export const TablaLibros = () => {
   const [form2, setForm2] = useState({})
 
   const peticionGet = () => {
+
+    const libros22 = document.getElementById('libros22')
+
+    libros22.textContent = "Libros"
+
     axios.get(urlOrdenada)
     .then(response => {
       setLibros(response.data);
-
+      console.log(response.data);
+      console.log(response.data.estado);
     }).catch(error => {
       console.log(error.message);
     })
   }
 
   const peticionGetNoDisponible = () => {
+    const libros22 = document.getElementById('libros22')
 
+    libros22.textContent = "Libros Inactivos"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=IV")
     .then(response => {
       setLibros(response.data);
@@ -62,7 +70,9 @@ export const TablaLibros = () => {
   }
 
   const peticionGetDisponible = () => {
+    const libros22 = document.getElementById('libros22')
 
+    libros22.textContent = "Libros Activos"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV")
     .then(response => {
       setLibros(response.data);
@@ -190,6 +200,7 @@ export const TablaLibros = () => {
       id_editorial: Number(id_editorial.value),
       categorias: cate_idM,
       autores: auto_idM,
+      seleccionado: "SL",
       estado: estado.value
     })
     console.log(form2);
@@ -472,13 +483,28 @@ export const TablaLibros = () => {
 
   const librosBusqueda = () => {
     const inputBuscar = document.getElementById('elInput')
+    console.log(inputBuscar.value)
+    const libros22 = document.getElementById('libros22')
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?search=" + inputBuscar.value).then(response => {
+    let estado = ""
+    if (libros22.textContent === "Libros Activos") {
+      estado = "AV"
+    }else if (libros22.textContent === "Libros Inactivos") {
+      estado = "IV"
+    }
+
+    if (inputBuscar.value === "" && libros22.textContent === "Libros") {
+      peticionGet()
+    }else{
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado="+ estado +"&search=" + inputBuscar.value)
+      .then(response => {
+        console.log("https://bookerbackapi.herokuapp.com/modulos/libros/?estado="+ estado +"&search=" + inputBuscar.value);
       setLibros(response.data);
-
+      console.log(response.data);
     }).catch(error => {
       console.log(error.message);
     })
+    }
   }
 
   /*#################################TEMA DE EJEMPLARES###############################*/
@@ -503,30 +529,30 @@ export const TablaLibros = () => {
   }
 
   const peticionPost = async (nuevoEjemplar, id_libroEjemplar) =>{
+    console.log(id_libroEjemplar);
     console.log(nuevoEjemplar);
     await axios.post("https://bookerbackapi.herokuapp.com/modulos/ejemplares/", nuevoEjemplar)
     .then(res=>{
-      ejemplares(id_libroEjemplar)
+      ejemplares2(id_libroEjemplar)
         console.log(res)
     })
     console.log(nuevoEjemplar,);
 }
 
-  const ejemplares = (data, id_libroEjemplar) => {
+  const ejemplares2 = (id_libroEjemplar) => {
+    console.log(id_libroEjemplar)
 
-    console.log(id_libroEjemplar);
-
-    if (data.id_libro === null) {
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?id_libro__id_libro=" + data.id_libro + "&ordering=num_ejemplar")
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?id_libro__id_libro=" + id_libroEjemplar + "&ordering=num_ejemplar")
       .then(response => {
       setEjemplparesInfo(response.data);
       console.log(response.data);
 
-      }).catch(error => {
-        console.log(error.message);
-      })
-      
-    }else{
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+  const ejemplares = (data) => {
+
       axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?id_libro__id_libro=" + data.id_libro + "&ordering=num_ejemplar")
       .then(response => {
       setEjemplparesInfo(response.data);
@@ -535,10 +561,7 @@ export const TablaLibros = () => {
     }).catch(error => {
       console.log(error.message);
     })
-    }
-    
     abrirEjemplares()
-
   }
 
   const abrirEjemplares = () => {
@@ -578,12 +601,26 @@ export const TablaLibros = () => {
   }
 
   const peticionDelete = async (data) =>{
-
+    console.log(data)
     let endpoint  = "https://bookerbackapi.herokuapp.com/modulos/ejemplares/"+data.id_ejemplar + "/"
     await axios.delete(endpoint)
     .then((res)=>{
-      ejemplares()
+      let id_libro = data.id_libro.id_libro
+      ejemplaresDelete(id_libro)
       console.log(res);
+    })
+  }
+
+  const ejemplaresDelete = (id_libro) => {
+    console.log(id_libro)
+
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?id_libro__id_libro=" + id_libro + "&ordering=num_ejemplar")
+      .then(response => {
+      setEjemplparesInfo(response.data);
+      console.log(response.data);
+
+    }).catch(error => {
+      console.log(error.message);
     })
   }
 
@@ -617,7 +654,7 @@ export const TablaLibros = () => {
 
             </div>
             <div className="TituloLibro">
-              <p>Libros</p>
+              <p id='libros22'></p>
 
               <div id='buscador' className="buscador">
                 <input onChange={librosBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
@@ -662,19 +699,25 @@ export const TablaLibros = () => {
 
                       </p>
                     </div>
+                    <div className='td-3'>
+                      <p>
+                        {libro.seleccionado}
+                      </p>
+                    </div>
 
                     <div className="td-6">
                       {libro.estado === 'AV'
                         ? <p className='pActivo'>Activo</p>
                         : <p className='pInactivo'>Inactivo</p>
                       }
-                    </div>
-                    { /*QUEDO EN LOS BOTONES*/}
-                    <div className='td-5'>
                       {libro.estado === 'AV'
                         ? <div data-title='Inactivar Libro' className='prueba' onClick={() => updateEstado(libro)} ></div>
                         : <div data-title='Activar Libro' className='prueba prueba2' onClick={() => updateEstado(libro)} ></div>
                       }
+                    </div>
+                    { /*QUEDO EN LOS BOTONES*/}
+                    <div className='td-5'>
+                      
                       <i data-title='Detalles Libro' onClick={() => { ejemplares(libro) }} class="fa-solid fa-eye fa-eyeAdmin"></i>
 
                       <i onClick={() => updateData(libro)} data-title='Actualizar Libro' class="fa-solid fa-pen-to-square"></i>
@@ -847,7 +890,7 @@ export const TablaLibros = () => {
             <div className='Tabla'>
               <div className="TituloLibro">
                 <p>Ejemplares{" " + ejeplaresInfo.length}</p>
-                <i data-title='Añadir Ejemplar' onClick={masEjemplare} className="fa-solid fa-plus"></i>
+                <button className='anadirEjemplar' onClick={masEjemplare}>Añadir Ejemplar</button>
                 <i onClick={cerrarEjemplares} class="fa-solid fa-xmark"></i>
               </div>
               <div className='tr'>

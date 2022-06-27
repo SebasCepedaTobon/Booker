@@ -40,19 +40,10 @@ const reservar = () =>{
        
 
 
-
-
- 
- 
-
   const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
   const urlEjem = "https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro="
   let idEjemplares = []
  
-  
- 
-
-  
   const id_estudiante = localStorage.getItem('id_estudiante')
 
   
@@ -112,18 +103,8 @@ const reservar = () =>{
             'info'
           )
         }
-
-        
       })
-
-   
-
-     
     }
-
-
-
-  
 
     useEffect(() => {
       peticionGet() 

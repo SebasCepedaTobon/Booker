@@ -18,9 +18,10 @@ export const initialForm = {
   cant_ejemplares: "",
   anexos: "",
   palabras_clave: "",
-  estado: "A",
+  estado: "AV",
   id_idioma: null,
   id_editorial: null,
+  seleccionado: "SL",
   autores: [],
   categorias: []
 }
@@ -34,8 +35,6 @@ let llenoCate = []
 let llenoInputCate = []
 
 export const AgregarLibro = () => {
-
-
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/libros/";
   const [formLibros, setformLibros] = useState(initialForm)

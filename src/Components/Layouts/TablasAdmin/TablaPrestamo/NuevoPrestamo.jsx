@@ -1,208 +1,200 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-import Swal from 'sweetalert2'
-import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
+import React, { useState, useEffect, version } from 'react';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
-import libro from '../../../../assets/Imagenes/Libros/libro2.jpg';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
+import '../../../../Static/Admin.css'
+import '../../../../Static/MediaQueriesAdmin.css'
+import '../../../../Static/TablasLibro.css'
 import '../../../../Static/TablaReserva.css'
+import { NavLink } from 'react-router-dom';
+
+let c = []
+let a = []
+let idEjemplares = []
+let idEstudiante
+let tamaReservas
+let tamaPrestamo
+let validarEstudiante
 
 
+export const NuevoPrestamo = () => {
 
-let id_estudianteId
-let ejemplaresId = []
-let id_bibliotecario
-
-export const TablaReserva = () => {
-
+  let urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV&ordering=id_libro"
+  const urlEjem = "https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro="
   const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
-
-  const eliminacion = (data) => {
-    Swal.fire({
-      title: '¿Esta seguro de eliminar la categoria?',
-      icon: 'warning',
-      confirmButtonText: 'Si, Eliminar',
-      showCancelButton: true,
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-    }).then((resultado) => {
-      if (resultado.isConfirmed) {
-        peticionDelete(data)
-      }
-    })
-  }
-
-  const peticionPost = async () =>{
-    await axios.post(url, {
-      "estado": "AC",
-      "id_estudiante": 5,
-      "ejemplares": [76]
-  })
-    .then(res=>{
-        console.log(res)
-    })
-    .catch(error => {
-      console.log(error.response.data.message);
-    })
-}
-
-  const peticionDelete = async (data) => {
-
-    let endpoint = url + data.id_reserva + "/"
-    await axios.delete(endpoint)
-      .then((res) => {
-        peticionGet()
-        console.log(res);
-      })
-  }
-
-
-  const [reservas, setReservas] = useState([])
-  const [form2, setForm2] = useState({})
+  const [libros, setLibros] = useState([])
   const [prestamos, setPrestamos] = useState([])
   const [estudiantes, setEstudiantes] = useState({})
   const [detallesPrestamo, setDetallesPrestamo] = useState([])
 
+  const peticionGetPrestamo=(libro)=>{
+    
+    console.log(idEjemplares.length)
+
+    let sumaP= idEjemplares.length + tamaReservas + tamaPrestamo
+    console.log(sumaP);
+    
+    if (sumaP >= 3) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Limite de prestamos superados',
+        showConfirmButton: false,
+        timer: 1600
+      })
+    }else{
+      for (let index = 0; index < 1; index++) {
+        axios.get(urlEjem + libro.id_libro).then(response=>{
+          console.log(response.data)
+          idEjemplares.push(response.data[0].id_ejemplar)
+          console.log(idEjemplares)
+        }).catch(error=>{
+          console.log(error.message);
+        })
+      }
+    }    
+  }
 
   const peticionGet = () => {
-    const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas"
-    axios.get(url).then(response => {
-      setReservas(response.data);
-
+    axios.get(urlOrdenada)
+    .then(response => {
+      setLibros(response.data);
     }).catch(error => {
       console.log(error.message);
     })
   }
 
-  const peticionGetInactiva = () => {
-    const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas Inactivas"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=IV").then(response => {
-      setReservas(response.data);
-      console.log(response.data);
-
+  const peticionGetTreservas = () => {
+    console.log(idEstudiante);
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=" + idEstudiante +  "&estado=AC")
+    .then(response => {
+      console.log(response.data.length)
+      tamaReservas = response.data.length
     }).catch(error => {
       console.log(error.message);
     })
   }
 
-  const peticionGetCompletadas = () => {
-    const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas Completadas"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C").then(response => {
-      setReservas(response.data);
-      console.log(response.data);
-
+  const peticionGetTPrestamos = () => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&id_estudiante__id_estudiante=" + idEstudiante)
+    .then(response => {
+      console.log(response.data.length)
+      tamaPrestamo = response.data.length
     }).catch(error => {
       console.log(error.message);
     })
   }
 
-  const peticionGetActuales = () => {
-    const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas Actuales"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=AC").then(response => {
-      setReservas(response.data);
+  const peticionPost=()=>{
+    let id_reserva
+      
+    axios.post(url, {
+      "estado": "AC",
+      "id_estudiante": idEstudiante,
+      "ejemplares": idEjemplares
+  }).then(response=>{
+    
+    id_reserva = response.data.data.id_reserva
+    console.log(response.data.data.id_reserva);
+    
+    updateData2(id_reserva)
+
     }).catch(error => {
-      console.log(error.message);
-    })
-  }
-
-  const handleChange = () => {
-    const estado = document.getElementById('estadoReserva')
-    setForm2({
-      ...form2,
-      estado: estado.value,
-      id_estudiante: id_estudianteId,
-      ejemplares: ejemplaresId
+      console.log(error);
     })
 
-    console.log(form2);
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    handleChange()
-    updateData2()
-  }
 
-  const updateData = (reservas) => {
-    if (reservas.estado === "C") {
-      Swal.fire(
-        'Ya esta completada',
-        'Esta reserva ya es un prestamo',
-        'success'
-      )
-    } else {
-      console.log(reservas);
-      id_estudianteId = reservas.id_estudiante.id_estudiante
-      reservas.ejemplares.forEach(element => {
-        ejemplaresId.push(element.id_ejemplar)
-      });
-      setForm2(reservas)
-      ventanaAbrir()
-    }
-  }
+  const updateData2 = (id_reserva) => {
 
-  const updateData2 = async () => {
-    let endpoint = url + form2.id_reserva + '/'
-    await axios.put(endpoint, form2)
-      .then((res) => {
-        console.log(res);
-        if (form2.estado === "C") {
-          peticionGet()
-          abrirPrestamos()
-        } else {
-          peticionGet()
-          ventanaCerrar()
-        }
+    console.log(id_reserva)
+
+    let endpoint = url + id_reserva + '/'
+    axios.put(endpoint, {
+        "estado": "C",
+        "id_estudiante": idEstudiante,
+        "ejemplares": idEjemplares
+    }).then((res) => {
         console.log(res);
         const id_prestamos = res.data.id_de_prestamo
-        peticionGetPrestamos(id_prestamos)
+        peticionGetPrestamos(id_prestamos, id_reserva)
         
-      }).catch(error => {
-        console.log(error.message);
-      })
+    }).catch(error => {
+        console.log(error);   
+    }) 
   }
 
-
-  /*------------------------------------------------ENPIESA DETALLES PRESTAMOS-----------------------------------*/
-
-
-  const peticionGetPrestamos = (id_prestamos) => {
+  const peticionGetPrestamos = (id_prestamos, id_reserva) => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + id_prestamos)
       .then(response => {
         setPrestamos(response.data);
         console.log(response.data);
         setEstudiantes(response.data.id_estudiante)
         setDetallesPrestamo(response.data.prestamos)
+        peticionDelete(id_reserva)
+        abrirPrestamos()
       }).catch(error => { 
         console.log(error.message);
       })
   }
 
 
+  const peticionDelete = (id_reserva) => {
+    console.log(id_reserva)
+
+    let endpoint = url + id_reserva + '/'
+    axios.delete(endpoint)
+    .then((res) => {
+        console.log(res);
+    }).catch(error => {
+        console.log(error);   
+    }) 
+  }
+
 
   useEffect(() => {
-    id_bibliotecario = localStorage.getItem('id_bibliotecario')
     peticionGet()
-  }, []);
+    ventanaAbrir()
+  }, [])
+
+
+  
+  const librosBusqueda = () => {
+    const inputBuscar = document.getElementById('elInput')
+    console.log(inputBuscar.value)
+
+    if (inputBuscar.value === "") {
+      peticionGet()      
+    }else{
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV&search=" + inputBuscar.value).then(response => {
+      setLibros(response.data);
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error.message);
+    })
+    }
+  }
+
 
   const ventanaAbrir = () => {
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
-
     overlay.style.visibility = "visible"
     from_tablas.style.transform = "scale(1)"
     from_tablas.style.opacity = "2"
   }
 
   const ventanaCerrar = () => {
+    const input = document.getElementById('inpurEstuden')
+
     setTimeout(() => {
-      vaciar()
-    }, 500);
+      input.value = ""
+    }, 900);
+
+    
     const overlay = document.getElementById('overlay')
     const from_tablas = document.querySelector('.from-tablas')
 
@@ -211,20 +203,42 @@ export const TablaReserva = () => {
     from_tablas.style.opacity = "0"
   }
 
-  const vaciar = () => {
-    id_estudianteId = ""
-    ejemplaresId = []
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    const p = document.getElementById('noExiste')
+      if(validarEstudiante === 1){
+        p.textContent = "No coninciden"
+      }else{
+        ventanaCerrar()
+        p.textContent = ""
+      }
+       
   }
 
-  const peticionGetBusqueda = () => {
-    const inputBuscar = document.getElementById('elInput')
-
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?search=" + inputBuscar.value).then(response => {
-      setReservas(response.data);
+  const buscarEstudiante = () => {
+    console.log(validarEstudiante)
+    const p = document.getElementById('noExiste')
+    const inpurEstuden = document.getElementById('inpurEstuden')
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=" + inpurEstuden.value)
+    .then(response => {
+      console.log(response.data)
+      if(response.data.length === 0){
+        p.textContent = "No coninciden"
+        validarEstudiante = 1
+      }else{
+        console.log(response.data[0].id_estudiante)
+        idEstudiante = response.data[0].id_estudiante
+        p.textContent = ""
+        validarEstudiante = 2
+      }
+      
     }).catch(error => {
       console.log(error.message);
     })
+    
   }
+
 
   const abrirPrestamos = () => {
 
@@ -268,6 +282,7 @@ export const TablaReserva = () => {
 
   }
 
+
   const antesHandleChange = (data) =>{
     const input1 = document.getElementById(data.id_prestamo)
 
@@ -293,98 +308,97 @@ export const TablaReserva = () => {
       console.log(error);
     })
   }
-  
+
+  const redireccionPrestamo = () => {
+    Swal.fire({
+      title: 'Prestamo actualizado correctamente',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    }).then((resultado) => {
+      if (resultado.isConfirmed) {
+        window.location.href = "/Prestamo"
+      }
+    })
+  }
 
 
   return (
+
     <div className='MainAdministrativo'>
       <div className="box-AdminNavegador">
         <AdminNavegador />
       </div>
-
       <div className="box-Header-Admin">
         <AdminHeader />
         <div className='box-Tabla' >
           <div className='Tabla'>
             <div className='categoriasMN'  >
-              <div className='btnMulta' onClick={peticionGet} >
+              <div className='btnMulta' onClick={peticionPost} >
                 <div className='contenidoMultas' >
-                  <p>Total Reservas</p>
-                </div>
-              </div>
-              <div className='btnMulta' onClick={peticionGetActuales} >
-                <div className='contenidoMultas' >
-                  <p>Actuales Reservas</p>
-                </div>
-              </div>
-              <div className='btnMulta' onClick={peticionGetCompletadas} >
-                <div className='contenidoMultas' >
-                  <p>Reservas Completadas</p>
-                </div>
-              </div>
-              <div className='btnMulta' onClick={peticionGetInactiva} >
-                <div className='contenidoMultas'>
-                  <p>Reservas Inactivas</p>
+                  <p>Finalizar Prestamo</p>
                 </div>
               </div>
             </div>
             <div className="TituloLibro">
-              <p className='cambioFiltro'></p>
+              <p>Libros disponibles para prestar</p>
               <div id='buscador' className="buscador">
-                <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
-                <i onClick={peticionGetBusqueda} className="fa-solid fa-magnifying-glass"></i>
+                <input onChange={librosBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
+                <i onClick={librosBusqueda} class="fa-solid fa-magnifying-glass"></i>
               </div>
             </div>
             <div className='tr'>
-              <div className='td-4'><p>Imagen</p></div>
-              <div className='td-1' ><p>Nombre Libro</p></div>
-              <div className='td-1'><p>Nombre Estudiante</p></div>
-              <div className='td-1'><p>Fecha Reserva</p></div>
-              <div className='td-0'><p>Estado</p></div>
-              <div className='td-4'><p>Cambiar estado</p></div>
+              <div className='td-0'><p>Imagen</p></div>
+              <div className='td-1'><p>Nombre</p></div>
+              <div className='td-2'><p>Categorias</p></div>
+              <div className='td-3'><p>Autores</p></div>
+              <div className='td-6'><p>Estado</p></div>
+              <div className='td-5'><p>Opciones</p></div>
             </div>
-
             <div className='Tabla-Info' >
-              {
-                reservas.map((reservas, index) => {
-                  let l = reservas.ejemplares
-                  return (
-                    <div key={index} className='tr-1'>
-                      <div className='td-4'>
-                        {l.map((element, key) => (
-                          <Imagenes key={key} clase='img' url={element.id_libro.imagen_libro} />
-                        ))
-                        }
-                      </div>
-                      <div className='td-1'>
-                        {l.map((element, key) => (
-                          <p key={key} className='L1P'>-- {element.id_libro.nombre} <br /></p>
-                        ))
-                        }
-                      </div>
-                      <div className='td-1'><p>{reservas.id_estudiante.nombres}</p></div>
-                      <div className='td-1'><p>{reservas.fecha_reserva}</p></div>
-                      <div className='td-0'>
-                        <div className="estadoTablas">
-                          {reservas.estado === "AC" &&
-                            <p className='pEstadoReservaC'>Reserva<br />en gestión</p>
-                          }
-                          {reservas.estado === "C" &&
-                            <p className='pEstadoReservaAC'>Reserva<br />Finalizada</p>
-                          }
-                          {reservas.estado === "IV" &&
-                            <p className='pEstadoReservaIV'>Reserva<br />Inactiva</p>
-                          }
-                        </div>
-                      </div>
-                      <div className='td-4'>
-                        <i onClick={() => updateData(reservas)} className="fa-solid fa-pen-to-square"></i>
-                        <i onClick={() => eliminacion(reservas)} className="fa-solid fa-trash-can"></i>
-                      </div>
+              {libros.map((libro, index) => {
+                c = libro.categorias
+                a = libro.autores
+
+                return (
+                  <div key={index} className='tr-1'>
+
+                    <div className='td-0'>
+                      <Imagenes clase='img' url={libro.imagen_libro} />
                     </div>
-                  )
-                }
-                )}
+                    <div className='td-1'>
+                      <p className='L1P'>{libro.nombre}</p>
+                    </div>
+                    <div className='td-2'>
+                      <p>
+                        {
+                          c.map(element => element.nombre).join(', ')
+                        }
+                      </p>
+                    </div>
+
+                    <div className='td-3'>
+                      <p>
+                        {
+                          a.map(element => element.nombres).join(', ')
+                        }
+
+                      </p>
+                    </div>
+
+                    <div className="td-6">
+                      {libro.estado === 'AV'
+                        ? <p className='pActivo'>Activo</p>
+                        : <p className='pInactivo'>Inactivo</p>
+                      }
+                    </div>
+                    { /*QUEDO EN LOS BOTONES*/}
+                    <div className='td-5'>
+                        <div data-title='Inactivar Libro' onClick={()=>{peticionGetPrestamo(libro)}} className='prueba'></div>
+                    </div>
+                  </div>
+                )
+              })}
+
             </div>
           </div>
         </div>
@@ -395,36 +409,38 @@ export const TablaReserva = () => {
           <div className='RM-from'>
             <div className="from-Titulo">
               <div className="Desactivar-From">
-                <i onClick={ventanaCerrar} className="fa-solid fa-xmark"></i>
+                <NavLink to='/Prestamo'>
+                  <i className="fa-solid fa-xmark"></i>
+                </NavLink>
               </div>
-              <h1>ESTADO DE RESERVA</h1>
+              <h1 className='h1MaxMin'>DOCUMENTO DEL ESTUDIANTE</h1>
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="box-select">
-                <select id='estadoReserva' value={form2.estado} onChange={handleChange}>
-                  <option value="">Estado de reserva</option>
-                  <option value="AC">Reservada en gestión</option>
-                  <option value="C">Finalizar Reserva</option>
-                  <option value="IV">Inactivar Reserva</option>
-                </select>
+              <div className="box-input">
+                  <input type="text" id='inpurEstuden' onChange={buscarEstudiante} required />
+                  <span></span>
+                  <label>Documento Estudiante</label>
               </div>
+              <p id='noExiste'></p>
               <div className="btnsFormulario">
-                <button className="btnFor btn-actializar">
-                  Actualizar
+                <button onClick={()=>{
+                  peticionGetTreservas()
+                  peticionGetTPrestamos()
+                }} className="btnFor btn-actializar">
+                  VALIDAR
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-
       <div id='overlayEjem' className="overlay">
         <div id='box-ejeplar2' className="box-prestamos ">
           <div className="boxPrestamos">
             <div className='tablaPrestamos'>
               <div className="TituloLibro">
                 <p className='pTituloDetallesP'>Actualizar Fecha devolución</p>
-                <button id='confirmasPP' onClick={cerrarPrestamos}>Actualizar Prestamo</button>
+                <button id='confirmasPP' onClick={redireccionPrestamo}>Confirmar Prestamo</button>
               </div>
               <div className='tr'>
                 <div className='td-1'><p>Documento Estudiante</p></div>
@@ -508,8 +524,7 @@ export const TablaReserva = () => {
             </div>
           </div>
         </div>
-      </div>
-
+      </div>     
     </div>
   )
 }

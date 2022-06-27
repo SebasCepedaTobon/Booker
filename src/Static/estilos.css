@@ -808,6 +808,11 @@ hr{
     background-color: rgb(37,145,218) !important;
 }
 
+.swal2-container.swal2-center>.swal2-popup{
+    left: 0px !important;
+    width: 29em !important;
+}
+
 
 /*---------------------SPINNER--------------------*/
 
