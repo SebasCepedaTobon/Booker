@@ -12,9 +12,8 @@ import {
   PrivateRoute,
   PrivateAdminRoute,
   PrivateAdmin,
-  PrivateLogin,
-  PrivateProfileRoute,
-  PrivateHome
+  PrivateSuperAdminRoute,
+  PrivateProfileRoute
 } from './PrivateRouters'
 
 import { Home } from './Components/Pages/Home/Home';
@@ -56,20 +55,42 @@ function App() {
         <Route exact path='/' element={<Login/>}/>
         
       
-
+        {/* 
         <Route element={PrivateRoute()}>
           <Route path='/Home' element={<Home/>}/>
         </Route>
 
         <Route element={PrivateAdmin()}>
           <Route path='/Home' element={<Home/>}/>
-        </Route>
+        </Route> */}
 
         <Route element={PrivateAdminRoute()}>
           <Route path='/Admin' element={<Admin/>} />
+          <Route path='/Reservas' element={<Reservas/>}/>
+          <Route path='/Prestamo' element={<Prestamo/>}/>
+          <Route path='/TEventos' element={<TablaEventos/>}/>        
+          <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
+          <Route path='/ImportarEstudiantes' element={<ImportarEstudiantes/>}/>
+          <Route path='/PerfilBibliotecario' element={<PerfilBibliotecario/>}/>
+          <Route path='/CambiarContrasena' element={<CambiarContrasena/>}/>
+          <Route path='/NuevoPrestamo' element={<NuevoPrestamo/>}/>
+          <Route path='/NuevoEstudiante' element={<NuevoEstudiante/>}/>
+          <Route path='/AutoresCategorias' element={<AutoresCategorias/>}/>
+          <Route path='/EditorialIdioma' element={<EditorialIdioma/>}/>
+          <Route path='/AgregarLibro' element={<AgregarLibro/>}/>
+          <Route path='/TLibros' element={<TLibros/>} />
+          <Route path='/TEstudiantes' element={<Estudiantes/>} />
+          {/* <Route path='/TBibliotecarios' element={<TablaBibliotecarios/>}/>
+          <Route path='/NBibliotecarios' element={<NuevoBibliotecario/>}/> */}
         </Route>
 
+         <Route element={PrivateSuperAdminRoute()}>
+          <Route path='/TBibliotecarios' element={<TablaBibliotecarios/>}/>
+          <Route path='/NBibliotecarios' element={<NuevoBibliotecario/>}/>
+        </Route> 
+
         <Route element={PrivateProfileRoute()}>
+          <Route path='/Home' element={<Home/>}/>
           <Route path='/Perfil' element={<Perfil/>} />
           <Route path='/Favoritos' element={<Favoritos/>}/>
           <Route path='/Historial' element={<Historial/>} />
@@ -78,27 +99,10 @@ function App() {
           <Route path='/Prestados' element={<Prestados/>}/>
         </Route>
 
-        <Route path='/Email' element={<Email/>} />
-        <Route path='/TLibros' element={<TLibros/>} />
-        <Route path='/TEstudiantes' element={<Estudiantes/>} />
-        <Route path='/Libro/:id_libro' element={<Libro/>}/>
-        <Route path='/Reservas' element={<Reservas/>}/>
-        <Route path='/Prestamo' element={<Prestamo/>}/>
-        <Route path='/AgregarLibro' element={<AgregarLibro/>}/>
-        <Route path='/Busqueda/:nombre' element={<Busqueda/>}/>
-        <Route path='/NuevoEstudiante' element={<NuevoEstudiante/>}/>
-        <Route path='/AutoresCategorias' element={<AutoresCategorias/>}/>
-        <Route path='/EditorialIdioma' element={<EditorialIdioma/>}/>
-        <Route path='/Eventos' element={<Eventos/>}/>
-        <Route path='/TEventos' element={<TablaEventos/>}/>
-        <Route path='/TBibliotecarios' element={<TablaBibliotecarios/>}/>
-        <Route path='/NBibliotecarios' element={<NuevoBibliotecario/>}/>
-        <Route path='/TablaInfraciones' element={<InfraccionesAdmin/>}/>
-        <Route path='/ImportarEstudiantes' element={<ImportarEstudiantes/>}/>
-        <Route path='/PerfilBibliotecario' element={<PerfilBibliotecario/>}/>
-        <Route path='/CambiarContrasena' element={<CambiarContrasena/>}/>
-        <Route path='/NuevoPrestamo' element={<NuevoPrestamo/>}/>
-        
+        <Route path='/Email' element={<Email/>} />        
+        <Route path='/Libro/:id_libro' element={<Libro/>}/>       
+        <Route path='/Busqueda/:nombre' element={<Busqueda/>}/>        
+        <Route path='/Eventos' element={<Eventos/>}/>       
         <Route path='/libros' element={<Tlibros/>}/>
         <Route path='/Eventos/:id_evento/' element={<Eventos/>}/>
         

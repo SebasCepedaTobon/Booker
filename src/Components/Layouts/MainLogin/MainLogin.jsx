@@ -56,6 +56,7 @@ export const MainLogin = () => {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('doc_admin', res.data.user.doc)
             localStorage.setItem('tipo_usuario', res.data.user.tipo_usuario)
+            window.location.href = "/TBibliotecarios"
           }
 
 

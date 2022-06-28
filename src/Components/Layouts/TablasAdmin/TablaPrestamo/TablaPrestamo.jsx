@@ -158,6 +158,7 @@ useEffect(() => {
     axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
+        preInfracion()
         /* peticionGetDetalles(data) */
     }).catch(error => {
       console.log(error);
@@ -225,6 +226,7 @@ useEffect(() => {
           losPrestamos = element.prestamos[0]
           losPrestamos1 = element.prestamos[1]
         })
+        console.log(losPrestamos1.estado);
       }
       setGenerarInfra({
         ...generarInfra,
