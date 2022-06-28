@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { BotonesCrud } from '../../UI/Botones/BotonesCrud';
 import { AdminHeader } from '../../UI/NavegadorAdmin/AdminHeader';
 import { AdminNavegador } from '../../UI/NavegadorAdmin/AdminNavegador';
-import { Imagenes } from '../../UI/Imagenes/Imagenes';
+
 
 export const InfraccionesAdmin = () => {
 
@@ -57,36 +57,11 @@ export const InfraccionesAdmin = () => {
 
   const peticionGet = () => {
     axios.get(url).then(response => {
-      setInfracciones(response.data);
-      console.log(response.data);
+      setInfracciones(response.data)
     }).catch(error => {
-      console.log(error.message);
+      console.log(error);
     })
   }
-  /* 
-  const multas = () => {
-    console.log('multas')
-  
-    const TituloLibro = document.querySelector('.TituloLibro')
-    TituloLibro.textContent = "Multas"
-  
-    fetch("https://rickandmortyapi.com/api/character/?page=13")
-    .then(res => res.json())
-    .then((data) =>{
-      setLibros(data.results)
-    })
-  }
-  const novedades = () => {
-    const TituloLibro = document.querySelector('.TituloLibro')
-    TituloLibro.textContent = "Novedades"
-  
-    console.log('novedades')
-    fetch("https://rickandmortyapi.com/api/character/?page=5")
-    .then(res => res.json())
-    .then((data) =>{
-      setLibros(data.results)
-    })
-  } */
 
 
   return (
@@ -136,9 +111,16 @@ export const InfraccionesAdmin = () => {
                     <div className='td-2'>
                       <p className='L1P'>{element.id_estudiante.nombres} {element.id_estudiante.apellidos}</p>
                     </div>
-                    <div className='td-3'><p>{element.id_prestamo.fec_devolucion}</p></div>
+                    <div className='td-3'>
+                      <p>{element.id_prestamo.fec_devolucion}</p>
+                    </div>
                     <div className='td-4'><p>{element.descripcion}</p></div>
-                    <div className='td-0'><p>{element.id_tipo_infraccion.nombre}</p></div>
+                    <div className='td-0'>
+                      {element.id_tipo_infraccion === null
+                      ?<p>Sin tipo <br/>de infración</p>
+                      :<p>{element.id_tipo_infraccion.nombre}</p>
+                      }
+                    </div>
                     <div className='td-5'>
                       <i onClick={FormFlotante} class="fa-solid fa-pen-to-square"></i>
                       <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>

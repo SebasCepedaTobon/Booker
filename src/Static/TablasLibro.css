@@ -26,12 +26,12 @@
   z-index: 300;
   color: #adadad;
   margin-bottom: 5px;
-  margin-left: 6px;
+  left: 287px;
   transition: all ease 0.5s;
 }
 
 .labelLibro2 {
-  margin-left: 254px;
+  left: 234px;
 }
 
 .texLibro1:focus~.labelLibro1,
@@ -47,12 +47,12 @@
 }
 
 .labelLibroAuto {
-  margin-left: 495px;
+  left: 495px;
   margin-bottom: 25px;
 }
 
 .labelLibroCate {
-  margin-left: 252px;
+  left: 252px;
   margin-bottom: 25px;
 }
 
@@ -254,7 +254,7 @@
 
 @media (max-width: 1400px) {
   .labelLibro2 {
-    margin-left: 234px;
+    left: 513px;
   }
 
   .selectAutores {
@@ -283,10 +283,10 @@
   }
 
   .labelLibroAuto {
-    margin-left: 465px;
+    left: 46.55rem;
   }
 
   .labelLibroCate {
-    margin-left: 232px;
+    left: 32.005rem;
   }
 }

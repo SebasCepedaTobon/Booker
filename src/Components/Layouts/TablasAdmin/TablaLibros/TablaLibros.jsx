@@ -27,7 +27,7 @@ let auto = []
 export const TablaLibros = () => {
 
   let url = "https://bookerbackapi.herokuapp.com/modulos/libros/";
-  let urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/libros/?ordering=id_libro"
+  let urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/libros/?ordering=-id_libro"
   const [libros, setLibros] = useState([])
   const [categorias, setCategorias] = useState()
   const [autores, setAutores] = useState()
@@ -50,7 +50,6 @@ export const TablaLibros = () => {
     .then(response => {
       setLibros(response.data);
       console.log(response.data);
-      console.log(response.data.estado);
     }).catch(error => {
       console.log(error.message);
     })
@@ -83,25 +82,25 @@ export const TablaLibros = () => {
   }
 
   const fetchCate = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/categorias/")
+    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/categorias/?ordering=nombre")
     const responseJSON = await response.json()
     setCategorias(responseJSON)
   }
 
   const fetchAutores = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/autores/")
+    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/autores/?ordering=nombres")
     const responseJSON = await response.json()
     setAutores(responseJSON)
   }
 
   const fetchIdioma = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/idiomas/")
+    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/idiomas/?ordering=nombre")
     const responseJSON = await response.json()
     setIdioma(responseJSON)
   }
 
   const fetchEditorial = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/editoriales/")
+    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/editoriales/?ordering=nombre")
     const responseJSON = await response.json()
     setEditorial(responseJSON)
   }
@@ -140,7 +139,7 @@ export const TablaLibros = () => {
     setTimeout(() => {
       vaciarCate(e)
       vaciarAuto(e)
-    }, 500);
+    }, 100);
   }
 
 
@@ -200,7 +199,7 @@ export const TablaLibros = () => {
       id_editorial: Number(id_editorial.value),
       categorias: cate_idM,
       autores: auto_idM,
-      seleccionado: "SL",
+      seleccionado: "NS",
       estado: estado.value
     })
     console.log(form2);
@@ -223,13 +222,19 @@ export const TablaLibros = () => {
   }
 
   const vaciarCate = (e) => {
+    console.log(cate_idM);
+    console.log(cate_nombreM);
 
     cate_idM = []
     cate_nombreM = []
     const texCate = document.getElementById('inputCate')
     texCate.value = ""
+
+    console.log(cate_idM);
+    console.log(cate_nombreM);
     handleChange(e)
   }
+
   const vaciarAuto = (e) => {
     auto_idM = []
     auto_nombreM = []
@@ -355,7 +360,7 @@ export const TablaLibros = () => {
       reverseButtons: true
     }).then((resultado) => {
       if (resultado.isConfirmed) {
-        updateData2()
+        updateData2(e)
       }
     })
 
@@ -402,7 +407,7 @@ export const TablaLibros = () => {
 
 
 
-  const updateData2 = () => {
+  const updateData2 = (e) => {
 
     console.log(form2 + " form22222");
     let endpoint = url + form2.id_libro + '/'
@@ -410,6 +415,10 @@ export const TablaLibros = () => {
       .then((res) => {
         peticionGet()
         modalCerrar()
+        setTimeout(() => {
+          vaciarCate(e)
+          vaciarAuto(e)
+        }, 10);
         console.log(res);
       })
   }
@@ -699,12 +708,6 @@ export const TablaLibros = () => {
 
                       </p>
                     </div>
-                    <div className='td-3'>
-                      <p>
-                        {libro.seleccionado}
-                      </p>
-                    </div>
-
                     <div className="td-6">
                       {libro.estado === 'AV'
                         ? <p className='pActivo'>Activo</p>

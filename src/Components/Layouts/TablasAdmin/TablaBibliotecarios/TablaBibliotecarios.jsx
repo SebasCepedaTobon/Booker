@@ -211,11 +211,7 @@ export const TablaBibliotecarios = () => {
 
   return (
     <div className='MainAdministrativo'>
-      <div className="box-AdminNavegador">
-        <AdminNavegador />
-      </div>
-      <div className="box-Header-Admin">
-        <AdminHeader />
+      <div className="box-Header-Admin bibliotecariosAdmin">
         <div className='box-Tabla' >
           <div className='Tabla'>
             <div className='categoriasMN'  >

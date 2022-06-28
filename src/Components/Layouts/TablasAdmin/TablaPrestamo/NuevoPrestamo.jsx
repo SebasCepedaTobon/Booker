@@ -30,10 +30,15 @@ export const NuevoPrestamo = () => {
   const [detallesPrestamo, setDetallesPrestamo] = useState([])
 
   const peticionGetPrestamo=(libro)=>{
-    
-    console.log(idEjemplares.length)
 
-    let sumaP= idEjemplares.length + tamaReservas + tamaPrestamo
+    if (tamaPrestamo === null) {
+      tamaPrestamo = 0    
+    }
+
+    console.log(tamaReservas);
+    console.log(tamaPrestamo);
+
+    const sumaP = idEjemplares.length + tamaReservas + tamaPrestamo
     console.log(sumaP);
     
     if (sumaP >= 3) {
@@ -70,8 +75,15 @@ export const NuevoPrestamo = () => {
     console.log(idEstudiante);
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=" + idEstudiante +  "&estado=AC")
     .then(response => {
-      console.log(response.data.length)
-      tamaReservas = response.data.length
+      if(response.data.length > 0){
+        response.data.map((elemet,_) => {
+          tamaReservas = elemet.ejemplares.length
+          console.log(elemet.ejemplares.length)
+        })        
+      }else{
+        tamaReservas = 0
+      }
+      
     }).catch(error => {
       console.log(error.message);
     })
@@ -80,8 +92,16 @@ export const NuevoPrestamo = () => {
   const peticionGetTPrestamos = () => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&id_estudiante__id_estudiante=" + idEstudiante)
     .then(response => {
-      console.log(response.data.length)
-      tamaPrestamo = response.data.length
+      if(response.data.length > 0){
+        response.data.map((elemet,_) => {
+          tamaPrestamo = elemet.prestamos.length
+          console.log(elemet.prestamos.length)
+        })        
+      }else{
+        tamaPrestamo = 0
+      }
+      
+
     }).catch(error => {
       console.log(error.message);
     })
@@ -351,7 +371,7 @@ export const NuevoPrestamo = () => {
               <div className='td-1'><p>Nombre</p></div>
               <div className='td-2'><p>Categorias</p></div>
               <div className='td-3'><p>Autores</p></div>
-              <div className='td-6'><p>Estado</p></div>
+              {/* <div className='td-6'><p>Estado</p></div> */}
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
@@ -384,16 +404,16 @@ export const NuevoPrestamo = () => {
 
                       </p>
                     </div>
-
+{/* 
                     <div className="td-6">
                       {libro.estado === 'AV'
                         ? <p className='pActivo'>Activo</p>
                         : <p className='pInactivo'>Inactivo</p>
                       }
-                    </div>
+                    </div> */}
                     { /*QUEDO EN LOS BOTONES*/}
                     <div className='td-5'>
-                        <div data-title='Inactivar Libro' onClick={()=>{peticionGetPrestamo(libro)}} className='prueba'></div>
+                      <input id='ss' onClick={()=>{peticionGetPrestamo(libro)}} type="checkbox" />
                     </div>
                   </div>
                 )

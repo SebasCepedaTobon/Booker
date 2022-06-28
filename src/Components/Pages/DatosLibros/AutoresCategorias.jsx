@@ -19,8 +19,8 @@ let edit
 
 export const AutoresCategorias = () => {
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/categorias/"
-  const url2 = "https://bookerbackapi.herokuapp.com/modulos/autores/"
+  const url = "https://bookerbackapi.herokuapp.com/modulos/categorias/?ordering=-id_categoria"
+  const url2 = "https://bookerbackapi.herokuapp.com/modulos/autores/?ordering=-nombres"
   const [categorias, setCategorias] = useState([])
   const [autores, setAutores] = useState([])
   const [form2, setForm2] = useState(initialForm)

@@ -66,13 +66,6 @@ export const AdminNavegador = () => {
               <p>Importar Estudiantes</p>
             </div>
           </NavLink>
-          <NavLink to='/TBibliotecarios' className='vinculo'>
-            <div className='box-vinculos'>
-              <i className="fa-solid fa-user-shield"></i>
-              <p>Bibliotecarios</p>
-              <span></span>
-            </div>
-          </NavLink>
           <p className='LyE'>GESTIÓN LIBROS</p>
           <NavLink to='/TLibros' className='vinculo'>
             <div className='box-vinculos'>

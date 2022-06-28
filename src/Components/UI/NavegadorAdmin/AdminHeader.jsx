@@ -5,14 +5,10 @@ import '../../../Static/MediaQueriesAdmin.css'
 import '../../../Static/AdminHeader.css'
 import '../../../Static/AdminNavegador.css'
 import axios from 'axios';
-import NoDisponibles from '../../../assets/Imagenes/Admin/NoDisponibles1.png';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import usuario from '../../../assets/Imagenes/Admin/usuario.png'
-
-
-let sizeDisponibles
-let sizeNoDisponibles
+import {Logout} from '../../../Logout'
 
 let id_bibliotecario
 let imagenPerfil
@@ -24,10 +20,6 @@ export const AdminHeader = () => {
     const [librosNo, setLibrosNo] = useState([])
     const [cerrar, setCounter] = useState(true)
 
-    sizeDisponibles = librosNo.length
-    sizeNoDisponibles = libros.length
-
-    
 
     const peticionGetBibliotecario=()=>{
 
@@ -42,25 +34,6 @@ export const AdminHeader = () => {
         console.log(error.message);
       })
     }
-    
-    const librosDisponibles=()=>{
-
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=P").then(response=>{
-        setLibros(response.data);
-        
-      }).catch(error=>{
-        console.log(error.message);
-      })
-    }
-
-    const librosNoDisponibles=()=>{
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D").then(response=>{
-        setLibrosNo(response.data);
-        
-      }).catch(error=>{
-        console.log(error.message);
-      })
-    }
 
     const FormFlotante  = () => {setCounter(!cerrar)}
 
@@ -68,8 +41,6 @@ export const AdminHeader = () => {
     useEffect(() => {
 
       id_bibliotecario = localStorage.getItem('id_bibliotecario')
-      librosDisponibles()
-      librosNoDisponibles()
 
       const box_perfil = document.getElementById('box-gertion-perfil')
       if(cerrar === true){
@@ -112,8 +83,8 @@ export const AdminHeader = () => {
                 <p>Perfil</p>
             </NavLink>
             <NavLink to='/' className='vinculoPerfil'>
-                <i className="fa-regular fa-circle-xmark"></i>
-                <p>Cerrar sesión</p>
+              <i onClick={Logout} className="fa-regular fa-circle-xmark"></i>
+              <p>Cerrar sesión</p>
             </NavLink>
           </div>
         </div>

@@ -68,7 +68,7 @@ const [prestamos, setPrestamos] = useState([])
 const [prestamos1, setPrestamos1] = useState()
 const [detallesPrestamo, setDetallesPrestamo] = useState([])
 const [estudiantes, setEstudiantes] = useState({})
-
+const [generarInfra, setGenerarInfra] = useState({})
 const peticionGet=()=>{
 
   axios.get(url).then(response=>{
@@ -157,6 +157,7 @@ useEffect(() => {
     axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
+        preInfracion()
         /* peticionGetDetalles(data) */
     }).catch(error => {
       console.log(error);
@@ -175,24 +176,130 @@ useEffect(() => {
   } */
 
 
-  const preInfracion = (infra) => {
+  const preInfracion = () => {
 
-    console.log(infra);
-    
-    console.log(infra);
-    if (infra.estado === 'AC') {
-      infra.estado = 'INF'
-    }else if (infra.estado === 'C') {
-      console.log('Este prestamo fue devuelto')
+    let losPrestamos
+    let losPrestamos1
+    let losPrestamos2
+    let idEstudiante
+
+    console.log(prestamoUpdate)
+
+    {
+      prestamoUpdate.map((element) => {
+        idEstudiante = element.id_estudiante.id_estudiante
+      })
     }
+
+    console.log(idEstudiante);
+    
+
+    if(detallesPrestamo.length === 1){
+      console.log("Entro al uno");
+      {
+        prestamoUpdate.map((element) => {
+          losPrestamos = element.prestamos[0]
+        })
+      }
+
+      setGenerarInfra({
+        ...generarInfra,
+        id_de_prestamo: losPrestamos.id_de_prestamo,
+        id_estudiante : idEstudiante,
+        prestamos : [{
+          id_prestamo : losPrestamos.id_prestamo,
+          id_de_prestamo : losPrestamos.id_de_prestamo,
+          fec_devolucion : losPrestamos.fec_devolucion,
+          id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
+          estado : losPrestamos.estado
+        }],
+        estado: "INF"
+      })
+    }
+    else if(detallesPrestamo.length === 2){
+
+      console.log("Entro al dos");
+      
+      {
+        prestamos.map((element) => {
+          losPrestamos = element.prestamos[0]
+          losPrestamos1 = element.prestamos[1]
+        })
+      }
+      setGenerarInfra({
+        ...generarInfra,
+        id_de_prestamo: losPrestamos.id_de_prestamo,
+        id_estudiante : idEstudiante,
+        prestamos : [
+          {
+            id_prestamo : losPrestamos.id_prestamo,
+            id_de_prestamo : losPrestamos.id_de_prestamo,
+            fec_devolucion : losPrestamos.fec_devolucion,
+            id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
+            estado : losPrestamos.estado
+          },
+          {
+            id_prestamo : losPrestamos1.id_prestamo,
+            id_de_prestamo : losPrestamos1.id_de_prestamo,
+            fec_devolucion : losPrestamos1.fec_devolucion,
+            id_ejemplar : losPrestamos1.id_ejemplar.id_ejemplar,
+            estado : losPrestamos1.estado
+          }
+    ],
+        estado: "INF"
+      })
+    }else if(detallesPrestamo.length === 3){
+
+      console.log("Entro al dos");
+      
+      {
+        prestamos.map((element) => {
+          losPrestamos = element.prestamos[0]
+          losPrestamos1 = element.prestamos[1]
+          losPrestamos2 = element.prestamos[2]
+        })
+      }
+      setGenerarInfra({
+        ...generarInfra,
+        id_de_prestamo: losPrestamos.id_de_prestamo,
+        id_estudiante : idEstudiante,
+        prestamos : [
+          {
+            id_prestamo : losPrestamos.id_prestamo,
+            id_de_prestamo : losPrestamos.id_de_prestamo,
+            fec_devolucion : losPrestamos.fec_devolucion,
+            id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
+            estado : losPrestamos.estado
+          },
+          {
+            id_prestamo : losPrestamos1.id_prestamo,
+            id_de_prestamo : losPrestamos1.id_de_prestamo,
+            fec_devolucion : losPrestamos1.fec_devolucion,
+            id_ejemplar : losPrestamos1.id_ejemplar.id_ejemplar,
+            estado : losPrestamos1.estado
+          },
+          {
+            id_prestamo : losPrestamos2.id_prestamo,
+            id_de_prestamo : losPrestamos2.id_de_prestamo,
+            fec_devolucion : losPrestamos2.fec_devolucion,
+            id_ejemplar : losPrestamos2.id_ejemplar.id_ejemplar,
+            estado : losPrestamos2.estado
+          }
+    ],
+        estado: "INF"
+      })
+    }
+
     //updateDataInfracion(infra)
+    console.log(generarInfra);
   }
 
-  const updateDataInfracion = async (infra) =>{
-    console.log(infra)
+  const updateDataInfracion = async () =>{
 
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+infra.id_de_prestamo+'/'
-    await axios.put(endpoint, infra)
+    console.log(generarInfra);
+
+    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ generarInfra.id_de_prestamo+'/'
+    await axios.put(endpoint, generarInfra)
     .then((res) => {
         console.log(res);
         console.log('Infración creada')
@@ -296,7 +403,9 @@ useEffect(() => {
                         <p>{element.fec_prestamo}</p>
                       </div>
                       <div className="td-6">
-                        <button id='confirmasPP' onClick={()=>{preInfracion(element)}}>Confirmar Infración</button>
+                        <button id='confirmasPP' onClick={()=>{
+                          updateDataInfracion()
+                          }}>Confirmar Infración</button>
                       </div>
                     </div>
                     )
@@ -359,13 +468,19 @@ useEffect(() => {
                         <div className="td-4">
                         {element.estado === 'AC'
                         ? <div className='prueba prueba2' onClick={()=>{updateEstado(element)}}></div>
-                        : <div className='prueba' onClick={()=>{updateEstado(element)}}></div>
+                        : <div className='prueba' onClick={()=>{
+                          updateEstado(element)
+                          
+                          }}>
+                          </div>
                         }
                         </div>
                     </div>
                     )
                   })
                   }
+
+                  <button onClick={preInfracion}>holaaa</button>
                 </div>
               </div>
             </div>

@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Imagenes } from "../../UI/Imagenes/Imagenes";
-
+import { Logout } from "../../../Logout";
 
 
 export const PerfilBibliotecario = () => {
@@ -249,9 +249,9 @@ export const PerfilBibliotecario = () => {
                     <span></span>
                   </div>
                 </NavLink>
-                <NavLink className="card-Admin" to="/TEstudiantes">
-                  <div className="btn-perfilBibliotecario btn-libroPerfil">
-                    <p>Libros Favoritos</p>
+                <NavLink className="card-Admin" to="/">
+                  <div onClick={Logout} className="btn-perfilBibliotecario btn-libroPerfil">
+                    <p>Cerrar sesión</p>
                     <span></span>
                   </div>
                 </NavLink>
