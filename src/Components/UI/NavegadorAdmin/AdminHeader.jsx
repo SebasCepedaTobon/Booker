@@ -11,24 +11,24 @@ import usuario from '../../../assets/Imagenes/Admin/usuario.png'
 import {Logout} from '../../../Logout'
 
 let id_bibliotecario
-let imagenPerfil
-let nombres
 
 export const AdminHeader = () => {
 
-    const [libros, setLibros] = useState([])
-    const [librosNo, setLibrosNo] = useState([])
     const [cerrar, setCounter] = useState(true)
+
+    const [imagenPerfil1, setImagenPerfil1] = useState({})
+    const [nombres, setNombres] = useState({})
+
+    
 
 
     const peticionGetBibliotecario=()=>{
-
+      console.log("Se cambia el sapo hp");
       axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/" + id_bibliotecario + "/")
       
       .then(response=>{
-        console.log(response.data);
-        imagenPerfil = response.data.doc_bibliotecario.imagen
-        nombres = response.data.nombres
+        setImagenPerfil1(response.data.doc_bibliotecario)
+        setNombres(response.data)
         
       }).catch(error=>{
         console.log(error.message);
@@ -39,9 +39,6 @@ export const AdminHeader = () => {
 
   
     useEffect(() => {
-
-      id_bibliotecario = localStorage.getItem('id_bibliotecario')
-
       const box_perfil = document.getElementById('box-gertion-perfil')
       if(cerrar === true){
         box_perfil.style.visibility = "hidden"
@@ -53,9 +50,10 @@ export const AdminHeader = () => {
     },[cerrar]);
 
     useEffect(() => {
+      id_bibliotecario = localStorage.getItem('id_bibliotecario')
       peticionGetBibliotecario()
     }, [])
-    
+
 
   return (
     <div className='AdminHeader'>
@@ -64,13 +62,13 @@ export const AdminHeader = () => {
             <div className="HeaderIconos">
                 <div className="box-perfilHeader" onClick={FormFlotante}>
                     <div className="userHeader">
-                        <p className='p1'>{nombres}</p>
+                        <p className='p1'>{nombres.nombres}</p>
                         <p className='p2'>bibliotecario</p>
                     </div>
                     <div className='perfil'>
-                    {imagenPerfil === null
+                    {imagenPerfil1 === null
                       ? <Imagenes url={usuario} />
-                      : <Imagenes clase='icono' url={imagenPerfil} />
+                      : <Imagenes clase='icono' url={imagenPerfil1.imagen} />
                     }
                     </div>
                 </div>           

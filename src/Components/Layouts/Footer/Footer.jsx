@@ -10,7 +10,7 @@ import logo from '../../../assets/Imagenes/logos/Booker1.png'
 export const Footer = () => {
   return (
     <div className='footer'>
-      <div className="footer-extremos">
+      {/* <div className="footer-extremos">
         <div className="footer-info">
         
         <p>Lorem ipsum dolor</p>
@@ -18,23 +18,27 @@ export const Footer = () => {
         <p>Lorem ipsum dolor</p>
         <p>Possimus beatae facilis quaerat.</p>
         </div>
-      </div>
+      </div> */}
       <div className="footer-centro">
-        <div className='redes' >
-          <a href="#"><Imagenes url={facebook} clase='facebook'/></a>
-          <NavLink to='/Email' ><Imagenes url={email} clase='email' /></NavLink>
-          <a href="https://wa.me/+573002536217" target={'_blank'} ><Imagenes url={whatsapp} clase='whatsapp'/></a>
-        </div>
+        <div className="box-footer-Padre">
+
         <div className="box-logo">
-          <div className='contenedor-logo'>
-            <Imagenes url={logo} clase='logo-footer' />
+            <div className='contenedor-logo'>
+              <Imagenes url={logo} clase='logo-footer' />
+            </div>
           </div>
-        </div>
+          <div className='redes' >
+            <a href="https://web.facebook.com/Booker-110199055074179" target={'_blank'}><Imagenes url={facebook} clase='facebook'/></a>
+            <NavLink to='/Email' ><Imagenes url={email} clase='email' /></NavLink>
+            <a href="https://wa.me/+573002536217" target={'_blank'} ><Imagenes url={whatsapp} clase='whatsapp'/></a>
+          </div>
+          
+        </div>        
         <div className='footer-derechos' >
           <p>&copy;2022 Booker Todos los derechos reservados</p>
         </div>
       </div>
-      <div className="footer-extremos">
+     {/*  <div className="footer-extremos">
         <div className="footer-info">
           
           <p>Lorem ipsum dolor</p>
@@ -42,7 +46,7 @@ export const Footer = () => {
           <p>Lorem ipsum dolor</p>
           <p>Possimus beatae facilis quaerat.</p>
         </div>
-      </div>        
+      </div>   */}      
     </div>
   )
 }

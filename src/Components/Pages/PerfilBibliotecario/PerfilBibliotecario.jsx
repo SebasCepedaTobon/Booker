@@ -13,7 +13,6 @@ export const PerfilBibliotecario = () => {
   let id_bibliotecario;
   let imagen2;
 
-
   id_bibliotecario = localStorage.getItem("id_bibliotecario");
   let setearImg;
   const url = "https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/";
@@ -24,6 +23,7 @@ export const PerfilBibliotecario = () => {
   const [form2, setForm2] = useState({});
   const [formImg, setFormImg] = useState({});
   const [editImg, setEditImg] = useState(true);
+  const [header, setHeader] = useState(AdminHeader())
 
   const peticionGetBibliotecario = async () => {
 
@@ -101,7 +101,7 @@ export const PerfilBibliotecario = () => {
     .then((res) => {
       peticionGetBibliotecario();
       ventanaFlotante();
-      window.location.href = "/PerfilBibliotecario"  
+      //window.location.href = "/PerfilBibliotecario"  
       console.log(res);
     });
   };
@@ -224,7 +224,7 @@ export const PerfilBibliotecario = () => {
                     {
                       editImg === false
                       ? updateDataImg()
-                      :console.log("No se llamo, porque no tiene datos, es claro no es tigo")
+                      :""
                     }
                   </div>
 

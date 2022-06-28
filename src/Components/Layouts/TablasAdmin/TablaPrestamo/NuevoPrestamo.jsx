@@ -1,4 +1,4 @@
-import React, { useState, useEffect, version } from 'react';
+  import React, { useState, useEffect, version } from 'react';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 import Swal from 'sweetalert2'
 import axios from 'axios';

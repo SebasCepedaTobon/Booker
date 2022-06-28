@@ -36,17 +36,9 @@ export const Navegacion2 = () => {
   }
 
   
-
- 
-
-
-  
   useEffect(() => {
       PedirDatos() 
       QuitarAdmin()
-      
- 
-     
 
     }, [])
 

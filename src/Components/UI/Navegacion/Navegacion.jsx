@@ -26,11 +26,6 @@ export const Navegacion = () => {
   }
 
   
-
- 
-
-
-  
   useEffect(() => {
       PedirDatos() 
       QuitarAdmin()

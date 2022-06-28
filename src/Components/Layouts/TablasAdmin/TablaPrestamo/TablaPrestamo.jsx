@@ -142,6 +142,7 @@ useEffect(() => {
   }
 
   const updateEstado = (data)=>{
+    console.log(data);
     if(data.estado === 'AC'){
     data.estado = 'INF'
     }else if (data.estado === 'INF') {
@@ -157,7 +158,6 @@ useEffect(() => {
     axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
-        preInfracion()
         /* peticionGetDetalles(data) */
     }).catch(error => {
       console.log(error);
