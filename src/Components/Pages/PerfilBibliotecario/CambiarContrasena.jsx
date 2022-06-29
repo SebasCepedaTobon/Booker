@@ -45,6 +45,7 @@ export const CambiarContrasena = () => {
       .then((response) => {
         console.log(response.data);
         setUsuario(response.data)
+        
       })
       .catch((error) => {
         console.log(error.message);
@@ -85,16 +86,18 @@ export const CambiarContrasena = () => {
         console.log('password correcto');
         modalAbrir2()
 
+        setState({
+          error: true,
+          errorMsg: "Contraseña correcta",
+        })
+
       }).catch(error => {
         console.log(error.response.status)
         if (error.response.status === 400) {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Contraseña Incorrecta',
-            showConfirmButton: false,
-            timer: 1600
-          })          
+          setState({
+            error: true,
+            errorMsg: "Contraseña incorrecta",
+          })         
         }
       })
 
@@ -116,13 +119,6 @@ export const CambiarContrasena = () => {
 
   }
 
-  const modalCerrar2 = ()=>{
-    const Auto = document.getElementById('Auto11')
-    const Auto2 = document.getElementById('Auto23')
-    Auto.style.visibility = "hidden"
-    Auto2.style.opacity="0"
-    Auto2.style.transform="scale(0.6)"
-  }
 
   const handleSutmitUsuario = (e) => {
     e.preventDefault()
@@ -134,13 +130,10 @@ export const CambiarContrasena = () => {
     if (inputPassword1.value === inputPassword2.value) {
       updateUsuario()
     }else(
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'La contraseña no coincide',
-        showConfirmButton: false,
-        timer: 1600
-      })  
+      setState({
+        error: true,
+        errorMsg: "Las contraseñas no cooinciden",
+      }) 
       
     )
   }
@@ -196,6 +189,9 @@ export const CambiarContrasena = () => {
                   <label>Contraseña Actual</label>
                 </div>
               </div>
+                {state.error === true &&
+                  <p>{state.errorMsg}</p>
+                }
               <div className="btnsFormulario">
                 <button className="btnFor btn-agregar">VALIDAR CONTRASEÑA</button>
               </div>
@@ -209,7 +205,9 @@ export const CambiarContrasena = () => {
           <div className='Estudiantes-from boxAuto AutoCateAgregar AutoresForm cambioPass2' >
             <div className="from-Titulo">
               <div className="Desactivar-From">
-                  <i class="fa-solid fa-xmark" onClick={modalCerrar2}></i>
+              <NavLink to='/PerfilBibliotecario'>
+                  <i class="fa-solid fa-xmark" ></i>
+                </NavLink>
               </div>
               <h1>ACTUALIZAR CONTRASEÑA</h1>
             </div>
@@ -228,6 +226,9 @@ export const CambiarContrasena = () => {
                   <label>Confirmar Contraseña</label>
                 </div>
               </div>
+              {state.error === true &&
+                  <p>{state.errorMsg}</p>
+                }
               <br />
               <div className="btnsFormulario">
                 <button className="btnFor btn-agregar">ACTUALIZAR CONTRASEÑA</button>

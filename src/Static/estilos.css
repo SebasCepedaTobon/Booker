@@ -813,6 +813,10 @@ hr{
     width: 29em !important;
 }
 
+.swal2-title{
+    font-size: 23px !important;
+}
+
 
 /*---------------------SPINNER--------------------*/
 

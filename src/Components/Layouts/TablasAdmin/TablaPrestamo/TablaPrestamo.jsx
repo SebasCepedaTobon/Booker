@@ -43,12 +43,11 @@ export const TablaPrestamo = () => {
     }).catch(error=>{
       console.log(error);
       if (error.response.status === 500) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'El prestamo no se puede eliminar tiene una infracción vigente',
-          showConfirmButton: true
-        })        
+        Swal.fire(
+          '¡No se puede eliminar!',
+          'El prestamo tiene una infracción vigente',
+          'error'
+        )       
       }
     })
   }
