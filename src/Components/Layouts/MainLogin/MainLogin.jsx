@@ -108,7 +108,7 @@ export const MainLogin = () => {
             <h1>¡INICIAR SESIÓN!</h1>
             <form onSubmit={recharge}>
               <div className='box-input'>
-                <input type="text" required onChange={change} name='username' />
+                <input type="text" autoComplete='off' required onChange={change} name='username' />
                 <span></span>
                 <label>N° Documento</label>
               </div>

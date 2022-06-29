@@ -200,6 +200,7 @@ export const TablaLibros = () => {
       categorias: cate_idM,
       autores: auto_idM,
       seleccionado: "NS",
+      cant_ejemplares : 1,
       estado: estado.value
     })
     console.log(form2);
@@ -424,6 +425,8 @@ export const TablaLibros = () => {
   }
 
   const updateData2Estado = (libro) => {
+
+    console.log(libro);
 
     let endpoint = url + libro.id_libro + '/'
     axios.put(endpoint, libro)
@@ -901,7 +904,7 @@ export const TablaLibros = () => {
                 <div className='td-1'><p>Nombre</p></div>
                 <div className='td-2'><p>N° Ejemplar</p></div>
                 <div className='td-3'><p>Autores</p></div>
-                <div className='td-6'><p>Estado</p></div>
+                <div className='td-1'><p>Estado</p></div>
                 <div className='td-5'><p>Opciones</p></div>
               </div>
               <div className="scrollEjemplares">
@@ -931,10 +934,26 @@ export const TablaLibros = () => {
                           </p>
                         </div>
 
-                        <div className="td-6">
+                        <div className="td-1">
                           {libro.estado === 'D'
-                            ? <p className='pActivo'>Disponible</p>
-                            : <p className='pInactivo'>No Disponible</p>
+                            ? <p className='pEstadoReservaAC'>Ejemplar Disponible</p>
+                            : ""
+                          } 
+                          {libro.estado === 'P'
+                          ?<p className='pActivo'>Ejemplar Prestado</p>
+                          :""
+                          }
+                          {libro.estado === 'IV'
+                          ?<p className='pInactivo'>No Disponible</p>
+                          :""
+                          }
+                          {libro.estado === 'R'
+                          ?<p className='pActivo'> Ejemplar Reservado</p>
+                          :""
+                          }
+                          {libro.estado === 'INF'
+                          ?<p className='pInactivo'> Ejemplar con<br/>infracción</p>
+                          :""
                           }
                         </div>
                         { /*QUEDO EN LOS BOTONES*/}
