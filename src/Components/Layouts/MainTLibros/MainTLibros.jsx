@@ -4,6 +4,7 @@ import { Libros } from '../../UI/Libros/Libros';
 import { Spinner } from '../../UI/Spinner/Spinner';
 import { VentanaReserva } from '../../UI/VentanaReserva/VentanaReserva';
 import { Categorias } from '../../UI/Categorias/Categorias';
+import { Alertafavoritos } from '../../UI/VentanaReserva/Alertafavoritos';
 
 export const MainTLibros = () => {
 
@@ -76,6 +77,7 @@ export const MainTLibros = () => {
           
         </div>
         <VentanaReserva/>
+        <Alertafavoritos/>
     </>
     
   )

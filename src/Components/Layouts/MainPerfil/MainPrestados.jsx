@@ -5,18 +5,33 @@ import axios from 'axios';
 import { Imagenes } from '../../UI/Imagenes/Imagenes';
 import Swal from 'sweetalert2';
 
+
 export const MainPrestados = () => {
+    
+    let reservados = []
 
     const id_estudiante = localStorage.getItem('id_estudiante')
 
-    const [reservados, setReservados] = useState([])
-    console.log(reservados)
 
-    const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C&id_estudiante__id_estudiante=" + id_estudiante
+
+   const [prueba, setPrueba] = useState([])
+   const [estado, setEstado] = useState([])
+   
+   console.log(prueba)
+   
+    
+
+    const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?id_estudiante__id_estudiante=" + id_estudiante + "&ordering=-fec_prestamo"
 
     const PedirDatos = () => {
         axios.get(url).then(response => {
-            setReservados(response.data);
+            response.data.map((prestados=>{
+                reservados.push(prestados.prestamos)
+            }))
+            setPrueba(reservados)
+            setEstado(response.data)
+            console.log(reservados)
+
         }).catch(error => {
             console.log(error.message);
         })
@@ -24,34 +39,7 @@ export const MainPrestados = () => {
 
     }
 
-    /*const eliminacionAuto = (data) => {
-        Swal.fire({
-            title: '¿Esta seguro de eliminar el autor?',
-            icon: 'warning',
-            confirmButtonText: 'Si, Eliminar',
-            showCancelButton: true,
-            cancelButtonText: 'No, cancelar',
-            reverseButtons: true
-        }).then((resultado) => {
-            if (resultado.isConfirmed) {
-                peticionDeleteAuto(data)
-            }
-        })
-    }
 
-    const url2 = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
-
-    const peticionDeleteAuto = async (data) => {
-
-
-
-        let endpoint = url2 + data.id_reserva + "/"
-        await axios.delete(endpoint)
-            .then((res) => {
-                PedirDatos()
-                console.log(res);
-            })
-    }*/
 
 
 
@@ -64,45 +52,65 @@ export const MainPrestados = () => {
     }, [])
 
 
-    let eje = []
+    let estados
     return (
         <div className='contenedor-perfil'>
-        
         <Navegacion3/>
         <BotonesPerfil/>
         <div className="datos-perfil">
             <h2 id='Tu-cuenta'>Prestados</h2>
-            {reservados.map((reserva=>{
-              
-              eje = reserva.ejemplares
-              return(
-                <div className="ejemplares">
-                  {eje.map((ejempla=>(
-                    <Imagenes clase='img-card-res' url={ejempla.id_libro.imagen_libro} />
-                      
+            {prueba.length === 0 ? (<div>
+                  <h3>No tiene prestamos por ahora...</h3>
+                </div>) :
+                    (<div className="tabla-reservados">
+                    <table className='tabla-libros-reservados'>
+                      <thead className='barra-titulos'>
+                        <th className='th-imagen'>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Fecha de Prestamo</th>
+                        <th>Fecha de Devolución</th>
+                        <th>Estado de Prestamo</th>
+                      </thead>
+                      <tbody className='barra-libros'>
+                                
+                                {prueba.map((reserva => {
+                                    return (
+                                        <tr>
+                                            <td>
+                                                {reserva.map((element => {
+                                                    return (
+                                                            <Imagenes clase='img-card-res' url={element.id_ejemplar.id_libro.imagen_libro} />
+                                                    )
+                                                }))}
+                                            </td>
+                                            <td>
+                                                {reserva.map((element => (<p>{element.id_ejemplar.id_libro.nombre}</p>)))}
+                                            </td>
+                                            <td>
+                                            {estado.map((element => (element.fec_prestamo)))}
+                                            </td>
+                                            <td>
+                                                {reserva.map((element => (<p>{element.fec_devolucion}</p>)))}
+                                            
+                                            </td>
+                                            <td>
+                                                {estado.map((element => {estados = element.estado }))}
+                                                {estados === "INF" ? <p>Infracción</p>:""}
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                    )
+                                }))} 
+                     
+      
+                      </tbody>
+                    </table>
+                  </div>)
+            }
+           
 
-                    )
                     
-
-
-                  ))}
-                  {eje.map((ejempla)=>(
-                    <div className='datos-reservados'>
-                      <h2>{ejempla.id_libro.nombre}</h2>
-                      <p>{ejempla.id_libro.isbn}</p>
-
-
-                    </div>
-        
-                  ))
-                  }
-                  
-                </div>
-
-               
-                
-              )
-            }))}
 
           
         </div>

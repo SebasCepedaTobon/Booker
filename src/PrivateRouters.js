@@ -33,15 +33,16 @@ export function PrivateSuperAdmin() {
 
 
 export function PrivateSuperAdminRoute() {
-  return  rolUser === 'A' ? <Outlet /> : <Navigate to='/TBibliotecarios' />
+  return  rolUser === 'A' ? <Outlet /> : <Navigate to='/' />
 }
 
-// Esta funcion en el app.js encierra las rutas que SOLO puede navegar el bibliotecario
+// Esta funcion en el app.js encierra las rutas que SOLO puede navegar el bibliotecario, si no es bibliotecario se enviara al home
 export function PrivateAdminRoute() {
-  return rolUser === 'B' ? <Outlet /> : <Navigate to='/Home' />
+  return rolUser === 'B' ? <Outlet /> : <Navigate to='/' />
 }
 
-// Esta funcion en el app.js encierra las rutas que SOLO puede navegar el estudiante
+// Esta funcion en el app.js encierra las rutas que SOLO puede navegar el estudiante, si no es estudiante se enviara al admin
 export function PrivateProfileRoute() {
-  return rolUser === 'E' ? <Outlet /> : <Navigate to='/Admin' />
-}
+  return rolUser === 'E' ? <Outlet /> : <Navigate to='/' />
+} 
+

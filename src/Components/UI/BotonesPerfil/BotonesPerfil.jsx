@@ -27,7 +27,7 @@ export const BotonesPerfil = () => {
               <NavLink to='/Historial'>
                 <div className='btn-perfil'>
                   <i class="fa-solid fa-calendar-check"></i>
-                  <p>Reservas</p>
+                  <p>Mis Reservas</p>
                   <span></span>
                 </div>
               </NavLink>
@@ -41,7 +41,7 @@ export const BotonesPerfil = () => {
               <NavLink to='/Prestados'>
                 <div className='btn-perfil'>
                   <i class="fa-solid fa-calendar-check"></i>
-                  <p>Prestados</p>
+                  <p>Mis Prestamos</p>
                   <span></span>
                 </div>
               </NavLink>

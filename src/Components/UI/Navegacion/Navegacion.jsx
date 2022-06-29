@@ -4,6 +4,7 @@ import { Imagenes } from '../Imagenes/Imagenes'
 import logo from '../../../assets/Imagenes/logos/Booker1.png'
 import { NavLink } from 'react-router-dom'
 import { useStateValue } from '../../../StateProvider'
+import UsuarioInactivo from '../../../assets/Imagenes/Admin/usuario.png'
 
 export const Navegacion = () => {
 
@@ -101,7 +102,15 @@ export const Navegacion = () => {
               <i class="fa-solid fa-user-pen"></i>Admin
             </NavLink>
           </div>
+          {Documento.imagen === null ?
+          <>
+            <NavLink to='' className="Perfil-icon" onClick={ver}><Imagenes url={UsuarioInactivo} /></NavLink>
+          </>:
+          <>
           <NavLink to='' className="Perfil-icon" onClick={ver}><Imagenes url={Documento.imagen} /></NavLink>
+          </>
+          }
+          
           <div className='menu-btn' onClick={abrir}>
             <i class="fas fa-bars" ></i>
           </div>

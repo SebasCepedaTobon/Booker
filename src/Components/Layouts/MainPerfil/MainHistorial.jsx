@@ -49,12 +49,15 @@ const reservar = () =>{
   
 
     const [{reservas}, dispatch] = useStateValue();
+
     
     const peticionGet=()=>{
       for (let index = 0; index < reservas.length; index++) {
         axios.get(urlEjem + reservas[index].id_libro).then(response=>{
+          
          
           idEjemplares.push(response.data[0].id_ejemplar)
+          console.log(idEjemplares)
           
         }).catch(error=>{
           console.log(error.message);
@@ -64,6 +67,9 @@ const reservar = () =>{
 
 
     const peticionPost=()=>{
+
+      console.log(idEjemplares)
+      console.log(reservas)
 
 
       
@@ -108,7 +114,7 @@ const reservar = () =>{
 
     useEffect(() => {
       peticionGet() 
-    }, [])
+    }, [reservas])
 
     //id_estudiante(este se quema), ejemplares, estado
 

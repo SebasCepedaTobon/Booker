@@ -55,14 +55,14 @@ function App() {
         <Route exact path='/' element={<Login/>}/>
         
       
-        {/* 
-        <Route element={PrivateRoute()}>
+        
+        {/*<Route element={PrivateRoute()}>
           <Route path='/Home' element={<Home/>}/>
-        </Route>
+  </Route>*/}
 
-        <Route element={PrivateAdmin()}>
+        {/*<Route element={PrivateAdmin()}>
           <Route path='/Home' element={<Home/>}/>
-        </Route> */}
+        </Route>*/}
 
         <Route element={PrivateAdminRoute()}>
           <Route path='/Admin' element={<Admin/>} />
@@ -98,7 +98,6 @@ function App() {
           <Route path='/Reservados' element={<Reservados/>}/>
           <Route path='/Prestados' element={<Prestados/>}/>
         </Route>
-
         <Route path='/Email' element={<Email/>} />        
         <Route path='/Libro/:id_libro' element={<Libro/>}/>       
         <Route path='/Busqueda/:nombre' element={<Busqueda/>}/>        

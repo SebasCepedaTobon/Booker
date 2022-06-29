@@ -133,7 +133,7 @@ export const MainHome = () => {
 
   useEffect(()=> {
     setCargando(true);
-    fetch("https://bookerbackapi.herokuapp.com/modulos/libros/")
+    fetch("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV")
     .then(res => res.json())
     .then((data) =>{
       setLibros(data)

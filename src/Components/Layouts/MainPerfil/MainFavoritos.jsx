@@ -5,12 +5,16 @@ import axios from 'axios';
 import { Imagenes } from '../../UI/Imagenes/Imagenes';
 
 
+
 export const MainFavoritos = () => {
 
 
   const id_estudiante = localStorage.getItem('id_estudiante')
 
   const [favoritos, setFavoritos] = useState([])
+  
+
+
   console.log(favoritos)
 
   let url = "https://bookerbackapi.herokuapp.com/modulos/favoritos/?id_estudiante=" + id_estudiante
@@ -18,6 +22,7 @@ export const MainFavoritos = () => {
   const PedirDatos = () => {
     axios.get(url).then(response => {
       setFavoritos(response.data);
+
     }).catch(error => {
       console.log(error.message);
     })
@@ -45,37 +50,117 @@ export const MainFavoritos = () => {
   let id_favo
 
   let librosF = []
+
+  let  a = []
+  let  b = []
   return (
     <div className='contenedor-perfil'>
       <Navegacion3 />
       <BotonesPerfil />
       <div className="datos-perfil">
         <h2 id='Tu-cuenta'>Tus Favoritos</h2>
-        {favoritos.map((favos) => {
-          id_favo = favos.id_favorito
-          librosF = favos.libros
-          return (
-            <div className="ejemplares">
-              {librosF.map((favorito => (
-                <Imagenes clase='img-card-res' url={favorito.imagen_libro} />
+        {favoritos.length === 0 ? (<div>
+                  <h3>No tienes favoritos por ahora...</h3>
+                </div>) :
+                    (
+            <div className="tabla-reservados">
+              <table className='tabla-libros-reservados'>
+                <thead className='barra-titulos'>
+                  <th className='th-imagen'>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Autores</th>
+                  <th>Editorial</th>
+                  <th>Categorias</th>
+                </thead>
+                <tbody className='barra-libros'>
+                  {favoritos.map((favos => {
 
-              )
-                
-            ))}
-            {librosF.map((favorito)=>(
-                    <div className='datos-reservados'>
-                      <h2>{favorito.nombre}</h2>
-                      <p>{favorito.isbn}</p>
+                    id_favo = favos.id_favorito
+                    librosF = favos.libros
+                   
+                    return (
+                      <tr className='tr-libros'>
+                        <td className='td-imagen'>
+                          {librosF.map((favoritos => (
 
 
-                    </div>
-        
-                  ))
-                  }
-                   <button onClick={peticionDeleteAuto} className="btn-reser">Cancelar</button>
+                            <Imagenes clase='img-card-res' url={favoritos.imagen_libro} />
+
+
+
+
+                          )
+                          ))}
+                        </td>
+                        <td className='td-nombres'>
+                          {librosF.map((favoritos => (
+
+                            <p>{favoritos.nombre}</p>
+
+                          )
+                          ))}
+                        </td>
+
+                        <td>
+                          {librosF.map((libros => {
+                            a = libros.autores
+                            return(
+                             
+                                <p>
+                                {
+                                a.map(autor => autor.nombres).join(', ')
+                                }
+                                </p>
+                           
+
+                            )
+
+
+                          }))}
+                         
+                         
+                        </td>
+                        <td>
+                        {librosF.map((libros => (
+                          <p> {
+                            libros.id_editorial.nombre
+                            }</p> 
+
+                        )))}
+                        </td>
+                        <td>
+                        {librosF.map((libros => {
+                            b = libros.categorias
+                            return(
+                             
+                                <p>
+                                {
+                                b.map(cate => cate.nombre).join(', ')
+                                }
+                                </p>
+                           
+
+                            )
+
+
+                          }))}
+                        
+                        </td>
+                        <td className='td-borrar'><i onClick={peticionDeleteAuto} class="fa-solid fa-trash-can"></i></td>
+                      </tr>
+
+
+
+
+                    )
+                  }))}
+
+                </tbody>
+              </table>
             </div>
+
           )
-        })}
+        }
        
       </div>
     </div>

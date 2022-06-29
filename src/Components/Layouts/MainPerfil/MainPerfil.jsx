@@ -17,8 +17,8 @@ export const MainPerfil = () => {
 
   const [estudiante, setEstudiante] = useState({});
   const [form2, setForm2] = useState({}); 
-  const [grupo, setGrupo] = useState([])
-  const [grado, setGrado] = useState([])
+  const [grupo, setGrupo] = useState({})
+  const [grado, setGrado] = useState({})
   const [alerta, setAlerta] = useState(false)
   const {VentanaContraseña} = AbrirContraseña()
   
@@ -48,19 +48,28 @@ export const MainPerfil = () => {
   
   useEffect(() => {
       PedirDatos() 
+  
     
 
 
     }, [])
 
 
+
+
     const ventanaFlotante = () => {
-  
+      console.log(estudiante)
       const name1 = document.getElementById("name");
       name1.value = estudiante.name;
+      
   
       const email = document.getElementById("email");
       email.value = estudiante.email;
+
+      const doc = document.getElementById("doc");
+      doc.value = estudiante.doc;
+
+      activarInputs()
     };
 
 
@@ -70,19 +79,21 @@ export const MainPerfil = () => {
 
     const name = document.getElementById("name");
     const email = document.getElementById("email");
+    const doc = document.getElementById("doc");
    
     setForm2({
         ...form2,
         [e.target.name]: e.target.value,
-        /*doc_estudiante:{
+        doc_estudiante:{
+          doc: doc.value,
           name: name.value,
           email: email.value,
-        },*/
+        },
         id_grupo: grupo.id_grupo,
         id_grado: grado.id_grado,
     })
 
-
+    console.log(form2)
 
  
   }
@@ -91,6 +102,7 @@ export const MainPerfil = () => {
 
   const recharge = (e) =>{
     e.preventDefault()
+  
   }
 
 
@@ -103,15 +115,20 @@ export const MainPerfil = () => {
     axios.put(endpoint, form2)
     .then((res)=>{
       setAlerta(!alerta)
-      setTimeout(() => {
-        window.location.reload();
-        
-      }, [3000]);
+      PedirDatos() 
+
       
 
     })
 
   
+
+  }
+
+
+  const activarInputs =()=>{
+    document.querySelector('.container-formulario2').classList.toggle('show')
+    document.querySelector('.container-formulario').classList.toggle('show')
 
   }
 
@@ -145,10 +162,13 @@ export const MainPerfil = () => {
             <div className="datos-perfil2">
                 <h2 id='Tu-cuenta'>Tu cuenta</h2>
                 <div className="p-hr">
+                  <div className="p-edit">
                     <p>Información Personal</p>
+                    <i onClick={ventanaFlotante} class="fa-solid fa-user-pen"></i>
+                  </div>
                     <hr />
                 </div>
-                {/*<button onClick={ventanaFlotante}>editar</button>*/}
+                <div className="container-formulario">
                 <div className="container-inputs">
                       <form onSubmit={recharge}>
                         <div className="container-inputs-input">
@@ -183,9 +203,20 @@ export const MainPerfil = () => {
                                   <span></span>
                                   <label>Dirección</label>
                               </div>
-                              <p  onClick={VentanaContraseña} className="btn-contraseña">cambiar contraseña</p>
+                              <div className="box-input">
+                                  <input 
+                                  type="text" 
+                                  name='doc' 
+                                  id="doc"
+                                  onChange={change} 
+                                  required 
+                                  />
+                                  <span></span>
+                                  <label>Documento</label>
+                              </div>
                               
-                              {/*<div className="box-input">
+                              
+                              <div className="box-input">
                                   <input 
                                   type="text" 
                                   name='name' 
@@ -206,7 +237,8 @@ export const MainPerfil = () => {
                                   />
                                   <span></span>
                                   <label>Email</label>
-                              </div>*/}
+                              </div>
+                              <p  onClick={VentanaContraseña} className="btn-contraseña">cambiar contraseña</p>
 
                           
                               <div className="btnsFormulario">
@@ -220,6 +252,48 @@ export const MainPerfil = () => {
                       </form>
                       
                 </div>
+
+                </div>
+                <div className="container-formulario2">
+                <div className="container-inputs2">
+                  <div className="container-info-estudiante">
+                    
+                    <div className="box-p">
+                      <p className='td-Titulo'>Nombres</p>
+                      <p className='td-datos'>{form2.nombres}</p>
+                    </div>
+                    <div className="box-p">
+                      <p className='td-Titulo'>Apellidos</p>
+                      <p className='td-datos'>{form2.apellidos}</p>
+                    </div>
+                    <div className="box-p">
+                      <p className='td-Titulo'>Celular</p>
+                      <p className='td-datos'>{form2.telefono}</p>
+                    </div>
+                    <div className="box-p">
+                      <p className='td-Titulo'>Dirección</p>
+                      <p className='td-datos'>{form2.direccion}</p>
+                    </div>
+                    <div className="box-p">
+                      <p className='td-Titulo'>Documento</p>
+                      <p className='td-datos'>{estudiante.doc}</p>
+                    </div>
+                    <div className="box-p">
+                      <p className='td-Titulo'>Nombre de Usuario</p>
+                      <p className='td-datos'>{estudiante.name}</p>
+                    </div>
+                    <div className="box-p">
+                      <p className='td-Titulo'>Email</p>
+                      <p className='td-datos'>{estudiante.email}</p>
+                    </div>
+                    <p  onClick={VentanaContraseña} className="btn-contraseña">cambiar contraseña</p>
+                  </div>
+                      
+                      
+                </div>
+
+                </div>
+                
                     
             </div>
         </div>

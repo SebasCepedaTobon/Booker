@@ -388,7 +388,7 @@ color: rgb(219, 35, 35);
 .img-nombre{
     position: absolute;
     left: 120px;
-    bottom: 60px;
+    margin-top: 220px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -452,7 +452,7 @@ color: rgb(219, 35, 35);
 .usu{
     position: absolute;
     left: 300px;
-    bottom: 100px;
+    margin-top: 260px;
     display: flex;
     flex-direction: column;
     color: white;
@@ -515,7 +515,8 @@ hr{
 }
 
 .datos-perfil2 {
-    width: 50%;
+   
+    width: 75%;
     margin-top: 50px;
     background-color: white;
     margin-bottom: 100px;
@@ -545,6 +546,20 @@ hr{
     display: flex;
     flex-direction: column;
     width: 100%;
+    
+}
+
+.p-edit{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.p-edit i{
+   position: absolute;
+   right: 340px;
+   cursor: pointer;
+   font-size: 25px;
     
 }
 
@@ -1241,43 +1256,57 @@ hr{
 }
 
 
-/*cards-reservados-prestados*/
+/*tabla-reservados-prestados*/
 
-.ejemplares {
-    margin-top: 40px;
-    margin-bottom: 50px;
-    margin-left: 40px;
-    width: 600px;
-    height: 300px;
+.tabla-reservados{
+    margin-top: 20px;
+}
+
+.tabla-libros-reservados{
     background-color: white;
-    border-radius: 7px;
-    display: flex;
-    flex-direction: row;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    width: 100%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+   
+}
+
+.barra-titulos th{
+    border-right: 1px solid rgb(128, 128, 128);
+    height: 40px;
+    
+ 
+}
+
+
+.th-imagen{
+    
+   
+ 
+}
+
+
+
+
+.barra-libros td{
+    border-right: 1px solid rgb(128, 128, 128);
+    border-top: 1px solid rgb(128, 128, 128);
+    text-align: center;
     
 }
+
+.td-borrar{
+    border: none !important;
+}
+
+
 
 .img-card-res{
-    height: 250px;
-    margin: 20px;
-    border-radius: 7px;
+    width: 80px;
+    height: 120px;
+    margin: 5px;
 }
 
-.btn-reser{
-    width: 200px;
-    height: 40px;
-    margin-top: 37%;
-    margin-right: 40px;
-    background-color: #0d5fe4;
-    color: white;
-    font-size: 20px;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
 
-    
-}
-
+/**/
 .datos-reservados{
     display: flex;
     flex-direction: column;
@@ -1364,12 +1393,13 @@ hr{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top:133px;
-    right: 50px;
+    top: 120px;
+    right: 45px;
     width: 200px;
     height: 80px;
     align-items: center;
     z-index: 20;
+
 }
 
 
