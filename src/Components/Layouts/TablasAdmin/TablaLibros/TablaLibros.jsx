@@ -200,6 +200,7 @@ export const TablaLibros = () => {
       categorias: cate_idM,
       autores: auto_idM,
       seleccionado: "NS",
+      cant_ejemplares : 1,
       estado: estado.value
     })
     console.log(form2);

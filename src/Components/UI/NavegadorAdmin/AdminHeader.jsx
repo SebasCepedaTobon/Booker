@@ -23,7 +23,6 @@ export const AdminHeader = () => {
 
 
     const peticionGetBibliotecario=()=>{
-      console.log("Se cambia el sapo hp");
       axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/" + id_bibliotecario + "/")
       
       .then(response=>{

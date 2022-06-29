@@ -47,8 +47,7 @@ export const TablaPrestamo = () => {
           position: 'top-end',
           icon: 'error',
           title: 'El prestamo no se puede eliminar tiene una infracción vigente',
-          showConfirmButton: false,
-          timer: 1400
+          showConfirmButton: true
         })        
       }
     })
@@ -64,6 +63,7 @@ const [generarInfra, setGenerarInfra] = useState({})
 const peticionGet=()=>{
   axios.get(url).then(response=>{
     setPrestamos(response.data);
+    console.log(response.data);
     console.log(response.data)
   }).catch(error=>{
     console.log(error.message);
@@ -82,7 +82,7 @@ useEffect(() => {
         fechaPrestamo = libro.fec_prestamo
         setPrestamos1([response.data]);
         prestamoUpdate.push(response.data)
-        console.log([response.data]);
+        console.log(response.data);
         setEstudiantes(response.data.id_estudiante)
         setDetallesPrestamo(response.data.prestamos)
         abrirPrestamos()
@@ -136,19 +136,26 @@ useEffect(() => {
     console.log(data);
     if(data.estado === 'AC'){
     data.estado = 'INF'
+    updateEstado2(data)
     }else if (data.estado === 'INF') {
       alert('Este prestamo ya es una unfracción')
     }else if (data.estado === 'C') {
       alert('Este prestamo esta ya esta completado')
     }
-    updateEstado2(data)
+    
+
+    console.log(data);
   }
 
   const updateEstado2 = (data) =>{
+
+    console.log(data);
     let endpoint = "https://bookerbackapi.herokuapp.com/modulos/prestamos/"+data.id_prestamo+'/'
     axios.put(endpoint, data)
     .then((res) => {
         console.log(res)
+        peticionGetPrestamos(data)
+        prestamoUpdate= []
     }).catch(error => {
       console.log(error);
     })
@@ -160,7 +167,7 @@ useEffect(() => {
 
     console.log(data);
 
-    /* let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ data.id_de_prestamo+'/'
+    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ data.id_de_prestamo+'/'
     await axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
@@ -174,69 +181,150 @@ useEffect(() => {
       window.location.href = "/Prestamo"
     }else{
       console.log("");
-    } */
+    }
   }
 
+/*  */
 
-  const infraccion = (data) => {
+  const preInfracion = () => {
 
-    console.log(data.prestamos.length);
-
-     let losPrestamos
+    let losPrestamos
     let losPrestamos1
     let losPrestamos2
+    let idEstudiante
 
-    data.id_estudiante = data.id_estudiante.id_estudiante
-    data.estado = 'INF'
-    
+    console.log(prestamoUpdate)
 
-    if(data.prestamos.length === 1){
-      console.log("Entro al uno");
-
-      losPrestamos = data.prestamos[0]
-
-      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
-     
+    {
+      prestamoUpdate.map((element) => {
+        idEstudiante = element.id_estudiante.id_estudiante
+      })
     }
+
+    console.log(idEstudiante);
     
-    else if(data.prestamos.length === 2){
+
+    if(detallesPrestamo.length === 1){
+      console.log("Entro al uno");
+      {
+        prestamoUpdate.map((element) => {
+          console.log(element.prestamos[1]);
+          losPrestamos = element.prestamos[0]
+        })
+      }
+
+      setGenerarInfra({
+        ...generarInfra,
+        id_de_prestamo: losPrestamos.id_de_prestamo,
+        id_estudiante : idEstudiante,
+        prestamos : [{
+          id_prestamo : losPrestamos.id_prestamo,
+          id_de_prestamo : losPrestamos.id_de_prestamo,
+          fec_devolucion : losPrestamos.fec_devolucion,
+          id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
+          estado : losPrestamos.estado
+        }],
+        estado: "INF"
+      })
+    }
+    else if(detallesPrestamo.length === 2){
 
       console.log("Entro al dos");
-
-      losPrestamos = data.prestamos[0]
-      losPrestamos1 = data.prestamos[1]
-
-      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
-      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
       
-    }
-    
-    else if(data.prestamos.length === 3){
-
-      console.log("Entro al tres");
-
-      losPrestamos = data.prestamos[0]
-      losPrestamos1 = data.prestamos[1]
-      losPrestamos2 = data.prestamos[2]
-
-      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
-      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
-      console.log(data.prestamos[2].id_ejemplar = losPrestamos2.id_ejemplar.id_ejemplar)
-    }
-    //updateDataInfracion(infra)
-    Swal.fire({
-      title: '¿Esta seguro finalizar el prestamo?',
-      icon: 'warning',
-      confirmButtonText: 'Si, finalizar',
-      showCancelButton: true,
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-    }).then((resultado) => {
-      if (resultado.isConfirmed) {
-        updateDataInfracionEstado(data)
+      {
+        prestamoUpdate.map((element) => {
+          losPrestamos = element.prestamos[0]
+          losPrestamos1 = element.prestamos[1]
+          console.log(element.prestamos[0])
+          console.log(element.prestamos[1])
+        })
       }
+
+      console.log(losPrestamos);
+      console.log(losPrestamos1.estado);
+
+      setGenerarInfra({
+        ...generarInfra,
+        id_de_prestamo: losPrestamos.id_de_prestamo,
+        id_estudiante : idEstudiante,
+        prestamos : [
+          {
+            id_prestamo : losPrestamos.id_prestamo,
+            id_de_prestamo : losPrestamos.id_de_prestamo,
+            fec_devolucion : losPrestamos.fec_devolucion,
+            id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
+            estado : losPrestamos.estado
+          },
+          {
+            id_prestamo : losPrestamos1.id_prestamo,
+            id_de_prestamo : losPrestamos1.id_de_prestamo,
+            fec_devolucion : losPrestamos1.fec_devolucion,
+            id_ejemplar : losPrestamos1.id_ejemplar.id_ejemplar,
+            estado : losPrestamos1.estado
+          }
+    ],
+        estado: "INF"
+      })
+    }else if(detallesPrestamo.length === 3){
+
+      console.log("Entro al dos");
+      
+      {
+        prestamoUpdate.map((element) => {
+          losPrestamos = element.prestamos[0]
+          losPrestamos1 = element.prestamos[1]
+          losPrestamos2 = element.prestamos[2]
+        })
+      }
+      setGenerarInfra({
+        ...generarInfra,
+        id_de_prestamo: losPrestamos.id_de_prestamo,
+        id_estudiante : idEstudiante,
+        prestamos : [
+          {
+            id_prestamo : losPrestamos.id_prestamo,
+            id_de_prestamo : losPrestamos.id_de_prestamo,
+            fec_devolucion : losPrestamos.fec_devolucion,
+            id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
+            estado : losPrestamos.estado
+          },
+          {
+            id_prestamo : losPrestamos1.id_prestamo,
+            id_de_prestamo : losPrestamos1.id_de_prestamo,
+            fec_devolucion : losPrestamos1.fec_devolucion,
+            id_ejemplar : losPrestamos1.id_ejemplar.id_ejemplar,
+            estado : losPrestamos1.estado
+          },
+          {
+            id_prestamo : losPrestamos2.id_prestamo,
+            id_de_prestamo : losPrestamos2.id_de_prestamo,
+            fec_devolucion : losPrestamos2.fec_devolucion,
+            id_ejemplar : losPrestamos2.id_ejemplar.id_ejemplar,
+            estado : losPrestamos2.estado
+          }
+    ],
+        estado: "INF"
+      })
+    }
+
+    //updateDataInfracion(infra)
+    console.log(generarInfra);
+  }
+
+  const updateDataInfracion = async () =>{
+
+    console.log(generarInfra);
+
+    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ generarInfra.id_de_prestamo+'/'
+    await axios.put(endpoint, generarInfra)
+    .then((res) => {
+        console.log(res);
+        console.log('Infración creada')
+        cerrarPrestamos()
+        peticionGet()
+    }).catch(error => {
+      console.log(error);
     })
-    
   }
 
 
@@ -423,7 +511,7 @@ useEffect(() => {
                       </div>
                       <div className="td-6">
                         <button id='confirmasPP' onClick={()=>{
-                          infraccion(element)
+                          updateDataInfracion()
                           }}>Confirmar Infración</button>
                       </div>
                     </div>
@@ -502,6 +590,7 @@ useEffect(() => {
                     )
                   })
                   }
+                  <button onClick={preInfracion} >holaaa</button>
                 </div>
               </div>
             </div>

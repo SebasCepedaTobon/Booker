@@ -11,7 +11,7 @@ export const InfraccionesAdmin = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/infracciones/"
 
-  const eliminacion = () => {
+  const eliminacion = (data) => {
     Swal.fire({
       title: '¿Esta seguro de eliminar este libro?',
       icon: 'warning',
@@ -21,12 +21,25 @@ export const InfraccionesAdmin = () => {
       reverseButtons: true
     }).then((resultado) => {
       if (resultado.isConfirmed) {
-        Swal.fire(
-          'Eliminado',
-          'El libro se elimino correctamente',
-          'success'
-        )
+        peticionDelete(data)
       }
+    })
+  }
+
+  const peticionDelete = async (data) =>{
+  
+    let endpoint  = url+data.id_infraccion + "/"
+    await axios.delete(endpoint)
+    .then((res)=>{
+      peticionGet()
+      console.log(res);
+      Swal.fire(
+        'Eliminada',
+        'La reserva se elimino correctamente',
+        'success'
+      )
+    }).catch(error=>{
+      console.log(error);
     })
   }
 
@@ -123,7 +136,7 @@ export const InfraccionesAdmin = () => {
                     </div>
                     <div className='td-5'>
                       <i onClick={FormFlotante} class="fa-solid fa-pen-to-square"></i>
-                      <i onClick={eliminacion} class="fa-solid fa-trash-can" ></i>
+                      <i onClick={()=>eliminacion(element)} class="fa-solid fa-trash-can" ></i>
                     </div>
                   </div>
                 )
