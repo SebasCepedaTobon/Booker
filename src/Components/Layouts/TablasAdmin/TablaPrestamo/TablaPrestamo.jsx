@@ -158,9 +158,9 @@ useEffect(() => {
 
   const updateDataInfracionEstado = async (data) =>{
 
-    
+    console.log(data);
 
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ data.id_de_prestamo+'/'
+    /* let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ data.id_de_prestamo+'/'
     await axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
@@ -174,7 +174,7 @@ useEffect(() => {
       window.location.href = "/Prestamo"
     }else{
       console.log("");
-    }
+    } */
   }
 
 
@@ -457,7 +457,11 @@ useEffect(() => {
                     return(
                       <div key={key} className='tr-1'>
                         <div className='td-0'>
-                          <Imagenes clase='img' url={element.id_ejemplar.id_libro.imagen_libro} />
+                          {element.id_ejemplar.id_libro.imagen_libro === null
+                          ?""
+                          :<Imagenes clase='img' url={element.id_ejemplar.id_libro.imagen_libro} />
+                          }
+                          
                         </div>
                         <div className='td-1'>
                           <p>{element.id_ejemplar.id_libro.nombre}</p>
