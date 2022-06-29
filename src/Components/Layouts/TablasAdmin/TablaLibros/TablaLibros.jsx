@@ -425,6 +425,8 @@ export const TablaLibros = () => {
 
   const updateData2Estado = (libro) => {
 
+    console.log(libro);
+
     let endpoint = url + libro.id_libro + '/'
     axios.put(endpoint, libro)
       .then((res) => {

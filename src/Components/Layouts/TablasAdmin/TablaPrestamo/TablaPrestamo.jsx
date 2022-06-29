@@ -41,36 +41,27 @@ export const TablaPrestamo = () => {
       peticionGet()
       console.log(res);
     }).catch(error=>{
-      console.log(error.message);
+      console.log(error);
+      if (error.response.status === 500) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'El prestamo no se puede eliminar tiene una infracción vigente',
+          showConfirmButton: false,
+          timer: 1400
+        })        
+      }
     })
   }
 
-  const devuelto = () =>{
-    Swal.fire({
-      title: '¿Esta seguro que el libro esta duvuelto?',
-      icon: 'warning',
-      confirmButtonText: 'Si, Confirmar',
-      showCancelButton: true,
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-     }).then((resultado) => {
-      if (resultado.isConfirmed) {
-        Swal.fire(
-          'Duvuelto',
-          'El libro nuevamente esta disponible',
-          'success'
-         )
-       }
-     })
-  }
 
 const [prestamos, setPrestamos] = useState([])
 const [prestamos1, setPrestamos1] = useState()
 const [detallesPrestamo, setDetallesPrestamo] = useState([])
 const [estudiantes, setEstudiantes] = useState({})
 const [generarInfra, setGenerarInfra] = useState({})
-const peticionGet=()=>{
 
+const peticionGet=()=>{
   axios.get(url).then(response=>{
     setPrestamos(response.data);
     console.log(response.data)
@@ -157,158 +148,157 @@ useEffect(() => {
     let endpoint = "https://bookerbackapi.herokuapp.com/modulos/prestamos/"+data.id_prestamo+'/'
     axios.put(endpoint, data)
     .then((res) => {
-        console.log(res);
-        preInfracion()
-        /* peticionGetDetalles(data) */
+        console.log(res)
     }).catch(error => {
       console.log(error);
     })
   }
 
-/*   const peticionGetDetalles  = (data) => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/prestamos/" + data.id_prestamo)
-      .then(response => {
-        setDetallesPrestamo(response.data)
-        abrirPrestamos()
-      }).catch(error => { 
-        console.log(error.message);
-      })
-
-  } */
 
 
-  const preInfracion = () => {
+  const updateDataInfracionEstado = async (data) =>{
 
-    let losPrestamos
+    
+
+    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ data.id_de_prestamo+'/'
+    await axios.put(endpoint, data)
+    .then((res) => {
+        console.log(res);
+        console.log('Put correcto')
+        peticionGetPrestamos()
+        peticionGet()
+    }).catch(error => {
+      console.log(error);
+    })
+    if (data.estado === "INF") {
+      window.location.href = "/Prestamo"
+    }else{
+      console.log("");
+    }
+  }
+
+
+  const infraccion = (data) => {
+
+    console.log(data.prestamos.length);
+
+     let losPrestamos
+    let losPrestamos1
+    let losPrestamos2
+
+    data.id_estudiante = data.id_estudiante.id_estudiante
+    data.estado = 'INF'
+    
+
+    if(data.prestamos.length === 1){
+      console.log("Entro al uno");
+
+      losPrestamos = data.prestamos[0]
+
+      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
+     
+    }
+    
+    else if(data.prestamos.length === 2){
+
+      console.log("Entro al dos");
+
+      losPrestamos = data.prestamos[0]
+      losPrestamos1 = data.prestamos[1]
+
+      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
+      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
+      
+    }
+    
+    else if(data.prestamos.length === 3){
+
+      console.log("Entro al tres");
+
+      losPrestamos = data.prestamos[0]
+      losPrestamos1 = data.prestamos[1]
+      losPrestamos2 = data.prestamos[2]
+
+      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
+      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
+      console.log(data.prestamos[2].id_ejemplar = losPrestamos2.id_ejemplar.id_ejemplar)
+    }
+    //updateDataInfracion(infra)
+    Swal.fire({
+      title: '¿Esta seguro finalizar el prestamo?',
+      icon: 'warning',
+      confirmButtonText: 'Si, finalizar',
+      showCancelButton: true,
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((resultado) => {
+      if (resultado.isConfirmed) {
+        updateDataInfracionEstado(data)
+      }
+    })
+    
+  }
+
+
+  const finPrestamo = (data) => {
+
+    console.log(data.prestamos.length);
+
+     let losPrestamos
     let losPrestamos1
     let losPrestamos2
     let idEstudiante
 
-    console.log(prestamoUpdate)
-
-    {
-      prestamoUpdate.map((element) => {
-        idEstudiante = element.id_estudiante.id_estudiante
-      })
-    }
-
-    console.log(idEstudiante);
+    data.id_estudiante = data.id_estudiante.id_estudiante
+    data.estado = 'C'
     
 
-    if(detallesPrestamo.length === 1){
+    if(data.prestamos.length === 1){
       console.log("Entro al uno");
-      {
-        prestamoUpdate.map((element) => {
-          losPrestamos = element.prestamos[0]
-        })
-      }
 
-      setGenerarInfra({
-        ...generarInfra,
-        id_de_prestamo: losPrestamos.id_de_prestamo,
-        id_estudiante : idEstudiante,
-        prestamos : [{
-          id_prestamo : losPrestamos.id_prestamo,
-          id_de_prestamo : losPrestamos.id_de_prestamo,
-          fec_devolucion : losPrestamos.fec_devolucion,
-          id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
-          estado : losPrestamos.estado
-        }],
-        estado: "INF"
-      })
+      losPrestamos = data.prestamos[0]
+
+      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
+     
     }
-    else if(detallesPrestamo.length === 2){
+    
+    else if(data.prestamos.length === 2){
 
       console.log("Entro al dos");
-      
-      {
-        prestamos.map((element) => {
-          losPrestamos = element.prestamos[0]
-          losPrestamos1 = element.prestamos[1]
-        })
-        console.log(losPrestamos1.estado);
-      }
-      setGenerarInfra({
-        ...generarInfra,
-        id_de_prestamo: losPrestamos.id_de_prestamo,
-        id_estudiante : idEstudiante,
-        prestamos : [
-          {
-            id_prestamo : losPrestamos.id_prestamo,
-            id_de_prestamo : losPrestamos.id_de_prestamo,
-            fec_devolucion : losPrestamos.fec_devolucion,
-            id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
-            estado : losPrestamos.estado
-          },
-          {
-            id_prestamo : losPrestamos1.id_prestamo,
-            id_de_prestamo : losPrestamos1.id_de_prestamo,
-            fec_devolucion : losPrestamos1.fec_devolucion,
-            id_ejemplar : losPrestamos1.id_ejemplar.id_ejemplar,
-            estado : losPrestamos1.estado
-          }
-    ],
-        estado: "INF"
-      })
-    }else if(detallesPrestamo.length === 3){
 
-      console.log("Entro al dos");
+      losPrestamos = data.prestamos[0]
+      losPrestamos1 = data.prestamos[1]
+
+      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
+      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
       
-      {
-        prestamos.map((element) => {
-          losPrestamos = element.prestamos[0]
-          losPrestamos1 = element.prestamos[1]
-          losPrestamos2 = element.prestamos[2]
-        })
-      }
-      setGenerarInfra({
-        ...generarInfra,
-        id_de_prestamo: losPrestamos.id_de_prestamo,
-        id_estudiante : idEstudiante,
-        prestamos : [
-          {
-            id_prestamo : losPrestamos.id_prestamo,
-            id_de_prestamo : losPrestamos.id_de_prestamo,
-            fec_devolucion : losPrestamos.fec_devolucion,
-            id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
-            estado : losPrestamos.estado
-          },
-          {
-            id_prestamo : losPrestamos1.id_prestamo,
-            id_de_prestamo : losPrestamos1.id_de_prestamo,
-            fec_devolucion : losPrestamos1.fec_devolucion,
-            id_ejemplar : losPrestamos1.id_ejemplar.id_ejemplar,
-            estado : losPrestamos1.estado
-          },
-          {
-            id_prestamo : losPrestamos2.id_prestamo,
-            id_de_prestamo : losPrestamos2.id_de_prestamo,
-            fec_devolucion : losPrestamos2.fec_devolucion,
-            id_ejemplar : losPrestamos2.id_ejemplar.id_ejemplar,
-            estado : losPrestamos2.estado
-          }
-    ],
-        estado: "INF"
-      })
     }
+    
+    else if(data.prestamos.length === 3){
 
-    //updateDataInfracion(infra)
-    console.log(generarInfra);
-  }
+      console.log("Entro al tres");
 
-  const updateDataInfracion = async () =>{
+      losPrestamos = data.prestamos[0]
+      losPrestamos1 = data.prestamos[1]
+      losPrestamos2 = data.prestamos[2]
 
-    console.log(generarInfra);
-
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ generarInfra.id_de_prestamo+'/'
-    await axios.put(endpoint, generarInfra)
-    .then((res) => {
-        console.log(res);
-        console.log('Infración creada')
-    }).catch(error => {
-      console.log(error);
+      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
+      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
+      console.log(data.prestamos[2].id_ejemplar = losPrestamos2.id_ejemplar.id_ejemplar)
+    }
+      Swal.fire({
+      title: '¿Esta seguro finalizar el prestamo?',
+      icon: 'warning',
+      confirmButtonText: 'Si, finalizar',
+      showCancelButton: true,
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((resultado) => {
+      if (resultado.isConfirmed) {
+        updateDataInfracionEstado(data)
+      }
     })
-  }
+  }  
 
   return (
 
@@ -321,25 +311,32 @@ useEffect(() => {
         <div className='box-Tabla' >          
           <div className='Tabla'>
             <div className="TituloLibro">
-              Prestamo de Libros
+              Préstamo de Libros
             </div>
             <div className='tr'>
-              <div className='td-2' ><p>Documento Estudiante</p></div>
+              
+              <div className='td-2' ><p>Documento estudiante</p></div>
               <div className='td-2' ><p>Nombres Estudiante</p></div>
               <div className='td-1'><p>Cantidad de<br/> libros prestados</p></div>
-              <div className='td-1'><p>Fecha del<br/>Prestamo</p></div>
+              <div className='td-1'><p>Fecha del<br/>Préstamo</p></div>
+              <div className='td-2'><p>Estado</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
 
               {
+                
                 prestamos.map((prestamo, key) => {
 
                   let p = prestamo.prestamos
                   return(
 
                     <div key={key} className='tr-1'>
-                      <div className='td-2'><p>{prestamo.id_estudiante.doc_estudiante}</p></div>
+                      <div className='td-2'>
+                        <p>
+                          {prestamo.id_estudiante.doc_estudiante}
+                        </p>
+                      </div>                      
                       <div className='td-2'><p>{prestamo.id_estudiante.nombres} {prestamo.id_estudiante.apellidos}</p></div>
                       <div className='td-1'>
                       <p>
@@ -349,14 +346,34 @@ useEffect(() => {
                         </p>                        
                       </div>
                       <div className='td-1'><p>{prestamo.fec_prestamo}</p></div>
-                     {/*  <div className='td-1'>{
-                          p.map((elementP, key) => (
-                            <p key={key} >{elementP.fec_devolucion}</p>
-                          ))                    
-                        }
-                      </div> */}
+                      
+                          {prestamo.estado=== 'AC'
+                          ?<div className='td-1'>
+                            <p className='pEstadoReservaC' >Préstamo vigente</p>
+                            <div data-title='Completar prestamo' className='prueba prueba2' onClick={()=>{
+                              finPrestamo(prestamo)
+                              //llamarUpdate()
+                              }} ></div>
+                          </div>
+                          :""
+                          }
+                          {prestamo.estado=== 'C'
+                          ?<div className='td-1'>
+                            <p className='pEstadoReservaC' >Préstamo<br/>completado</p>
+                            <div data-title='Prestamo finalizado' className='prueba' ></div>
+                          </div>
+                          :""
+                          }
+                          {prestamo.estado=== 'INF'
+                          ?<div className='td-1'><p className='pEstadoReservaIV' >Préstamo con<br/>Infracción</p></div>
+                          :""
+                          }
+                      
+                      
                       <div className='td-5'>
-                        <i onClick={()=>{peticionGetPrestamos(prestamo)}}  class="fa-solid fa-eye fa-eyeAdmin"></i>
+                        {/* <i onClick={()=>{peticionGetPrestamos(prestamo)}}  className="fa-solid fa-circle-exclamation"></i> */}
+                        <i onClick={()=>{peticionGetPrestamos(prestamo)}}  className="fa-solid fa-eye fa-eyeAdmin"></i>
+                        
                         <i onClick={()=>eliminacion(prestamo)} className="fa-solid fa-trash-can" ></i>
                       </div>
                     </div>
@@ -393,7 +410,7 @@ useEffect(() => {
                 {
                   prestamoUpdate.map((element, key) => {
                     return(
-                    <div className='tr-1'>
+                    <div key={key} className='tr-1'>
                       
                       <div className='td-1'>
                         <p>{element.id_estudiante.doc_estudiante}</p>
@@ -406,7 +423,7 @@ useEffect(() => {
                       </div>
                       <div className="td-6">
                         <button id='confirmasPP' onClick={()=>{
-                          updateDataInfracion()
+                          infraccion(element)
                           }}>Confirmar Infración</button>
                       </div>
                     </div>
@@ -458,7 +475,7 @@ useEffect(() => {
                         { /*QUEDO EN LOS BOTONES*/}
                         <div className="td-6">
                           {element.estado === "AC" &&
-                            <p>Prestado</p>
+                            <p>Prestado<br/>vigente</p>
                           }
                           {element.estado === "C" &&
                             <p>Prestamo Finalizado</p>
@@ -481,8 +498,6 @@ useEffect(() => {
                     )
                   })
                   }
-
-                  <button onClick={preInfracion}>holaaa</button>
                 </div>
               </div>
             </div>

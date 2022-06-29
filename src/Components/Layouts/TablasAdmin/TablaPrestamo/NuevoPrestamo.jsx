@@ -115,6 +115,8 @@ export const NuevoPrestamo = () => {
       "id_estudiante": idEstudiante,
       "ejemplares": idEjemplares
   }).then(response=>{
+
+    console.log("Correcta");
     
     id_reserva = response.data.data.id_reserva
     console.log(response.data.data.id_reserva);
