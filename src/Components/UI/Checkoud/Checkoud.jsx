@@ -26,9 +26,6 @@ export const Checkoud = ({libro}) => {
   })
 
 
-
-
-
   return (
     <>
       <div className="cards-reservas">

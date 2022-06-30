@@ -8,12 +8,11 @@ import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
 import { NavLink } from 'react-router-dom';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
+import { EditarInfraccion } from '../../../Pages/Tablas/EditarInfraccion';
 
-
-
-let fechaPrestamo
 
 let prestamoUpdate = []
+let idinfra
 
 export const TablaPrestamo = () => {
   const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"
@@ -66,6 +65,7 @@ const peticionGet=()=>{
     console.log(response.data)
   }).catch(error=>{
     console.log(error.message);
+
   })
 }
 
@@ -78,7 +78,6 @@ useEffect(() => {
   const peticionGetPrestamos = (libro) => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + libro.id_de_prestamo)
       .then(response => {
-        fechaPrestamo = libro.fec_prestamo
         setPrestamos1([response.data]);
         prestamoUpdate.push(response.data)
         console.log(response.data);
@@ -171,8 +170,9 @@ useEffect(() => {
     .then((res) => {
         console.log(res);
         console.log('Put correcto')
-        peticionGetPrestamos()
         peticionGet()
+        peticionGetPrestamos()
+        preInfracion()
     }).catch(error => {
       console.log(error);
     })
@@ -216,6 +216,7 @@ useEffect(() => {
         ...generarInfra,
         id_de_prestamo: losPrestamos.id_de_prestamo,
         id_estudiante : idEstudiante,
+        id_tipo_infraccion : 1,
         prestamos : [{
           id_prestamo : losPrestamos.id_prestamo,
           id_de_prestamo : losPrestamos.id_de_prestamo,
@@ -246,6 +247,7 @@ useEffect(() => {
         ...generarInfra,
         id_de_prestamo: losPrestamos.id_de_prestamo,
         id_estudiante : idEstudiante,
+        id_tipo_infraccion : 1,
         prestamos : [
           {
             id_prestamo : losPrestamos.id_prestamo,
@@ -310,6 +312,8 @@ useEffect(() => {
     console.log(generarInfra);
   }
 
+  //const [idinfra, setidinfra] = useState()
+
   const updateDataInfracion = async () =>{
 
     console.log(generarInfra);
@@ -317,7 +321,8 @@ useEffect(() => {
     let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ generarInfra.id_de_prestamo+'/'
     await axios.put(endpoint, generarInfra)
     .then((res) => {
-        console.log(res);
+        console.log(res)
+        idinfra = res.data.infracciones[0]
         console.log('Infración creada')
         cerrarPrestamos()
         peticionGet()
@@ -355,10 +360,6 @@ useEffect(() => {
 
       losPrestamos = data.prestamos[0]
       losPrestamos1 = data.prestamos[1]
-
-      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
-      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
-      
     }
     
     else if(data.prestamos.length === 3){
@@ -369,9 +370,6 @@ useEffect(() => {
       losPrestamos1 = data.prestamos[1]
       losPrestamos2 = data.prestamos[2]
 
-      console.log(data.prestamos[0].id_ejemplar = losPrestamos.id_ejemplar.id_ejemplar)
-      console.log(data.prestamos[1].id_ejemplar = losPrestamos1.id_ejemplar.id_ejemplar)
-      console.log(data.prestamos[2].id_ejemplar = losPrestamos2.id_ejemplar.id_ejemplar)
     }
       Swal.fire({
       title: '¿Esta seguro finalizar el prestamo?',
@@ -386,6 +384,11 @@ useEffect(() => {
       }
     })
   }  
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    updateDataInfracion()
+  }
 
   return (
 
@@ -509,9 +512,11 @@ useEffect(() => {
                         <p>{element.fec_prestamo}</p>
                       </div>
                       <div className="td-6">
-                        <button id='confirmasPP' onClick={()=>{
-                          updateDataInfracion()
-                          }}>Confirmar Infración</button>
+                        <form onSubmit={handleSubmit}>
+                          <button id='confirmasPP' onClick={()=>{
+                            preInfracion()
+                            }}>Confirmar Infración</button>
+                        </form>
                       </div>
                     </div>
                     )
@@ -533,7 +538,6 @@ useEffect(() => {
               <div className='tr'>
                 <div className='td-0'><p>Imagen Libro</p></div>
                 <div className='td-1'><p>Nombre Libro</p></div>
-                <div className='td-2'><p>Fecha Préstamo</p></div>
                 <div className='td-2'><p>Fecha Devolución</p></div>
                 <div className='td-6'><p>Estado</p></div>
                 <div className='td-4'><p>Generar Infracción</p></div>
@@ -552,9 +556,6 @@ useEffect(() => {
                         </div>
                         <div className='td-1'>
                           <p>{element.id_ejemplar.id_libro.nombre}</p>
-                        </div>
-                        <div className='td-2'>
-                          <p>{fechaPrestamo}</p>
                         </div>
                         <div className="td-2 td-0infra">
                           {element.fec_devolucion === null
@@ -589,13 +590,21 @@ useEffect(() => {
                     )
                   })
                   }
-                  <button onClick={preInfracion} >holaaa</button>
+                  {/* <button onClick={preInfracion} >holaaa</button> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+        {
+          console.log(idinfra)
+        }
+        {
+          idinfra === undefined
+          ? console.log("Esta nulaaaa")
+          :<EditarInfraccion id={idinfra} />
+        }
     </div>
   )
 }

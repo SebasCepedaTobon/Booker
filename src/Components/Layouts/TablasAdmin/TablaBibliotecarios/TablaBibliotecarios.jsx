@@ -275,8 +275,8 @@ export const TablaBibliotecarios = () => {
                           : <p className='inactivoEstudiantes'>Inactivo</p>
                         }
                         {bibliotecario.doc_bibliotecario.usuario_activo === true
-                          ? <div data-title='Inactivar Libro' className='prueba pruebaEsruden' onClick={() => updateEstado(bibliotecario)} ></div>
-                          : <div data-title='Activar Libro' className='prueba prueba2 pruebaEsruden' onClick={() => updateEstado(bibliotecario)} ></div>
+                          ? <div data-title='Inactivar Bibliotecario' className='prueba pruebaEsruden' onClick={() => updateEstado(bibliotecario)} ></div>
+                          : <div data-title='Activar Bibliotecario' className='prueba prueba2 pruebaEsruden' onClick={() => updateEstado(bibliotecario)} ></div>
                         }
                       </div>
                       <div className='td-5'>

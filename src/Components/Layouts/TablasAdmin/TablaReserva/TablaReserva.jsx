@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-import { BotonesCrud } from '../../../UI/Botones/BotonesCrud';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
-import libro from '../../../../assets/Imagenes/Libros/libro2.jpg';
 import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader'
 import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador'
 import '../../../../Static/TablaReserva.css'
@@ -17,6 +15,7 @@ let id_bibliotecario
 export const TablaReserva = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
+  const urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/reservas/?ordering=-id_reserva"
 
   const eliminacion = (data) => {
     Swal.fire({
@@ -68,7 +67,7 @@ export const TablaReserva = () => {
   const peticionGet = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Reservas"
-    axios.get(url).then(response => {
+    axios.get(urlOrdenada).then(response => {
       setReservas(response.data);
 
     }).catch(error => {
@@ -131,8 +130,8 @@ export const TablaReserva = () => {
   const updateData = (reservas) => {
     if (reservas.estado === "C") {
       Swal.fire(
-        'Ya esta completada',
-        'Esta reserva ya es un prestamo',
+        'Reserva Finalizada',
+        'Esta reserva paso a ser prestamo',
         'success'
       )
     } else {
@@ -163,7 +162,7 @@ export const TablaReserva = () => {
         peticionGetPrestamos(id_prestamos)
         
       }).catch(error => {
-        console.log(error.message);
+        console.log(error);
       })
   }
 
@@ -227,7 +226,6 @@ export const TablaReserva = () => {
   }
 
   const abrirPrestamos = () => {
-
     const overlayEjem = document.getElementById('overlayEjem')
     const from_tablasEjem = document.querySelector('.box-prestamos')
     overlayEjem.style.visibility = "visible"
@@ -239,13 +237,28 @@ export const TablaReserva = () => {
 
   const cerrarPrestamos = () => {
 
-    const overlayEjem = document.getElementById('overlayEjem')
-    const from_tablasEjem = document.querySelector('.box-prestamos')
+    Swal.fire({
+      title: '¡Prestamo creado!',
+      text : '¿Desea ver el prestamo creado?',
+      icon: 'warning',
+      confirmButtonText: 'Si',
+      showCancelButton: true,
+      cancelButtonText: 'No',
+      reverseButtons: true
+    }).then((resultado) => {
+      if (resultado.isConfirmed) {
+        window.location.href = "/Prestamo"        
+      }
+    })
 
-    overlayEjem.style.visibility = "hidden"
-    from_tablasEjem.style.transform = "scale(0.6)"
-    from_tablasEjem.style.opacity = "0"
-    cerrarPrestamos2()
+      const overlayEjem = document.getElementById('overlayEjem')
+      const from_tablasEjem = document.querySelector('.box-prestamos')
+  
+      overlayEjem.style.visibility = "hidden"
+      from_tablasEjem.style.transform = "scale(0.6)"
+      from_tablasEjem.style.opacity = "0"
+      cerrarPrestamos2()
+
   }
 
   const abrirPrestamos2 = () => {
@@ -277,8 +290,6 @@ export const TablaReserva = () => {
   }
 
   const handleSubmitPrestamos = (data) =>{
-    console.log(data);
-    console.log(data.id_ejemplar.id_libro.id_libro);
     updateDataPrestamos(data)
   }
 
@@ -495,7 +506,8 @@ export const TablaReserva = () => {
                         { /*QUEDO EN LOS BOTONES*/}
                         <div className='td-4'>
                           <div className="box-inputRP">
-                            <input type="date" id={element.id_prestamo} onChange={()=>{antesHandleChange(element)}} required/>
+                            
+                            <input type="date" className='inputFecha' id={element.id_prestamo} onChange={()=>{antesHandleChange(element)}} required/>
                             <label>Fecha devolución</label>
                           </div>
                         </div>

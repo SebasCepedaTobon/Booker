@@ -10,6 +10,7 @@ import { AdminNavegador } from '../../UI/NavegadorAdmin/AdminNavegador';
 export const InfraccionesAdmin = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/infracciones/"
+  const urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/infracciones/?ordering=-id_infraccion"
 
   const eliminacion = (data) => {
     Swal.fire({

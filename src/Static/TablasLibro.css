@@ -286,6 +286,17 @@
     left: 46.55rem;
   }
 
+  .labelLibro1Add{
+    left: 359px !important;
+  }
+  .labelLibro2Add{
+    left: 588px !important;
+  }
+
+  .labelLibroAutoAdd{
+    left: 820px !important;
+  }
+
   .labelLibroCate {
     left: 32.005rem;
   }

@@ -354,7 +354,7 @@ export const AgregarLibro = () => {
 
               <i class="fa-solid fa-xmark" onClick={vaciarCate} ></i>
               <textarea className='texLibro texLibroCateAuto' readOnly='readOnly' id='inputCate' type="text" />
-              <label id='labelCate' className='labelLibro labelLibroCate'>Categorias</label>
+              <label id='labelCate' className='labelLibro labelLibro2Add labelLibroCate'>Categorias</label>
               <select className='selectCategorias' id='selecCate' onChange={(e) => { peticionGetCateLibro(e) }}>
                 <option value="" selected></option>
                 {!categorias ? "" :
@@ -366,7 +366,7 @@ export const AgregarLibro = () => {
               </select>
               <i class="fa-solid fa-xmark fa-xmarkAuto " onClick={vaciarAuto} ></i>
               <textarea className='texLibro texLibroCateAuto' readOnly='readOnly' id='inputAuto' type="text" />
-              <label id='labelAuto' className='labelLibro labelLibroAuto'>Autores</label>
+              <label id='labelAuto' className='labelLibro  labelLibroAutoAdd labelLibroAuto'>Autores</label>
               <select className='selectAutores' onChange={(e) => { peticionGetAutoLibro(e) }} id='selecAuto'>
                 <option value="" selected></option>
                 {!autores ? "" :
@@ -383,9 +383,9 @@ export const AgregarLibro = () => {
 
             <div className="boxs-inputs">
               <textarea className='texLibro texLibro1' required name='palabras_clave' onChange={handleChange} value={formLibros.palabras_clave}  ></textarea>
-              <label className="labelLibro labelLibro1">Palabras Clave</label>
+              <label className="labelLibro labelLibro1Add labelLibro1">Palabras Clave</label>
               <textarea required className='texLibro texLibro2' name="descripcion" onChange={handleChange} value={formLibros.descripcion}  ></textarea>
-              <label className="labelLibro labelLibro2">Descripción</label>
+              <label className="labelLibro labelLibro2Add labelLibro2">Descripción</label>
               <div class="file-select" id="src-file1" >
                 <input
                   type="file" name="imagen_libro" onChange={(e) => {
