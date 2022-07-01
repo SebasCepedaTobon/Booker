@@ -102,6 +102,43 @@
     box-sizing: border-box;
 }
 
+.LG-Contactos-Responsivo{
+    display: none;
+}
+.logo-responsivo{
+    display: none;
+}
+
+
+@media (max-width: 557px) {
+    .box-Informacion {
+       display: none;
+    }
+    .logo-responsivo{
+        display: block;
+        width: 10rem;
+        height: 10rem;
+    }
+    .LG-contenedor-From{
+        width: 90%;
+        margin: 3rem 0 10rem 0;
+        background: rgb(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.3);
+    }
+    .LG-Contactos-Responsivo{
+        display: block;
+        bottom: 20px;
+        width: 70%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .LG-Contactos-Responsivo img{
+        width: 80px;
+    }
+  }
+
+
 /*FIN REUTILIZABLE SIN FROM GMAIL Y LOGIN*/
 
 

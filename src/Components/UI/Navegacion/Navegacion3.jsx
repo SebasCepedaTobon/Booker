@@ -4,6 +4,7 @@ import { Imagenes } from '../Imagenes/Imagenes'
 import { NavLink } from 'react-router-dom'
 import { useStateValue } from '../../../StateProvider'
 import UsuarioInactivo from '../../../assets/Imagenes/Admin/usuario.png'
+import { Logout } from '../../../Logout'
 
 
 export const Navegacion3 = () => {
@@ -82,6 +83,10 @@ export const Navegacion3 = () => {
                 <NavLink to='/Perfil' className='nav-icon'>
                 <i class="fa-solid fa-user"></i>
                 Perfil
+                </NavLink>
+                <NavLink to='/' onClick={Logout} className='nav-icon'>
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Cerrar Sesion
                 </NavLink>
                
             </div>

@@ -120,6 +120,7 @@ export const MainLogin = () => {
       </div>
 
       <div className="LG-boxFrom">
+        <Imagenes url={logo} clase={'logo-responsivo'} />
         <div className="LG-box-From" >
           <div className='LG-contenedor-From' >
             <h1>¡INICIAR SESIÓN!</h1>
@@ -144,6 +145,10 @@ export const MainLogin = () => {
               <input type="submit" value="Ingresar" onClick={btnIngresar} />
             </form>
           </div>
+        </div>
+        <div className="LG-Contactos-Responsivo">
+          <NavLink to='/Email'><Imagenes url={email} clase='Login-Email' /></NavLink>
+          <a href="https://wa.me/+573002536217" target={'_blank'} ><Imagenes url={whatsapp} clase='whatsapp' /></a>
         </div>
       </div>
     </div>

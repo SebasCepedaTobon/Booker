@@ -298,13 +298,14 @@
     .conatiner-nav-tres{
         display: block;
         width: 250px;
-        height: 100%;
+        height: 800px;
         position:absolute;
         top: 0;
         background-color: rgba(0, 0, 0, 0.537);
         transform: translateX(-600px);
         transition: all 600ms;
         z-index: 50;
+        border-bottom-right-radius: 20px;
         
     }
 
@@ -545,10 +546,7 @@ element.style {
      
         }
 
-        .icon-borrar-reserva i{
-            position: absolute;
-            bottom: 10px;
-        }
+   
         /**/
 
 
@@ -615,12 +613,7 @@ element.style {
 
 
 
-      /*Footer*/
-      .footer-centro .redes img {
-        width: 10px;
-        }
-
-        /**/
+ 
 
     /*main*/
     .main {
