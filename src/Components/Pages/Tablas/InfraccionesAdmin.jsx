@@ -234,7 +234,7 @@ export const InfraccionesAdmin = () => {
                       :""
                     }
                     <div className='td-5'>
-                      <i onClick={()=>{cargaDeInformacion(element)}} className="fa-solid fa-pen-to-square"></i>
+                      <i onClick={()=>{cargaDeInformacion(element)}} className="fa-solid fa-eye fa-eyeAdmin"></i>
                       <i onClick={()=>eliminacion(element)} class="fa-solid fa-trash-can" ></i>
                     </div>
                   </div>

@@ -142,8 +142,7 @@ export const TablaEstudiantes = () => {
               <div className='td-2' ><p>Nombre Completo</p></div>
               <div className='td-6'><p>Grado</p></div>
               <div className='td-6'><p>Grupo</p></div>
-              <div className='td-6'><p>Estado</p></div>
-              <div className='td-5'><p>Cambio de estado</p></div>
+              <div className='td-6'><p>Cambio de estado</p></div>
             </div>
             <div className='Tabla-Info' >
               {
@@ -173,10 +172,6 @@ export const TablaEstudiantes = () => {
                           ? <div data-title='Inactivar Libro' className='prueba pruebaEsruden' onClick={() => updateEstado(estudiantes)} ></div>
                           : <div data-title='Activar Libro' className='prueba prueba2 pruebaEsruden' onClick={() => updateEstado(estudiantes)} ></div>
                         }
-                      </div>
-                      <div className='td-5'>
-                        <i class="fa-solid fa-trash-can" onClick={()=>eliminacion(estudiantes)} ></i>
-
                       </div>
                     </div>
                   )
