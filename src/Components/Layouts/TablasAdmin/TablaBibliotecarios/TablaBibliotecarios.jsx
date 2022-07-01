@@ -3,8 +3,6 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Imagenes } from '../../../UI/Imagenes/Imagenes';
 import usuario from '../../../../assets/Imagenes/Admin/usuario.png'
-import { AdminHeader } from '../../../UI/NavegadorAdmin/AdminHeader';
-import { AdminNavegador } from '../../../UI/NavegadorAdmin/AdminNavegador';
 import { NavLink } from 'react-router-dom';
 
 
@@ -117,6 +115,9 @@ export const TablaBibliotecarios = () => {
   return (
     <div className='MainAdministrativo'>
       <div className="box-Header-Admin bibliotecariosAdmin">
+        <NavLink to='/'>
+          <button className='ultimoBoton'>Cerrar sesión</button>
+        </NavLink>
         <div className='box-Tabla' >
           <div className='Tabla'>
             <div className='categoriasMN'  >

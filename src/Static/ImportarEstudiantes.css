@@ -3,7 +3,8 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-around;
-    height: 70vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .box-importarAcvhivos{
@@ -60,7 +61,9 @@
 
 .imgManual{
     margin-top: 20px;
-    width: 70%;
+    width: 60%;
+    filter: drop-shadow(-20px 0px 20px rgba(0,0,0,0.5));
+    border-radius: 5px;
 }
 
 .boxImpotar button {

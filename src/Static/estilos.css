@@ -114,6 +114,12 @@
     .box-Informacion {
        display: none;
     }
+    .Main-Login-Gmail{
+        width: 97vw;
+        height: 800px;
+    }
+
+
     .logo-responsivo{
         display: block;
         width: 10rem;
@@ -1843,4 +1849,23 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+   }
+
+   .ultimoBoton{
+    position: fixed;
+    cursor: pointer;
+    top: 15px;
+    right: 60px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0d5fe4;
+    color: white;
+    font-size: 16px;
+    transition: 1s;
+   }
+
+   .ultimoBoton:hover{
+    transform: scale(1.01);
    }

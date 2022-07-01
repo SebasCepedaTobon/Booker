@@ -917,8 +917,8 @@ S
 .footer-centro{
   width: 100%;
   height: 60%;
-  color: rgb(0, 0, 0);
-  background-color: #c6c6c6;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -963,6 +963,26 @@ S
   width: 100%;
 }
 
+@media(max-width:800px){
+  .box-footer-Padre{
+    margin-bottom: 15px;
+    width: 90%;
+  }
+  .footer-centro .redes{
+    width: 45%;
+  }
+
+  .footer-centro .redes img{
+    width: 50px;
+  }
+
+  .footer-centro .box-logo{
+    margin-left: 0px;
+  }
+  .footer-centro .contenedor-logo{
+    height: 86px;
+  }
+}
 
 
 @media(max-width:1000px){
