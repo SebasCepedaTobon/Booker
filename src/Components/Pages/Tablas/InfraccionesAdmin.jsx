@@ -84,7 +84,7 @@ export const InfraccionesAdmin = () => {
   const peticionGetCompletadas = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Infracciones completadas"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/infracciones/?id_tipo_infraccion=1&ordering=-id_infraccion").then(response => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/infracciones/?estado=C&ordering=-id_infraccion").then(response => {
       setInfracciones(response.data)
     }).catch(error => {
       console.log(error);

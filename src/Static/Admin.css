@@ -631,6 +631,11 @@ form .box-select{
     padding-bottom: 45px;
     filter: drop-shadow(-20px 0px 20px rgba(0,0,0,0.5));
 }
+.importar{
+    transform: rotate(180deg);
+    padding-bottom: 0px !important;
+    padding-top: 30px !important;
+}
 
 .card-IM .card-Admin{
     position: relative;

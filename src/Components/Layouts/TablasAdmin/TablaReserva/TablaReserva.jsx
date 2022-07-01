@@ -78,7 +78,7 @@ export const TablaReserva = () => {
   const peticionGetInactiva = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Reservas inactivas"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=IV").then(response => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=IV&ordering=-id_reserva").then(response => {
       setReservas(response.data);
       console.log(response.data);
 
@@ -90,7 +90,7 @@ export const TablaReserva = () => {
   const peticionGetCompletadas = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Reservas finalizadas"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C").then(response => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C&ordering=-id_reserva").then(response => {
       setReservas(response.data);
       console.log(response.data);
 
@@ -102,7 +102,7 @@ export const TablaReserva = () => {
   const peticionGetActuales = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Reservas vigentes"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=AC").then(response => {
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=AC&ordering=-id_reserva").then(response => {
       setReservas(response.data);
     }).catch(error => {
       console.log(error.message);
