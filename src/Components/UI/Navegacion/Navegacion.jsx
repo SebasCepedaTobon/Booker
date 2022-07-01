@@ -37,7 +37,7 @@ export const Navegacion = () => {
 
     }, [])
 
-  const [{reservas}, dispatch] = useStateValue();
+  const [{reservas, favoritos}, dispatch] = useStateValue();
 
 
   
@@ -91,7 +91,13 @@ export const Navegacion = () => {
             </div>
             <i class="fa-solid fa-bookmark" id='icon-contador'></i>
           </NavLink>
-          <NavLink to='/libros'>
+          <NavLink to='/Favoritos'>
+            <div className="contador2" id='favoritos-p'>
+              <p>{favoritos?.length}</p>
+            </div>
+            <i class="fa-solid fa-heart"  id='icon-contador'></i>
+          </NavLink>
+          <NavLink to='/libros' className='nav-icon'>
             <i class="fa-solid fa-book"></i>Libros
           </NavLink>
           <NavLink to='/Home' className='nav-icon'>

@@ -32,11 +32,13 @@ export const MainFavoritos = () => {
 
   let url2 = "https://bookerbackapi.herokuapp.com/modulos/favoritos/"
 
-  const peticionDeleteAuto = async () =>{
+  const peticionDeleteAuto = async (data) =>{
+
+    console.log(data.id_favorito);
 
     
 
-    let endpoint  = url2+ id_favo + "/"
+    let endpoint  = url2+ data.id_favorito + "/"
     await axios.delete(endpoint)
     .then((res)=>{
       PedirDatos()
@@ -59,8 +61,8 @@ export const MainFavoritos = () => {
       <BotonesPerfil />
       <div className="datos-perfil">
         <h2 id='Tu-cuenta'>Tus Favoritos</h2>
-        {favoritos.length === 0 ? (<div>
-                  <h3>No tienes favoritos por ahora...</h3>
+        {favoritos.length === 0 ? (<div className='no-reserva'>
+                  <h3>No tienes reservados por ahora...</h3>
                 </div>) :
                     (
             <div className="tabla-reservados">
@@ -70,7 +72,7 @@ export const MainFavoritos = () => {
                   <th>Nombre</th>
                   <th>Autores</th>
                   <th>Editorial</th>
-                  <th>Categorias</th>
+                  <th className='cate'>Categorias</th>
                 </thead>
                 <tbody className='barra-libros'>
                   {favoritos.map((favos => {
@@ -128,7 +130,7 @@ export const MainFavoritos = () => {
 
                         )))}
                         </td>
-                        <td>
+                        <td className='cate'>
                         {librosF.map((libros => {
                             b = libros.categorias
                             return(
@@ -146,12 +148,10 @@ export const MainFavoritos = () => {
                           }))}
                         
                         </td>
-                        <td className='td-borrar'><i onClick={peticionDeleteAuto} class="fa-solid fa-trash-can"></i></td>
+                        <td className='td-borrar'>
+                          <i onClick={()=>{peticionDeleteAuto(favos)}} class="fa-solid fa-trash-can"></i>
+                        </td>
                       </tr>
-
-
-
-
                     )
                   }))}
 

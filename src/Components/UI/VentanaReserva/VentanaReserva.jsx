@@ -37,7 +37,7 @@ export const VentanaReserva = () => {
 
 
   return (
-    <div id='overlay' className='overlay2'>
+    <div id='overlay2' className='overlay2'>
       <div className="Estudiantes-from2">
           <div className="libros-check">
             <div className="nueva-reserva-close">

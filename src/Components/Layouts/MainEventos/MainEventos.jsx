@@ -39,7 +39,7 @@ export const MainEventos = () => {
             <i class="fa fa-calendar" aria-hidden="true"></i>
             <p>{evento.fec_inicio} - {evento.fec_fin}</p>
         </div>
-        <div className="container-img-event">
+        <div className="card2">
           <Imagenes url={evento.imagen_evento}/>
         </div>
         <div className="descripcion-evento">

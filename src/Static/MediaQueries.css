@@ -47,19 +47,7 @@
     }
 
 
-    /*Descripcion Libro*/
-
-    .des-libro{
-        margin-left: -130%;
-        margin-top: 50%;  
-    }
-
-    .btn-reservar {
-        margin-left: -50%;
-        
-    }
-
-    /*Navegacion2*/
+  
 
     
 
@@ -115,6 +103,37 @@
     .carta {
         width: 95%;
     }
+
+
+    /*Botones-perfil*/
+
+    .conatiner-btn-perfil a {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        color: rgb(95, 95, 95);
+        margin-top: 20px;
+        transition: all 0.5s;
+        width: 130px;
+        height: 40px;
+        margin: 0px 5px 0px 0px;
+        padding: 3px 0px 3px 10px;
+        align-items: center;
+    }
+
+    /**/
+
+          /*Buscador-nav*/
+
+
+    
+          #s:focus {
+            width: 350px;
+            opacity: 1;
+        }
+    
+  
+        /**/
     
     
 
@@ -166,14 +185,49 @@
         
     }
 
-    .botones-perfil {
-        width: 25%;
-      
+
+        /*Botones-perfil*/
+
+        .conatiner-btn-perfil a {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            color: rgb(95, 95, 95);
+            margin-top: 20px;
+            transition: all 0.5s;
+            width: 40px;
+            height: 40px;
+            margin: 0px 30px 0px 30px;
+            padding: 0px 5px 5px 10px;
+            align-items: center;
+        }
+    
+        /**/
+
+
+
+
+
+    .conatiner-btn-perfil p {
+        display: none;
+
     }
 
     .datos-perfil {
         width: 60%;
     }
+
+        /*Buscador-nav*/
+
+
+    
+        #s:focus {
+            width: 200px;
+            opacity: 1;
+        }
+    
+  
+        /**/
 
 
 
@@ -186,6 +240,11 @@
 
 
 @media (max-width: 768px) {
+
+
+
+
+
     .img-header img {
         display: none;
     }
@@ -211,14 +270,39 @@
 
     }
 
+    /*Buscador-nav*/
+
+    #container {
+
+        right: 140px;
+    }
+
+    #s:focus {
+        width: 25em;
+        opacity: 1;
+    }
+
+    #searchform {
+        display: inline;
+        font-size: 23px;
+        border-radius: 4px;
+        box-shadow: 0 0 0.3em rgb(60 60 60 / 40%);
+        padding: 0.3em;
+        background: white;
+    }
+
+    /**/
+
+    /*Perfil*/
+
     .conatiner-nav-tres{
         display: block;
-        width: 45%;
+        width: 250px;
         height: 100%;
         position:absolute;
         top: 0;
         background-color: rgba(0, 0, 0, 0.537);
-        transform: translateX(-400px);
+        transform: translateX(-600px);
         transition: all 600ms;
         z-index: 50;
         
@@ -230,6 +314,15 @@
      
 
     }
+
+
+
+    /**/
+
+    /**/
+    /**/
+
+
 
     .cards-reservas{
         margin-left: 200px;
@@ -248,13 +341,27 @@
    
 
 
-   
+    .img-nombre-p{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     .container-avatar img {
+        margin: 0;
         width: 100px;
         height: 100px;
-        margin-left: 50px;
+
+       
+        border: 5px solid white;
         
+    }
+
+    .nombre-user{
+        font-size: 25px;
+        font-weight:lighter;
+        color: white;
+        margin-top: 10px;
     }
 
     .conatiner-img-enlaces{
@@ -274,6 +381,8 @@
 
     .enlaces-nav a{
         font-size: 25px;
+        width: 160px;
+        padding: 7px;
         margin-bottom: 40px;
     }
 
@@ -316,91 +425,30 @@
     /*Descripcion libro*/
 
     .mainlibros {
-       
-        width: 90%;
         margin-left: 0%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .imglibros{
+        width: 100px;
     }
 
     .mainlibros img {
         width: 300px;
         height: 500px;
-    }
-
-    .libros2 {
-        width: 80%;
-    }
-
-    .nav2 {
-        width: 100%;
-    }
-
-    .des-libro{
-        margin-left: -460%;
-        margin-top: 10px;
-        
-        
-  
-    }
-
-    .descripcion {
-       width: 200px;
-    }
-
-    .btn-reservar {
-        margin-left: -160%;
         
     }
 
-    .info-libro{
-        width: 300px;
-    }
-
-    .detalles-libro {
-       width: 300px;
-
-    }
-
-    .libros2 {
-        width: 10%;
-    }
+    
 
 
     /*Perfil usuario*/
 
-    
-    .flecha-desplegar{
-        visibility: visible;
-        transition: all 600ms;
-        transform: translateX(240px);
-        
-    }
-
-    .flecha-desplegar.show {
-        transition: all 600ms;
-        
-       
-
-    }
-
-    .botones-perfil{
-        position:absolute;
-        top: 14%;
-        width: 300px;
-        transform: translateX(-300px);
-        transition: all 600ms;
-
-        
-        
-    }
-
-    .botones-perfil.show{
-        transform: translateX(0px);
-        transition: all 600ms;
-    }
 
 
     .datos-perfil {
-        margin-left: 20%;
+        width: 90%;
         margin-bottom: 100px;
        
        
@@ -422,6 +470,123 @@ element.style {
     width: 100%;
 }
 
+    /*Botones-perfil*/
+
+        .conatiner-btn-perfil a {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            color: rgb(95, 95, 95);
+            margin-top: 20px;
+            transition: all 0.5s;
+            width: 40px;
+            height: 40px;
+            margin: 0px 10px 0px 10px;
+            padding: 0px 5px 5px 10px;
+            align-items: center;
+        }
+    
+    /**/
+
+
+    /*Btn editar inputs perfil*/
+
+    .editar-perfil {
+        position: absolute;
+        right: 120px;
+        cursor: pointer;
+        font-size: 18px;
+        color: #1883ca;
+    }
+
+    /**/
+
+        /*Imagen y nombre de perfil*/
+
+        .img-nombre {
+            position: absolute;
+            left: 70px;
+            
+        }
+    
+        .usu {
+            position: absolute;
+            left: 250px;
+            margin-top: 260px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+    
+    
+    
+        /**/
+
+
+        /*Ventana-reserva*/
+        .Estudiantes-from2 {
+            width: 65%;
+            
+        }
+
+        .nueva-reserva-close a {
+ 
+            position: absolute;
+            right: 18%;
+        }
+
+        /**/
+
+
+        /*card-reserva*/
+
+        .card-reserva {
+            width: 100%;
+     
+        }
+
+        .icon-borrar-reserva i{
+            position: absolute;
+            bottom: 10px;
+        }
+        /**/
+
+
+        /*Buscador Libros*/
+
+        #Buscador {
+           
+            width: 300px;
+            
+        }
+
+        .cards-busquedas {
+            width: 90%;
+            
+            
+        }
+
+
+        /*info-libro*/
+
+        .des-libro{
+            margin-left: 0%;
+            margin-top: 50%;  
+        }
+
+        .btn-reservar {
+            margin-left: 0%;
+        }
+    
+
+
+        
+
+
+
+
+
+
    
     
 
@@ -432,106 +597,327 @@ element.style {
 }
 
 
+
+
 @media (max-width: 500px) {
 
-
-
-    .conatainer-texto-bsqueda{
-        width: 70%;
-        margin-top: -150px;
-    }
-
-    #buscar{
-        width: 300px;
-    }
-
-    .texto-estatico{
-        width: 200px;
-        font-size: 30px;
-    }
-
-    .conatiner-img-card img {
-        visibility: hidden;
-    }
-
-    .info2 {
-        margin-left: 10px;
-        width: 230px;
-  
-    }
-    .Estudiantes-from {
-        width: 100% !important;
-    }
-
-    .mainlibros{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        width: 60%;
-        
-    }
-
-    .libros2{
-        margin: 0;
-        padding: 0;
-        margin-top: 50px;
-        
-    }
-    .info-libro{
-        margin-left: -400%;
-        width: 400px;
-
     
+    /*Buscador-nav*/
 
+    #container {
+
+        display: none;
     }
 
-    .detalles-libro{
 
-        margin-left: -400%;
-        width: 400px;
+    /**/
 
-    }
-    .des-libro{
 
-        
-        margin-left: -400%;
-        width: 400px;
 
-    }
 
-    .descripcion {
+      /*Footer*/
+      .footer-centro .redes img {
+        width: 10px;
+        }
+
+        /**/
+
+    /*main*/
+    .main {
+
         width: 90%;
+
     }
 
-    .mainlibros img {
+    /**/
+    /*Barra Navegacion*/
+
+    .conatainer-texto-bsqueda {
+        width: 80%;
+    }
+
+    .container-text {
+        margin-top: 200px;
+    }
+
+    .container-text p {
+        font-size: 25px;
+    }
+
+    .texto-estatico {
+        font-family: 'Oswald', sans-serif;
+        font-size: 20px;
+        width: 100%;
+        height: 20px;
+    }
+
+
+    #buscar {
+        width: 300px;  
+    }
+
+
+
+    /**/
+
+
+
+
+    /*Novedades*/
+
+    .contendor-cards-libros {
+        margin-left: 50px;
+
+        margin-bottom: 100px;
+ 
+    }
+
+
+    /**/
+
+
+  
+
+
+    /*Eventos*/
+
+    .container-eventos {
         margin-left: 50px;
     }
 
-    .nav2 {
-        width: 92%;
-    }
-
-    .cards-reservas{
-        margin: 0;
+    #titlulo-eventos {
+        margin-bottom: 30px;
         margin-top: 30px;
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        z-index: 5;
+     
     }
 
-    .no-reserva {
-        width: 300px;
+
+    .container-eventos img {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 10px;
     }
 
-    .p-hr img {
-        width: 300px;
+    /**/
+
+    /*Slider-Educativos*/
+
+    .card {
+        width: 0%;
     }
 
-    .botones-perfil {
-        z-index: 10;
 
+    .info2 {
+        margin-left: -120px;
+        width: 230px;
+        margin-top: -30px;
     }
 
+    #titulo {
+        
+        font-size: 20px !important;
+    }
+
+
+    .conatiner-img-card img {
+        display: none !important;
+    }
+    .contendor-cards {
+        height: 430px;
+        margin-left: 50px;
+        
+        
+    }
+
+    #titlulo-slider {
+        margin-bottom: 30px;
+        width: 80%;
+        margin-top: 30px;
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: 5px;
+    }
+
+    
+
+    /**/
+
+
+    /*Libro Mision y vision*/
+
+    .container-libro-ms{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stf__parent{
+        width: 100px !important;
+        height: 100px !important;
+        margin-left: 40px;
+    }
+
+
+        /*Botones-perfil*/
+
+        .conatiner-btn-perfil a {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            color: rgb(95, 95, 95);
+            margin-top: 20px;
+            transition: all 0.5s;
+            width: 40px;
+            height: 40px;
+            margin: 0px 2px 0px 2px;
+            padding: 0px 2px 5px 5px;
+            align-items: center;
+        }
+    
+    /**/
+
+
+    /*Imagen y nombre de perfil*/
+
+    .img-nombre {
+        position: absolute;
+        left: 120px;
+        top: 0;
+        
+    }
+
+    .usu {
+        position: absolute;
+        left: 80px;
+        margin-top: 260px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+    }
+
+
+
+    /**/
+
+    /*Tabla*/
+
+
+
+    .tabla-libros-reservados th{
+
+        font-size: 10px;
+        
+    }
+
+    .img-card-res {
+        width: 60px;
+        height: 100px;
+        margin: 5px;
+    }
+
+    /**/
+
+
+        /*Btn editar inputs perfil*/
+
+        .editar-perfil {
+            position: absolute;
+            right: 70px;
+            margin-top: -60px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #1883ca;
+        }
+
+        .container-inputs2 {
+       
+            margin-left: 50px;
+        }
+    
+        /**/
+
+
+        /*Card-Contraseña*/
+
+        .container-contraseña {
+            width: 300px;
+            height: 300px;
+        }
+
+        .card2 img{
+            height: 250px;
+        }
+
+
+        
+        /*Ventana-reserva*/
+        .Estudiantes-from2 {
+            width: 90%;
+            
+        }
+
+        .nueva-reserva-close a {
+ 
+            position: absolute;
+            right: 6%;
+        }
+
+        #libro-reserva {
+            width: 150px;
+            margin-top: 7px;
+            margin-left: 70px;
+        }
+
+        /**/
+
+
+        /*Alerta*/
+
+        .container-alerta{
+            width: 350px;
+        }
+
+        .container-alerta p{
+            font-size: 17px;
+        }
+
+        /**/
+
+        .no-reserva {
+            width: 300px;
+        }
+
+        .no-reserva img {
+            width: 300px;
+        }
+
+        .p-hr {
+            
+            width: 300px;
+
+        }
+
+        .p-hr img {
+            width: 300px;
+        }
+
+        .cate{
+            display: none;
+        }
+
+
+ 
+
+
+        
+
+
+
+  
    
 
 

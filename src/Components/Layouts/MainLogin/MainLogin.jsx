@@ -38,7 +38,6 @@ export const MainLogin = () => {
 
     axios.post(url, state.form)
       .then(res => {
-        console.log(res)
 
         if (res.status === 200 || res.status === 201) {
 
@@ -62,7 +61,8 @@ export const MainLogin = () => {
 
           console.log("logueado correctamente")
 
-        } else {
+        }
+        else {
 
           setState({
             error: true,
@@ -79,6 +79,23 @@ export const MainLogin = () => {
           error: true,
           errorMsg: "Credenciales Invalidas"
         })
+        if(error.response.status === 401){
+          console.log()
+          setState({
+            error: true,
+            errorMsg: "Usuario Inactivo"
+          })
+          
+        }
+        else if(error.response.status === 400){
+          console.log(error)
+          setState({
+          error: true,
+          errorMsg: "Credenciales Invalidas"
+        })
+
+        }
+        
       })
 
   }

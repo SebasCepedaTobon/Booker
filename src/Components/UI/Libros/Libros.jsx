@@ -73,7 +73,7 @@ export const Libros = ({libro}) => {
   } */
 
   //Funcion que guarda las propiedades del estado de los libros
-  const {nombre , id_libro, imagen_libro,  } = libro;
+  const {nombre , id_libro, imagen_libro } = libro;
 
   const [{favoritos}, dispatch] = useStateValue();
   

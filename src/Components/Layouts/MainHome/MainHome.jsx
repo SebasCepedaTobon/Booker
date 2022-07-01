@@ -46,6 +46,14 @@ export const MainHome = () => {
           }
         },
         {
+          breakpoint: 748,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
           breakpoint: 600,
           settings: {
             slidesToShow: 1,
@@ -133,7 +141,7 @@ export const MainHome = () => {
 
   useEffect(()=> {
     setCargando(true);
-    fetch("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV")
+    fetch("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV&ordering=-estado")
     .then(res => res.json())
     .then((data) =>{
       setLibros(data)

@@ -27,4 +27,29 @@
 }
 
 
+@media (max-width: 500px) {
+  .slick-next::before {
+    color:#2591da !important;
+    font-size:20px !important;
+    position: relative !important;
+    top: -60px;
+    right: 0px;
+
+
+ 
+  }
+  
+  .slick-prev:before{
+    color:#2591da !important;
+    font-size:20px !important;
+    position: relative !important;
+    right: 7px !important;
+    top: -60px;
+  }
+
+  
+
+}
+
+
 /*# sourceMappingURL=slick.css.map */

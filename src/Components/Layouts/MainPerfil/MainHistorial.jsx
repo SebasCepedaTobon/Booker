@@ -96,16 +96,16 @@ const reservar = () =>{
 
         if(error.response.status === 401){
           Swal.fire(
-            'El estudiante ha superado al limite de ejemplares prestados o reservados (3)',
-            '',
+            '¡No puede reservar!',
+            'Ha superado el limite de reservar o prestamos (3)',
             'info'
           )
         }
 
         else if(error.response.status === 409){
           Swal.fire(
-            'El estudiante ha cometido una infraccion por lo tanto no podra reservar libros',
-            '',
+            '¡No puede reservar!',
+            'Tiene una infracción vigente',
             'info'
           )
         }
@@ -122,17 +122,16 @@ const reservar = () =>{
     <div className='contenedor-perfil'>
         <Navegacion3/>
         <BotonesPerfil/>
-        <div className="datos-perfil3">
-            <h2 id='Tu-cuenta'>Tus Reservas</h2>
+        <div className="datos-perfil">
+            <h2 id='Tu-cuenta'>Reservas</h2>
             <div className="info-reservas">
                 {reservas.length === 0 ? (<div className='no-reserva'>
                   <h3>No tienes reservas por ahora...</h3>
-                  <Imagenes url={Noreserva}/>
                 </div>) :
                     (
                       <>
                       {reservas.map((libro => <Checkoud key={libro.id} libro={libro}/>))}
-                      <button className='btn-confirmar-reserva' onClick={reservar} >confirmar</button>
+                      <button className='btn-confirmar-reserva' onClick={reservar} >Confirmar Reserva</button>
                       </>
                       )
                 }

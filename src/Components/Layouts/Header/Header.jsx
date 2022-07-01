@@ -56,7 +56,7 @@ export const Header = () => {
               <div className="texto-estatico">
                 <Typewriter
                   options={{
-                    strings: ['Libros educativos', 'Literatura', 'Comics, historietas y manga'],
+                    strings: ['Libros educativos', 'Novelas Ficticias', 'Comics, historietas y manga'],
                     autoStart: true,
                     loop: true,
                   }}

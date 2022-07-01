@@ -75,8 +75,8 @@ export const MainReservados = () => {
         <BotonesPerfil/>
         <div className="datos-perfil">
             <h2 id='Tu-cuenta'>Reservados</h2>
-            {reservados.length === 0 ? (<div>
-                  <h3>No tienes libros reservados por ahora...</h3>
+            {reservados.length === 0 ? (<div className='no-reserva'>
+                  <h3>No tienes reservados por ahora...</h3>
                 </div>) :
                     (
             <div className="tabla-reservados">

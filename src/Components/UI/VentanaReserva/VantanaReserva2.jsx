@@ -160,8 +160,7 @@ export const VentanaReserva2 = () => {
       axios.put(endpoint, usuario)
         .then((res) => {
           setTimeout(() => {
-            window.location.reload()
-            
+            window.location.href = "/"
           }, 2000);
           setState({
             error: false,

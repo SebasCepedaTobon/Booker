@@ -59,8 +59,8 @@ export const MainPrestados = () => {
         <BotonesPerfil/>
         <div className="datos-perfil">
             <h2 id='Tu-cuenta'>Prestados</h2>
-            {prueba.length === 0 ? (<div>
-                  <h3>No tiene prestamos por ahora...</h3>
+            {prueba.length === 0 ? (<div className='no-reserva'>
+                  <h3>No tienes prestamos por ahora...</h3>
                 </div>) :
                     (<div className="tabla-reservados">
                     <table className='tabla-libros-reservados'>
@@ -87,7 +87,7 @@ export const MainPrestados = () => {
                                                 {reserva.map((element => (<p>{element.id_ejemplar.id_libro.nombre}</p>)))}
                                             </td>
                                             <td>
-                                            {estado.map((element => (element.fec_prestamo)))}
+                                            {estado.map((element => (<p>{element.fec_prestamo}</p>)))}
                                             </td>
                                             <td>
                                                 {reserva.map((element => (<p>{element.fec_devolucion}</p>)))}
@@ -95,7 +95,9 @@ export const MainPrestados = () => {
                                             </td>
                                             <td>
                                                 {estado.map((element => {estados = element.estado }))}
-                                                {estados === "INF" ? <p>Infracción</p>:""}
+                                                {estados === "INF" ? <p>Prestamo con Infracción</p>:""}
+                                                {estados === "AC" ? <p>Prestamo Activo</p>:""}
+                                                {estados === "C" ? <p>Prestamo Finalizado</p>:""}
                                             </td>
                                         </tr>
                                         

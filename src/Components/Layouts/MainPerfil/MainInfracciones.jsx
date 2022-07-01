@@ -46,7 +46,6 @@ useEffect(() => {
             {infracciones.length === 0 ? (
               <div className="p-hr">
                 <h3>No tienes infracciones por ahora...</h3>
-                <Imagenes url={Noinfracciones}/>
               </div>) :
                     (
               <div className="tabla-reservados">
@@ -73,8 +72,8 @@ useEffect(() => {
                           {infra.estado === "C" ? <p>Infracción Finalizada</p>:""}
                           {infra.estado === "IV" ? <p>Infracción Inactiva</p>:""}
                           </td>
-                        <td>{infra.descripcion === null ? <p>No tiene</p>:""}</td>
-                        <td>{infra.id_tipo_infraccion === null ? <p>No tiene</p>:""}</td>
+                        <td>{infra.descripcion === null ? <p>No tiene</p>:<p>{infra.descripcion}</p>}</td>
+                        <td>{infra.id_tipo_infraccion.nombre}</td>
                       </tr>
                     )
                   })}

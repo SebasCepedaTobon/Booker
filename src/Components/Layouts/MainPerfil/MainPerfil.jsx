@@ -115,7 +115,11 @@ export const MainPerfil = () => {
     axios.put(endpoint, form2)
     .then((res)=>{
       setAlerta(!alerta)
-      PedirDatos() 
+      PedirDatos()
+      setTimeout(() => {
+        window.location.reload()
+        
+      }, 2000);
 
       
 
@@ -164,7 +168,7 @@ export const MainPerfil = () => {
                 <div className="p-hr">
                   <div className="p-edit">
                     <p>Información Personal</p>
-                    <i onClick={ventanaFlotante} class="fa-solid fa-user-pen"></i>
+                    <div className='editar-perfil' onClick={ventanaFlotante} >Editar<i  class="fa-solid fa-user-pen"></i></div> 
                   </div>
                     <hr />
                 </div>
@@ -238,7 +242,7 @@ export const MainPerfil = () => {
                                   <span></span>
                                   <label>Email</label>
                               </div>
-                              <p  onClick={VentanaContraseña} className="btn-contraseña">cambiar contraseña</p>
+                              <p  onClick={VentanaContraseña} className="btn-contraseña">Cambiar contraseña</p>
 
                           
                               <div className="btnsFormulario">
@@ -286,7 +290,7 @@ export const MainPerfil = () => {
                       <p className='td-Titulo'>Email</p>
                       <p className='td-datos'>{estudiante.email}</p>
                     </div>
-                    <p  onClick={VentanaContraseña} className="btn-contraseña">cambiar contraseña</p>
+                    <p  onClick={VentanaContraseña} className="btn-contraseña">Cambiar contraseña</p>
                   </div>
                       
                       

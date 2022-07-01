@@ -3,6 +3,7 @@ import { Imagenes } from '../Imagenes/Imagenes'
 import fondo from '../../../assets/Imagenes/Banner/fondo.png'
 import axios from 'axios'
 import Swal from "sweetalert2";
+import UsuarioInactivo from '../../../assets/Imagenes/Admin/usuario.png'
 
 
 export const FondoPerfil = () => {
@@ -123,7 +124,12 @@ export const FondoPerfil = () => {
           <div className="img-nombre">
               <div className="container-avatar1">
                 <div className="conatiner-img-avatar">
+                  {estudiante.imagen === null ? 
+                    <Imagenes url={UsuarioInactivo} />
+                    :
                     <Imagenes url={estudiante.imagen} />
+                  }
+                    
 
                 </div>
 
