@@ -182,6 +182,11 @@ export const NuevoPrestamo = () => {
     ventanaAbrir()
   }, [])
 
+  useEffect(() => {
+
+  }, [])
+  
+
 
   
   const librosBusqueda = () => {
@@ -247,9 +252,9 @@ export const NuevoPrestamo = () => {
       console.log(response.data)
       if(response.data.length === 0){
         p.textContent = "No coninciden"
+        p.style.color = "red"
         validarEstudiante = 1
       }else{
-        console.log(response.data[0].id_estudiante)
         idEstudiante = response.data[0].id_estudiante
         p.textContent = ""
         validarEstudiante = 2
@@ -271,17 +276,6 @@ export const NuevoPrestamo = () => {
     from_tablasEjem.style.opacity = "2"
     ventanaCerrar()
     abrirPrestamos2()
-  }
-
-  const cerrarPrestamos = () => {
-
-    const overlayEjem = document.getElementById('overlayEjem')
-    const from_tablasEjem = document.querySelector('.box-prestamos')
-
-    overlayEjem.style.visibility = "hidden"
-    from_tablasEjem.style.transform = "scale(0.6)"
-    from_tablasEjem.style.opacity = "0"
-    cerrarPrestamos2()
   }
 
   const abrirPrestamos2 = () => {

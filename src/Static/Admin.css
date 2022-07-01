@@ -237,6 +237,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .td-4{
@@ -260,6 +261,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.td-7{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .fa-pen-to-square{

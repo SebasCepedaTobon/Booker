@@ -272,19 +272,19 @@ export const AgregarLibro = () => {
           <form method="" onSubmit={handleSubmit}>
             <div className='boxs-inputs'>
               <div className="box-input">
-                <input name='isbn' type="number" onChange={handleChange} value={formLibros.isbn} required />
+                <input name='isbn' autoComplete="off" type="number" onChange={handleChange} value={formLibros.isbn} required />
                 <span></span>
                 <label>ISBN</label>
               </div>
 
               <div className="box-input">
-                <input name='nombre' onChange={handleChange} value={formLibros.nombre} id='nombreLibro' type="text" required />
+                <input name='nombre' autoComplete="off" onChange={handleChange} value={formLibros.nombre} id='nombreLibro' type="text" required />
                 <span></span>
                 <label>Nombre</label>
               </div>
 
               <div className="box-input">
-                <input id='NumEmplares' type='number' name='' onChange={handleChange} required />
+                <input id='NumEmplares' autoComplete="off" type='number' name='' onChange={handleChange} required />
                 <span></span>
                 <label>Cantidad Ejemplares</label>
               </div>
@@ -292,19 +292,19 @@ export const AgregarLibro = () => {
 
             <div className="boxs-inputs">
               <div className="box-input">
-                <input type="number" name='numero_paginas' onChange={handleChange} value={formLibros.numero_paginas} required />
+                <input type="number" autoComplete="off" name='numero_paginas' onChange={handleChange} value={formLibros.numero_paginas} required />
                 <span></span>
                 <label>N° Paginas</label>
               </div>
 
               <div className="box-input">
-                <input type="number" name='numero_capitulos' onChange={handleChange} value={formLibros.numero_capitulos} required />
+                <input type="number" autoComplete="off" name='numero_capitulos' onChange={handleChange} value={formLibros.numero_capitulos} required />
                 <span></span>
                 <label>Numero Capitulos</label>
               </div>
 
               <div className="box-input">
-                <input type="text" name='edicion' onChange={handleChange} value={formLibros.edicion} required />
+                <input type="text" autoComplete="off" name='edicion' onChange={handleChange} value={formLibros.edicion} required />
                 <span></span>
                 <label>Edicion</label>
               </div>
@@ -313,19 +313,19 @@ export const AgregarLibro = () => {
 
             <div className="boxs-inputs">
               <div className="box-input">
-                <input type="text" name='anexos' onChange={handleChange} value={formLibros.anexos} required />
+                <input type="text" autoComplete="off" name='anexos' onChange={handleChange} value={formLibros.anexos} required />
                 <span></span>
                 <label>Anexos</label>
               </div>
 
               <div className="box-input">
-                <input name='presentacion' onChange={handleChange} value={formLibros.presentacion} type="text" required />
+                <input name='presentacion' autoComplete="off" onChange={handleChange} value={formLibros.presentacion} type="text" required />
                 <span></span>
                 <label>Presentación</label>
               </div>
 
               <div className="box-select">
-                <select id='selectEdito' name='id_editorial' onChange={handleChange} value={formLibros.id_editorial} >
+                <select id='selectEdito'  name='id_editorial' onChange={handleChange} value={formLibros.id_editorial} >
                   <option value="" selected >Editorial...</option>
                   {!editorial ? "" :
                     editorial.map((element, key) => {

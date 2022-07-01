@@ -7,7 +7,6 @@ import '../../../Static/AdminNavegador.css'
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import usuario from '../../../assets/Imagenes/Admin/usuario.png'
 import {Logout} from '../../../Logout'
 
 let id_bibliotecario
@@ -65,8 +64,8 @@ export const AdminHeader = () => {
                         <p className='p2'>bibliotecario</p>
                     </div>
                     <div className='perfil'>
-                    {imagenPerfil1 === null
-                      ? <Imagenes url={usuario} />
+                    {imagenPerfil1.imagen === null
+                      ? <Imagenes clase='icono' url='https://res.cloudinary.com/bookerimg/image/upload/v1655750515/douilym0euozd22k61wv.png' />
                       : <Imagenes clase='icono' url={imagenPerfil1.imagen} />
                     }
                     </div>

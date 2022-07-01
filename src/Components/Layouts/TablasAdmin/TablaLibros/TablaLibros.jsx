@@ -703,12 +703,16 @@ export const TablaLibros = () => {
                       </p>
                     </div>
 
-                    <div className='td-3'>
+                    <div className='td-3 tdAutoresLibro'>
                       <p>
                         {
                           a.map(element => element.nombres).join(', ')
                         }
-
+                      </p>
+                      <p>
+                        {
+                          a.map(element => element.apellidos).join(', ')
+                        }
                       </p>
                     </div>
                     <div className="td-6">
@@ -756,18 +760,18 @@ export const TablaLibros = () => {
             <form onSubmit={handleSubmit}>
               <div className='boxs-inputs'>
                 <div className="box-input">
-                  <input name='isbn' type="number" onChange={handleChange} value={form2.isbn} required />
+                  <input name='isbn' autoComplete="off" type="number" onChange={handleChange} value={form2.isbn} required />
                   <span></span>
                   <label>ISBN</label>
                 </div>
 
                 <div className="box-input">
-                  <input name='nombre' onChange={handleChange} value={form2.nombre} id='nombreLibro' type="text" required />
+                  <input name='nombre' autoComplete="off" onChange={handleChange} value={form2.nombre} id='nombreLibro' type="text" required />
                   <span></span>
                   <label>Nombre</label>
                 </div>
                 <div className="box-input">
-                  <input type="number" name='numero_paginas' onChange={handleChange} value={form2.numero_paginas} required />
+                  <input type="number" name='numero_paginas' autoComplete="off" onChange={handleChange} value={form2.numero_paginas} required />
                   <span></span>
                   <label>N° Paginas</label>
                 </div>
@@ -776,18 +780,18 @@ export const TablaLibros = () => {
 
               <div className="boxs-inputs">
                 <div className="box-input">
-                  <input type="number" name='numero_capitulos' onChange={handleChange} value={form2.numero_capitulos} required />
+                  <input type="number" name='numero_capitulos' autoComplete="off" onChange={handleChange} value={form2.numero_capitulos} required />
                   <span></span>
                   <label>Numero Capitulos</label>
                 </div>
 
                 <div className="box-input">
-                  <input type="text" name='edicion' onChange={handleChange} value={form2.edicion} required />
+                  <input type="text" name='edicion' autoComplete="off" onChange={handleChange} value={form2.edicion} required />
                   <span></span>
                   <label>Edicion</label>
                 </div>
                 <div className="box-input">
-                  <input type="text" name='anexos' onChange={handleChange} value={form2.anexos} required />
+                  <input type="text" name='anexos' autoComplete="off" onChange={handleChange} value={form2.anexos} required />
                   <span></span>
                   <label>Anexos</label>
                 </div>
@@ -797,7 +801,7 @@ export const TablaLibros = () => {
               <div className="boxs-inputs">
 
                 <div className="box-input">
-                  <input name='presentacion' onChange={handleChange} value={form2.presentacion} type="text" required />
+                  <input name='presentacion' autoComplete="off" onChange={handleChange} value={form2.presentacion} type="text" required />
                   <span></span>
                   <label>Presentación</label>
                 </div>
@@ -903,7 +907,6 @@ export const TablaLibros = () => {
                 <div className='td-0'><p>Imagen</p></div>
                 <div className='td-1'><p>Nombre</p></div>
                 <div className='td-2'><p>N° Ejemplar</p></div>
-                <div className='td-3'><p>Autores</p></div>
                 <div className='td-1'><p>Estado</p></div>
                 <div className='td-5'><p>Opciones</p></div>
               </div>
@@ -923,15 +926,6 @@ export const TablaLibros = () => {
                         </div>
                         <div className='td-2'>
                           <p>{libro.num_ejemplar}</p>
-                        </div>
-
-                        <div className='td-3'>
-                          <p>
-                            {
-                              a.map(element => element.nombres).join(', ')
-                            }
-
-                          </p>
                         </div>
 
                         <div className="td-1">

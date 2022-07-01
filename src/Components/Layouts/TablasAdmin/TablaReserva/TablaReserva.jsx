@@ -66,7 +66,7 @@ export const TablaReserva = () => {
 
   const peticionGet = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas"
+    cambioFiltro.textContent = "Historial de reservas"
     axios.get(urlOrdenada).then(response => {
       setReservas(response.data);
 
@@ -77,7 +77,7 @@ export const TablaReserva = () => {
 
   const peticionGetInactiva = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas Inactivas"
+    cambioFiltro.textContent = "Reservas inactivas"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=IV").then(response => {
       setReservas(response.data);
       console.log(response.data);
@@ -89,7 +89,7 @@ export const TablaReserva = () => {
 
   const peticionGetCompletadas = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas Completadas"
+    cambioFiltro.textContent = "Reservas finalizadas"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C").then(response => {
       setReservas(response.data);
       console.log(response.data);
@@ -101,7 +101,7 @@ export const TablaReserva = () => {
 
   const peticionGetActuales = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
-    cambioFiltro.textContent = "Reservas Actuales"
+    cambioFiltro.textContent = "Reservas vigentes"
     axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=AC").then(response => {
       setReservas(response.data);
     }).catch(error => {
@@ -320,22 +320,22 @@ export const TablaReserva = () => {
             <div className='categoriasMN'  >
               <div className='btnMulta' onClick={peticionGet} >
                 <div className='contenidoMultas' >
-                  <p>Total Reservas</p>
+                  <p>Historial de reservas</p>
                 </div>
               </div>
               <div className='btnMulta' onClick={peticionGetActuales} >
                 <div className='contenidoMultas' >
-                  <p>Actuales Reservas</p>
+                  <p>Reservas vigentes</p>
                 </div>
               </div>
               <div className='btnMulta' onClick={peticionGetCompletadas} >
                 <div className='contenidoMultas' >
-                  <p>Reservas Completadas</p>
+                  <p>Reservas finalizadas</p>
                 </div>
               </div>
               <div className='btnMulta' onClick={peticionGetInactiva} >
                 <div className='contenidoMultas'>
-                  <p>Reservas Inactivas</p>
+                  <p>Reservas inactivas</p>
                 </div>
               </div>
             </div>
@@ -369,11 +369,11 @@ export const TablaReserva = () => {
                       </div>
                       <div className='td-1'>
                         {l.map((element, key) => (
-                          <p key={key} className='L1P'>-- {element.id_libro.nombre} <br /></p>
+                          <p key={key} className='L1P'>→ {element.id_libro.nombre} <br /></p>
                         ))
                         }
                       </div>
-                      <div className='td-1'><p>{reservas.id_estudiante.nombres}</p></div>
+                      <div className='td-1'><p>{reservas.id_estudiante.nombres} {reservas.id_estudiante.apellidos}</p></div>
                       <div className='td-1'><p>{reservas.fecha_reserva}</p></div>
                       <div className='td-0'>
                         <div className="estadoTablas">

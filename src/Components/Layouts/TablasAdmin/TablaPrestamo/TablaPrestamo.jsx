@@ -16,6 +16,8 @@ let idinfra
 
 export const TablaPrestamo = () => {
   const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"
+  const urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?ordering=-id_de_prestamo"
+  const id_bibliotecario = localStorage.getItem('id_bibliotecario')
 
   const eliminacion = (data) =>{
     Swal.fire({
@@ -53,13 +55,11 @@ export const TablaPrestamo = () => {
 
 
 const [prestamos, setPrestamos] = useState([])
-const [prestamos1, setPrestamos1] = useState()
 const [detallesPrestamo, setDetallesPrestamo] = useState([])
-const [estudiantes, setEstudiantes] = useState({})
 const [generarInfra, setGenerarInfra] = useState({})
 
 const peticionGet=()=>{
-  axios.get(url).then(response=>{
+  axios.get(urlOrdenada).then(response=>{
     setPrestamos(response.data);
     console.log(response.data);
     console.log(response.data)
@@ -78,10 +78,8 @@ useEffect(() => {
   const peticionGetPrestamos = (libro) => {
     axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + libro.id_de_prestamo)
       .then(response => {
-        setPrestamos1([response.data]);
         prestamoUpdate.push(response.data)
         console.log(response.data);
-        setEstudiantes(response.data.id_estudiante)
         setDetallesPrestamo(response.data.prestamos)
         abrirPrestamos()
       }).catch(error => { 
@@ -224,6 +222,7 @@ useEffect(() => {
           id_ejemplar : losPrestamos.id_ejemplar.id_ejemplar,
           estado : losPrestamos.estado
         }],
+        id_bibliotecario: id_bibliotecario,
         estado: "INF"
       })
     }
@@ -264,11 +263,12 @@ useEffect(() => {
             estado : losPrestamos1.estado
           }
     ],
+        id_bibliotecario: id_bibliotecario,
         estado: "INF"
       })
     }else if(detallesPrestamo.length === 3){
 
-      console.log("Entro al dos");
+      console.log("Entro al tres");
       
       {
         prestamoUpdate.map((element) => {
@@ -304,6 +304,7 @@ useEffect(() => {
             estado : losPrestamos2.estado
           }
     ],
+    id_bibliotecario: id_bibliotecario,
         estado: "INF"
       })
     }
@@ -339,7 +340,6 @@ useEffect(() => {
      let losPrestamos
     let losPrestamos1
     let losPrestamos2
-    let idEstudiante
 
     data.id_estudiante = data.id_estudiante.id_estudiante
     data.estado = 'C'
@@ -390,6 +390,46 @@ useEffect(() => {
     updateDataInfracion()
   }
 
+  const peticionGetActuales = () => {
+    const cambioFiltro = document.querySelector('.cambioFiltro')
+    cambioFiltro.textContent = "Préstamos vigentes"
+    console.log(cambioFiltro.textContent);
+    //cambioFiltro.textContent === "Préstamos vigentes"
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&ordering=-id_de_prestamo").then(response=>{
+      setPrestamos(response.data);
+    }).catch(error=>{
+      console.log(error.message);
+  
+    })    
+  }
+  const peticionGetCompletadas = () => {
+    const cambioFiltro = document.querySelector('.cambioFiltro')
+    cambioFiltro.textContent = "Préstamos finalizados"
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=C&ordering=-id_de_prestamo").then(response=>{
+      setPrestamos(response.data);
+    }).catch(error=>{
+      console.log(error.message);
+    })
+
+  }
+
+  const peticionGetBusqueda = () => {
+    const inputBuscar = document.getElementById('elInput')
+
+    if (inputBuscar.value === "") {
+      peticionGet()      
+    }else{
+      axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?ordering=-id_de_prestamo&search=" + inputBuscar.value).then(response=>{
+        setPrestamos(response.data);
+      }).catch(error=>{
+        console.log(error.message);
+      })
+    }
+
+
+  }
+
+
   return (
 
     <div className='MainAdministrativo'>
@@ -400,8 +440,29 @@ useEffect(() => {
         <AdminHeader/>
         <div className='box-Tabla' >          
           <div className='Tabla'>
+          <div className='categoriasMN'  >
+              <div className='btnMulta' onClick={peticionGet} >
+                <div className='contenidoMultas' >
+                  <p>Historial de préstamo</p>
+                </div>
+              </div>
+              <div className='btnMulta' onClick={peticionGetActuales} >
+                <div className='contenidoMultas' >
+                  <p>Préstamos vigentes</p>
+                </div>
+              </div>
+              <div className='btnMulta' onClick={peticionGetCompletadas} >
+                <div className='contenidoMultas' >
+                  <p>Préstamos finalizados</p>
+                </div>
+              </div>
+            </div>
             <div className="TituloLibro">
-              Préstamo de Libros
+              <p className='cambioFiltro'>Historial de préstamo</p>
+              <div id='buscador' className="buscador">
+                <input onChange={peticionGetBusqueda} id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
+                <i onClick={peticionGetBusqueda} className="fa-solid fa-magnifying-glass"></i>
+              </div>
             </div>
             <div className='tr'>
               
@@ -450,7 +511,6 @@ useEffect(() => {
                           {prestamo.estado=== 'C'
                           ?<div className='td-1'>
                             <p className='pEstadoReservaC' >Préstamo<br/>completado</p>
-                            <div data-title='Prestamo finalizado' className='prueba' ></div>
                           </div>
                           :""
                           }
@@ -539,8 +599,7 @@ useEffect(() => {
                 <div className='td-0'><p>Imagen Libro</p></div>
                 <div className='td-1'><p>Nombre Libro</p></div>
                 <div className='td-2'><p>Fecha Devolución</p></div>
-                <div className='td-6'><p>Estado</p></div>
-                <div className='td-4'><p>Generar Infracción</p></div>
+                <div className='td-2'><p>Estado</p></div>
               </div>
               <div className="scrollDetalles">
                 <div className='Tabla-Info' >
@@ -564,28 +623,24 @@ useEffect(() => {
                           }
                         </div>
 
-                        { /*QUEDO EN LOS BOTONES*/}
-                        <div className="td-6">
-                          {element.estado === "AC" &&
-                            <p>Prestado<br/>vigente</p>
-                          }
-                          {element.estado === "C" &&
-                            <p>Prestamo Finalizado</p>
-                          }
-                          {element.estado === "INF" &&
-                            <p>Prestamo con<br />Infración</p>
-                          }
-                        </div>
-                        <div className="td-4">
+                        
+                        
                         {element.estado === 'AC'
-                        ? <div className='prueba prueba2' onClick={()=>{updateEstado(element)}}></div>
-                        : <div className='prueba' onClick={()=>{
-                          updateEstado(element)
-                          
-                          }}>
-                          </div>
-                        }
+                        ? <div className="td-2">
+                          <p>Generar infracción</p>
+                          <div className='prueba prueba2' onClick={()=>{updateEstado(element)}}></div>
                         </div>
+                        :""
+                        }
+                        {element.estado === 'C'
+                        ?<div className="td-2"><p>Se finalizo el prestamo, no puedo generar infracciones</p></div>
+                        :""
+                        }
+                        {element.estado === 'INF'
+                        ?<div className="td-2"><p>A este ejemplar se le genero una infracción</p></div>
+                        :""
+                        }
+                        
                     </div>
                     )
                   })

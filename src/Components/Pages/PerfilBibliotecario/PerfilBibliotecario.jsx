@@ -208,12 +208,17 @@ export const PerfilBibliotecario = () => {
               <div className="datosBibliotecario">
                 <div className="theDatos">
                   <div className="theDatosImg">
-                    <Imagenes clase="icono" url={bibliotecario.imagen}/>
+                    {bibliotecario.imagen ==  null
+                    ?<Imagenes clase='icono' url='https://res.cloudinary.com/bookerimg/image/upload/v1655750515/douilym0euozd22k61wv.png'/>
+                    :<Imagenes clase="icono" url={bibliotecario.imagen}/>
+                    }
+                    
                     <div className="box-camara">
                       <div className="boxi-camara">
                         <i className="fa-solid fa-camera"></i>
                       </div>
                       <input
+                      autoComplete="off"
                         type="file"
                         onChange={(e) => {
                           setearImagen(e);
@@ -288,6 +293,7 @@ export const PerfilBibliotecario = () => {
                 </div>
                 <div className="box-input">
                   <input
+                  autoComplete="off"
                     type="text"
                     onChange={handleChange}
                     id="doc"
@@ -302,6 +308,7 @@ export const PerfilBibliotecario = () => {
                 <div className="box-input">
                   <input
                     type="text"
+                    autoComplete="off"
                     name="nombres"
                     onChange={handleChange}
                     value={form2.nombres}
@@ -313,6 +320,7 @@ export const PerfilBibliotecario = () => {
                 <div className="box-input">
                   <input
                     type="text"
+                    autoComplete="off"
                     name="apellidos"
                     onChange={handleChange}
                     value={form2.apellidos}
@@ -327,6 +335,7 @@ export const PerfilBibliotecario = () => {
                   <input
                     type="text"
                     name="direccion"
+                    autoComplete="off"
                     onChange={handleChange}
                     value={form2.direccion}
                     required
@@ -339,6 +348,7 @@ export const PerfilBibliotecario = () => {
                   <input
                     type="text"
                     name="telefono"
+                    autoComplete="off"
                     onChange={handleChange}
                     value={form2.telefono}
                     required
@@ -352,6 +362,7 @@ export const PerfilBibliotecario = () => {
                   <input
                     type="text"
                     name="name"
+                    autoComplete="off"
                     onChange={handleChange}
                     id="name"
                     required
@@ -362,6 +373,7 @@ export const PerfilBibliotecario = () => {
                 <div className="box-input">
                   <input
                     type="text"
+                    autoComplete="off"
                     onChange={handleChange}
                     id="email"
                     required
