@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-
-import { BotonesCrud } from '../../UI/Botones/BotonesCrud';
+import '../../../Static/TablaReserva.css'
+import '../../../Static/Admin.css'
+import '../../../Static/MediaQueriesAdmin.css'
 import { AdminHeader } from '../../UI/NavegadorAdmin/AdminHeader';
 import { AdminNavegador } from '../../UI/NavegadorAdmin/AdminNavegador';
 
 
 export const InfraccionesAdmin = () => {
+  let cargaInformacion 
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/infracciones/"
+  const urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/infracciones/?ordering=-id_infraccion"
 
   const eliminacion = (data) => {
     Swal.fire({
@@ -69,11 +72,80 @@ export const InfraccionesAdmin = () => {
 
 
   const peticionGet = () => {
-    axios.get(url).then(response => {
+    const cambioFiltro = document.querySelector('.cambioFiltro')
+    cambioFiltro.textContent = "Historial de infracciones"
+    axios.get(urlOrdenada).then(response => {
       setInfracciones(response.data)
     }).catch(error => {
       console.log(error);
     })
+  }
+
+  const peticionGetCompletadas = () => {
+    const cambioFiltro = document.querySelector('.cambioFiltro')
+    cambioFiltro.textContent = "Infracciones completadas"
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/infracciones/?estado=C&ordering=-id_infraccion").then(response => {
+      setInfracciones(response.data)
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  const peticionGetNovedad = () => {
+    const cambioFiltro = document.querySelector('.cambioFiltro')
+    cambioFiltro.textContent = "Infracciones de tipo novedad"
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/infracciones/?id_tipo_infraccion=1&ordering=-id_infraccion").then(response => {
+      setInfracciones(response.data)
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  const peticionGetMulta = () => {
+    const cambioFiltro = document.querySelector('.cambioFiltro')
+    cambioFiltro.textContent = "Infracciones de tipo multa"
+    axios.get("https://bookerbackapi.herokuapp.com/modulos/infracciones/?id_tipo_infraccion=2&ordering=-id_infraccion").then(response => {
+      setInfracciones(response.data)
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  const estadoInfra =(data)=>{
+    data.id_prestamo = data.id_prestamo.id_prestamo
+    data.id_estudiante = data.id_estudiante.id_estudiante
+    data.id_tipo_infraccion = data.id_tipo_infraccion.id_tipo_infraccion
+    data.id_bibliotecario = data.id_bibliotecario.id_bibliotecario
+    if (data.estado === 'AV') {
+      data.estado = 'C'
+      updateEstado(data)
+    }
+    console.log(data);
+  }
+
+  const updateEstado = (data) => {
+
+    console.log(data);
+    
+    let endpoint = url + data.id_infraccion + "/"
+        axios.put(endpoint, data)
+        .then((res) => {
+            console.log(res)
+            peticionGet()
+        }).catch(error => {
+          console.log(error);
+        })
+  }
+
+  const [cargaInfra, setCargaInfra] = useState({})
+  const [bibliotecario, setBibliotecario] = useState({})
+  const [estudiante, setEstudiante] = useState({})
+
+  const  cargaDeInformacion = (data) =>{
+    setCargaInfra(data)
+    setEstudiante(data.id_estudiante)
+    setBibliotecario(data.id_bibliotecario)
+    FormFlotante()
   }
 
 
@@ -87,31 +159,40 @@ export const InfraccionesAdmin = () => {
         <div className='box-Tabla' >
           <div className='Tabla'>
             <div className='categoriasMN'  >
-              <div className='btnMulta' >
+              <div className='btnMulta' onClick={peticionGet} >
                 <div className='contenidoMultas'>
                   <p>Ingracciones</p>
                 </div>
               </div>
-              <div className='btnMulta' >
+              <div className='btnMulta' onClick={peticionGetNovedad}>
+                <div className='contenidoMultas' >
+                  <p>Novedades</p>
+                </div>
+              </div>
+              <div className='btnMulta' onClick={peticionGetMulta}>
                 <div className='contenidoMultas'>
                   <p>Multas</p>
                 </div>
               </div>
-              <div className='btnMulta'>
+              <div className='btnMulta' onClick={peticionGetCompletadas}>
                 <div className='contenidoMultas'>
-                  <p>Novedades</p>
+                  <p>Infracciones comlpetadas</p>
                 </div>
               </div>
             </div>
             <div className="TituloLibro">
-              Infracciones
+              <p className='cambioFiltro'>Historial de préstamo</p>
+              <div id='buscador' className="buscador">
+                <input  id='elInput' className='elInput' type="text" autoFocus placeholder='Buscar...' />
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </div>
             </div>
             <div className='tr'>
               <div className='td-1' ><p>Nombre Libro</p></div>
               <div className='td-2' ><p>Nombre Estudiante</p></div>
               <div className='td-3'><p>Fecha de infracción</p></div>
-              <div className='td-4'><p>Descripción</p></div>
               <div className='td-0 td-0infra'><p>Tipo<br />Infracción</p></div>
+              <div className='td-1'><p>Estado</p></div>
               <div className='td-5'><p>Opciones</p></div>
             </div>
             <div className='Tabla-Info' >
@@ -127,15 +208,33 @@ export const InfraccionesAdmin = () => {
                     <div className='td-3'>
                       <p>{element.id_prestamo.fec_devolucion}</p>
                     </div>
-                    <div className='td-4'><p>{element.descripcion}</p></div>
                     <div className='td-0'>
                       {element.id_tipo_infraccion === null
                       ?<p>Sin tipo <br/>de infración</p>
                       :<p>{element.id_tipo_infraccion.nombre}</p>
-                      }
+                    }
                     </div>
+                    {
+                      element.estado === 'AV'
+                      ?<div className='td-1 InfraEstado'>
+                        <p className='pEstadoReservaC' >Infracción activa</p>
+                        <div data-title='Finalizar infracción' className='prueba prueba2' onClick={()=>{
+                          estadoInfra(element)
+                          //llamarUpdate()
+                          }} >
+                        </div> 
+                      </div>
+                      :""
+                    }
+                    {
+                      element.estado === 'C'
+                      ?<div className='td-1 InfraEstado'>        
+                        <p className='pEstadoReservaAC' >Infracción completada</p>
+                      </div>
+                      :""
+                    }
                     <div className='td-5'>
-                      <i onClick={FormFlotante} class="fa-solid fa-pen-to-square"></i>
+                      <i onClick={()=>{cargaDeInformacion(element)}} className="fa-solid fa-pen-to-square"></i>
                       <i onClick={()=>eliminacion(element)} class="fa-solid fa-trash-can" ></i>
                     </div>
                   </div>
@@ -153,48 +252,42 @@ export const InfraccionesAdmin = () => {
       </div>
 
       <div id='overlay' className='overlay'>
-        <div className="from-tablas">
-          <div className='RM-from'>
-            <div className="from-Titulo">
-              <div className="Desactivar-From">
-                <i onClick={FormFlotante} class="fa-solid fa-xmark"></i>
+        <div className="from-tablas infraContenedor">
+        <div className="boxPrestamos">
+            <div className='tablaPrestamos'>
+              <div className="TituloLibro TInfoInfraccion">
+                <p className='pTituloDetallesP'>Detalles de la infracción</p>
+                <i onClick={FormFlotante} className="fa-solid fa-xmark"></i>
               </div>
-              <h1>NUEVA MULTA</h1>
+              <div className='tr'>
+                <div className='td-1'><p>Documento Estudiante</p></div>
+                <div className='td-2'><p>Nombre Estudiante</p></div>
+                <div className='td-1'><p>Nombre Bibliotecario</p></div>
+                <div className='td-7'><p>Descripción</p></div>
+              </div>
+              <div className="scrollPrestamos">
+                <div className='Tabla-Info' >
+                    <div className='tr-1'>
+                      <div className='td-1'>
+                        {estudiante.doc_estudiante}
+                      </div>
+                      <div className='td-2'>
+                        {estudiante.nombres} {estudiante.apellidos}
+                      </div>
+                      <div className='td-1'>
+                        {console.log(bibliotecario.nombres)}
+                        {bibliotecario.nombres === null
+                        ?<p>No tiene nombre</p>
+                        :<p>{bibliotecario.nombres} {bibliotecario.apellidos}</p>
+                        }
+                      </div>
+                      <div className="td-7">
+                        {cargaInfra.descripcion}
+                      </div>
+                    </div>
+                </div>
+              </div>
             </div>
-            <form method="post">
-              <div className="box-input">
-                <input type="text" required />
-                <span></span>
-                <label>Documento Estudiante</label>
-              </div>
-              <div className="box-input">
-                <input type="text" required />
-                <span></span>
-                <label>Documento Administrador</label>
-              </div>
-              <div className="box-select">
-                <select>
-                  <option value="" selected>Seleccionar</option>
-                  <option value="">Multa</option>
-                  <option value="">Novedad</option>
-                </select>
-              </div>
-
-              <div className="box-select">
-                <select>
-                  <option value="" selected>Estado</option>
-                  <option value="">Activo</option>
-                  <option value="">Inactivo
-                  </option>
-                </select>
-              </div>
-              <div className="box-textarea">
-                <textarea placeholder='Mensaje' name="mensaje" id=""></textarea>
-                <span></span>
-                <label htmlFor=""></label>
-              </div>
-              <BotonesCrud />
-            </form>
           </div>
         </div>
       </div>

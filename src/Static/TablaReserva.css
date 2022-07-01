@@ -203,3 +203,24 @@
 .fa-circle-exclamation:hover{
   transform: scale(1.10);
 }
+
+/*TABLA INFRACCIONES*/
+
+.TInfoInfraccion{
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 20px;
+}
+
+.TInfoInfraccion i{
+  margin-left: 658px;
+}
+
+.InfraEstado{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

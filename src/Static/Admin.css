@@ -237,6 +237,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .td-4{
@@ -260,6 +261,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.td-7{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .fa-pen-to-square{
@@ -620,6 +630,11 @@ form .box-select{
     width: 120px;
     padding-bottom: 45px;
     filter: drop-shadow(-20px 0px 20px rgba(0,0,0,0.5));
+}
+.importar{
+    transform: rotate(180deg);
+    padding-bottom: 0px !important;
+    padding-top: 30px !important;
 }
 
 .card-IM .card-Admin{

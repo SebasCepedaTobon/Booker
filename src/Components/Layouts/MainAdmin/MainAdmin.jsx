@@ -13,10 +13,8 @@ import novedades from '../../../assets/Imagenes/Admin/novedades.png';
 import { Imagenes } from '../../UI/Imagenes/Imagenes';
 
 
-
 export const MainAdmin = () => {
 
-  
   return (
     <div className='MainAdministrativo'>
       <div className="box-AdminNavegador">
@@ -53,7 +51,7 @@ export const MainAdmin = () => {
                 </NavLink>
               </div>
               <div className="imagen">
-                <Imagenes url={reserva} clase='img '/>
+                <Imagenes url={evento} clase='img img1'/>
               </div>
             </div>
             <div className="cardAdmin">
@@ -67,7 +65,7 @@ export const MainAdmin = () => {
                 </NavLink>
               </div>
               <div className="imagen">
-                <Imagenes url={evento} clase='img img1'/>
+                <Imagenes url={reserva} clase='img'/>
               </div>
             </div>
           </div>
@@ -117,7 +115,7 @@ export const MainAdmin = () => {
                     </NavLink>
                   </div>
                   <div className="imagen">
-                    <Imagenes url={novedades} clase='img'/>
+                    <Imagenes url={novedades} clase='img importar'/>
                   </div>                
                 </div>                
               </div>
