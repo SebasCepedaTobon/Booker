@@ -20,7 +20,9 @@ let edit
 export const AutoresCategorias = () => {
 
   const url = "https://bookerbackapi.herokuapp.com/modulos/categorias/?ordering=-id_categoria"
+  const url3 = "https://bookerbackapi.herokuapp.com/modulos/categorias/"
   const url2 = "https://bookerbackapi.herokuapp.com/modulos/autores/?ordering=-nombres"
+  const url4 = "https://bookerbackapi.herokuapp.com/modulos/autores/"
   const [categorias, setCategorias] = useState([])
   const [autores, setAutores] = useState([])
   const [form2, setForm2] = useState(initialForm)
@@ -50,19 +52,19 @@ export const AutoresCategorias = () => {
 
   const peticionPost = async () =>{
     console.log(form2);
-    await axios.post(url, form2)
+    await axios.post(url3, form2)
     .then(res=>{
-      window.location.href="/AutoresCategorias"
+      peticionGetCate()
         console.log(res)
     })
     console.log(form2);
 }
 
 const updateData2 = async () =>{
-  let endpoint = url+form2.id_categoria+'/'
+  let endpoint = url3+form2.id_categoria+'/'
   await axios.put(endpoint, form2)
   .then((res) => {
-      window.location.href="/AutoresCategorias"
+    peticionGetCate()
       console.log(res);
   })
 }
@@ -101,10 +103,10 @@ const eliminacion = (data) =>{
 
 const peticionDelete = async (data) =>{
 
-  let endpoint  = url+data.id_categoria + "/"
+  let endpoint  = url3+data.id_categoria + "/"
   await axios.delete(endpoint)
   .then((res)=>{
-    window.location.href="/AutoresCategorias"
+    peticionGetCate()
     console.log(res);
   })
 }
@@ -195,19 +197,19 @@ const peticionDelete = async (data) =>{
 
   const peticionPostAuto = async () =>{
     console.log(form2Auto);
-    await axios.post(url2, form2Auto)
+    await axios.post(url4, form2Auto)
     .then(res=>{
-      window.location.href="/AutoresCategorias"
+      peticionGetAuto()
         console.log(res)
     })
     console.log(form2Auto);
 }
 
 const updateData2Auto = async () =>{
-  let endpoint = url2+form2Auto.id_autor+'/'
+  let endpoint = url4+form2Auto.id_autor+'/'
   await axios.put(endpoint, form2Auto)
   .then((res) => {
-      window.location.href="/AutoresCategorias"
+    peticionGetAuto()
       console.log(res);
   })
 }
@@ -216,10 +218,10 @@ const updateData2Auto = async () =>{
 
 const peticionDeleteAuto = async (data) =>{
 
-  let endpoint  = url2+data.id_autor + "/"
+  let endpoint  = url4+data.id_autor + "/"
   await axios.delete(endpoint)
   .then((res)=>{
-    window.location.href="/AutoresCategorias"
+    peticionGetAuto()
     console.log(res);
   })
 }
