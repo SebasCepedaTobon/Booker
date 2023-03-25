@@ -22,7 +22,7 @@ export const AdminHeader = () => {
 
 
     const peticionGetBibliotecario=()=>{
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/bibliotecarios/" + id_bibliotecario + "/")
+      axios.get("https://bookerapi.onrender.com/modulos/bibliotecarios/" + id_bibliotecario + "/")
       
       .then(response=>{
         setImagenPerfil1(response.data.doc_bibliotecario)

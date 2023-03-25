@@ -196,7 +196,7 @@ export const TablaBibliotecarios = () => {
 
           <NavLink to='/NBibliotecarios'  >
             <div id='Activar-From' className='Activar-From'>
-              <i class="fa-solid fa-folder-plus"></i>
+              <i className="fa-solid fa-folder-plus"></i>
             </div>
           </NavLink>
         </div>

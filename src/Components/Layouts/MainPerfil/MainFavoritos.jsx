@@ -1,168 +1,130 @@
-import React, { useEffect, useState } from 'react'
-import { BotonesPerfil } from '../../UI/BotonesPerfil/BotonesPerfil'
-import { Navegacion3 } from '../../UI/Navegacion/Navegacion3'
-import axios from 'axios';
-import { Imagenes } from '../../UI/Imagenes/Imagenes';
-
-
+import React, { useEffect, useState } from "react";
+import { BotonesPerfil } from "../../UI/BotonesPerfil/BotonesPerfil";
+import { Navegacion3 } from "../../UI/Navegacion/Navegacion3";
+import axios from "axios";
+import { Imagenes } from "../../UI/Imagenes/Imagenes";
 
 export const MainFavoritos = () => {
+  const id_estudiante = localStorage.getItem("id_estudiante");
 
+  const [favoritos, setFavoritos] = useState([]);
 
-  const id_estudiante = localStorage.getItem('id_estudiante')
+  console.log(favoritos);
 
-  const [favoritos, setFavoritos] = useState([])
-  
-
-
-  console.log(favoritos)
-
-  let url = "https://bookerbackapi.herokuapp.com/modulos/favoritos/?id_estudiante=" + id_estudiante
+  let url =
+    "https://bookerapi.onrender.com/modulos/favoritos/?id_estudiante=" +
+    id_estudiante;
 
   const PedirDatos = () => {
-    axios.get(url).then(response => {
-      setFavoritos(response.data);
+    axios
+      .get(url)
+      .then((response) => {
+        setFavoritos(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
-    }).catch(error => {
-      console.log(error.message);
-    })
+  let url2 = "https://bookerapi.onrender.com/modulos/favoritos/";
 
-
-  }
-
-  let url2 = "https://bookerbackapi.herokuapp.com/modulos/favoritos/"
-
-  const peticionDeleteAuto = async (data) =>{
-
+  const peticionDeleteAuto = async (data) => {
     console.log(data.id_favorito);
 
-    
-
-    let endpoint  = url2+ data.id_favorito + "/"
-    await axios.delete(endpoint)
-    .then((res)=>{
-      PedirDatos()
+    let endpoint = url2 + data.id_favorito + "/";
+    await axios.delete(endpoint).then((res) => {
+      PedirDatos();
       console.log(res);
-    })
-  }
+    });
+  };
   useEffect(() => {
-    PedirDatos()
-  }, [])
+    PedirDatos();
+  }, []);
 
-  let id_favo
+  let id_favo;
 
-  let librosF = []
+  let librosF = [];
 
-  let  a = []
-  let  b = []
+  let a = [];
+  let b = [];
   return (
-    <div className='contenedor-perfil'>
+    <div className="contenedor-perfil">
       <Navegacion3 />
       <BotonesPerfil />
       <div className="datos-perfil">
-        <h2 id='Tu-cuenta'>Tus Favoritos</h2>
-        {favoritos.length === 0 ? (<div className='no-reserva'>
-                  <h3>No tienes reservados por ahora...</h3>
-                </div>) :
-                    (
-            <div className="tabla-reservados">
-              <table className='tabla-libros-reservados'>
-                <thead className='barra-titulos'>
-                  <th className='th-imagen'>Imagen</th>
-                  <th>Nombre</th>
-                  <th>Autores</th>
-                  <th>Editorial</th>
-                  <th className='cate'>Categorias</th>
-                </thead>
-                <tbody className='barra-libros'>
-                  {favoritos.map((favos => {
+        <h2 id="Tu-cuenta">Tus Favoritos</h2>
+        {favoritos.length === 0 ? (
+          <div className="no-reserva">
+            <h3>No tienes reservados por ahora...</h3>
+          </div>
+        ) : (
+          <div className="tabla-reservados">
+            <table className="tabla-libros-reservados">
+              <thead className="barra-titulos">
+                <th className="th-imagen">Imagen</th>
+                <th>Nombre</th>
+                <th>Autores</th>
+                <th>Editorial</th>
+                <th className="cate">Categorias</th>
+              </thead>
+              <tbody className="barra-libros">
+                {favoritos.map((favos) => {
+                  id_favo = favos.id_favorito;
+                  librosF = favos.libros;
 
-                    id_favo = favos.id_favorito
-                    librosF = favos.libros
-                   
-                    return (
-                      <tr className='tr-libros'>
-                        <td className='td-imagen'>
-                          {librosF.map((favoritos => (
+                  return (
+                    <tr className="tr-libros">
+                      <td className="td-imagen">
+                        {librosF.map((favoritos) => (
+                          <Imagenes
+                            clase="img-card-res"
+                            url={favoritos.imagen_libro}
+                          />
+                        ))}
+                      </td>
+                      <td className="td-nombres">
+                        {librosF.map((favoritos) => (
+                          <p>{favoritos.nombre}</p>
+                        ))}
+                      </td>
 
-
-                            <Imagenes clase='img-card-res' url={favoritos.imagen_libro} />
-
-
-
-
-                          )
-                          ))}
-                        </td>
-                        <td className='td-nombres'>
-                          {librosF.map((favoritos => (
-
-                            <p>{favoritos.nombre}</p>
-
-                          )
-                          ))}
-                        </td>
-
-                        <td>
-                          {librosF.map((libros => {
-                            a = libros.autores
-                            return(
-                             
-                                <p>
-                                {
-                                a.map(autor => autor.nombres).join(', ')
-                                }
-                                </p>
-                           
-
-                            )
-
-
-                          }))}
-                         
-                         
-                        </td>
-                        <td>
-                        {librosF.map((libros => (
-                          <p> {
-                            libros.id_editorial.nombre
-                            }</p> 
-
-                        )))}
-                        </td>
-                        <td className='cate'>
-                        {librosF.map((libros => {
-                            b = libros.categorias
-                            return(
-                             
-                                <p>
-                                {
-                                b.map(cate => cate.nombre).join(', ')
-                                }
-                                </p>
-                           
-
-                            )
-
-
-                          }))}
-                        
-                        </td>
-                        <td className='td-borrar'>
-                          <i onClick={()=>{peticionDeleteAuto(favos)}} class="fa-solid fa-trash-can"></i>
-                        </td>
-                      </tr>
-                    )
-                  }))}
-
-                </tbody>
-              </table>
-            </div>
-
-          )
-        }
-       
+                      <td>
+                        {librosF.map((libros) => {
+                          a = libros.autores;
+                          return (
+                            <p>{a.map((autor) => autor.nombres).join(", ")}</p>
+                          );
+                        })}
+                      </td>
+                      <td>
+                        {librosF.map((libros) => (
+                          <p> {libros.id_editorial.nombre}</p>
+                        ))}
+                      </td>
+                      <td className="cate">
+                        {librosF.map((libros) => {
+                          b = libros.categorias;
+                          return (
+                            <p>{b.map((cate) => cate.nombre).join(", ")}</p>
+                          );
+                        })}
+                      </td>
+                      <td className="td-borrar">
+                        <i
+                          onClick={() => {
+                            peticionDeleteAuto(favos);
+                          }}
+                          class="fa-solid fa-trash-can"
+                        ></i>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};

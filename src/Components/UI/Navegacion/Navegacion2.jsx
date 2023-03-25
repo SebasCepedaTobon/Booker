@@ -24,7 +24,7 @@ export const Navegacion2 = () => {
   const [Documento, setDocumento] = useState({})
 
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/" + id_estudiante+ '/'
+  const url = "https://bookerapi.onrender.com/modulos/estudiantes/" + id_estudiante+ '/'
 
   const PedirDatos = () =>{
     axios.get(url).then(response=>{

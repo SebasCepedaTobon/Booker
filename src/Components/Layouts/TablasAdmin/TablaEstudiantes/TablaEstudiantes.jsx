@@ -10,8 +10,8 @@ import { NavLink } from 'react-router-dom';
 
 export const TablaEstudiantes = () => {
 
-  const urlEstudiante = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/"
-  const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/?ordering=id_estudiante"
+  const urlEstudiante = "https://bookerapi.onrender.com/modulos/estudiantes/"
+  const url = "https://bookerapi.onrender.com/modulos/estudiantes/?ordering=id_estudiante"
 
   const eliminacion = (data) => {
     peticionDelete(data)
@@ -37,7 +37,7 @@ export const TablaEstudiantes = () => {
     })
   }
   const peticionGetInactivo = () => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?doc_estudiante__usuario_activo=false&ordering=id_estudiante").then(response => {
+    axios.get("https://bookerapi.onrender.com/modulos/estudiantes/?doc_estudiante__usuario_activo=false&ordering=id_estudiante").then(response => {
       setEstudiantes(response.data);
     }).catch(error => {
       console.log(error.message);
@@ -53,7 +53,7 @@ export const TablaEstudiantes = () => {
   const peticionGetBusqueda = () => {
     const inputBuscar = document.getElementById('elInput')
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=" + inputBuscar.value + "&ordering=id_estudiante")
+    axios.get("https://bookerapi.onrender.com/modulos/estudiantes/?search=" + inputBuscar.value + "&ordering=id_estudiante")
     .then(response => {
       setEstudiantes(response.data);
     }).catch(error => {

@@ -36,7 +36,7 @@ let llenoInputCate = []
 
 export const AgregarLibro = () => {
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/libros/";
+  const url = "https://bookerapi.onrender.com/modulos/libros/";
   const [formLibros, setformLibros] = useState(initialForm)
 
 
@@ -53,7 +53,7 @@ export const AgregarLibro = () => {
 
     const autores = document.getElementById('selecAuto')
     const inputAuto = document.getElementById('inputAuto')
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/autores/" + autores.value).then(response => {
+    axios.get("https://bookerapi.onrender.com/modulos/autores/" + autores.value).then(response => {
       auto = response.data;
       console.log(auto);
       llenoAuto.push(auto.id_autor)
@@ -73,7 +73,7 @@ export const AgregarLibro = () => {
     const categorias = document.getElementById('selecCate')
     const inputCate = document.getElementById('inputCate')
     console.log(categorias.value);
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/categorias/" + categorias.value).then(response => {
+    axios.get("https://bookerapi.onrender.com/modulos/categorias/" + categorias.value).then(response => {
       cate = response.data;
       console.log(cate.nombre);
       console.log(cate.id_categoria);
@@ -109,25 +109,25 @@ export const AgregarLibro = () => {
   }
 
   const fetchCate = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/categorias/")
+    const response = await fetch("https://bookerapi.onrender.com/modulos/categorias/")
     const responseJSON = await response.json()
     setCategorias(responseJSON)
   }
 
   const fetchAutores = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/autores/")
+    const response = await fetch("https://bookerapi.onrender.com/modulos/autores/")
     const responseJSON = await response.json()
     setAutores(responseJSON)
   }
 
   const fetchIdioma = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/idiomas/")
+    const response = await fetch("https://bookerapi.onrender.com/modulos/idiomas/")
     const responseJSON = await response.json()
     setIdioma(responseJSON)
   }
 
   const fetchEditorial = async () => {
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/editoriales/")
+    const response = await fetch("https://bookerapi.onrender.com/modulos/editoriales/")
     const responseJSON = await response.json()
     setEditorial(responseJSON)
   }
@@ -352,7 +352,7 @@ export const AgregarLibro = () => {
                 </select>
               </div>
 
-              <i class="fa-solid fa-xmark" onClick={vaciarCate} ></i>
+              <i className="fa-solid fa-xmark" onClick={vaciarCate} ></i>
               <textarea className='texLibro texLibroCateAuto' readOnly='readOnly' id='inputCate' type="text" />
               <label id='labelCate' className='labelLibro labelLibro2Add labelLibroCate'>Categorias</label>
               <select className='selectCategorias' id='selecCate' onChange={(e) => { peticionGetCateLibro(e) }}>
@@ -364,7 +364,7 @@ export const AgregarLibro = () => {
                     )
                   })}
               </select>
-              <i class="fa-solid fa-xmark fa-xmarkAuto " onClick={vaciarAuto} ></i>
+              <i className="fa-solid fa-xmark fa-xmarkAuto " onClick={vaciarAuto} ></i>
               <textarea className='texLibro texLibroCateAuto' readOnly='readOnly' id='inputAuto' type="text" />
               <label id='labelAuto' className='labelLibro  labelLibroAutoAdd labelLibroAuto'>Autores</label>
               <select className='selectAutores' onChange={(e) => { peticionGetAutoLibro(e) }} id='selecAuto'>

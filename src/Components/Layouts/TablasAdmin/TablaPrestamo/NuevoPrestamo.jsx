@@ -21,9 +21,9 @@ let validarEstudiante
 
 export const NuevoPrestamo = () => {
 
-  let urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV&ordering=id_libro"
-  const urlEjem = "https://bookerbackapi.herokuapp.com/modulos/ejemplares/?estado=D&id_libro__id_libro="
-  const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
+  let urlOrdenada = "https://bookerapi.onrender.com/modulos/libros/?estado=AV&ordering=id_libro"
+  const urlEjem = "https://bookerapi.onrender.com/modulos/ejemplares/?estado=D&id_libro__id_libro="
+  const url = "https://bookerapi.onrender.com/modulos/reservas/"
   const [libros, setLibros] = useState([])
   const [prestamos, setPrestamos] = useState([])
   const [estudiantes, setEstudiantes] = useState({})
@@ -73,7 +73,7 @@ export const NuevoPrestamo = () => {
 
   const peticionGetTreservas = () => {
     console.log(idEstudiante);
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?id_estudiante__id_estudiante=" + idEstudiante +  "&estado=AC")
+    axios.get("https://bookerapi.onrender.com/modulos/reservas/?id_estudiante__id_estudiante=" + idEstudiante +  "&estado=AC")
     .then(response => {
       if(response.data.length > 0){
         response.data.map((elemet,_) => {
@@ -90,7 +90,7 @@ export const NuevoPrestamo = () => {
   }
 
   const peticionGetTPrestamos = () => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&id_estudiante__id_estudiante=" + idEstudiante)
+    axios.get("https://bookerapi.onrender.com/modulos/de_prestamos/?estado=AC&id_estudiante__id_estudiante=" + idEstudiante)
     .then(response => {
       if(response.data.length > 0){
         response.data.map((elemet,_) => {
@@ -150,7 +150,7 @@ export const NuevoPrestamo = () => {
   }
 
   const peticionGetPrestamos = (id_prestamos, id_reserva) => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + id_prestamos)
+    axios.get("https://bookerapi.onrender.com/modulos/de_prestamos/" + id_prestamos)
       .then(response => {
         setPrestamos(response.data);
         console.log(response.data);
@@ -196,7 +196,7 @@ export const NuevoPrestamo = () => {
     if (inputBuscar.value === "") {
       peticionGet()      
     }else{
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/libros/?estado=AV&search=" + inputBuscar.value).then(response => {
+      axios.get("https://bookerapi.onrender.com/modulos/libros/?estado=AV&search=" + inputBuscar.value).then(response => {
       setLibros(response.data);
       console.log(response.data);
     }).catch(error => {
@@ -247,7 +247,7 @@ export const NuevoPrestamo = () => {
     console.log(validarEstudiante)
     const p = document.getElementById('noExiste')
     const inpurEstuden = document.getElementById('inpurEstuden')
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/estudiantes/?search=" + inpurEstuden.value)
+    axios.get("https://bookerapi.onrender.com/modulos/estudiantes/?search=" + inpurEstuden.value)
     .then(response => {
       console.log(response.data)
       if(response.data.length === 0){
@@ -315,7 +315,7 @@ export const NuevoPrestamo = () => {
 
   const updateDataPrestamos = async (data) =>{
     console.log(data)
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/prestamos/"+data.id_prestamo+'/'
+    let endpoint = "https://bookerapi.onrender.com/modulos/prestamos/"+data.id_prestamo+'/'
     await axios.put(endpoint, data)
     .then((res) => {
         /* peticionGetPrestamosUpdate() */

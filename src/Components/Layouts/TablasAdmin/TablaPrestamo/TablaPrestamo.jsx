@@ -15,8 +15,8 @@ let prestamoUpdate = []
 let idinfra
 
 export const TablaPrestamo = () => {
-  const url = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"
-  const urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?ordering=-id_de_prestamo"
+  const url = "https://bookerapi.onrender.com/modulos/de_prestamos/"
+  const urlOrdenada = "https://bookerapi.onrender.com/modulos/de_prestamos/?ordering=-id_de_prestamo"
   const id_bibliotecario = localStorage.getItem('id_bibliotecario')
 
   const eliminacion = (data) =>{
@@ -76,7 +76,7 @@ useEffect(() => {
 
 
   const peticionGetPrestamos = (libro) => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + libro.id_de_prestamo)
+    axios.get("https://bookerapi.onrender.com/modulos/de_prestamos/" + libro.id_de_prestamo)
       .then(response => {
         prestamoUpdate.push(response.data)
         console.log(response.data);
@@ -146,7 +146,7 @@ useEffect(() => {
   const updateEstado2 = (data) =>{
 
     console.log(data);
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/prestamos/"+data.id_prestamo+'/'
+    let endpoint = "https://bookerapi.onrender.com/modulos/prestamos/"+data.id_prestamo+'/'
     axios.put(endpoint, data)
     .then((res) => {
         console.log(res)
@@ -163,7 +163,7 @@ useEffect(() => {
 
     console.log(data);
 
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ data.id_de_prestamo+'/'
+    let endpoint = "https://bookerapi.onrender.com/modulos/de_prestamos/"+ data.id_de_prestamo+'/'
     await axios.put(endpoint, data)
     .then((res) => {
         console.log(res);
@@ -319,7 +319,7 @@ useEffect(() => {
 
     console.log(generarInfra);
 
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/de_prestamos/"+ generarInfra.id_de_prestamo+'/'
+    let endpoint = "https://bookerapi.onrender.com/modulos/de_prestamos/"+ generarInfra.id_de_prestamo+'/'
     await axios.put(endpoint, generarInfra)
     .then((res) => {
         console.log(res)
@@ -395,7 +395,7 @@ useEffect(() => {
     cambioFiltro.textContent = "Préstamos vigentes"
     console.log(cambioFiltro.textContent);
     //cambioFiltro.textContent === "Préstamos vigentes"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=AC&ordering=-id_de_prestamo").then(response=>{
+    axios.get("https://bookerapi.onrender.com/modulos/de_prestamos/?estado=AC&ordering=-id_de_prestamo").then(response=>{
       setPrestamos(response.data);
     }).catch(error=>{
       console.log(error.message);
@@ -405,7 +405,7 @@ useEffect(() => {
   const peticionGetCompletadas = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Préstamos finalizados"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?estado=C&ordering=-id_de_prestamo").then(response=>{
+    axios.get("https://bookerapi.onrender.com/modulos/de_prestamos/?estado=C&ordering=-id_de_prestamo").then(response=>{
       setPrestamos(response.data);
     }).catch(error=>{
       console.log(error.message);
@@ -419,7 +419,7 @@ useEffect(() => {
     if (inputBuscar.value === "") {
       peticionGet()      
     }else{
-      axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/?ordering=-id_de_prestamo&search=" + inputBuscar.value).then(response=>{
+      axios.get("https://bookerapi.onrender.com/modulos/de_prestamos/?ordering=-id_de_prestamo&search=" + inputBuscar.value).then(response=>{
         setPrestamos(response.data);
       }).catch(error=>{
         console.log(error.message);

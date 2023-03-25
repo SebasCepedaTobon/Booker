@@ -14,8 +14,8 @@ let id_bibliotecario
 
 export const TablaReserva = () => {
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/reservas/"
-  const urlOrdenada = "https://bookerbackapi.herokuapp.com/modulos/reservas/?ordering=-id_reserva"
+  const url = "https://bookerapi.onrender.com/modulos/reservas/"
+  const urlOrdenada = "https://bookerapi.onrender.com/modulos/reservas/?ordering=-id_reserva"
 
   const eliminacion = (data) => {
     Swal.fire({
@@ -78,7 +78,7 @@ export const TablaReserva = () => {
   const peticionGetInactiva = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Reservas inactivas"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=IV&ordering=-id_reserva").then(response => {
+    axios.get("https://bookerapi.onrender.com/modulos/reservas/?estado=IV&ordering=-id_reserva").then(response => {
       setReservas(response.data);
       console.log(response.data);
 
@@ -90,7 +90,7 @@ export const TablaReserva = () => {
   const peticionGetCompletadas = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Reservas finalizadas"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=C&ordering=-id_reserva").then(response => {
+    axios.get("https://bookerapi.onrender.com/modulos/reservas/?estado=C&ordering=-id_reserva").then(response => {
       setReservas(response.data);
       console.log(response.data);
 
@@ -102,7 +102,7 @@ export const TablaReserva = () => {
   const peticionGetActuales = () => {
     const cambioFiltro = document.querySelector('.cambioFiltro')
     cambioFiltro.textContent = "Reservas vigentes"
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?estado=AC&ordering=-id_reserva").then(response => {
+    axios.get("https://bookerapi.onrender.com/modulos/reservas/?estado=AC&ordering=-id_reserva").then(response => {
       setReservas(response.data);
     }).catch(error => {
       console.log(error.message);
@@ -171,7 +171,7 @@ export const TablaReserva = () => {
 
 
   const peticionGetPrestamos = (id_prestamos) => {
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/de_prestamos/" + id_prestamos)
+    axios.get("https://bookerapi.onrender.com/modulos/de_prestamos/" + id_prestamos)
       .then(response => {
         setPrestamos(response.data);
         console.log(response.data);
@@ -218,7 +218,7 @@ export const TablaReserva = () => {
   const peticionGetBusqueda = () => {
     const inputBuscar = document.getElementById('elInput')
 
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/reservas/?search=" + inputBuscar.value).then(response => {
+    axios.get("https://bookerapi.onrender.com/modulos/reservas/?search=" + inputBuscar.value).then(response => {
       setReservas(response.data);
     }).catch(error => {
       console.log(error.message);
@@ -295,7 +295,7 @@ export const TablaReserva = () => {
 
   const updateDataPrestamos = async (data) =>{
     console.log(data)
-    let endpoint = "https://bookerbackapi.herokuapp.com/modulos/prestamos/"+data.id_prestamo+'/'
+    let endpoint = "https://bookerapi.onrender.com/modulos/prestamos/"+data.id_prestamo+'/'
     await axios.put(endpoint, data)
     .then((res) => {
         /* peticionGetPrestamosUpdate() */

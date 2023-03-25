@@ -75,7 +75,7 @@ export const NuevoBibliotecario = () => {
               <div className="from-Titulo">
                 <div className="Desactivar-From">
                   <NavLink to='/TBibliotecarios' >
-                    <i class="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark"></i>
                   </NavLink>
                 </div>
                 <h1>NUEVO BIBLIOTECARIO</h1>                

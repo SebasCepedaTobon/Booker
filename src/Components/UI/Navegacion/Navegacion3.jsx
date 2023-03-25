@@ -17,7 +17,7 @@ export const Navegacion3 = () => {
 
 
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/" + id_estudiante+ '/'
+  const url = "https://bookerapi.onrender.com/modulos/estudiantes/" + id_estudiante+ '/'
 
   const PedirDatos = () =>{
     axios.get(url).then(response=>{

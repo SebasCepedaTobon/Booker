@@ -26,7 +26,7 @@ export const TablaEventos = () => {
   let imagen_evento=""
   let setearImg
 
-  const url2 = "https://bookerbackapi.herokuapp.com/modulos/eventos/"
+  const url2 = "https://bookerapi.onrender.com/modulos/eventos/"
   const [eventos, setEventos] = useState([])
   const [form2, setForm2] = useState(initialForm)
 
@@ -53,7 +53,7 @@ export const TablaEventos = () => {
 
   const peticionGetAutoBuscar = ()=>{
     const input = document.getElementById('elInputAuto')
-    axios.get("https://bookerbackapi.herokuapp.com/modulos/eventos/?search=" + input.value)
+    axios.get("https://bookerapi.onrender.com/modulos/eventos/?search=" + input.value)
     .then(response=>{
       setEventos(response.data);
     })

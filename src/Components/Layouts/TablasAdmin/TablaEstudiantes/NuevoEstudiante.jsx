@@ -27,7 +27,7 @@ export const initialForm = {
 
 export const NuevoEstudiante = () => {
 
-  const url = "https://bookerbackapi.herokuapp.com/modulos/estudiantes/"
+  const url = "https://bookerapi.onrender.com/modulos/estudiantes/"
   const [formEstudiantes, setEstudiantes] = useState(initialForm)
 
   const [grado, setGrado] = useState()
@@ -37,13 +37,13 @@ export const NuevoEstudiante = () => {
 
 
   const fetchGrado=async()=>{
-      const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/grados/")
+      const response = await fetch("https://bookerapi.onrender.com/modulos/grados/")
       const responseJSON = await response.json()
       setGrado(responseJSON)
     }
 
   const fetchGrupo=async()=>{
-    const response = await fetch("https://bookerbackapi.herokuapp.com/modulos/grupos/")
+    const response = await fetch("https://bookerapi.onrender.com/modulos/grupos/")
     const responseJSON = await response.json()
     setGrupo(responseJSON)
   }
@@ -112,7 +112,7 @@ export const NuevoEstudiante = () => {
               <div className="from-Titulo">
                 <div className="Desactivar-From">
                   <NavLink to='/TEstudiantes' >
-                    <i class="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark"></i>
                   </NavLink>
                 </div>
                 <h1>NUEVO ESTUDIANTE</h1>                

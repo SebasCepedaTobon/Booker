@@ -13,12 +13,9 @@ export const actionTypes = {
     DETALLES_LIBRO: "DETALLES_LIBRO",
     LIMPIAR_RESERVA:"LIMPIAR_RESERVA",
     ADD_TO_FAVORITOS: "ADD_TO_FAVORITOS"
-
-   
 }
 
 const reducer = (state, action) => {
-    console.log(action)
     switch(action.type){
         case "ADD_TO_RESERVA":
         return {
